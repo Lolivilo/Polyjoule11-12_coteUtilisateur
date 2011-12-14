@@ -17,7 +17,7 @@ class CategorieBD extends BD {
      */
     function getSousCategories ($CategorieParente) {
     	
-    	$CategorieParente = self::security($CategorieParente);
+    	$CategorieParente = parent::security($CategorieParente);
     	$this->connexion() ;
     	try
 		{
@@ -49,7 +49,7 @@ class CategorieBD extends BD {
     }
     
 	function getCategorieWithId ($idCat) {
-        $idCat = self::security($idCat);
+        $idCat = parent::security($idCat);
 		$this->connexion() ;
     	
 		try
@@ -75,12 +75,7 @@ class CategorieBD extends BD {
     }
     
     
-    function security($string)
-    {
-    	settype ($string, "string"); 
-    	return $string;
-    	
-    }
+    
     
 }
 
