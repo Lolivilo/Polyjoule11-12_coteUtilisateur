@@ -4,3 +4,5 @@ TODO:
 Une fonction dans categorie bd et articlebd pour savoir si la cat et l'article existes.
 Dans le sessionlangue il faut tester si une categorie est passé en get, voir si elle existe
 Pareil pour l'article
+
+TEST
