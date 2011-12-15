@@ -74,6 +74,13 @@ class CategorieBD extends BD {
 		return $Categorie;
     }
     
+    // retourne la categorie parente la plus haute dans la hiérarchie
+    function getOldestCategoryOfArticle($idArticle)
+    {
+    	
+    	
+    }
+    
     
     
     

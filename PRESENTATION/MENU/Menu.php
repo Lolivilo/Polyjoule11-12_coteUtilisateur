@@ -1,5 +1,5 @@
 <?php
-include_once '../BD/CategorieBD.php';
+require_once '../BD/CategorieBD.php';
 
 	function getMenu($CategorieBD,$classParent,$classChildren)
 	{
