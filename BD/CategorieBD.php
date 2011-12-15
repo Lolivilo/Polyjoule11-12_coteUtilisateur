@@ -73,9 +73,16 @@ class CategorieBD extends BD {
 		$this->deconnexion() ;
 		return $Categorie;
     }
+function getSuperParentCategoryOfCategory($idCat)
+    {
+    	
+    	
+    }
+    
+    
     
     // retourne la categorie parente la plus haute dans la hiérarchie
-    function getOldestCategoryOfArticle($idArticle)
+    function getSuperParentCategoryOfArticle($idArticle)
     {
     	
     	
