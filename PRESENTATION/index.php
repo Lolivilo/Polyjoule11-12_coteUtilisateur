@@ -13,6 +13,14 @@
 	</head>
 
 	<body>
+
+		<?php 
+			$cat = new CategorieBD('localhost', 'polyjoule', 'polyjoule', 'azerty');
+			echo($cat->getSuperParentCategoryOfCategory(5));	// Doit renvoyer 1
+			
+			echo($cat->getSuperParentCategoryOfArticle(1));	// Doit renvoyer 1
+		?>
+
 		<div id='page'>
 			<?php 
 				include 'HEADER/header.php';

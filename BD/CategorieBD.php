@@ -77,19 +77,62 @@ class CategorieBD extends BD {
 function getSuperParentCategoryOfCategory($idCat)
     {
     	$idcat = parent::security($idCat);
-    	$this->connexion();
+    	$this->connexion();	// Connexion ˆ la BD
+    	$idMere = NULL;
     	
-    	
-    	
+    	try
+    	{
+    		$connexion = parent::getConnexion();
+    		do
+    		{
+    			// On rŽcupre l'id_mere de la catŽgorie courante
+    			$resultQuery = $connexion->query("SELECT id_mere FROM RUBRIQUE WHERE id_rubrique = $idCat")->fetch();
+    			$idMere = $resultQuery['id_mere'];
+    			if($idMere != NULL)	// Si elle existe, elle devient la catŽgorie courante pour la prochaine itŽration de boucle
+    			{
+    				$idCat = $idMere;
+    			}
+    		}
+    		while($idMere != NULL);
+    	}
+    	catch (PDOException $e)
+		{
+			$ex = new AccesTableException();
+			$ex->Message();
+		}
+		// DŽconnexion de la BD
+		$this->deconnexion();
+		
+		return $idCat;
     }
     
     
-    
     // retourne la categorie parente la plus haute dans la hiŽrarchie
-    function getSuperParentCategoryOfArticle($idArticle)
+    function getSuperParentCategoryOfArticle($idArt)
     {
+    	$idArt = parent::security($idArt);
+    	// Connexion ˆ la BD
+    	$this->connexion();
+    	$idDirectCat = NULL;	// CatŽgorie liŽe ˆ l'article
     	
+    	try
+    	{
+    		$connexion = parent::getConnexion();
+    		// On rŽcupre l'id_rubrique de l'article
+    		$resultQuery = $connexion->query("SELECT id_rubrique FROM ARTICLE WHERE id_article = $idArt")->fetch();
+    		$idDirectCat= $resultQuery['id_rubrique'];
+    		// Puis on appelle la fonction renvoyant la super catŽgorie
+    		$idMere = $this->getSuperParentCategoryOfCategory($idDirectCat);
+    	}
+    	catch (PDOException $e)
+    	{
+    		$ex = new AccesTableException();
+    		$ex->Message();
+    	}
+    	// DŽconnexion de la BD
+    	$this->deconnexion();
     	
+    	return $idMere;
     }
     
     
