@@ -1,0 +1,21 @@
+#header
+{
+	border: solid;
+}
+
+#logo
+{
+	border: solid;
+	width: 20%;
+}
+
+#topheader
+{
+	text-align: right;
+}
+
+#footer
+{
+	borer:solid;
+	text-align: center;
+}

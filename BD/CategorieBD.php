@@ -73,8 +73,12 @@ class CategorieBD extends BD {
 		$this->deconnexion() ;
 		return $Categorie;
     }
+    
 function getSuperParentCategoryOfCategory($idCat)
     {
+    	$idcat = parent::security($idCat);
+    	$this->connexion();
+    	
     	
     	
     }
