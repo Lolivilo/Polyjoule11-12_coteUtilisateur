@@ -19,3 +19,15 @@
 	borer:solid;
 	text-align: center;
 }
+
+#formsearch
+{
+	display: inline;
+}
+
+#slider
+{
+	margin: 30px;
+	border: dashed;
+	text-align: center;
+}
