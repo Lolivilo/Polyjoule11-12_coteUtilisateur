@@ -1,13 +1,12 @@
 <?php
 require_once 'BD.php';
-//require_once '';
+require_once '../METIER/Categorie.php';
 
 class CategorieBD extends BD {
    
 	public function __construct()
 	{
 		parent::__construct();
-	
 	}
 	
     /**
