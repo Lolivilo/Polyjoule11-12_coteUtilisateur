@@ -1,6 +1,6 @@
 <?php
 require_once 'BD.php';
-require_once '../METIER/Categorie.php';
+require_once '../../METIER/Categorie.php';
 
 class CategorieBD extends BD {
    
@@ -75,7 +75,7 @@ class CategorieBD extends BD {
     
 function getSuperParentCategoryOfCategory($idCat)
     {
-    	$idcat = parent::security($idCat);
+    	$idCat = parent::security($idCat);
     	$this->connexion();	// Connexion ˆ la BD
     	$idMere = NULL;
     	
@@ -84,6 +84,7 @@ function getSuperParentCategoryOfCategory($idCat)
     		$connexion = parent::getConnexion();
     		do
     		{
+
     			// On rŽcupre l'id_mere de la catŽgorie courante
     			$resultQuery = $connexion->query("SELECT id_mere FROM RUBRIQUE WHERE id_rubrique = $idCat")->fetch();
     			$idMere = $resultQuery['id_mere'];
@@ -119,9 +120,14 @@ function getSuperParentCategoryOfCategory($idCat)
     		$connexion = parent::getConnexion();
     		// On rŽcupre l'id_rubrique de l'article
     		$resultQuery = $connexion->query("SELECT id_rubrique FROM ARTICLE WHERE id_article = $idArt")->fetch();
-    		$idDirectCat= $resultQuery['id_rubrique'];
-    		// Puis on appelle la fonction renvoyant la super catŽgorie
-    		$idMere = $this->getSuperParentCategoryOfCategory($idDirectCat);
+			
+    		$idDirectCat = $resultQuery['id_rubrique'];
+    		if($idDirectCat != NULL)
+    		{
+    			// Puis on appelle la fonction renvoyant la super catŽgorie
+    			$idMere = $this->getSuperParentCategoryOfCategory($idDirectCat);
+    		}
+    		else $idMere = 1; // Si la catŽgorie de l'article est inconnue
     	}
     	catch (PDOException $e)
     	{
@@ -130,7 +136,6 @@ function getSuperParentCategoryOfCategory($idCat)
     	}
     	// DŽconnexion de la BD
     	$this->deconnexion();
-    	
     	return $idMere;
     }
     
