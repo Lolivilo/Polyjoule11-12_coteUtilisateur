@@ -33,7 +33,10 @@ $SousCategories = $category->getSousCategories($SuperParentcategoryID);
 $html.="<h2>".$SuperParentcategory->getTitreFR()."</h2><ul>";
 foreach ($SousCategories as $_Categorie)
 {
-	$html.="<li>".$_Categorie->getTitreFR();
+	$html.="<li class='ExpN1";
+	if($_Categorie->getID() == $_GET['categorie'])
+		$html.=" selected";
+	$html.="'>".$_Categorie->getTitreFR();
 	$SousCategoriesN2 = NULL; // CatŽgories filles de la catŽgorie du tour de boucle du foreach
 	// Si la catŽgorie en cours ˆ des filles
 	if($SousCategoriesN2 = $category->getSousCategories($_Categorie->getId()))
@@ -41,7 +44,10 @@ foreach ($SousCategories as $_Categorie)
 		$html.="<ul>";
 		foreach ($SousCategoriesN2 as $CategorieN2)
 		{
-			$html.="<li>".$CategorieN2->getTitreFR()."</li>";
+			$html.="<li class='ExpN2";
+			if($CategorieN2->getID() == $_GET['categorie'])
+				$html.=" selected";
+			$html.= "'>".$CategorieN2->getTitreFR()."</li>";
 		}
 		$html.="</ul>";
 	}
