@@ -8,18 +8,18 @@
 
 	
 	<head>
-  		<title>Polyjoule</title>
+  		<title>Polyjoule - Site Web</title>
   		<link rel="stylesheet" href="index.css">
 	</head>
 
 	<body>
 
-		<?php 
+		<?php /* A SUPPRIMER (TESTS DE METHODES)
 			$cat = new CategorieBD();
 			echo($cat->getSuperParentCategoryOfCategory(5));	// Doit renvoyer 1
 			
 			echo($cat->getSuperParentCategoryOfArticle(1));	// Doit renvoyer 1
-		?>
+		*/?>
 
 		<div id='page'>
 			<?php 
@@ -27,6 +27,7 @@
 			?>
 			<div id='middle'>
 				<div id='slider'>
+					Ici, le slider
 				</div>
 			</div>
 			<div id='directLinks'>
