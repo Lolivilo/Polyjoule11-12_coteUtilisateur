@@ -2,7 +2,7 @@
 include_once '../BD/ArticleBD.php';
 
 
-	$ArticleBD = new ArticleBD('localhost', 'polyjoule', 'polyjoule', 'azerty');
+	$ArticleBD = new ArticleBD();
 
 	$ArticleBD->getArticleWithId(21);
 	

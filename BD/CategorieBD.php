@@ -1,12 +1,12 @@
 <?php
-include_once 'BD.php';
-include_once '../METIER/Categorie.php';
+require_once 'BD.php';
+//require_once '';
 
 class CategorieBD extends BD {
    
-	public function __construct( $host , $database , $user , $password )
+	public function __construct()
 	{
-		parent::__construct($host, $database, $user, $password);
+		parent::__construct();
 	
 	}
 	

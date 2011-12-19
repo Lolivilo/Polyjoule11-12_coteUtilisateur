@@ -4,9 +4,9 @@ include_once '../METIER/Article.php';
 
 class ArticleBD extends BD {
    
-	public function __construct( $host , $database , $user , $password )
+	public function __construct()
 	{
-		parent::__construct($host, $database, $user, $password);
+		parent::__construct();
 	
 	}
 	

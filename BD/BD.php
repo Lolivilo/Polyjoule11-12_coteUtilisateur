@@ -15,12 +15,12 @@ class Bd
 
 // constructeur
 // permet de valuer les 4 premiers attributs de la classe
-	public function __construct( $host , $database , $user , $password )
+	public function __construct()
 	{
-		$this->host = $host ;
-		$this->database = $database ;
-		$this->user = $user ;
-		$this->password = $password ;
+		$this->host = 'localhost' ;
+		$this->database = 'polyjoule' ;
+		$this->user = 'polyjoule' ;
+		$this->password = 'azerty' ;
 		
 	}
 
