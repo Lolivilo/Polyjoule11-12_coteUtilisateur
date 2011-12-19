@@ -1,6 +1,5 @@
 <?php 
 	include_once 'LANGUE/sessionLangue.php';
-	include_once '../BD/CategorieBD.php';
 	include_once 'MENU/Menu.php';
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">

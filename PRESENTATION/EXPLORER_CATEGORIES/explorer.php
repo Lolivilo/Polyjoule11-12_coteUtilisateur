@@ -1,29 +1,42 @@
 <?php
 require_once '../../BD/CategorieBD.php';
-//require_once '../../BD/ArticleBD.php';
-
 
 $category = new CategorieBD();
 
 $SuperParentcategoryID = NULL;
 $SuperParentcategory = NULL;
 
+$CategoryParenteID = NULL;
+$CategoryParente = NULL;
+
 $SousCategories = NULL;
 
 $html = NULL;
 
+
+/*
+ *  RECUPERATION DE LA SUPER CATEGORIE
+ *  +
+ * 	RECUPERATION DE LA CATEGORIE DU NIVEAU SUPERRIEUR POUR UN ARTICLE. DONNE LA CATEGORIE DU $_GET SI LA CATEGORIE EST PASSEE EN PARAMETRE
+ *
+ */
 if(	(isset( $_GET['article'] ) ) )
 {// Si l'article est renseigné dans l'url, on recherche les catégories parentes 
 	$SuperParentcategoryID = $category->getSuperParentCategoryOfArticle($_GET['article']);
-
-
+	$CategoryParenteID = $category->getAsssociateCategoryIDForArticle($_GET['article']);
 }
 elseif( isset( $_GET['categorie'] ) )
 {// Sinon si une catégorie est passé en paramètre, on utilise la catégorie, puis on liste les sous catégories de cette dernière, puis les articles pour chaque catégorie
 	$SuperParentcategoryID = $category->getSuperParentCategoryOfCategory($_GET['categorie']);
+	$CategoryParenteID = $_GET['categorie'];
 }
 // On instancie la super catégorie
 $SuperParentcategory = $category->getCategorieWithId($SuperParentcategoryID);
+// et la catégorie parente de niveau supérieur
+$CategoryParente = $category->getCategorieWithId($CategoryParenteID);
+echo $CategoryParente->getId();
+
+
 
 //Recupération des sous catégories de la catégorie parente
 $SousCategories = $category->getSousCategories($SuperParentcategoryID);
@@ -34,7 +47,7 @@ $html.="<h2>".$SuperParentcategory->getTitreFR()."</h2><ul>";
 foreach ($SousCategories as $_Categorie)
 {
 	$html.="<li class='ExpN1";
-	if($_Categorie->getID() == $_GET['categorie'])
+	if($_Categorie->getID() == $CategoryParente->getID())
 		$html.=" selected";
 	$html.="'>".$_Categorie->getTitreFR();
 	$SousCategoriesN2 = NULL; // Catégories filles de la catégorie du tour de boucle du foreach
@@ -45,7 +58,7 @@ foreach ($SousCategories as $_Categorie)
 		foreach ($SousCategoriesN2 as $CategorieN2)
 		{
 			$html.="<li class='ExpN2";
-			if($CategorieN2->getID() == $_GET['categorie'])
+			if($CategorieN2->getID() == $CategoryParente->getID())
 				$html.=" selected";
 			$html.= "'>".$CategorieN2->getTitreFR()."</li>";
 		}

@@ -54,15 +54,19 @@ class CategorieBD extends BD {
 		try
 		{
 			$connexion = parent::getConnexion();
-			$ResultQuery = $connexion->query( "SELECT * FROM RUBRIQUE WHERE id_rubrique=$idCat" )->fetch();
-			
-			//Ici on instancie un objet categorie à l'aide des infos recupérées dans la base
-			$Categorie = new Categorie($ResultQuery['id_rubrique'], $ResultQuery['id_mere'], $ResultQuery['titreFR_rubrique'], $ResultQuery['titreEN_rubrique']);
-			
-			/*echo "<br>".$ResultQuery['id_rubrique'];
-			echo "<br>".$ResultQuery['id_mere'];
-			echo "<br>".$ResultQuery['titreFR_rubrique'];
-			echo "<br>".$ResultQuery['titreEN_rubrique'];*/
+			$ResultQuery = $connexion->query( "SELECT * FROM RUBRIQUE WHERE id_rubrique=$idCat" );
+			if($ResultQuery != NULL) // Pour eviter une erreur si l'id categorie passé est null
+			{
+				$ResultQuery = $ResultQuery->fetch();
+				//Ici on instancie un objet categorie à l'aide des infos recupérées dans la base
+				$Categorie = new Categorie($ResultQuery['id_rubrique'], $ResultQuery['id_mere'], $ResultQuery['titreFR_rubrique'], $ResultQuery['titreEN_rubrique']);
+			}
+			else 
+			{
+				$Categorie = new Categorie(0, NULL, NULL, NULL);
+				// C'est la categorie par defaut ( categorie NULL)	
+			}			
+
 		}
 		catch ( PDOException $e )
 		{
@@ -107,7 +111,7 @@ function getSuperParentCategoryOfCategory($idCat)
     }
     
     
-    // retourne la categorie parente la plus haute dans la hiérarchie
+    // retourne l'id de la categorie parente la plus haute dans la hiérarchie
     function getSuperParentCategoryOfArticle($idArt)
     {
     	$idArt = parent::security($idArt);
@@ -140,7 +144,31 @@ function getSuperParentCategoryOfCategory($idCat)
     }
     
     
-    
+	// retourne l'ID de la catégorie directement associée à un article
+    function getAsssociateCategoryIDForArticle($idArt)
+    {
+    	$idArt = parent::security($idArt);
+    	// Connexion à la BD
+    	$this->connexion();
+    	
+    	try
+    	{
+    		$connexion = parent::getConnexion();
+    		// On récupère l'id_rubrique de l'article
+    		$ResultQuery = $connexion->query("SELECT id_rubrique FROM ARTICLE WHERE id_article = $idArt")->fetch();
+			$Categorie = $ResultQuery['id_rubrique'];
+    		
+    	}
+    	catch (PDOException $e)
+    	{
+    		$ex = new AccesTableException();
+    		$ex->Message();
+    	}
+    	// Déconnexion de la BD
+    	$this->deconnexion();
+    	return $Categorie;
+    }
+	
     
 }
 
