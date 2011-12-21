@@ -169,6 +169,50 @@ function getSuperParentCategoryOfCategory($idCat)
     	return $Categorie;
     }
 	
+    // Retourne un tableau contenant le fil d'arianne en passant en param une catŽgorie
+    function getFilArianneWithCategorie($idCat)
+    {
+    	$idCat = parent::security($idCat);
+    	// Connexion ˆ la BD
+    	$this->connexion();
+    	$Tab_Arianne = array();
+    	try
+    	{
+    		$connexion = parent::getConnexion();
+    		//Recuperation, instanciation de la categorie en paramtre et ajout dans le tableau
+    		$resultQuery = $connexion->query("SELECT * FROM RUBRIQUE WHERE id_rubrique = $idCat")->fetch();
+    		array_push($Tab_Arianne, new Categorie($ResultQuery['id_rubrique'], $ResultQuery['id_mere'], $ResultQuery['titreFR_rubrique'], $ResultQuery['titreEN_rubrique']));
+    		$idMere = $ResultQuery['id_mere']; // catŽgorie mre ˆ la dernire entrŽe dans le tableau de resultats
+    		
+    		while($idMere != NULL) // tant que l'id mre n'est pas null, donc tant que nous sommes pas dans la catŽgorie de niveau 0
+    		{
+    			// On rŽcupre la catŽgorie mre ˆ celle qu'on a dŽja
+    			$resultQuery = $connexion->query("SELECT * FROM RUBRIQUE WHERE id_rubrique = $idMere")->fetch();
+    			array_push($Tab_Arianne, new Categorie($ResultQuery['id_rubrique'], $ResultQuery['id_mere'], $ResultQuery['titreFR_rubrique'], $ResultQuery['titreEN_rubrique']));
+    			$idMere = $ResultQuery['id_mere']; // catŽgorie mre ˆ la dernire entrŽe dans le tableau de resultats    			
+    			
+    		}
+    		    		
+    	}
+    	catch (PDOException $e)
+    	{
+    		$ex = new AccesTableException();
+    		$ex->Message();
+    	}
+    	// DŽconnexion de la BD
+    	$this->deconnexion();
+    	return $Tab_Arianne;
+    }
+	
+    
+    
+    
+    // Retourne un tableau contenant le fil d'arianne en passant en param un article
+    function getFilArianneWithArticle($idArt)
+    {
+    	$idArt = parent::security($idArt);
+    	return ($this->getFilArianneWithCategorie($this->getAsssociateCategoryIDForArticle($idArt)));
+    }
     
 }
 
