@@ -2,43 +2,13 @@
 include_once 'BD.php';
 include_once '../METIER/Article.php';
 
-class ArticleBD extends BD {
-   
+
+class ArticleBD extends BD
+{   
 	public function __construct()
 	{
 		parent::__construct();
-	
 	}
-	
-    
-	function getArticleWithId ($idArt) {
-        $idArt = parent::security($idArt);
-		$this->connexion() ;
-    	
-		try
-		{
-			$connexion = parent::getConnexion();
-			$ResultQuery = $connexion->query( "SELECT * FROM ARTICLE WHERE id_article=$idArt" )->fetch();
-			
-			//Ici on instancie un objet categorie à l'aide des infos recupérées dans la base
-			$Article = new Article($ResultQuery['id_article'], $ResultQuery['id_rubrique'], $ResultQuery['titreFR_article'], $ResultQuery['titreEN_article'], $ResultQuery['contenuFR_article'], $ResultQuery['contenuEN_article'], $ResultQuery['autorisation_com']);
-			
-			echo "<br>".$ResultQuery['id_article'];
-			echo "<br>".$ResultQuery['id_rubrique'];
-			echo "<br>".$ResultQuery['titreFR_article'];
-			echo "<br>".$ResultQuery['titreEN_article'];
-			echo "<br>".$ResultQuery['contenuFR_article'];
-			echo "<br>".$ResultQuery['contenuEN_article'];
-			echo "<br>".$ResultQuery['autorisation_com'];
-		}
-		catch ( PDOException $e )
-		{
-			$ex = new AccesTableException() ;
-			$ex->Message() ;
-		}
-		$this->deconnexion() ;
-		return $Article;
-    }
     
 	function getArticlesWithCategory ($CategoryId) {
 		
@@ -66,10 +36,31 @@ class ArticleBD extends BD {
 		}
 		$this->deconnexion() ;
 		return $ArticleTab;
-        
     }
     
-    
+}
+
+
+function getArticleById ($idArt)
+{
+	$bd = new Bd();
+	 
+	try
+	{
+		$bd->connexion();
+		$connexion = $bd->getConnexion();
+		$ResultQuery = $connexion->query( "SELECT * FROM ARTICLE WHERE id_article=$idArt" )->fetch();
+			
+		//Ici on instancie un objet categorie à l'aide des infos recupérées dans la base
+		$Article = new Article($ResultQuery['id_article'], $ResultQuery['id_rubrique'], $ResultQuery['titreFR_article'], $ResultQuery['titreEN_article'], $ResultQuery['contenuFR_article'], $ResultQuery['contenuEN_article'], $ResultQuery['autorisation_com']);
+	}
+	catch ( PDOException $e )
+	{
+		$ex = new AccesTableException() ;
+		$ex->Message() ;
+	}
+	$bd->deconnexion();
+	return $Article;
 }
 
 ?>

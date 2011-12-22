@@ -1,4 +1,9 @@
-<div id='header'>		
+<?php 
+	require_once('../BD/CategorieBD.php');
+	require_once('MENU/Menu.php');
+?>
+
+<div id='header'>	
 	<div id='topheader'>
 		<a class="text" href=''>Nous contacter</a>
 		<a class="text" href=''>EN</a> | 
@@ -11,8 +16,7 @@
 		<a href=''>FB</a>
 	</div>
 	<div id='logo'>
-		Ici, le logo<br/>
-		de Polyjoule
+		<a href="index.php">Ici, le logo<br/>de Polyjoule</a>
 	</div>
 	<ul id='menu'>
 		<?php 

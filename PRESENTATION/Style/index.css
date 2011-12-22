@@ -1,0 +1,9 @@
+@import "general.css";
+
+
+#slider
+{
+	margin: 30px;
+	border: dashed;
+	text-align: center;
+}

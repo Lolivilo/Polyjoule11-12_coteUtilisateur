@@ -1,0 +1,14 @@
+Oliv, 22/12
+
+- header.php et footer.php déplacés au niveau PRESENTATION
+- Comme header est appelé à chaque page et que le header appelle CategorieBD et Menu, j'ai déplacé les require dans header
+- Création de PRESENTATION/Style pour stocker les codes CSS
+	- general.css contient le CSS récurrent (header, footer...)
+	- 1 page CSS par template (article, index ...)
+- Test d'affichage d'un article (OK, PB de CSS)
+	- EXPLICATION DU POURQUOI DU COMMENT QUE CA MARCHE
+	En fait, les "classes" BD ne sont pas des classes, seulement des fichiers qui regroupent des méthodes.
+	Exemple : dans ArticleBD, j'ai créé un Article à partir de l'ID passé en paramètre ; tu avais déjà fait cette méthode mais elle
+	était présente en tant que méthode de classe ; je l'ai déplacé hors de la classe (en dessous).
+	Ensuite, dans la page de présentation, j'instancie un Article en prenant le $_GET => On se retrouve avec un objet Article courant
+	Puis on appelle bêtement le getContenu dessus. :) J'espère que tu comprends ! C'est plus simple et plus clair selon moi.

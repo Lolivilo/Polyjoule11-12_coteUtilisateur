@@ -1,5 +1,10 @@
 TODO:
 
+- UtilitŽ de la div "Fil d'arianne" dans article.php ?
+
+Dans ArticleBD :
+- GetContenuById : GŽrer selon la langue
+
 
 FAITS RECEMENT:
 	=> explorer ok pour le moment. A voir avec les liens plus tard et le JQuery

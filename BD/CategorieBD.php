@@ -1,9 +1,9 @@
 <?php
 require_once 'BD.php';
-require_once '../../METIER/Categorie.php';
+require_once '../METIER/Categorie.php';
 
-class CategorieBD extends BD {
-   
+class CategorieBD extends BD
+{   
 	public function __construct()
 	{
 		parent::__construct();
@@ -14,7 +14,8 @@ class CategorieBD extends BD {
      * Si le paramtre pass est egal ˆ NULL, la fonction retourne alors les catgories de 1er niveau, celles qui n'ont pas de catgorie mre.
      * Si le paramtre pass est un 
      */
-    function getSousCategories ($CategorieParente) {
+    function getSousCategories ($CategorieParente)
+    {
     	
     	$CategorieParente = parent::security($CategorieParente);
     	$this->connexion() ;
@@ -46,8 +47,15 @@ class CategorieBD extends BD {
 		return $categoriesTab;
         
     }
-    
-	function getCategorieWithId ($idCat) {
+   
+	/** getCategorieWithId
+	 * 
+	 * Renvoie un objet de type Categorie ˆ partir de son ID
+	 * @param $idCat : l'ID de la Categorie ˆ retourner
+	 * @return l'objet de type Categorie correspondant
+	 */
+	function getCategorieWithId ($idCat)
+	{
         $idCat = parent::security($idCat);
 		$this->connexion() ;
     	
@@ -88,7 +96,6 @@ function getSuperParentCategoryOfCategory($idCat)
     		$connexion = parent::getConnexion();
     		do
     		{
-
     			// On rcupre l'id_mere de la catgorie courante
     			$resultQuery = $connexion->query("SELECT id_mere FROM RUBRIQUE WHERE id_rubrique = $idCat")->fetch();
     			$idMere = $resultQuery['id_mere'];

@@ -8,27 +8,20 @@
 	
 	<head>
   		<title>Polyjoule - Site Web</title>
-  		<link rel="stylesheet" href="index.css">
+  		<link rel="stylesheet" href="Style/index.css">
 	</head>
 
 	<body>
-
-		<?php /* A SUPPRIMER (TESTS DE METHODES)
-			$cat = new CategorieBD();
-			echo($cat->getSuperParentCategoryOfCategory(5));	// Doit renvoyer 1
-			
-			echo($cat->getSuperParentCategoryOfArticle(1));	// Doit renvoyer 1
-		*/?>
-
 		<div id='page'>
 			<?php 
-				include 'HEADER/header.php';
+				include_once('header.php');
 			?>
 			<div id='middle'>
 				<div id='slider'>
 					Ici, le slider
 				</div>
 			</div>
+			<a href="article.php?article=1">TEST : accès article 1</a>
 			<div id='directLinks'>
 				<div id='blockcontener'>
 					<div class='block'>
@@ -46,16 +39,8 @@
 				</div>
 			</div>
 			<?php
-				include 'FOOTER/footer.php';
+				include_once('footer.php');
 			?>
-			<!-- <div id='footerend'>
-				<div id='partenaire'>
-					<img class='imgpartenaire' src='images/partenaire1.jpg'/>
-					<img class='imgpartenaire' src='images/partenaire2.jpg'/>
-					<img class='imgpartenaire' src='images/partenaire3.jpg'/>
-				</div>
-				<span id='right'>polyjoule 2011 - All rights reserved</span>
-			</div> -->
 		</div>
 	
 
