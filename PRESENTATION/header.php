@@ -1,6 +1,7 @@
 <?php 
 	require_once('../BD/CategorieBD.php');
 	require_once('MENU/Menu.php');
+	include_once('LANGUE/sessionLangue.php');
 ?>
 
 <div id='header'>	
@@ -22,7 +23,6 @@
 		<?php 
 			$categoryBD = new CategorieBD('localhost', 'polyjoule', 'polyjoule', 'azerty');
 			echo getMenu($categoryBD,'limenu','child');
-			echo $_SESSION['langue'];
 		?>
 	</ul>
 </div>

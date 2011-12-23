@@ -1,4 +1,5 @@
 <?php
+	session_start();
 	require_once('../BD/ArticleBD.php');
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -6,7 +7,23 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" href="Style/article.css" type="text/css">
-<title>Menu genere dynamiquement</title>
+<title>
+	<?php
+		$articleCourant = getArticleById($_GET['article']);
+		if( $_SESSION['langue'] == 'FR' )
+		{
+			echo( $articleCourant->getTitreFR() );
+		}
+		elseif( $_SESSION['langue'] == 'EN' )
+		{
+			echo( $articleCourant->getTitreEN() );
+		}
+		else
+		{
+			// TRAITEMENT D'ERREUR A EFFECTUER !!!!!???!!
+		}
+	?>
+</title>
 </head>
 
 <body>
@@ -27,8 +44,18 @@
 				</ul>
 				<div id='content'>
 					<?php 
-						$articleCourant = getArticleById($_GET['article']);
-						echo($articleCourant->getContenuFR());
+						if( $_SESSION['langue'] == 'FR' )
+						{
+							echo( $articleCourant->getContenuFR() );
+						}
+						elseif( $_SESSION['langue'] == 'EN' )
+						{
+							echo( $articleCourant->getContenuEN() );
+						}
+						else
+						{
+							// TRAITEMENT D'ERREUR A EFFECTUER !!!!!???!!
+						}
 					?>
 				</div>
 			</div>

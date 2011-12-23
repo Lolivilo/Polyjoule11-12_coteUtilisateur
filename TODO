@@ -2,16 +2,18 @@ TODO:
 
 - UtilitŽ de la div "Fil d'arianne" dans article.php ?
 
-Dans ArticleBD :
-- GetContenuById : GŽrer selon la langue
 
-
-FAITS RECEMENT:
-	=> explorer ok pour le moment. A voir avec les liens plus tard et le JQuery
 
 A FAIRE AU PLUS VITE : 
 
+
 		
+A NE PAS OUBLIER :
+- revoir le traitement des exceptions
+
+
+
+
 
 ///// Partie CSS
 - Les logos (footer) sont, pour l'instant, des suites de balises de liens. A modifier en tableau ou autre, peut-tre. => OK 

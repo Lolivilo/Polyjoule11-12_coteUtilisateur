@@ -2,20 +2,32 @@
 class Article
 {  
 	private $id;
+	private $idRubrique;
 	private $titreFR;
 	private $titreEN;
 	private $contenuFR;
 	private $contenuEN;
 	private $autorisationCommentaire;
 	
-	public function __construct( $idArticle , $titreFRArticle , $titreENArticle , $contenuFRArticle, $contenuENArticle, $autorisationCommentaire  )
+	/** Constructeur de Article
+	 * 
+	 * Objet qui reprŽsente un tuple de la table Article
+	 * @param unknown_type $idArticle
+	 * @param unknown_type $titreFRArticle
+	 * @param unknown_type $titreENArticle
+	 * @param unknown_type $contenuFRArticle
+	 * @param unknown_type $contenuENArticle
+	 * @param unknown_type $autorisationCommentaire
+	 */
+	public function __construct( $idArticle , $idRubrique, $titreFRArticle , $titreENArticle , $contenuFRArticle, $contenuENArticle, $autorisationCommentaire  )
 	{
-		$this->id = $idArticle ;
-		$this->titreFR = $titreFRArticle ;
-		$this->titreEN = $titreENArticle ;
-		$this->contenuFR = $contenuFRArticle ;
-		$this->contenuEN = $contenuENArticle ;
-		$this->autorisationCommentaire = $autorisationCommentaire ;
+		$this->id = $idArticle;
+		$this->idRubrique - $idRubrique;
+		$this->titreFR = $titreFRArticle;
+		$this->titreEN = $titreENArticle;
+		$this->contenuFR = $contenuFRArticle;
+		$this->contenuEN = $contenuENArticle;
+		$this->autorisationCommentaire = $autorisationCommentaire;
 	
 	}
 	
@@ -26,6 +38,11 @@ class Article
 	public function setId($id_)
 	{
 		$this->id = $id_;
+	}
+	
+	public function getIdRubrique()
+	{
+		return $this->idRubrique;
 	}
 	
 	public function getTitreFR()

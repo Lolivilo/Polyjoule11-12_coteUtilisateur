@@ -12,3 +12,8 @@ Oliv, 22/12
 	était présente en tant que méthode de classe ; je l'ai déplacé hors de la classe (en dessous).
 	Ensuite, dans la page de présentation, j'instancie un Article en prenant le $_GET => On se retrouve avec un objet Article courant
 	Puis on appelle bêtement le getContenu dessus. :) J'espère que tu comprends ! C'est plus simple et plus clair selon moi.
+	
+Oliv, 23/12
+- MàJ de la classe Article (il manquait l'attribut idRubrique) + getter idRubrique
+- Le titre de la page d'un article est désormais le titre de l'article (prise en charge de la langue)
+- article.php : le contenu affiché prend en compte la langue

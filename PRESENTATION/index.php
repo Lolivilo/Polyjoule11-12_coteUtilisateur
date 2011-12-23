@@ -1,5 +1,5 @@
 <?php 
-	include_once 'LANGUE/sessionLangue.php';
+	session_start();
 	include_once 'MENU/Menu.php';
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
@@ -19,6 +19,9 @@
 			<div id='middle'>
 				<div id='slider'>
 					Ici, le slider
+					<?php 
+						echo $_SESSION['langue'];
+					?>
 				</div>
 			</div>
 			<a href="article.php?article=1">TEST : accès article 1</a>
