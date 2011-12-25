@@ -5,9 +5,7 @@
 <div id='footer'>
 	<div id='partenaires'>
 		<?php 
-			$partenaireBD = new PartenaireBD('localhost', 'polyjoule', 'polyjoule', 'azerty');
-			$tabPartenaires = $partenaireBD->getAllPartner();	// Tableau d'objets Partenaire
-			
+			$tabPartenaires = getAllPartners();		// Tableau d'objets Partenaire
 			foreach($tabPartenaires as $part)
 			{
 				// Affichage de suite de liens en images, ˆ modifier

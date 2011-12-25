@@ -7,7 +7,7 @@
 <div id='header'>	
 	<div id='topheader'>
 		<a class="text" href=''>Nous contacter</a>
-		<a class="text" href=''>EN</a> | 
+		<a class="text" href='<?php echo $_SERVER['HTTP_HOST'].$_SERVER['SCRIPT_NAME']?>&lang=EN'>EN</a> | 
 		<a class="text" href=''>FR</a>
 		<form action="" method="post" id='formsearch'>
 			<span id='rechercher'>Rechercher</span>

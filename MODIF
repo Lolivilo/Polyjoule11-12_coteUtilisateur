@@ -17,3 +17,6 @@ Oliv, 23/12
 - MàJ de la classe Article (il manquait l'attribut idRubrique) + getter idRubrique
 - Le titre de la page d'un article est désormais le titre de l'article (prise en charge de la langue)
 - article.php : le contenu affiché prend en compte la langue
+
+Oliv, 25/12 (Noël !)
+- Modifications de PartenaireBD (suivant le nouveau modèle)
