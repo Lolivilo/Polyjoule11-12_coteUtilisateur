@@ -33,7 +33,7 @@ elseif( isset( $_GET['categorie'] ) )
 $SuperParentcategory = $category->getCategorieWithId($SuperParentcategoryID);
 // et la catŽgorie parente de niveau supŽrieur
 $CategoryParente = $category->getCategorieWithId($CategoryParenteID);
-echo $CategoryParente->getId();
+//echo $CategoryParente->getId();
 
 
 

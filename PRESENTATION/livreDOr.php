@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link rel="stylesheet" href="Style/article.css" type="text/css">
+<link rel="stylesheet" href="Style/livreDOr.css" type="text/css">
 <title>
 	<?php
 		if( $_SESSION['langue'] == 'FR' )
@@ -65,22 +65,20 @@
 						</h1>
 					</div>
 					<div id='signatures'>
-						<table id='tabSignatures'>
-							<?php
-							// Affichage des commentaires
-							foreach($tabComment as $com)
-							{
-								echo("<table id='signature_".$com->getId()."'>");
-								echo("<tr>");
-								echo("<td>".$com->getPosteur()."</td><td>".$com->getDate()."</td>");
-								echo("</tr>");
-								echo("<tr>");
-								echo("<td colspan='2'>".$com->getMessage()."</td>");
-								echo("</tr>");
-								echo("</table>");
-							}
-							?>
-						</table>
+						<?php
+						// Affichage des commentaires
+						foreach($tabComment as $com)
+						{
+							echo("<table id='signature_".$com->getId()."' class='signature'>");
+							echo("<tr>");
+							echo("<td>".$com->getPosteur()."</td><td>".$com->getDate()."</td>");
+							echo("</tr>");
+							echo("<tr>");
+							echo("<td colspan='2'>".$com->getMessage()."</td>");
+							echo("</tr>");
+							echo("</table>");
+						}
+						?>
 					</div>
 					<div id='ajoutSignature'>
 						<form id='signer' action='../BD/AjoutSignature.php' method="post">

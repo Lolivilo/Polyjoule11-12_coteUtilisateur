@@ -1,0 +1,12 @@
+@import "general.css";
+
+h1
+{
+	text-align: center;
+}
+
+.signature
+{
+	border: solid;
+	background-color: orange;
+}

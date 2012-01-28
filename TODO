@@ -2,7 +2,7 @@ TODO:
 
 - a reflechir : Ajouter un champ de type "descriptionRubrique" dans la table Rubrique ? Car lorsque l on clique une rubrique, on tombe sur une page
   statique avec la description de cette rubrique (cf P12_v23_onglet.png)
-- Modifier le champt "Date" dans LIVRE_OR ? (type Datetime en type, sinon on a l'heure et tout...)
+  
 
 A FAIRE AU PLUS VITE : 
 
