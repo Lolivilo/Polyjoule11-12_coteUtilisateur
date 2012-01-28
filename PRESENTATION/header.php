@@ -1,5 +1,6 @@
 <?php 
 	require_once('../BD/CategorieBD.php');
+	require_once('../BD/AlbumPhotoBD.php');
 	require_once('MENU/Menu.php');
 	include_once('LANGUE/sessionLangue.php');
 ?>
@@ -26,4 +27,5 @@
 		?>
 	</ul>
 	<a href='livreDOr.php'>Livre d'Or</a>
+	<?php echo("<a href='albumPhoto.php?idAlbum=".getMostRecentAlbum()."'>Album Photo</a>") ?>
 </div>
