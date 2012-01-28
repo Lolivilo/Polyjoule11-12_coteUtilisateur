@@ -19,9 +19,6 @@
 			<div id='middle'>
 				<div id='slider'>
 					Ici, le slider
-					<?php 
-						echo $_SESSION['langue'];
-					?>
 				</div>
 			</div>
 			<a href="article.php?article=1">TEST : accès article 1</a>
