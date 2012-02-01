@@ -2,6 +2,7 @@
 	require_once('../BD/CategorieBD.php');
 	require_once('../BD/AlbumPhotoBD.php');
 	require_once('MENU/Menu.php');
+    require_once('../BD/LangueParser.php');
 	include_once('LANGUE/sessionLangue.php');
 ?>
 
@@ -26,7 +27,14 @@
 			echo getMenu($categoryBD,'limenu','child');
 		?>
 	</ul>
-	<a href='livreDOr.php'>Livre d'Or</a>
+	<a href='livreDOr.php'>
+        <?php
+            $parserLangue = new LangueParser();
+            //print_r($parserlangue);
+            //echo (($parserLangue->getWord("LivreOr"))->getTraduction());
+            //print_r($parserLangue->getWord("LivreOr"));
+        ?>
+    </a>
 
 	<?php echo("<a href='albumPhoto.php?idAlbum=".getMostRecentAlbum()."'>Album Photo</a>") ?>
 </div>
