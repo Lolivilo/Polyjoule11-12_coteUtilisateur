@@ -7,7 +7,7 @@ function getMostRecentAlbum()
 	$bd = new BD();
 	try
 	{
-		$bd->connexion();
+		$bd->connexion();                   // Connexion a la BD
 		$connexion = $bd->getConnexion();
 		$resultQuery = $connexion->query("SELECT id_album FROM ALBUM ORDER BY date_album ASC LIMIT 1")->fetch();
 		$ret = $resultQuery['id_album'];
@@ -24,10 +24,10 @@ function getAlbumById($id)
 	$bd = new BD();
 	try
 	{
-		$bd->connexion();
-		$connexion = $bd->connextion();
+		$bd->connexion();                   // Connexion a la BD
+		$connexion = $bd->getConnexion();
 		$resultQuery = $connexion->query("SELECT * FROM ALBUM WHERE id_album = $id")->fetch();
-		$album = new Album($resultQuery['id_album'], $resultQuery['nom_album'], $resultQuery['date_album']);
+		$album = new AlbumPhoto($resultQuery['id_album'], $resultQuery['nom_album'], $resultQuery['date_album']);
 		return $album;
 	}
 	catch(PDOException $e)

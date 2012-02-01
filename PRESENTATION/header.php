@@ -8,8 +8,8 @@
 <div id='header'>	
 	<div id='topheader'>
 		<a class="text" href=''>Nous contacter</a>
-		<a class="text" href=''>EN</a> | 
-		<a class="text" href=''>FR</a>
+		<a class="text" href='http://localhost:8888/PRESENTATION/index.php?lang=EN'>EN</a> | 
+		<a class="text" href='http://localhost:8888/PRESENTATION/index.php?lang=FR'>FR</a>
 		<form action="" method="post" id='formsearch'>
 			<span id='rechercher'>Rechercher</span>
 			<input type="text" name="search" id='boxtextsearch'/>
@@ -27,5 +27,6 @@
 		?>
 	</ul>
 	<a href='livreDOr.php'>Livre d'Or</a>
+
 	<?php echo("<a href='albumPhoto.php?idAlbum=".getMostRecentAlbum()."'>Album Photo</a>") ?>
 </div>

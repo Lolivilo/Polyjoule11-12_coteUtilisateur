@@ -3,6 +3,7 @@ TODO:
 - a reflechir : Ajouter un champ de type "descriptionRubrique" dans la table Rubrique ? Car lorsque l on clique une rubrique, on tombe sur une page
   statique avec la description de cette rubrique (cf P12_v23_onglet.png)
 _ Idem pour les Albums ? Un ptit champ description ?
+- Dans la table PHOTO, ajouter le lienImageThumbnail et prévoir libphp image pour recadrer l'image et enf aire une lienImageThumbnail
 
 A FAIRE AU PLUS VITE : 
 

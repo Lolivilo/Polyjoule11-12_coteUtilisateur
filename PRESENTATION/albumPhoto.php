@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link rel="stylesheet" href="Style/livreDOr.css" type="text/css">
+<link rel="stylesheet" href="Style/albumPhoto.css" type="text/css">
 <title>
 	<?php
 		if( $_SESSION['langue'] == 'FR' )
@@ -41,14 +41,30 @@
 			</div>
 			<div id='right'>
 				<ul id='fil'>
-					<li>fil d'ariane</li>
+                <li>fil d'ariane</li>
 				</ul>
 				<div id='content'>
 					<div id='titre'>
-						<
+						<h1>
 						<?php 
-							
+							if( $_SESSION['langue'] == 'FR' )
+                            {
+                                echo( "Album photo" );
+                            }
+                            elseif( $_SESSION['langue'] == 'EN' )
+                            {
+                                echo( "Photo album" );
+                            }
+                            else
+                            {
+                                // TRAITEMENT D'ERREUR A EFFECTUER !!!!!???!!
+                            }
 						?>
+                        </h1>
+                        <h3>
+                        <?php
+                            echo( $album->getNom() );
+                        ?>
 					</div>
 					<div id='deroulement'>
 					</div>

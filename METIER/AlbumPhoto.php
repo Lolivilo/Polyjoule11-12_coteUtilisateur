@@ -1,5 +1,5 @@
 <?php
-class LivreDOr
+class AlbumPhoto
 {
 	private $id;
 	private $nom;
