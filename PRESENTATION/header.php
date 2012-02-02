@@ -31,7 +31,7 @@
         <?php
             $parserLangue = new LangueParser();
             //print_r($parserlangue);
-            //echo (($parserLangue->getWord("LivreOr"))->getTraduction());
+            echo $parserLangue->getWord("LivreOr")->getTraduction();
             //print_r($parserLangue->getWord("LivreOr"));
         ?>
     </a>

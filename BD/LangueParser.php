@@ -11,8 +11,12 @@
         // permet de valuer les 4 premiers attributs de la classe
         public function __construct()
         {
+            $XmlFile = fopen('../PRESENTATION/LANGUE/lang.xml', 'r');
+            $XmlFileText = fread($XmlFile, filesize('../PRESENTATION/LANGUE/lang.xml'));
+            fclose($XmlFile);
+            $XmlFileText = preg_replace("/>\s+</", "><", $XmlFileText);
             $this->DomDoc = new DomDocument();
-            $this->DomDoc->load('../PRESENTATION/LANGUE/lang.xml');
+            $this->DomDoc->loadXML($XmlFileText);
         }  
         
         /** getWord()
@@ -21,24 +25,14 @@
          */
         public function getWord($name)
         {
-           /* $root = $this->DomDoc->getElementsByTagName('lang')->item(0);
+           $root = $this->DomDoc->getElementsByTagName('lang')->item(0);
             //echo $root->nodeName;
             $words = $root->childNodes;
             //var_dump($words);
             foreach($words as $word)
             {
-                print_r($word);
-                $attr = $word->attributes;
-                implode($attr);
-                print_r($attrr); 
-                echo "<br>";
-                
-                
-                //echo "1".($word->nodeName);
-                //var_dump($word->getAttribute('txt'));
-                $attrTxt="tt";
-                //$attrTxt = (($word->attributes)->getNamedItem('txt'))->nodeValue;
-                if($attrTxt == $name)
+                $attr = $word->getAttribute ("txt");
+                if($attr == $name)
                 {
                     $Fr_En_Node = $word->childNodes;
                     $FR = '';
@@ -58,7 +52,7 @@
                     $myWord = new Langue($name,$FR,$EN);    
                     return $myWord;
                 }
-            }*/
+            }
             return new Langue($name,"_Traduction_error","_Traduction_error"); // retourne une erreur
          }
     }

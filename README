@@ -1,0 +1,9 @@
+Pour gérer une traduction d'un texte constant (ex: rechercher, contact...), tout ce qui n'est pas dans la base de donnée, il faut utiliser le fichier xml de langue:
+<word txt="MotCle">
+    <fr>mot FR</fr>
+    <en>mot EN</en>
+</word>
+
+Ensuite pour afficher la traduction il faut mettre les lignes suivantes : 
+ $parserLangue = new LangueParser();
+ echo $parserLangue->getWord("MotCle")->getTraduction();
