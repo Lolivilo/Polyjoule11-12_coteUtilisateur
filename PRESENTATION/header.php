@@ -7,10 +7,10 @@
     $parserLangue = new LangueParser();
 ?>
         <div id="header">
-            <h1><a href="index.html"><img src="image/logoPolyjoule.png" alt="Polyjoule" /></a></h1>
+            <h1><a href="index.html"><img src="Style/image/logoPolyjoule.png" alt="Polyjoule" /></a></h1>
             <div id="barre">
                 <a href=""><?php echo $parserLangue->getWord("contact")->getTraduction(); ?></a>
-                <a href="http://localhost:8888/index.php?lang=EN" class="active">FR</a> | <a href="http://localhost:8888/index.php?lang=EN">EN</a>
+                <a href="http://localhost:8888/index.php?lang=FR" class="active">FR</a> | <a href="http://localhost:8888/index.php?lang=EN">EN</a>
                 <form><input type="text" id="search"><input type="submit" value="Search"></form>
             </div>		
             <div class="clear"></div>

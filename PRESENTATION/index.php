@@ -7,7 +7,7 @@
     <head>  
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />  
         <title>Polyjoule</title>  
-        <link rel="stylesheet" type="text/css" href="index.css" />
+        <link rel="stylesheet" type="text/css" href="Style/index.css" />
     </head>
     <body>
 			<?php 
