@@ -12,4 +12,8 @@
         <fr>Livre d'or</fr>
         <en>Guest book</en>
     </word>
+    <word txt="sign">
+        <fr>Signer !</fr>
+        <en>Sign !</en>
+    </word>
 </lang>

@@ -105,8 +105,8 @@
                         
                     ?>
 						<form name='signer' action='../BD/AjoutSignature.php' method="post" onsubmit="return check()">
-							<label for='pseudo'>Pseudo</label><input type="text" id='pseudo' name='pseudo'/><label for='mail'>Mail</label><input type="text" id='pseudo' name='mail'/>
-							<label for='message'>Message</label><textarea id='message' name='message'></textarea>
+							Pseudo<input type="text" name='pseudo'/>Mail<input type="text" name='mail'/>
+							Message<textarea name='message'></textarea>
 							<input type="submit" id='signer' value='Signez'/>
 						</form>
 					</div>
