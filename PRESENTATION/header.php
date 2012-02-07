@@ -4,37 +4,28 @@
 	require_once('MENU/Menu.php');
     require_once('../BD/LangueParser.php');
 	include_once('LANGUE/sessionLangue.php');
+    $parserLangue = new LangueParser();
 ?>
+        <div id="header">
+            <h1><a href="index.html"><img src="image/logoPolyjoule.png" alt="Polyjoule" /></a></h1>
+            <div id="barre">
+                <a href=""><?php echo $parserLangue->getWord("contact")->getTraduction(); ?></a>
+                <a href="http://localhost:8888/index.php?lang=EN" class="active">FR</a> | <a href="http://localhost:8888/index.php?lang=EN">EN</a>
+                <form><input type="text" id="search"><input type="submit" value="Search"></form>
+            </div>		
+            <div class="clear"></div>
+        </div>
+        <ul id="menuHeader">
+            <?php /* $categoryBD = new CategorieBD('localhost', 'polyjoule', 'polyjoule', 'azerty');
+                    echo getMenu($categoryBD,'limenu','child');
+            */ ?>
+        </ul>
 
-<div id='header'>	
-	<div id='topheader'>
-		<a class="text" href=''>Nous contacter</a>
-		<a class="text" href='http://localhost:8888/PRESENTATION/index.php?lang=EN'>EN</a> | 
-		<a class="text" href='http://localhost:8888/PRESENTATION/index.php?lang=FR'>FR</a>
-		<form action="" method="post" id='formsearch'>
-			<span id='rechercher'>Rechercher</span>
-			<input type="text" name="search" id='boxtextsearch'/>
-			<input type="submit" value="ok" id='validsearch'/>
-		</form>
-		<a href=''>FB</a>
-	</div>
-	<div id='logo'>
-		<a href="index.php">Ici, le logo<br/>de Polyjoule</a>
-	</div>
-	<ul id='menu'>
-		<?php 
-			$categoryBD = new CategorieBD('localhost', 'polyjoule', 'polyjoule', 'azerty');
-			echo getMenu($categoryBD,'limenu','child');
-		?>
-	</ul>
-	<a href='livreDOr.php'>
+
+
+        <a href='livreDOr.php'>
         <?php
-            $parserLangue = new LangueParser();
-            //print_r($parserlangue);
             echo $parserLangue->getWord("LivreOr")->getTraduction();
-            //print_r($parserLangue->getWord("LivreOr"));
         ?>
-    </a>
-
-	<?php echo("<a href='albumPhoto.php?idAlbum=".getMostRecentAlbum()."'>Album Photo</a>") ?>
-</div>
+        </a>
+        <a href='albumPhoto.php?idAlbum="<?php echo getMostRecentAlbum(); ?>"'><?php echo $parserLangue->getWord("AlbPhoto")->getTraduction(); ?></a>
