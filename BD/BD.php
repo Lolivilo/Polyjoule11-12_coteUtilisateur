@@ -99,7 +99,8 @@ class Bd
 	{
 		$this->password = $password ;
 	}
-	public function security($string)
+	
+    public function security($string)
     {
     	settype ($string, "string"); 
     	return $string;

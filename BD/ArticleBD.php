@@ -44,6 +44,8 @@ class ArticleBD extends BD
 function getArticleById ($idArt)
 {
 	$bd = new Bd();
+    $idArt = $bd->security($idArt);
+    
 	 
 	try
 	{
@@ -62,5 +64,7 @@ function getArticleById ($idArt)
 	$bd->deconnexion();
 	return $Article;
 }
+    
+    
 
 ?>
