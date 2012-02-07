@@ -38,7 +38,17 @@ class Partenaire
 	{
 		return $this->site;
 	}
-	
+	private function getDesc()
+    {
+        if($_SESSION['langue'] == 'EN')
+        {
+            return $this->descEn;
+        }
+        else
+        {
+            return $this->descFr;
+        }
+    }
 	private function getDescFr()
 	{
 		return $this->descFr;

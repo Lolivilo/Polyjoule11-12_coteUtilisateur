@@ -12,7 +12,7 @@ class ArticleBD extends BD
     
 	function getArticlesWithCategory ($CategoryId) {
 		
-		$CategoryId = parent::security($CategoryId);
+		$CategoryId = intval(parent::security($CategoryId));
 		$this->connexion() ;
     	try
 		{

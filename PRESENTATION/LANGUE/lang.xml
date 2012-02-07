@@ -16,4 +16,8 @@
         <fr>Signer !</fr>
         <en>Sign !</en>
     </word>
+    <word txt="AlbPhoto">
+        <fr>Album photo</fr>
+        <en>Photo album</en>
+    </word>
 </lang>

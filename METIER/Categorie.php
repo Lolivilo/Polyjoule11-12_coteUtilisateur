@@ -32,7 +32,18 @@ class Categorie
 	{
 		$this->idParent = $idParent_;
 	}
-	
+	public function getTitre()
+    {
+        if($_SESSION['langue'] == 'EN')
+        {
+            return $this->titreEN;
+        }
+        else
+        {
+            return $this->titreFR;
+        }
+    
+    }
 	public function getTitreFR()
 	{
 		return $this->titreFR ;

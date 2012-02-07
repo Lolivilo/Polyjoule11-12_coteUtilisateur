@@ -7,3 +7,6 @@ Pour gérer une traduction d'un texte constant (ex: rechercher, contact...), tou
 Ensuite pour afficher la traduction il faut mettre les lignes suivantes : 
  $parserLangue = new LangueParser();
  echo $parserLangue->getWord("MotCle")->getTraduction();
+ 
+ 
+ ATTENTION !!! SI UN TEST SUR LA LANGUE EST FAIT DANS LA PRESENTATION, C'EST UNE ERREUR. TOUT EST FAIT POUR QU'IL N'Y AIT PAS DE TEST A FAIRE DANS CET ENDROIT. VOIR EXEMPLE SUR ARTICLE.PHP PAR EXEMPLE.

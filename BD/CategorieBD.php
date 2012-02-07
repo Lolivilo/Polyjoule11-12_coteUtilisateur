@@ -56,7 +56,7 @@ class CategorieBD extends BD
 	 */
 	function getCategorieWithId ($idCat)
 	{
-        $idCat = parent::security($idCat);
+        $idCat = intval(parent::security($idCat));
 		$this->connexion() ;
     	
 		try

@@ -18,14 +18,7 @@
         <link rel="stylesheet" href="Style/article.css" type="text/css">
         <title>
         <?php
-            if( $_SESSION['langue'] == 'EN' )
-            {
-                echo( $articleCourant->getTitreEN() );
-            }
-            else
-            {
-                echo( $articleCourant->getTitreFR() );
-            }
+            echo $articleCourant->getTitre();
         ?>
 
         </title>
@@ -49,15 +42,8 @@
                     </ul>
                     <div id='content'>
                         <?php 
-                            if( $_SESSION['langue'] == 'EN' )
-                            {
-                                echo( $articleCourant->getContenuEN() );
-                            }
-                            else
-                            {
-                                echo( $articleCourant->getContenuFR() );
-                            }
-					?>
+                          echo $articleCourant->getContenu();
+                        ?>
                     </div>
                 </div>
             </div>

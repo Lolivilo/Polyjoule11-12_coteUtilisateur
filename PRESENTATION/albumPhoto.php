@@ -1,7 +1,17 @@
 <?php
 	session_start();
+    require_once('../BD/LangueParser.php');
 	require_once('../BD/AlbumPhotoBD.php');
-	$album = getAlbumById($_GET['idAlbum']);
+    $album = NULL;
+    if(isset($_GET['idAlbum']) && $_GET['idAlbum'] != '')
+    {
+        $album = getAlbumById($_GET['idAlbum']);
+    }
+    if($album == NULL)
+    {
+        header('Location: index.php');
+    }
+	
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -11,18 +21,8 @@
 <link rel="stylesheet" href="Style/albumPhoto.css" type="text/css">
 <title>
 	<?php
-		if( $_SESSION['langue'] == 'FR' )
-		{
-			echo( "Album photo" );
-		}
-		elseif( $_SESSION['langue'] == 'EN' )
-		{
-			echo( "Photo album" );
-		}
-		else
-		{
-			// TRAITEMENT D'ERREUR A EFFECTUER !!!!!???!!
-		}
+        $parserLangue = new LangueParser();
+        echo $parserLangue->getWord('AlbPhoto')->getTraduction();
 	?>
 </title>
 </head>
@@ -46,19 +46,8 @@
 				<div id='content'>
 					<div id='titre'>
 						<h1>
-						<?php 
-							if( $_SESSION['langue'] == 'FR' )
-                            {
-                                echo( "Album photo" );
-                            }
-                            elseif( $_SESSION['langue'] == 'EN' )
-                            {
-                                echo( "Photo album" );
-                            }
-                            else
-                            {
-                                // TRAITEMENT D'ERREUR A EFFECTUER !!!!!???!!
-                            }
+						<?php
+                            echo $parserLangue->getWord('AlbPhoto')->getTraduction();
 						?>
                         </h1>
                         <h3>

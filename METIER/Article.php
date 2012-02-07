@@ -44,7 +44,19 @@ class Article
 	{
 		return $this->idRubrique;
 	}
-	
+    
+	public function getTitre()
+    {
+        if($_SESSION['langue'] == 'EN')
+        {
+            return $this->titreEN;
+        }
+        else
+        {
+            return $this->titreFR;
+        }
+
+    }
 	public function getTitreFR()
 	{
 		return $this->titreFR ;
@@ -62,7 +74,18 @@ class Article
 	{
 		$this->titreEN = $titreEN;
 	}
-	
+	public function getContenu()
+    {
+        if($_SESSION['langue'] == 'EN')
+        {
+            return $this->contenuEN;
+        }
+        else
+        {
+            return $this->contenuFR;
+        }
+    }
+    
 	public function getContenuFR()
 	{
 		return $this->contenuFR;
