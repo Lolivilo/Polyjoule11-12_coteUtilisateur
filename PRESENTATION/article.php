@@ -4,7 +4,6 @@
     $articleCourant = NULL;
     if(isset($_GET['article']) && $_GET['article'] != '')
     {
-            echo "ok";
        $articleCourant = getArticleById($_GET['article']);
     }
     if($articleCourant == NULL)
