@@ -44,7 +44,7 @@ class ArticleBD extends BD
 function getArticleById ($idArt)
 {
 	$bd = new Bd();
-    $idArt = $bd->security($idArt);
+    $idArt = intval($bd->security($idArt));
     
 	 
 	try
