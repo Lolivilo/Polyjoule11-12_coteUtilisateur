@@ -1,7 +1,9 @@
 <?php
 	session_start();
 	require_once('../BD/LivreDOrBD.php');
+    require_once('../BD/LangueParser.php');
 	$tabComment = getAllLivreDOr();	// Creation de la liste des commentaires a afficher
+    $parserLangue = new LangueParser();
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -15,19 +17,8 @@
 <script language="javascript" src="JavaScript/checkLivreOr.js"></script>
 <title>
 	<?php
-		if( $_SESSION['langue'] == 'FR' )
-		{
-			echo( "Livre d'or" );
-		}
-		elseif( $_SESSION['langue'] == 'EN' )
-		{
-			echo( "Guest book" );
-		}
-		else
-		{
-			// TRAITEMENT D'ERREUR A EFFECTUER !!!!!???!!
-		}
-	?>
+		echo( $parserLangue->getWord('LivreOr')->getTraduction() );
+    ?>
 </title>
 </head>
 
@@ -51,22 +42,10 @@
 					
 					<div id='titre'>
 						<h1>
-							<?php
-								// Affichage du titre de la page
-								if( $_SESSION['langue'] == 'FR' )
-								{
-									echo( "Livre d'or" );
-								}
-								elseif( $_SESSION['langue'] == 'EN' )
-								{
-									echo( "Guest book" );
-								}
-								else
-								{
-									// TRAITEMENT D'ERREUR A EFFECTUER !!!!!???!!
-								}
-							?>
-						</h1>
+                            <?php
+                                echo( $parserLangue->getWord('LivreOr')->getTraduction() );
+                            ?>
+                        </h1>
 					</div>
 					<div id='signatures'>
 						<?php
