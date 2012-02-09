@@ -1,4 +1,4 @@
-@import "general.css";
+@import "index.css";
 
 h1
 {
@@ -9,4 +9,9 @@ h1
 {
 	border: solid;
 	background-color: orange;
+}
+
+#otherPage
+{
+    textalign: center;
 }
