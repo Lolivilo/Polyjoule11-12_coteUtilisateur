@@ -9,10 +9,28 @@
         <link rel="stylesheet" type="text/css" href="Style/index.css" />
         <script  type="text/javascript" src="JavaScript/jquery.js"></script>
         <script  type="text/javascript" src="JavaScript/menu.js"></script>
+        <script  type="text/javascript" src="JavaScript/dropDown.js"></script>
     </head>
     <body>
 			<?php 
-				include_once('header.php');
+				include('header.php');
 			?>
-	</body>
+        <div id="ariane">
+            <a href="index.html">Notre Association</a> > <a href="index.html">Notre aaa</a> > <a href="index.html">Nzevgzg</a>
+        </div>
+            <?php
+                include('explorer/explorer.php');
+            ?>
+        <div id="corps">
+
+            <div id="footerCorps">
+            </div>
+        </div>
+
+        <div id="footer">
+            <img src="image/a.png" /> <img src="image/b.png" />
+
+            <p>PolyJoule 2012 - Tous droits reservés</p>
+        </div>
+    </body>
 </html>
