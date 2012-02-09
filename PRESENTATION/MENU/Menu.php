@@ -7,16 +7,16 @@
 		{
 			$HasChildren = FALSE;
 			$idCatParent = $CatParent->getId();
-			$html.= "<li class='".$classParent."'>".$CatParent->getTitreFR();
+			$html.= "<li><a href=''>".$CatParent->getTitre()."</a>";
 			$ChildrenCategories = $CategorieBD->getSousCategories($idCatParent);// tableau d'objets categorie
 			if($ChildrenCategories != NULL)// Si la catégorie parente a des enfants
 			{
 				$HasChildren = TRUE;
-				$html.= "<ul class='".$classChildren."'>";
+				$html.= "<ul>";
 			}
 			foreach ($ChildrenCategories as $SousCat)// parcours des catgories de second niveau
 			{
-				$html.= "<li class='".$classChildren."'>".$SousCat->getTitreFR()."</li>";
+				$html.= "<li><a href=''>".$SousCat->getTitre()."</a></li>";
 				
 			}
 			if($HasChildren){
