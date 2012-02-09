@@ -48,18 +48,6 @@
                 <div id='signatures'>
                     <?php
                         // Affichage des commentaires
-                        /*foreach($tabComment as $com)
-                        {
-                            echo("<table id='signature_".$com->getId()."' class='signature'>");
-                            echo("<tr>");
-                            echo("<td>".$com->getPosteur()."</td><td>".$com->getDate()."</td>");
-                            echo("</tr>");
-                            echo("<tr>");
-                            echo("<td colspan='2'>".$com->getMessage()."</td>");
-                            echo("</tr>");
-                            echo("</table>");
-                        }*/
-                        
                         for($i = 0 ; $i <= (getNbOnPageLivreOr($_GET['numPage'])-1) ; $i++)
                         {
                             echo("<table id='signature_".$tabComment[$i+(10*($_GET['numPage']-1))]->getId()."' class='signature'>");
