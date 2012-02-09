@@ -29,14 +29,8 @@
     ?>
     <div id='global'>
         <div id='left'>
-            <?php 
-                include_once('EXPLORER_CATEGORIES/explorer.php');
-            ?>
         </div>
         <div id='right'>
-            <ul id='fil'>
-                <li>fil d'ariane</li>
-            </ul>
             <div id='content'>
                 <div id='titre'>
                     <h1>
