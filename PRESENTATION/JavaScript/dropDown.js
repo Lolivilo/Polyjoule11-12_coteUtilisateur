@@ -1,5 +1,5 @@
 jQuery().ready(function(){
-               $("#menuPage > li > a").click(
+               $("#menuPage li > a").click(
                     function () {
                             if($(this).next("ul").is(":hidden")){
                                          $(this).next("ul").slideDown();
@@ -10,5 +10,9 @@ jQuery().ready(function(){
                             }
                             return false;
                     }
-                );               
+                );
+               
+              /* $("#menuPage > li.active").parent("ul").slideDown();
+               $("#menuPage > li.active").children("ul").slideDown();*/
+               
 });

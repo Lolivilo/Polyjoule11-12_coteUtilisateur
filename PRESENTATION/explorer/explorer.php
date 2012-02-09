@@ -59,7 +59,24 @@ foreach ($SousCategories as $_Categorie)
 			$html.="<li";
 			if($CategorieN2->getID() == $CategoryParente->getID())
 				$html.=" class='active'";
-			$html.= "><a href=''>".$CategorieN2->getTitre()."</a></li>";
+			$html.= "><a href=''>".$CategorieN2->getTitre()."</a>";
+            
+            $SousCategoriesN3 = NULL; // CatŽgories filles de la catŽgorie du tour de boucle du foreach
+            // Si la catŽgorie en cours ˆ des filles (Niveau 3 _MAX)
+            if($SousCategoriesN3 = $category->getSousCategories($CategorieN2->getId()))
+            {
+                $html.="<ul>";
+                foreach ($SousCategoriesN3 as $CategorieN3)
+                {
+                    $html.="<li";
+                    if($CategorieN3->getID() == $CategoryParente->getID())
+                        $html.=" class='active'";
+                    $html.= "><a href=''>".$CategorieN3->getTitre()."</a>";
+                    
+                }
+                $html.="</ul>";
+            }
+            $html.="</li>";
 		}
 		$html.="</ul>";
 	}
