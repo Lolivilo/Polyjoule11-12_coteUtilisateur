@@ -16,7 +16,9 @@
 <div class="clear"></div>
 </div>
 <ul id="menuHeader">
-<?php /* $categoryBD = new CategorieBD('localhost', 'polyjoule', 'polyjoule', 'azerty');                             echo getMenu($categoryBD,'limenu','child');*/ 
+    <?php
+        $categoryBD = new CategorieBD('localhost', 'polyjoule', 'polyjoule', 'azerty');
+    	echo getMenu($categoryBD,'limenu','child');
     ?>
 </ul>
 
