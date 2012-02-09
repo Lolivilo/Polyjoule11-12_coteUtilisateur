@@ -24,7 +24,7 @@
 
 
 
-<a href='livreDOr.php'>
+<a href='livreDOr.php?numPage=1'>
 <?php
     echo $parserLangue->getWord("LivreOr")->getTraduction();
     ?>
