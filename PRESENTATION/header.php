@@ -5,27 +5,26 @@
     require_once('../BD/LangueParser.php');
 	include_once('LANGUE/sessionLangue.php');
     $parserLangue = new LangueParser();
-?>
-        <div id="header">
-            <h1><a href="index.html"><img src="Style/image/logoPolyjoule.png" alt="Polyjoule" /></a></h1>
-            <div id="barre">
-                <a href=""><?php echo $parserLangue->getWord("contact")->getTraduction(); ?></a>
-                <a href="http://localhost:8888/index.php?lang=FR" class="active">FR</a> | <a href="http://localhost:8888/index.php?lang=EN">EN</a>
-                <form><input type="text" id="search"><input type="submit" value="Search"></form>
-            </div>		
-            <div class="clear"></div>
-        </div>
-        <ul id="menuHeader">
-            <?php  $categoryBD = new CategorieBD('localhost', 'polyjoule', 'polyjoule', 'azerty');
-                   echo getMenu($categoryBD,'limenu','child');
-             ?>
-        </ul>
+    ?>
+<div id="header">
+<h1><a href=<?php echo("'http://".$_SERVER['HTTP_HOST']."/PRESENTATION/index.php'");?>><img src="Style/image/logoPolyjoule.png" alt="Polyjoule"/></a></h1>
+<div id="barre">
+<a href=""><?php echo $parserLangue->getWord("contact")->getTraduction(); ?></a>
+<a href="http://localhost:8888/index.php?lang=FR" class="active">FR</a> | <a href="http://localhost:8888/index.php?lang=EN">EN</a>
+<form><input type="text" id="search"><input type="submit" value="Search"></form>
+</div>		
+<div class="clear"></div>
+</div>
+<ul id="menuHeader">
+<?php /* $categoryBD = new CategorieBD('localhost', 'polyjoule', 'polyjoule', 'azerty');                             echo getMenu($categoryBD,'limenu','child');*/ 
+    ?>
+</ul>
 
 
 
-        <a href='livreDOr.php'>
-        <?php
-            echo $parserLangue->getWord("LivreOr")->getTraduction();
-        ?>
-        </a>
-        <a href='albumPhoto.php?idAlbum="<?php echo getMostRecentAlbum(); ?>"'><?php echo $parserLangue->getWord("AlbPhoto")->getTraduction(); ?></a>
+<a href='livreDOr.php'>
+<?php
+    echo $parserLangue->getWord("LivreOr")->getTraduction();
+    ?>
+</a>
+<a href='albumPhoto.php?idAlbum="<?php echo getMostRecentAlbum(); ?>"'><?php echo $parserLangue->getWord("AlbPhoto")->getTraduction(); ?></a>
