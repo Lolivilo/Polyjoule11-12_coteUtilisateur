@@ -15,18 +15,34 @@
 			<?php 
 				include('header.php');
 			?>
-        <div id="ariane">
-            <a href="index.html">Notre Association</a> > <a href="index.html">Notre aaa</a> > <a href="index.html">Nzevgzg</a>
-        </div>
-            <?php
-                include('explorer/explorer.php');
-            ?>
-        <div id="corps">
-
-            <div id="footerCorps">
+        <div id="diapoAcceuil">
+            <img src="image/photo3.png">
+            <div id="newsAcceuil">
+                <h2>A la une</h2>
+                <div class="news">
+                    <h3> 20-02-2012 Titre actu</h3>
+                        <p>Description egez gze gz egz eg zeg ze ggze </p>
+                        <a href="index.html">Lire la suite</a>
+                </div>
+                <div class="news">
+                    <h3> 20-02-2012 Titre actu</h3>
+                    <p>Description egez gze gz egz eg zeg ze ggze </p>
+                    <a href="index.html">Lire la suite</a>
+                </div>
+                <div class="news">
+                    <h3> 20-02-2012 Titre actu</h3>
+                    <p>Description egez gze gz egz eg zeg ze ggze </p>
+                    <a href="index.html">Lire la suite</a>
+                </div>
             </div>
+            <div class="clear"></div>
         </div>
 
+        <ul id="menuAccueil">
+            <li><a href=""><img src="image/photo2.png"><span>efzegzegez</span></a></li>
+            <li><a href=""><img src="image/photo2.png"><span>efz ez eg zeg zeg</span></a></li>
+            <li><a href=""><img src="image/photo2.png"><span>efz eefb fbe berbe berrbz eg zeg ze ezgzegzge zeg</span></a></li>				
+        </ul>
         <div id="footer">
             <img src="image/a.png" /> <img src="image/b.png" />
 

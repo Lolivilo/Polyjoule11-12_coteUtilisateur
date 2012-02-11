@@ -19,7 +19,7 @@ class Bd
 	{
 		$this->host = 'localhost' ;
 		$this->database = 'polyjoule' ;
-		$this->user = 'polyjoule' ;
+		$this->user = 'anto' ;
 		$this->password = 'azerty' ;
 		/*$this->host = 'sql.olympe-network.com' ;
 		$this->database = '138931_polyj' ;
@@ -28,8 +28,8 @@ class Bd
 		
 	}
 
-// mŽthode qui permet de se connecter ˆ la base de donnŽes
-// une exception ConnexionException est levŽe s'il y a un problme de connexion ˆ la base
+// mÂŽthode qui permet de se connecter Âˆ la base de donnÂŽes
+// une exception ConnexionException est levÂŽe s'il y a un problÂme de connexion Âˆ la base
 	public function connexion() 
 	{
 		try
@@ -50,7 +50,7 @@ class Bd
 	public function deconnexion()
 	{
 		$this->connexion = null;
-		//echo('La dŽconnexion fonctionne !<br />') ;
+		//echo('La dÂŽconnexion fonctionne !<br />') ;
 	}
 
 // les accesseurs
