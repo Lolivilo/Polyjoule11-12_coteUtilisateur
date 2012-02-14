@@ -10,6 +10,7 @@ class ArticleBD extends BD
 		parent::__construct();
 	}
     
+    //retourne un tableau contenant les artciles directements associés à une catégorie
 	function getArticlesWithCategory ($CategoryId) {
 		
 		$CategoryId = intval(parent::security($CategoryId));
