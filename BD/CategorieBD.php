@@ -133,12 +133,15 @@ function getSuperParentCategoryOfCategory($idCat)
     		$resultQuery = $connexion->query("SELECT id_rubrique FROM ARTICLE WHERE id_article = $idArt")->fetch();
 			
     		$idDirectCat = $resultQuery['id_rubrique'];
-    		if($idDirectCat != NULL)
+    		
+            if($idDirectCat != NULL)
     		{
+                
     			// Puis on appelle la fonction renvoyant la super catégorie
     			$idMere = $this->getSuperParentCategoryOfCategory($idDirectCat);
+                echo $idMere;
     		}
-    		else $idMere = 1; // Si la catégorie de l'article est inconnue
+    		else $idMere = 0; // Si la catégorie de l'article est inconnue
     	}
     	catch (PDOException $e)
     	{

@@ -61,6 +61,13 @@ class Categorie
 	{
 		$this->titreEN = $titreEN;
 	}
+    
+    public function getUrl()
+    {
+        $idCat = intval($this->id); // ATTENTION DANS LE FUTUR IL FAUDRA GERER SI LA CATEGORIE RENVOIE VERS UNE LISTE DARTICLE OU VERS UNE LISTE DE NEWS !!!!
+        $url = "http://localhost:8888/listArticle.php?cat=".$idCat;
+        return $url;
+    }
 	
 }
 ?>

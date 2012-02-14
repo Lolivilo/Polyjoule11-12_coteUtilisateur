@@ -37,6 +37,7 @@
         <div id="corps" class="colonne2">
             <div id="colonneGauche">
             <?php
+                // FAUT IL CHERCHER LES ARTICLES DE LA CAT ENFANT ? EN + DES ARTICLES DE LA CAT EN COUR OU LES 2?
                 // AFFICHAGE DES ARTICLES
                 $ArticleBD = new ArticleBD();
                 $TabArticles = array();
@@ -44,7 +45,7 @@
 
                 foreach($TabArticles as $art)
                 {
-                    echo "<div class='listeArticle'><img src='Style/image/photo.png' /><div class='description'><h3>".$art->getTitre()."</h3><div class='italic'>"."xx/xx/xx"."</div><p>".$art->getContenu()."</p></div><a href='index.html'>Lire la suite ...</a><div class='clear'></div></div>";
+                    echo "<div class='listeArticle'><img src='Style/image/photo.png' /><div class='description'><h3>".$art->getTitre()."</h3><div class='italic'>"."xx/xx/xx"."</div><p>".$art->getContenu()."</p></div><a href='".$art->getUrl()."'>Lire la suite ...</a><div class='clear'></div></div>";
                 }
                 //Si il n'y a pas d'article dans la catégorie
                 if(empty($TabArticles))
@@ -53,7 +54,9 @@
                 }
             ?>
             </div>
-<?php /* <div id="colonneDroite">
+<?php /*
+        A virer -> est présent dans les news
+    <div id="colonneDroite">
                 <ul id="calendrier">
                     <li><a href="index.html" class="active">Janvier</a></li>	
                     <li><a href="index.html">Fevrier</a></li>	

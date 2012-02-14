@@ -11,45 +11,55 @@
         header('Location: index.php');
     }
 ?>
-        <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-        <html>
-        <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link rel="stylesheet" href="Style/article.css" type="text/css">
-        <title>
-        <?php
-            echo $articleCourant->getTitre();
-        ?>
-
-        </title>
-        </head>
-
-        <body>
-            <div id='page'>
-            <?php 
-                include_once('header.php');
-            ?>
-	
-            <div id='global'>
-                <div id='left'>
-				<?php 
-					include_once('EXPLORER_CATEGORIES/explorer.php');
-				?>
-                </div>
-                <div id='right'>
-                    <ul id='fil'>
-                        <li>fil d'ariane</li>
-                    </ul>
-                    <div id='content'>
-                        <?php 
-                          echo $articleCourant->getContenu();
-                        ?>
-                    </div>
-                </div>
-            </div>
-            <?php
-                include_once('footer.php');
-            ?>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">  
+<html xmlns="http://www.w3.org/1999/xhtml">  
+    <head>  
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />  
+        <title>Polyjoule</title>  
+        <link rel="stylesheet" type="text/css" href="Style/index.css" />
+        <script  type="text/javascript" src="JavaScript/jquery.js"></script>
+        <script  type="text/javascript" src="JavaScript/menu.js"></script>
+        <script  type="text/javascript" src="JavaScript/dropDown.js"></script>
+    </head>
+    <body>
+    <?php 
+        include('header.php');
+    ?>
+        <div id="ariane">
+            <a href="index.html">Notre Association</a> > <a href="index.html">Notre aaa</a> > <a href="index.html">Nzevgzg</a>
         </div>
-    </body>
+        <?php
+            include('explorer/explorer.php');
+        ?>
+        <?php // AFFICHAGE DE L'ARTICLE ?>
+        <div id="corps" class="colonne2">
+            <div id="colonneGauche">
+                <h2>
+                    <?php 
+                        echo $articleCourant->getTitre(); 
+                    ?>
+                </h2> <!-- Titre page -->
+                <div class="articleHeader"> <!-- header d'article  -->
+                    <img src="image/photo.png" />
+                    <div class="presentation italic">
+                        <h3>????</h3>
+                        <div>????</div>
+                    </div>
+                    <div class="description">????<br/>????</div>
+                    <div class="clear"></div>
+                </div>
+                <h3>????</h3> <!-- Sous titre page -->
+                <div class="article">
+                    <img src="Style/image/photo.png" />
+                    <?php
+                       echo $articleCourant->getContenu();
+                    ?>
+                </div> <!-- Article -->
+            </div>
+            <div id="footerCorps"></div>
+        </div>
+<?php
+    include_once('footer.php');
+    ?>
+</body>
 </html>
