@@ -19,7 +19,7 @@ class Bd
 	{
 		$this->host = 'localhost' ;
 		$this->database = 'polyjoule' ;
-		$this->user = 'anto' ;
+		$this->user = 'polyjoule' ;
 		$this->password = 'azerty' ;
 		/*$this->host = 'sql.olympe-network.com' ;
 		$this->database = '138931_polyj' ;
