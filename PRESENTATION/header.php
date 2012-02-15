@@ -21,12 +21,3 @@
     	echo getMenu($categoryBD,'limenu','child');
     ?>
 </ul>
-
-
-
-<a href='livreDOr.php?numPage=1'>
-<?php
-    echo $parserLangue->getWord("LivreOr")->getTraduction();
-    ?>
-</a>
-<a href='albumPhoto.php?idAlbum="<?php echo getMostRecentAlbum(); ?>"'><?php echo $parserLangue->getWord("AlbPhoto")->getTraduction(); ?></a>

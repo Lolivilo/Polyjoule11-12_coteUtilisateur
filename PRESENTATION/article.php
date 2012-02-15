@@ -32,8 +32,7 @@
             include('explorer/explorer.php');
         ?>
         <?php // AFFICHAGE DE L'ARTICLE ?>
-        <div id="corps" class="colonne2">
-            <div id="colonneGauche">
+        <div id="corps">
                 <h2>
                     <?php 
                         echo $articleCourant->getTitre(); 
@@ -55,7 +54,6 @@
                        echo $articleCourant->getContenu();
                     ?>
                 </div> <!-- Article -->
-            </div>
             <div id="footerCorps"></div>
         </div>
 <?php

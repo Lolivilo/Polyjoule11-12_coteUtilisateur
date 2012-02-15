@@ -10,12 +10,7 @@
             parent::__construct();
         }
         
-        // retourne les images associées à un article ??
-        function getArticleById ($idArt)
-        {
-            //??
-        }
-    
+    }
     
     
     ?>

@@ -99,6 +99,7 @@ function getSuperParentCategoryOfCategory($idCat)
     			// On r残up俊e l'id_mere de la cat使orie courante
     			$resultQuery = $connexion->query("SELECT id_mere FROM RUBRIQUE WHERE id_rubrique = $idCat")->fetch();
     			$idMere = $resultQuery['id_mere'];
+                echo "While".$idMere;
     			if($idMere != NULL)	// Si elle existe, elle devient la cat使orie courante pour la prochaine it屍ation de boucle
     			{
     				$idCat = $idMere;
@@ -133,13 +134,13 @@ function getSuperParentCategoryOfCategory($idCat)
     		$resultQuery = $connexion->query("SELECT id_rubrique FROM ARTICLE WHERE id_article = $idArt")->fetch();
 			
     		$idDirectCat = $resultQuery['id_rubrique'];
-    		
+    		echo $idDirectCat;
             if($idDirectCat != NULL)
     		{
                 
     			// Puis on appelle la fonction renvoyant la super cat使orie
     			$idMere = $this->getSuperParentCategoryOfCategory($idDirectCat);
-                echo $idMere;
+                //echo $idMere;
     		}
     		else $idMere = 0; // Si la cat使orie de l'article est inconnue
     	}

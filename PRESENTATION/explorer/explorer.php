@@ -5,35 +5,29 @@ $category = new CategorieBD();
 $SuperParentcategoryID = NULL;
 $SuperParentcategory = NULL;
 
-$CategoryParenteID = NULL;
+$CategoryParenteID = 0;
 $CategoryParente = NULL;
 
 $SousCategories = NULL;
 
 $html = NULL;
-
-
-/*
- *  RECUPERATION DE LA SUPER CATEGORIE
- *  +
- * 	RECUPERATION DE LA CATEGORIE DU NIVEAU SUPERRIEUR POUR UN ARTICLE. DONNE LA CATEGORIE DU $_GET SI LA CATEGORIE EST PASSEE EN PARAMETRE
- *
- */
+  
 if(	(isset( $_GET['article'] ) ) )
-{// Si l'article est renseignŽ dans l'url, on recherche les catŽgories parentes 
-	$SuperParentcategoryID = $category->getSuperParentCategoryOfArticle($_GET['article']);
-	$CategoryParenteID = $category->getAsssociateCategoryIDForArticle($_GET['article']);
+{
+	$CategoryParenteID = $category->getAsssociateCategoryIDForArticle($_GET['article']);	
 }
-elseif( isset( $_GET['categorie'] ) )
-{// Sinon si une catŽgorie est passŽ en paramtre, on utilise la catŽgorie, puis on liste les sous catŽgories de cette dernire, puis les articles pour chaque catŽgorie
-	$SuperParentcategoryID = $category->getSuperParentCategoryOfCategory($_GET['categorie']);
-	$CategoryParenteID = $_GET['categorie'];
+elseif( isset( $_GET['cat'] ) )
+{
+	$CategoryParenteID = $_GET['cat'];
 }
+    
 // On instancie la super catŽgorie
 $SuperParentcategory = $category->getCategorieWithId($SuperParentcategoryID);
 // et la catŽgorie parente de niveau supŽrieur
 $CategoryParente = $category->getCategorieWithId($CategoryParenteID);
-//echo $CategoryParente->getId();
+
+//    print_r($CategoryParente);
+
 
 
 

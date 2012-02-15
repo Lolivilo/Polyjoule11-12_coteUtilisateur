@@ -44,7 +44,7 @@
             <li><a href=""><img src="Style/image/photo2.png"><span>efz eefb fbe berbe berrbz eg zeg ze ezgzegzge zeg</span></a></li>				
         </ul>
         <div id="footer">
-            <img src="Style/image/a.png" /> <img src="Style/image/b.png" />
+            <img src="Style/image/a.png" /> <img src="Style/image/b.png" /><img src="Style/image/a.png" /><img src="Style/image/a.png" /><img src="Style/image/a.png" /><img src="Style/image/a.png" />
 
             <p>PolyJoule 2012 - Tous droits reservés</p>
         </div>
