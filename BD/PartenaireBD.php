@@ -67,3 +67,4 @@ function getAllPartners()
 		
 	return $tableauDePartenaires;
 }
+?>
