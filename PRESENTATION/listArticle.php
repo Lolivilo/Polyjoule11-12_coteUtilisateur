@@ -34,8 +34,7 @@
     		include('explorer/explorer.php');
     	?>
 
-        <div id="corps" class="colonne2">
-            <div id="colonneGauche">
+        <div id="corps">
             <?php
                 // FAUT IL CHERCHER LES ARTICLES DE LA CAT ENFANT ? EN + DES ARTICLES DE LA CAT EN COUR OU LES 2?
                 // AFFICHAGE DES ARTICLES
@@ -53,26 +52,7 @@
                     echo "<p>Il n'y a pas d'article dans cette cat&eacute;gorie</p>";
                 }
             ?>
-            </div>
-<?php /*
-        A virer -> est présent dans les news
-    <div id="colonneDroite">
-                <ul id="calendrier">
-                    <li><a href="index.html" class="active">Janvier</a></li>	
-                    <li><a href="index.html">Fevrier</a></li>	
-                    <li><a href="index.html">Mars</a></li>
-                    <li><a href="index.html">Avril</a></li>
-                </ul>
-                <form id="sondage">
-                    <h3>Le sondage</h3>
-                    <p> la question est ici. Du genre Seriez vous pret à ... bla bla bla ?</p>
-                    <div><input type="checkbox"><label>Oui</label></div>
-                    <div><input type="checkbox"><label>Non</label></div>
-                    <div><input type="checkbox"><label>Peut etre</label></div>
-                    <input type="submit" value="Envoyer">
-                    <a href="index.html">Voir les résultats</a>
-                </form>
-            </div> */ ?>
+
             <div id="footerCorps">
             </div>
         </div>
