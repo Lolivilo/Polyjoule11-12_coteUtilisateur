@@ -4,6 +4,7 @@ class AlbumPhoto
 	private $id;
 	private $nom;
 	private $date;
+    private $photos = array();
 	
 	public function __construct($id, $nom, $date)
 	{
@@ -26,5 +27,10 @@ class AlbumPhoto
 	public function getdate()
 	{
 		return $this->date;
+	}
+    
+    public function addPhoto($photo)
+	{
+		array_push($photos,$photo);
 	}
 }

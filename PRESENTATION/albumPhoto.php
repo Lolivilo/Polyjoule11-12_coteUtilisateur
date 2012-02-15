@@ -18,7 +18,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link rel="stylesheet" href="Style/albumPhoto.css" type="text/css">
+<link rel="stylesheet" href="Style/index.css" type="text/css">
 <title>
 	<?php
         $parserLangue = new LangueParser();
