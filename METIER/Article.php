@@ -112,5 +112,13 @@ class Article
 	{
 		$this->autorisationCommentaire = $autCom;
 	}
+    
+    public function getUrl()
+    {
+        $idArticle = intval($this->id);
+        $url = "http://localhost:8888/article.php?article=".$idArticle;
+        return $url;
+    }
+
 }
 ?>

@@ -1,6 +1,7 @@
 <?php
 	session_start();
 	require_once('../BD/CategorieBD.php');
+    require_once('../BD/ArticleBD.php');
     $categorieCourante = NULL;
     if(isset($_GET['cat']) && $_GET['cat'] != '')
     {
@@ -32,22 +33,30 @@
 		<?php
     		include('explorer/explorer.php');
     	?>
+
         <div id="corps" class="colonne2">
             <div id="colonneGauche">
-                <div class="listeArticle">
-                    <img src="Style/image/photo.png" />
-                    <div class="description">
-                        <h3>TItre article</h3>
-                        <div class="italic">date</div>
-                        <p>Description bla bla bla zegzeg ze gzeg zeg zeg zeg zeg zeg zesds sdvds vsd vds<br />zegz gzegg ezge</p>
+            <?php
+                // FAUT IL CHERCHER LES ARTICLES DE LA CAT ENFANT ? EN + DES ARTICLES DE LA CAT EN COUR OU LES 2?
+                // AFFICHAGE DES ARTICLES
+                $ArticleBD = new ArticleBD();
+                $TabArticles = array();
+                $TabArticles = $ArticleBD->getArticlesWithCategory($categorieCourante->getId());
 
-                    </div>
-                    <a href="index.html">Lire la suite ...</a>
-                    <div class="clear"></div>
-                </div>
-                <!-- AUTRES ARTICLES/....
+                foreach($TabArticles as $art)
+                {
+                    echo "<div class='listeArticle'><img src='Style/image/photo.png' /><div class='description'><h3>".$art->getTitre()."</h3><div class='italic'>"."xx/xx/xx"."</div><p>".$art->getContenu()."</p></div><a href='".$art->getUrl()."'>Lire la suite ...</a><div class='clear'></div></div>";
+                }
+                //Si il n'y a pas d'article dans la catégorie
+                if(empty($TabArticles))
+                {
+                    echo "<p>Il n'y a pas d'article dans cette cat&eacute;gorie</p>";
+                }
+            ?>
             </div>
-            <div id="colonneDroite">
+<?php /*
+        A virer -> est présent dans les news
+    <div id="colonneDroite">
                 <ul id="calendrier">
                     <li><a href="index.html" class="active">Janvier</a></li>	
                     <li><a href="index.html">Fevrier</a></li>	
@@ -63,7 +72,7 @@
                     <input type="submit" value="Envoyer">
                     <a href="index.html">Voir les résultats</a>
                 </form>
-            </div>
+            </div> */ ?>
             <div id="footerCorps">
             </div>
         </div>

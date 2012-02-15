@@ -10,6 +10,7 @@ class ArticleBD extends BD
 		parent::__construct();
 	}
     
+    //retourne un tableau contenant les artciles directements associés à une catégorie
 	function getArticlesWithCategory ($CategoryId) {
 		
 		$CategoryId = intval(parent::security($CategoryId));
@@ -38,6 +39,7 @@ class ArticleBD extends BD
 		return $ArticleTab;
     }
     
+        
 }
 
 
@@ -45,16 +47,19 @@ function getArticleById ($idArt)
 {
 	$bd = new Bd();
     $idArt = intval($bd->security($idArt));
-    
+    $Article = NULL;
 	 
 	try
 	{
 		$bd->connexion();
 		$connexion = $bd->getConnexion();
 		$ResultQuery = $connexion->query( "SELECT * FROM ARTICLE WHERE id_article=$idArt" )->fetch();
-			
-		//Ici on instancie un objet categorie à l'aide des infos recupérées dans la base
-		$Article = new Article($ResultQuery['id_article'], $ResultQuery['id_rubrique'], $ResultQuery['titreFR_article'], $ResultQuery['titreEN_article'], $ResultQuery['contenuFR_article'], $ResultQuery['contenuEN_article'], $ResultQuery['autorisation_com']);
+        
+		if($ResultQuery != NULL) // Pour eviter une erreur si l'id categorie passé est null
+        {
+            //Ici on instancie un objet categorie à l'aide des infos recupérées dans la base
+            $Article = new Article($ResultQuery['id_article'], $ResultQuery['id_rubrique'], $ResultQuery['titreFR_article'], $ResultQuery['titreEN_article'], $ResultQuery['contenuFR_article'], $ResultQuery['contenuEN_article'], $ResultQuery['autorisation_com']);
+        }
 	}
 	catch ( PDOException $e )
 	{
