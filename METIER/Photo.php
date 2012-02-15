@@ -1,5 +1,5 @@
 <?php
-    class photo
+    class Photo
     {  
         private $id;
         private $id_album;

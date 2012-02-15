@@ -8,10 +8,11 @@
         $AlbumPhotoBD = new AlbumPhotoBD();
         $CurrentAlbum = $AlbumPhotoBD->getAlbumById($_GET['idAlbum']);
     }
-    if($album == NULL)
+    if($CurrentAlbum == NULL)
     {
         header('Location: index.php');
     }
+    
 	
 ?>
 
@@ -45,9 +46,9 @@
                 </h3>
                 <h4>
                     <?php
-                        print_r($CurrentAlbum->getPhotos());
-                        //$firstPhoto = ($CurrentAlbum->getPhotos())[0];
-                        //echo $firstPhoto->getTitre();
+                        $photoArray = $CurrentAlbum->getPhotos();
+                        $firstPhoto = $photoArray[0];
+                        echo $firstPhoto->getTitre();
                     ?>
                 </h4>
                 <div id="photo">

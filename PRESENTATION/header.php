@@ -1,6 +1,5 @@
 <?php 
 	require_once('../BD/CategorieBD.php');
-	require_once('../BD/AlbumPhotoBD.php');
 	require_once('MENU/Menu.php');
     require_once('../BD/LangueParser.php');
 	include_once('LANGUE/sessionLangue.php');

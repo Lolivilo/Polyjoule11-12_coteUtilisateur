@@ -13,7 +13,6 @@ class AlbumPhoto
 		$this->date = $date;
 	}
 	
-///// Getters /////
 	public function getId()
 	{
 		return $this->id;
@@ -35,7 +34,7 @@ class AlbumPhoto
     
     public function addPhoto($photo)
 	{
-		array_push($photos,$photo);
+		array_push($this->photos,$photo);
 	}
 }
 ?>
