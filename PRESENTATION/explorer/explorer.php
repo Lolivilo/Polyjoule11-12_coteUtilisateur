@@ -25,7 +25,7 @@ $LinkedCategory = $category->getCategorieWithId($LinkedCategoryID);
 
 $SuperParentCategory = $category->getSuperParentCategoryOfCategory($LinkedCategoryID);
 
-echo "SUPERPARENT : ".$SuperParentCategory->getId()."  CAT : ".$LinkedCategory->getId();
+//echo "SUPERPARENT : ".$SuperParentCategory->getId()."  CAT : ".$LinkedCategory->getId();
 
 //    print_r($LinkedCategory);
 

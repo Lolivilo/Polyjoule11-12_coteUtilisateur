@@ -73,6 +73,7 @@ class AlbumPhotoBD extends BD
         }
         $this->deconnexion();
     }
+    
 }
 
 ?>
