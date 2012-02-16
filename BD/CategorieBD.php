@@ -97,9 +97,8 @@ function getSuperParentCategoryOfCategory($idCat)
     		do
     		{
     			// On rŽcupre l'id_mere de la catŽgorie courante
-    			$resultQuery = $connexion->query("SELECT id_mere FROM RUBRIQUE WHERE id_rubrique = $idCat")->fetch();
+    			$resultQuery = $connexion->query("SELECT * FROM RUBRIQUE WHERE id_rubrique = $idCat")->fetch();
     			$idMere = $resultQuery['id_mere'];
-                echo "While".$idMere;
     			if($idMere != NULL)	// Si elle existe, elle devient la catŽgorie courante pour la prochaine itŽration de boucle
     			{
     				$idCat = $idMere;
@@ -114,8 +113,8 @@ function getSuperParentCategoryOfCategory($idCat)
 		}
 		// DŽconnexion de la BD
 		$this->deconnexion();
-		
-		return $idCat;
+		$Categorie = new Categorie($resultQuery['id_rubrique'], $resultQuery['id_mere'], $resultQuery['titreFR_rubrique'], $resultQuery['titreEN_rubrique']);
+		return $Categorie;
     }
     
     
