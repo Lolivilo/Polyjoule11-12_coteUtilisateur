@@ -1,6 +1,7 @@
 <?php
 	require_once('BD.php');
 	require_once('../METIER/AlbumPhoto.php');
+    require_once('../METIER/Photo.php');
 
 class AlbumPhotoBD extends BD
 {   
@@ -52,8 +53,7 @@ class AlbumPhotoBD extends BD
     
     function addPhotosToAlbum($Album)
     {
-        print_r($Album);
-        $AlbumID = intval(parent::security($Album->getId));
+        $AlbumID = intval(parent::security($Album->getId()));
         try
         {
             $this->connexion() ;                
@@ -73,6 +73,7 @@ class AlbumPhotoBD extends BD
         }
         $this->deconnexion();
     }
+    
 }
 
 ?>

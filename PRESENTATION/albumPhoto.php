@@ -8,10 +8,11 @@
         $AlbumPhotoBD = new AlbumPhotoBD();
         $CurrentAlbum = $AlbumPhotoBD->getAlbumById($_GET['idAlbum']);
     }
-    if($album == NULL)
+    if($CurrentAlbum == NULL)
     {
         header('Location: index.php');
     }
+    
 	
 ?>
 
@@ -24,6 +25,8 @@
             <script  type="text/javascript" src="JavaScript/jquery.js"></script>
             <script  type="text/javascript" src="JavaScript/menu.js"></script>
             <script  type="text/javascript" src="JavaScript/dropDown.js"></script>
+            <script  type="text/javascript" src="JavaScript/album_photo.js"></script>
+            <script  type="text/javascript" src="JavaScript/jquery.json-2.3.min.js"></script>
         </head>
         <body>
         <?php 
@@ -38,23 +41,25 @@
             <?php // AFFICHAGE DE L'ARTICLE ?>
             <div id="corps"> 
                 <h2>Album Photo</h2>
-                <h3>
+                <h3 <?php echo "id='alb_".$CurrentAlbum->getId()."'"; ?>>
                     <?php
                         echo $CurrentAlbum->getNom();
                     ?>
                 </h3>
                 <h4>
                     <?php
-                        print_r($CurrentAlbum->getPhotos());
-                        //$firstPhoto = ($CurrentAlbum->getPhotos())[0];
-                        //echo $firstPhoto->getTitre();
+                        $photoArray = $CurrentAlbum->getPhotos();
+                        $firstPhoto = $photoArray[0];
+                        echo $firstPhoto->getTitre();
                     ?>
                 </h4>
                 <div id="photo">
-                    <img src=<?php echo "'".$firstPhoto->getLien()."'"; ?>  />
+                    <div id="loader"><img src="http://localhost:8888/Style/image/loader.gif" /></div>
+                    <img id="mainPhoto"src=<?php echo "'".$firstPhoto->getLien()."'"; ?>  />
                     <p>Prévoir le commentaire dans la base de données</p>
                 </div>
                 <div id="photoPagination">
+                    <?php echo "<span id='idAlb' style='display:none'>".$firstPhoto->getIdAlbum()."</span>"; ?>
                     <a href="index.html" class="precedent"></a>
                     <span>2 / 42</span>
                     <a href="index.html" class="suivant"></a>
@@ -66,7 +71,7 @@
                         <?php
                             foreach($CurrentAlbum->getPhotos() as $photo)
                             {
-                                echo "<a href='index.html' ><img src='".$photo->getLien()."' /></a>";
+                                echo "<a href='index.html' ><img src='".$photo->getLien()."' /><span class='idImg' style='display:none'>".$photo->getId()."</span></a>";
                             }
                         ?>
                     </div>
