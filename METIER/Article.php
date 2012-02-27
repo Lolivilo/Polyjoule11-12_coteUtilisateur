@@ -19,7 +19,7 @@ class Article
 	 * @param unknown_type $contenuENArticle
 	 * @param unknown_type $autorisationCommentaire
 	 */
-	public function __construct( $idArticle , $idRubrique, $titreFRArticle , $titreENArticle , $contenuFRArticle, $contenuENArticle, $autorisationCommentaire  )
+	public function __construct( $idArticle , $idRubrique, $titreFRArticle , $titreENArticle , $contenuFRArticle, $contenuENArticle, $autorisationCommentaire, $date  )
 	{
 		$this->id = $idArticle;
 		$this->idRubrique - $idRubrique;
@@ -28,7 +28,7 @@ class Article
 		$this->contenuFR = $contenuFRArticle;
 		$this->contenuEN = $contenuENArticle;
 		$this->autorisationCommentaire = $autorisationCommentaire;
-	
+        $this->date = $date;
 	}
 	
 	public function getId()
@@ -70,6 +70,12 @@ class Article
 	{
 		return $this->titreEN ;
 	}
+    
+    public function getDate()
+    {
+        return $this->date;
+    }
+    
 	public function setTitreEN($titreEN)
 	{
 		$this->titreEN = $titreEN;

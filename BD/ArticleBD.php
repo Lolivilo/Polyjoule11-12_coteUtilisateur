@@ -25,7 +25,7 @@ class ArticleBD extends BD
 			foreach($ResultQuery as $Art)
 			{// Parcours des articles rŽcupŽrŽs dans la base
 				//Ici on instancie un objet article ˆ l'aide des infos recupŽrŽes dans la base
-				$Article = new Article($Art['id_article'], $Art['id_rubrique'], $Art['titreFR_article'], $Art['titreEN_article'], $Art['contenuFR_article'], $Art['contenuEN_article'], $Art['autorisation_com']);
+				$Article = new Article($Art['id_article'], $Art['id_rubrique'], $Art['titreFR_article'], $Art['titreEN_article'], $Art['contenuFR_article'], $Art['contenuEN_article'], $Art['autorisation_com'], $Art['date_article']);
 				//On ajoute cet article dans le tableau des articles
 				array_push($ArticleTab, $Article);
 			}				
@@ -58,7 +58,7 @@ function getArticleById ($idArt)
 		if($ResultQuery != NULL) // Pour eviter une erreur si l'id categorie passŽ est null
         {
             //Ici on instancie un objet categorie ˆ l'aide des infos recupŽrŽes dans la base
-            $Article = new Article($ResultQuery['id_article'], $ResultQuery['id_rubrique'], $ResultQuery['titreFR_article'], $ResultQuery['titreEN_article'], $ResultQuery['contenuFR_article'], $ResultQuery['contenuEN_article'], $ResultQuery['autorisation_com']);
+            $Article = new Article($ResultQuery['id_article'], $ResultQuery['id_rubrique'], $ResultQuery['titreFR_article'], $ResultQuery['titreEN_article'], $ResultQuery['contenuFR_article'], $ResultQuery['contenuEN_article'], $ResultQuery['autorisation_com'], $ResultQuery['date_article']);
         }
 	}
 	catch ( PDOException $e )
@@ -71,5 +71,33 @@ function getArticleById ($idArt)
 }
     
     
+/** getAllArticles()
+  * Renvoie tous les articles, tries par date de parution, dans un tableau d articles
+  * @return Article[] : le tableau d'articles
+**/
+function getAllArticles()
+{
+    $bd = new Bd();
+    $return = array();
+    try
+    {
+        $bd->connexion();
+		$connexion = $bd->getConnexion();
+        $result = $connexion->query("SELECT * FROM ARTICLE ORDER BY date_article DESC")->fetchAll();
+        
+        foreach($result as $row)
+        {
+            $article = new Article($row['id_article'], $row['id_rubrique'], $row['titreFR_article'], $row['titreEN_article'], $row['contenuFR_article'], $row['contenuEN_article'], $row['autorisation_com'], $row['date_article']);
+            array_push($return, $article);
+        }
+    }
+    catch(PDOException $e)
+    {
+        
+    }
+    
+    $bd->deconnexion();
+    return $return;
+}
 
 ?>

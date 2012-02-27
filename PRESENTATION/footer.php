@@ -13,5 +13,5 @@
 			}
 		?>
 	</div>
-	<span id='signature'>Polyjoule 2011 - All rights reserved</span>
+	<span id='signature'>Polyjoule 2012 - All rights reserved</span>
 </div>
