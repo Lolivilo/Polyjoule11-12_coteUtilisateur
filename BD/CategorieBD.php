@@ -85,7 +85,7 @@ class CategorieBD extends BD
 		return $Categorie;
     }
     
-function getSuperParentCategoryOfCategory($idCat)
+    function getSuperParentCategoryOfCategory($idCat)
     {
     	$idCat = parent::security($idCat);
     	$this->connexion();	// Connexion ˆ la BD
@@ -113,7 +113,7 @@ function getSuperParentCategoryOfCategory($idCat)
 		}
 		// DŽconnexion de la BD
 		$this->deconnexion();
-		$Categorie = new Categorie($resultQuery['id_rubrique'], $resultQuery['id_mere'], $resultQuery['titreFR_rubrique'], $resultQuery['titreEN_rubrique'], $resultQuery['albumId'], $resultQuery['personneId'], $ResultQuery['isLivreOr']);
+		$Categorie = new Categorie($resultQuery['id_rubrique'], $resultQuery['id_mere'], $resultQuery['titreFR_rubrique'], $resultQuery['titreEN_rubrique'], $resultQuery['albumId'], $resultQuery['personneId'], $resultQuery['isLivreOr']);
 		return $Categorie;
     }
     

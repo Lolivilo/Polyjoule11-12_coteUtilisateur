@@ -45,9 +45,20 @@ $html.="<ul id='menuPage'><li><h2>".$SuperParentCategory->getTitre()."</h2></li>
 foreach ($SousCategories as $_Categorie)
 {
 	$html.="<li";
-	if($_Categorie->getID() == $LinkedCategory->getID())
+	if( $_Categorie->getID() == $LinkedCategory->getID() )
+    {
 		$html.=" class='active'";
-	$html.="><a href='".$_Categorie->getUrl()."'>".$_Categorie->getTitre()."</a>";
+    }
+    
+    if( $_Categorie->isLivreOr() )  // Lien special si livre d or
+    {
+        $html .= "><a href='livreDOr.php?numPage=1'>".$_Categorie->getTitre()."</a>";
+    }
+    else
+    {
+        $html.="><a href='".$_Categorie->getUrl()."'>".$_Categorie->getTitre()."</a>";
+    }
+	
 	$SousCategoriesN2 = NULL; // Catégories filles de la catégorie du tour de boucle du foreach
 	// Si la catégorie en cours à des filles
 	if($SousCategoriesN2 = $category->getSousCategories($_Categorie->getId()))
@@ -56,9 +67,20 @@ foreach ($SousCategories as $_Categorie)
 		foreach ($SousCategoriesN2 as $CategorieN2)
 		{
 			$html.="<li";
-			if($CategorieN2->getID() == $LinkedCategory->getID())
+			if( $CategorieN2->getID() == $LinkedCategory->getID() )
+            {
 				$html.=" class='active'";
-			$html.= "><a href='".$CategorieN2->getUrl()."'>".$CategorieN2->getTitre()."</a>";
+            }
+            if( $CategorieN2->isLivreOr() )  // Lien special si livre d or
+            {
+                $html .= "><a href='livreDOr.php?numPage=1'>".$CategorieN2->getTitre()."</a>";
+            }
+            else
+            {
+                $html.= "><a href='".$CategorieN2->getUrl()."'>".$CategorieN2->getTitre()."</a>";
+            }
+            
+			
             
             $SousCategoriesN3 = NULL; // Catégories filles de la catégorie du tour de boucle du foreach
             // Si la catégorie en cours à des filles (Niveau 3 _MAX)
