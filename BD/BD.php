@@ -17,14 +17,14 @@ class Bd
 // permet de valuer les 4 premiers attributs de la classe
 	public function __construct()
 	{
-		$this->host = 'localhost' ;
+		/*$this->host = 'localhost' ;
 		$this->database = 'polyjoule' ;
 		$this->user = 'polyjoule' ;
-		$this->password = 'azerty' ;
-		/*$this->host = 'sql.olympe-network.com' ;
-		$this->database = '138931_polyj' ;
-		$this->user = '138931_polyj' ;
-		$this->password = 'polyjoule' ;*/
+		$this->password = 'azerty' ;*/
+		$this->host = 'instance6964.db.xeround.com.:5214' ;
+		$this->database = 'polyjoule' ;
+		$this->user = 'polyjoule' ;
+		$this->password = 'admin' ;
 		
 	}
 
