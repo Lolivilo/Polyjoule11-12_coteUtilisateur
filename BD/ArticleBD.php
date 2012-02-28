@@ -76,7 +76,7 @@ class ArticleBD extends BD
 
 		return $Articles;
 	}
-    
+
         
 }
 
