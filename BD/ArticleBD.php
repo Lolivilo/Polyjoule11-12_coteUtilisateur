@@ -137,6 +137,35 @@ function getAllArticles()
     $bd->deconnexion();
     return $return;
 }
+    
+function getNbArticles()
+{
+    $bd = new Bd();
+    
+    try
+    {
+        $bd->connexion();
+        $connexion = $bd->getConnexion();
+        $result = $connexion->query("SELECT COUNT(*) FROM ARTICLE")->fetch();
+    }
+    catch(PDOException $e)
+    {
+        
+    }
+    
+    $bd->deconnexion();
+    return $result['COUNT(*)'];
+}
+    
+function determineNbArticlesIndex()
+{
+    $nbArticles = getNbArticles();
+    if( $nbArticles > 5)
+    {
+        return 5;
+    }
+    return $nbArticles;
+}
 
 
 
