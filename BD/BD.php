@@ -10,6 +10,7 @@ class Bd
 	private $host ;
 	private $database ;
 	private $user ;
+	private $port ;
 	private $password ;
 	private $connexion ;
 
@@ -21,8 +22,9 @@ class Bd
 		$this->database = 'polyjoule' ;
 		$this->user = 'polyjoule' ;
 		$this->password = 'azerty' ;*/
-		$this->host = 'instance6964.db.xeround.com.:5214' ;
+		$this->host = 'instance6964.db.xeround.com' ;
 		$this->database = 'polyjoule' ;
+		$this->port = '5214' ;
 		$this->user = 'polyjoule' ;
 		$this->password = 'admin' ;
 		
@@ -34,7 +36,7 @@ class Bd
 	{
 		try
 		{
-			$dns = "mysql:host=".$this->host.";dbname=".$this->database;
+			$dns = "mysql:host=".$this->host.";port=".$this->port.";dbname=".$this->database;
 			//echo $dns.'      '.$this->user.$this->password;
 			$this->connexion = new PDO( $dns , $this->user , $this->password ) ;
 			
