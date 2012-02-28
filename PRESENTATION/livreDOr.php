@@ -7,23 +7,19 @@
     ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-
-
-
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link rel="stylesheet" href="Style/livreDOr.css" type="text/css">
-<script language="javascript" src="JavaScript/checkLivreOr.js"></script>
-<title>
-<?php
-    echo( $parserLangue->getWord('LivreOr')->getTraduction() );
-    ?>
-</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" href="Style/index.css" type="text/css">
+    <script language="javascript" src="JavaScript/checkLivreOr.js"></script>
+    <title>
+        <?php
+            echo( $parserLangue->getWord('LivreOr')->getTraduction() );
+        ?>
+    </title>
 </head>
 
 <body>
-    <div id='page'>
     <?php 
         include_once('header.php');
     ?>
@@ -49,7 +45,7 @@
                         {
                             echo("<table id='signature_".$tabComment[$i+(10*($_GET['numPage']-1))]->getId()."' class='signature'>");
                             echo("<tr>");
-                            echo("<td>".$tabComment[$i+(10*($_GET['numPage']-1))]->getPosteur()."</td><td>".$tabComment[$i+(10*($_GET['numPage']-1))]->getDate()."</td>");
+                            echo("<td>".$tabComment[$i+(10*($_GET['numPage']-1))]->getPosteur()."</td><td>".$tabComment[$i+(10*($_GET['numPage']-1))]->getFormatedDate()."</td>");
                             echo("</tr>");
                             echo("<tr>");
                             echo("<td colspan='2'>".$tabComment[$i+(10*($_GET['numPage']-1))]->getMessage()."</td>");
@@ -97,7 +93,5 @@
     <?php
         include_once('footer.php');
     ?>
-</div>
-
 </body>
 </html>

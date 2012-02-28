@@ -76,4 +76,21 @@ class AlbumPhotoBD extends BD
     
 }
 
+function getNbAlbums()
+{
+    $bd = new Bd();
+    try
+    {
+        $bd->connexion();
+        $connexion = $bd->getConnexion();
+        $result = $connexion->query("SELECT COUNT(*) FROM ALBUM")->fetch();
+    }
+    catch(PDOException $e)
+    {
+        
+    }
+    
+    $bd->deconnexion();
+    return $result['COUNT(*)'];
+}
 ?>

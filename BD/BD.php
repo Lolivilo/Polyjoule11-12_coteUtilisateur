@@ -21,10 +21,6 @@ class Bd
 		$this->database = 'polyjoule' ;
 		$this->user = 'polyjoule' ;
 		$this->password = 'azerty' ;
-		/*$this->host = 'sql.olympe-network.com' ;
-		$this->database = '138931_polyj' ;
-		$this->user = '138931_polyj' ;
-		$this->password = 'polyjoule' ;*/
 		
 	}
 
@@ -106,9 +102,6 @@ class Bd
     	return $string;
     	
     }
-	
-	
-	
 }
-
+    
 ?>

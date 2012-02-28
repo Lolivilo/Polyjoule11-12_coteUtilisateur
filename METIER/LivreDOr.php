@@ -36,6 +36,11 @@ class LivreDOr
 	{
 		return $this->date;
 	}
+    
+    public function getFormatedDate()
+    {
+        return( date('d/m/y', strtotime($this->date)) );
+    }
 	
 	public function getMessage()
 	{
