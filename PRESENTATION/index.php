@@ -21,8 +21,9 @@
             <div id="newsAcceuil">
                 <h2>A la une</h2>
                 <?php
-                    $tab = getAllArticles();
-                    for($i = 0 ; $i < 2 ; $i++)
+                    $tab = getAllArticles();    // Tableau contenant tous les articles
+                    
+                    for($i = 0 ; $i < determineNbArticlesIndex() ; $i++)
                     {
                         echo("<div class='news'>");
                         echo("<h3>".$tab[$i]->getDate()." ".$tab[$i]->getTitreFR()."</h3>");
