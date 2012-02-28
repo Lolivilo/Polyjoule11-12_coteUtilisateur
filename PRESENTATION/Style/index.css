@@ -94,9 +94,12 @@ border:1px solid #636363;-webkit-border-top-left-radius:8px;-webkit-border-botto
 #photoPagination .suivant {background:url(image/flecheDroit.png) no-repeat;}
 #photoPagination .precedent {background:url(image/flecheGauche.png) no-repeat;}
 #albumPhoto {white-space:nowrap;overflow:hidden;position:relative;margin:0 auto 10px auto;text-align:center;width:80%;border:2px solid #CED4D4;border-top:0;background:#E8E7E5;-webkit-border-radius: 10px;-moz-border-radius: 10px;border-radius: 10px;}
-#albumPhoto #photos a {display:inline-block;width:100px;border-bottom:1px solid #E8E7E5;height:100px;} /* ICI DONNER LA HAUTEUR ET LARGEUR DES IMAGES */
+#albumPhoto ul{list-style-type:none;}
+#albumPhoto ul li{display:inline;}
+#albumPhoto #photos a {display:inline-block;width:100px;border-bottom:1px solid #E8E7E5;max-height:100px;} /* ICI DONNER LA HAUTEUR ET LARGEUR DES IMAGES */
 #albumPhoto #photos a:hover {border-bottom:1px solid black;}
 #albumPhoto #photos {margin:10px 60px 5px 60px;overflow:hidden;height:100px;} /* ICI DONNER LA HAUTEUR DES IMAGES */
+#albumPhoto #photos li img{height:90px;width:90px;}
 #albumPhoto > .precedent {position:absolute;top:29px;left:15px;width:23px;height:57px;background:url(image/albumFlecheGauche.png) no-repeat;display:block;}
 #albumPhoto > .suivant {position:absolute;top:29px;right:15px;width:23px;height:57px;background:url(image/albumFlecheDroit.png) no-repeat;display:block;}
 

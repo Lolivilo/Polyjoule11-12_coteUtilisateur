@@ -1,7 +1,8 @@
 jQuery().ready(function(){
 
-               $("#albumPhoto #photos > a").click(
+               $("#albumPhoto #photos li a").click(
                                            function () {
+                                                   
                                                   id__photo = $(this).children(".idImg").html();
                                                   id__album = $("#idAlb").html();
                                                   $("#loader").fadeIn();
@@ -24,5 +25,21 @@ jQuery().ready(function(){
                                                          },"json");
                                                   return false;
                                            }
-               );               
+               );
+               //Reference = $(".ul#photos li:first-child");
+               $("#albumPhoto .suivant").click(function()
+                                    {
+                                                alert('test');
+                                        $("#photos").animate({    marginLeft : - (Reference.width() * 2 * 3)}); 
+                                               return false;
+                                    }
+                                    
+                );
+               
+              /* Reference = $("#photos li:first-child");
+               $("#photos").wrap('<div class="carrousel-conteneur"></div>')
+               $(".carrousel-conteneur").css("width",  Reference.width()  ).css("height", Reference.height() );
+              */
+               
+               ///http://babylon-design.com/tutoriel-jquery-faire-un-carrousel/
 });

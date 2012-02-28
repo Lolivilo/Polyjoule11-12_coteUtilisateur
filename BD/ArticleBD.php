@@ -39,6 +39,44 @@ class ArticleBD extends BD
 		return $ArticleTab;
     }
     
+    function getArticlesWithSearchTerms($terms,$BorneInf,$BorneSup)
+	{
+		$Articles = array();
+		$ArrayTerms = array();
+		$bd = new Bd();
+    	$terms = $bd->security($terms);
+		$ArrayTerms = explode(" ",$terms);
+		$QueryString = "SELECT * FROM ARTICLE WHERE ";
+		foreach($ArrayTerms as $key => $term)
+		{
+			if($key != 0)
+				$QueryString .= " OR ";
+			$QueryString .= "titreFR_article like '%".$term."%' OR titreEN_article like '%".$term."%' OR contenuFR_article like '%".$term."%' OR contenuEN_article like '%".$term."%'";
+		}
+		
+		try
+		{
+			$bd->connexion();
+			$connexion = $bd->getConnexion();
+			$ResultQuery = $connexion->query($QueryString)->fetchAll();
+        
+			foreach($ResultQuery as $art)
+        	{
+            	$Article = new Article($art['id_article'], $art['id_rubrique'], $art['titreFR_article'], $art['titreEN_article'], $art['contenuFR_article'], $art['contenuEN_article'], $art['autorisation_com'], $art['date_article']);
+            	array_push($Articles, $Article);
+        	}
+		}
+		catch ( PDOException $e )
+		{
+			$ex = new AccesTableException() ;
+			$ex->Message() ;
+		}
+		$bd->deconnexion();
+
+
+		return $Articles;
+	}
+    
         
 }
 
@@ -99,5 +137,7 @@ function getAllArticles()
     $bd->deconnexion();
     return $return;
 }
+
+
 
 ?>

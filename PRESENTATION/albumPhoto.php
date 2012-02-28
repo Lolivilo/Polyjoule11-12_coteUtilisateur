@@ -67,14 +67,14 @@
 
                 <div id="albumPhoto">
                     <a href="index.html" class="precedent"></a>
-                    <div id="photos">
+                    <ul id="photos">
                         <?php
                             foreach($CurrentAlbum->getPhotos() as $photo)
                             {
-                                echo "<a href='index.html' ><img src='".$photo->getLien()."' /><span class='idImg' style='display:none'>".$photo->getId()."</span></a>";
+                                echo "<li><a href='index.html' ><img src='".$photo->getLien()."' /><span class='idImg' style='display:none'>".$photo->getId()."</span></a></li>";
                             }
                         ?>
-                    </div>
+                    </ul>
                     <a href="index.html" class="suivant"></a>
                 </div>	
 
