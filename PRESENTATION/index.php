@@ -22,11 +22,10 @@
                 <h2>A la une</h2>
                 <?php
                     $tab = getAllArticles();    // Tableau contenant tous les articles
-                    
                     for($i = 0 ; $i < determineNbArticlesIndex() ; $i++)
                     {
                         echo("<div class='news'>");
-                        echo("<h3>".$tab[$i]->getDate()." ".$tab[$i]->getTitreFR()."</h3>");
+                        echo("<h3>".$tab[$i]->getFormatedDate()." ".$tab[$i]->getTitreFR()."</h3>");
                         echo("<p>".$tab[$i]->getContenuFR()."</p>");
                         echo("<a href='article.php?article=".$tab[$i]->getId()."'>Lire la suite</a>");
                         echo("</div>");

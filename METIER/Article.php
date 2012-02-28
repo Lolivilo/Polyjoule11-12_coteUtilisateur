@@ -76,6 +76,11 @@ class Article
         return $this->date;
     }
     
+    public function getFormatedDate()
+    {
+        return( date('d/m/y', strtotime($this->date)) );
+    }
+    
 	public function setTitreEN($titreEN)
 	{
 		$this->titreEN = $titreEN;
