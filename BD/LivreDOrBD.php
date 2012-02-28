@@ -32,7 +32,30 @@ function getAllLivreDOr()
         
     return $tableauDeLivreDOr;
 }
+
+
+/** function getIdRubrique()
+  * Renvoie l'id du livre d or dans la base
+  * @return int : l id
+**/
+function getIdRubrique()
+{
+    $bd = new BD();
     
+    try
+    {
+        $bd->connexion();
+        $connexion = $bd->getConnexion();
+        $result = $connexion->query("SELECT id_rubrique FROM RUBRIQUE WHERE isLivreOr = 1")->fetch();
+    }
+    catch(PDOException $e)
+    {
+        
+    }
+    
+    $bd->deconnexion();
+    return $result['id_rubrique'];
+}
     
 
 /** function getAllAcceptedLivreDOr()
@@ -84,7 +107,7 @@ function getNbAcceptedLivreOr()
     
     return $resultQuery['COUNT(*)'];
 }
-    
+
     
 function getLastNumPageLivreOr()
 {

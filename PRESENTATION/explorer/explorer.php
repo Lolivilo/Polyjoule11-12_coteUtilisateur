@@ -11,7 +11,11 @@ $LinkedCategory = NULL;
 $SousCategories = NULL;
 
 $html = NULL;
-  
+
+if( isset($_GET['numPage']) )   // Si c est le livre d or, on recherche son identifiant de categorie dans la base
+{
+    $_GET['cat'] = getIdRubrique();
+}
 if(	(isset( $_GET['article'] ) ) )
 {
 	$LinkedCategoryID = $category->getAsssociateCategoryIDForArticle($_GET['article']);	
@@ -20,7 +24,7 @@ elseif( isset( $_GET['cat'] ) )
 {
 	$LinkedCategoryID = $_GET['cat'];
 }
-    
+
 $LinkedCategory = $category->getCategorieWithId($LinkedCategoryID);    
 
 $SuperParentCategory = $category->getSuperParentCategoryOfCategory($LinkedCategoryID);

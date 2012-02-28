@@ -6,13 +6,15 @@ class Categorie
 	private $titreFR;
 	private $titreEN;
 		
-	public function __construct( $idCat , $idCatParent , $titreFRCat , $titreENCat )
+	public function __construct( $idCat , $idCatParent , $titreFRCat , $titreENCat, $albumId, $personneId, $isLivreOr )
 	{
 		$this->id = $idCat ;
 		$this->idParent = $idCatParent ;
 		$this->titreFR = $titreFRCat ;
 		$this->titreEN = $titreENCat ;
-		
+        $this->albumId = $albumId;
+        $this->isLivreOr = $isLivreOr;
+        $this->personneId = $personneId;
 	}
 	
 	public function getId()
@@ -67,6 +69,50 @@ class Categorie
         $idCat = intval($this->id); // ATTENTION DANS LE FUTUR IL FAUDRA GERER SI LA CATEGORIE RENVOIE VERS UNE LISTE DARTICLE OU VERS UNE LISTE DE NEWS !!!!
         $url = "http://localhost:8888/listArticle.php?cat=".$idCat;
         return $url;
+    }
+    
+    public function getAlbumId()
+    {
+        return $this->albumId;
+    }
+    
+    public function getIsLivreOr()
+    {
+        return $this->isLivreOr;
+    }
+    
+    public function getPersonneId()
+    {
+        return $this->personneId;
+    }
+    
+    public function isLivreOr()
+    {
+        if($this->getIsLivreOr() == 1 )
+        {
+            return true ;
+        }
+        return false;
+    }
+    
+    
+    public function isAlbum()
+    {
+        if( $this->getAlbumId() != NULL )
+        {
+            return true;
+        }
+        return false;
+    }
+    
+    
+    public function isPersonne()
+    {
+        if( $this->getPersonneId() != NULL )
+        {
+            return true;
+        }
+        return false;
     }
 	
 }

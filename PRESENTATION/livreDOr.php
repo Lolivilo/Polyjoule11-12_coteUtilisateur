@@ -29,6 +29,9 @@
     ?>
     <div id='global'>
         <div id='left'>
+            <?php
+                include_once('explorer/explorer.php');
+            ?>
         </div>
         <div id='right'>
             <div id='content'>
