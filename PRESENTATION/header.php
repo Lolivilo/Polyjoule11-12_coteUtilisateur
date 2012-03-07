@@ -3,6 +3,8 @@
 	require_once('MENU/Menu.php');
     require_once('../BD/LangueParser.php');
 	include_once('LANGUE/sessionLangue.php');
+    require_once('../BD/AlbumPhotoBd.php');
+    
     $parserLangue = new LangueParser();
     ?>
 <div id="header">
