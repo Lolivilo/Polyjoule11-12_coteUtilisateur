@@ -11,7 +11,7 @@ class AlbumPhotoBD extends BD
     }
 
     
-    
+    /*
     function getMostRecentAlbum()
     {
         try
@@ -29,7 +29,7 @@ class AlbumPhotoBD extends BD
         }
         $this->deconnexion() ;
         return $recentAlbm;
-    }
+    }*/
 
     function getAlbumById($id)
     {
@@ -92,5 +92,22 @@ function getNbAlbums()
     
     $bd->deconnexion();
     return $result['COUNT(*)'];
+}
+    
+function getMostRecentAlbum()
+{
+    $bd = new BD();
+    try
+    {
+        $bd->connexion();
+        $connexion = $bd->getConnexion();
+        $result = $connexion->query("SELECT id_album FROM ALBUM ORDER BY date_album ASC LIMIT 1")->fetch();
+    }
+    catch(PDOException $e)
+    {
+        // A REMPLIR
+    }
+    $bd->deconnexion();
+    return $result['id_album'];
 }
 ?>

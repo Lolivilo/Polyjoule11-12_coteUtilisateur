@@ -1,4 +1,4 @@
-<?php
+a<?php
 include_once 'BD.php';
 include_once '../METIER/Partenaire.php';
 
