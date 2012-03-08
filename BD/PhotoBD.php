@@ -21,7 +21,14 @@
                 $connexion = parent::getConnexion();
                 $resultPhoto = $connexion->query("SELECT * FROM PHOTO WHERE id_photo=$id_photo AND id_album=$id_album")->fetch();
                 if($resultPhoto)
-                    $Photo = new Photo($resultPhoto['id_photo'], $resultPhoto['id_album'], $resultPhoto['titreFR_photo'], $resultPhoto['titreEN_photo'], $resultPhoto['lien_photo'], $resultPhoto['date_photo']);
+                    $Photo = new Photo($resultPhoto['id_photo'],
+                                       $resultPhoto['id_album'],
+                                       $resultPhoto['titreFR_photo'],
+                                       $resultPhoto['titreEN_photo'],
+                                       $resultPhoto['lien_photo'],
+                                       $resultPhoto['date_photo'],
+                                       $resultQuery['descFR_photo'],
+                                       $resultQuery['descEN_photo']);
                 $this->deconnexion();
                 return $Photo;
             }

@@ -37,26 +37,24 @@
     <div id="corps">
     <?php
         echo("<h2>".$parserLangue->getWord('AlbPhoto')->getTraduction()."</h2>");
+        echo("<h3>".$currentAlbum->getNom()."</3>");
+        $photoArray = $currentAlbum->getPhotos();   // Tableau de photos de l album courant
+        echo("<p>".$photoArray[0]->getTitre()."</p>");            // On affiche la premiere photo au depart
     ?>
-    <h3 <?php echo "id='alb_".$currentAlbum->getId()."'"; ?>>
-    <?php
-        echo $currentAlbum->getNom();
-                    ?>
-                </h3>
-                <h4>
-                    <?php
-                        $photoArray = $currentAlbum->getPhotos();
-                        $firstPhoto = $photoArray[0];
-                        echo $firstPhoto->getTitre();
-                    ?>
-                </h4>
-                <div id="photo">
-                    <div id="loader"><img src="http://localhost:8888/Style/image/loader.gif" /></div>
-                    <img id="mainPhoto"src=<?php echo "'".$firstPhoto->getLien()."'"; ?>  />
-                    <p>Prévoir le commentaire dans la base de données</p>
+        <div id="photo">
+            <div id="loader">
+                <?php
+                    echo("<img src='".$photoArray[0]->getLien()."' alt='".$photoArray[0]->getTitre()."' />");
+                ?>
+            </div>
+            <p>
+                <?php
+                    echo($photoArray[0]->getDesc());
+                ?>
+            </p>
                 </div>
                 <div id="photoPagination">
-                    <?php echo "<span id='idAlb' style='display:none'>".$firstPhoto->getIdAlbum()."</span>"; ?>
+                    <?php echo "<span id='idAlb' style='display:none'>".$photoArray[0]->getIdAlbum()."</span>"; ?>
                     <a href="index.html" class="precedent"></a>
                     <span>2 / 42</span>
                     <a href="index.html" class="suivant"></a>

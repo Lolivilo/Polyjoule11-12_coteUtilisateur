@@ -7,8 +7,10 @@
         private $titreEN;
         private $lien;
         private $date;
+        private $descFr;
+        private $descEn;
         
-        public function __construct($idPhoto, $idAlbum, $titreFR, $titreEN, $lien, $date   )
+        public function __construct($idPhoto, $idAlbum, $titreFR, $titreEN, $lien, $date, $descFr, $descEn   )
         {
             $this->id = $idPhoto;
             $this->id_album = $idAlbum;
@@ -16,6 +18,8 @@
             $this->titreEN = $titreEN;
             $this->lien = $lien;
             $this->date = $date;
+            $this->descFr = $descFr;
+            $this->descEn = $descEn;
             
         }
         
@@ -63,6 +67,22 @@
         public function getDate()
         {
             return $this->date ;
+        }
+        
+        public function getDesc()
+        {
+            if( (isset($_SESSION['langue'])) && ($_SESSION['langue'] == 'FR') )
+            {
+               return $this->descFr;
+            }
+            else if( (isset($_SESSION['langue'])) && ($_SESSION['langue'] == 'EN') )
+            {
+                return $this->descEn;
+            }
+            else
+            {
+                    // LANCER UNE ERREUR
+            }
         }
 
         

@@ -62,7 +62,14 @@ class AlbumPhotoBD extends BD
             
             foreach($res as $resultPhoto)
             {
-                $newPhoto = new Photo($resultPhoto['id_photo'], $resultPhoto['id_album'], $resultPhoto['titreFR_photo'], $resultPhoto['titreEN_photo'], $resultPhoto['lien_photo'], $resultPhoto['date_photo']);
+                $newPhoto = new Photo($resultPhoto['id_photo'],
+                                      $resultPhoto['id_album'],
+                                      $resultPhoto['titreFR_photo'],
+                                      $resultPhoto['titreEN_photo'],
+                                      $resultPhoto['lien_photo'],
+                                      $resultPhoto['date_photo'],
+                                      $resultPhoto['descFR_photo'],
+                                      $resultPhoto['descEN_photo']);
                 $Album->addPhoto($newPhoto);
             }
         }
