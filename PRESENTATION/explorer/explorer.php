@@ -50,7 +50,11 @@ foreach ($SousCategories as $_Categorie)
 		$html.=" class='active'";
     }
     
-    if( $_Categorie->isLivreOr() )  // Lien special si livre d or
+    if( $_Categorie->isAlbum() )    // Zone albums
+    {
+        $html .= "><a href='albumPhoto.php?idAlbum=".getMostRecentAlbum()."'>".$_Categorie->getTitre()."</a>";
+    }
+    else if( $_Categorie->isLivreOr() )  // Lien special si livre d or
     {
         $html .= "><a href='livreDOr.php?numPage=1'>".$_Categorie->getTitre()."</a>";
     }

@@ -101,7 +101,7 @@ function getMostRecentAlbum()
     {
         $bd->connexion();
         $connexion = $bd->getConnexion();
-        $result = $connexion->query("SELECT id_album FROM ALBUM ORDER BY date_album ASC LIMIT 1")->fetch();
+        $result = $connexion->query("SELECT id_album FROM ALBUM ORDER BY date_album DESC LIMIT 1")->fetch();
     }
     catch(PDOException $e)
     {
@@ -109,5 +109,31 @@ function getMostRecentAlbum()
     }
     $bd->deconnexion();
     return $result['id_album'];
+}
+    
+function getAllAlbums()
+{
+    $bd = new Bd();
+    try
+    {
+        $bd->connexion();
+        $connexion = $bd->getConnexion();
+        $result = $connexion->query("SELECT * FROM ALBUM ORDER BY date_album DESC")->fetchAll();
+        $ret = array();
+        foreach($result as $row)
+        {
+            $album = new albumPhoto($row['id_album'],
+                                    $row['nom_album'], 
+                                    $row['date_album']);
+            array_push($ret, $album);
+        }
+    }
+    catch(PDOException $e)
+    {
+        // A REMPLIR
+    }
+    $bd->deconnexion();
+    
+    return $ret;
 }
 ?>
