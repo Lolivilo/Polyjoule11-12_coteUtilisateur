@@ -227,5 +227,60 @@ class CategorieBD extends BD
 }
     
 
+function getSousCategories ($idMere)
+{
+    $bd = new BD();
+    try
+    {
+        $connexion = $bd->getConnexion();
+        // si on cherche ˆ obtenir les sous catŽgories de la catŽgorie donnŽe en paramtre
+        $result = $connexion->query( "SELECT * FROM RUBRIQUE WHERE id_mere=$idMere" )->fetchAll();
+        $tabCategories = array();
+        foreach($result as $row)
+        {
+            $cat = new Categorie($row['id_rubrique'],
+                                 $row['id_mere'],
+                                 $row['titreFR_rubrique'],
+                                 $row['titreEN_rubrique'],
+                                 $row['albumId'],
+                                 $row['personneId'],
+                                 $row['isLivreOr']);
+            array_push($tabCategories, $cat);
+            
+        }
+    }
+    catch(PDOException $e)
+    {
+        // A REMPLIR
+    }
+    $bd->deconnexion() ;
+    
+    return $tabCategories;
+}
+
+function getCategorieById( $id )
+{
+    $bd = new Bd();
+    
+    try
+    {
+        $bd->connexion();
+        $conexion = $bd->getConnexion();
+        $result = $connexion->query("SELECT * FROM RUBRIQUE WHERE id_rubrique = $id")->fetch();
+        $ret = new Categorie($result['id_rubrique'],
+                             $result['id_mere'],
+                             $result['titreFR_rubrique'],
+                             $result['titreEN_rubrique'],
+                             $result['albumId'],
+                             $result['personneId'],
+                             $result['isLivreOr']);
+    }
+    catch(PDOException $e)
+    {
+        // A REMPLIR
+    }
+    
+    return $ret;
+}
 
 ?>

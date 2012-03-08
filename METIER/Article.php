@@ -127,8 +127,7 @@ class Article
     public function getUrl()
     {
         $idArticle = intval($this->id);
-        $url = "http://localhost:8888/article.php?article=".$idArticle;
-        return $url;
+        return "http://".$_SERVER['HTTP_HOST']."/PRESENTATION/article.php?article=".$idArticle;
     }
 
 }

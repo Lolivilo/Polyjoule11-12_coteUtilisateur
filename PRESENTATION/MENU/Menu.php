@@ -16,10 +16,6 @@
                 }
                 $html .= "</li>";
             }
-            else if($CatParent->isLivreOr() ) // Redirection vers le template Livre d or
-            {
-                $html.="<li><a href='livreDOr.php?numPage=1'>".$SousCat->getTitre()."</a></li>";
-            }
             else
             {
                 $HasChildren = FALSE;
@@ -33,13 +29,13 @@
                 }
                 foreach ($ChildrenCategories as $SousCat)// parcours des catgories de second niveau
                 {
-                    //if( $SousCat->isLivreOr() ) // Redirection vers le template Livre d or
-                    //{
-                    //    $html.="<li><a href='livreDOr.php?numPage=1'>".$SousCat->getTitre()."</a></li>";
-                    //}
-                    /*else*/ if( $SousCat->isPersonne() )   // Redirection vers le template Personne
+                    if( $SousCat->isPersonne() )   // Redirection vers le template Personne
                     {
                         $html.="<li><a href='personne.php'>".$SousCat->getTitre()."</a></li>";
+                    }
+                    else if($SousCat->isLivreOr() ) // Redirection vers le template Livre d or
+                    {
+                        $html.="<li><a href='livreDOr.php?numPage=1'>".$SousCat->getTitre()."</a></li>";
                     }
                     else
                     {

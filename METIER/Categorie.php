@@ -5,7 +5,7 @@ class Categorie
 	private $idParent;
 	private $titreFR;
 	private $titreEN;
-		
+    
 	public function __construct( $idCat , $idCatParent , $titreFRCat , $titreENCat, $albumId, $personneId, $isLivreOr )
 	{
 		$this->id = $idCat ;
@@ -67,8 +67,7 @@ class Categorie
     public function getUrl()
     {
         $idCat = intval($this->id); // ATTENTION DANS LE FUTUR IL FAUDRA GERER SI LA CATEGORIE RENVOIE VERS UNE LISTE DARTICLE OU VERS UNE LISTE DE NEWS !!!!
-        $url = "http://localhost:8888/listArticle.php?cat=".$idCat;
-        return $url;
+        return( "http://".$_SERVER['HTTP_HOST']."/PRESENTATION/listArticle.php?cat=".$idCat );
     }
     
     public function getAlbumId()
