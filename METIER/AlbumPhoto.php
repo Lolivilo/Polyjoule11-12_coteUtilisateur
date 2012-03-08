@@ -39,11 +39,11 @@ class AlbumPhoto
     
     public function getDesc()
     {
-        if( (isset($_SESSION['langue')) && ($_SESSION['langue'] == 'FR') )
+        if( (isset($_SESSION['langue'])) && ($_SESSION['langue'] == 'FR') )
         {
             return $this->descFr;
         }
-        else if( (isset($_SESSION['langue')) && ($_SESSION['langue'] == 'FR') )
+        else if( (isset($_SESSION['langue'])) && ($_SESSION['langue'] == 'FR') )
         {
             return $this->descEn;
         }

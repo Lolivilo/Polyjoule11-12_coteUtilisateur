@@ -52,29 +52,31 @@
                     echo($photoArray[0]->getDesc());
                 ?>
             </p>
-                </div>
-                <div id="photoPagination">
-                    <?php echo "<span id='idAlb' style='display:none'>".$photoArray[0]->getIdAlbum()."</span>"; ?>
-                    <a href="index.html" class="precedent"></a>
-                    <span>2 / 42</span>
-                    <a href="index.html" class="suivant"></a>
-                </div>
+        </div>
+        <div id="photoPagination">
+            <?php echo "<span id='idAlb' style='display:none'>".$photoArray[0]->getIdAlbum()."</span>"; ?>
+            <a href="index.html" class="precedent"></a>
+            <span>2 / 42</span>
+            <a href="index.html" class="suivant"></a>
+        </div>
 
-                <div id="albumPhoto">
-                    <a href="index.html" class="precedent"></a>
-                    <ul id="photos">
-                        <?php
-                            foreach($currentAlbum->getPhotos() as $photo)
-                            {
-                                echo "<li><a href='index.html' ><img src='".$photo->getLien()."' /><span class='idImg' style='display:none'>".$photo->getId()."</span></a></li>";
-                            }
-                        ?>
-                    </ul>
-                    <a href="index.html" class="suivant"></a>
-                </div>	
+        <div id="albumPhoto">
+            <a href="index.html" class="precedent"></a>
+            <ul id="photos">
+                <?php
+                    foreach($currentAlbum->getPhotos() as $photo)
+                    {
+                        echo "<li><a href='index.html' ><img src='".$photo->getLien()."' /><span class='idImg' style='display:none'>".$photo->getId()."</span></a></li>";
+                    }
+                ?>
+            </ul>
+            <a href="index.html" class="suivant"></a>
+        </div>	
 
-                <div id="footerCorps"></div>
-            </div>
+        <div id="footerCorps">
+            <p><?php echo($photoArray[0]->getDesc());?></p>
+        </div>
+    </div>
             <?php
                 include_once('footer.php');
             ?>

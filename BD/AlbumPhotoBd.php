@@ -39,7 +39,11 @@ class AlbumPhotoBD extends BD
             $this->connexion() ;                
             $connexion = parent::getConnexion();
             $resultQuery = $connexion->query("SELECT * FROM ALBUM WHERE id_album = $id")->fetch();
-            $album = new AlbumPhoto($resultQuery['id_album'], $resultQuery['nom_album'], $resultQuery['date_album']);
+            $album = new AlbumPhoto($resultQuery['id_album'],
+                                    $resultQuery['nom_album'],
+                                    $resultQuery['date_album'],
+                                    $resultQuery['descFR_album'],
+                                    $resultQuery['descEN_album']);
             $this->addPhotosToAlbum($album);
         }
         catch ( PDOException $e )
@@ -131,7 +135,9 @@ function getAllAlbums()
         {
             $album = new albumPhoto($row['id_album'],
                                     $row['nom_album'], 
-                                    $row['date_album']);
+                                    $row['date_album'],
+                                    $row['descFR_album'],
+                                    $row['descEN_album']);
             array_push($ret, $album);
         }
     }
