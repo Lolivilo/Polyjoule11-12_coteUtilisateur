@@ -37,48 +37,58 @@
     <div id="corps">
     <?php
         echo("<h2>".$parserLangue->getWord('AlbPhoto')->getTraduction()."</h2>");
+        $photoArray = $currentAlbum->getPhotos();   // Tableau de photos de l album courant        
         echo("<h3>".$currentAlbum->getNom()."</3>");
-        $photoArray = $currentAlbum->getPhotos();   // Tableau de photos de l album courant
-        echo("<p>".$photoArray[0]->getTitre()."</p>");            // On affiche la premiere photo au depart
+        if($photoArray != NULL)
+        {
+        	$firstPhoto = array_pop($photoArray);
+        	echo("<p>".$firstPhoto->getTitre()."</p>");            // On affiche la premiere photo au depart
     ?>
-        <div id="photo">
-            <div id="loader">
-                <?php
-                    echo("<img src='".$photoArray[0]->getLien()."' alt='".$photoArray[0]->getTitre()."' />");
-                ?>
-            </div>
-            <p>
-                <?php
-                    echo($photoArray[0]->getDesc());
-                ?>
-            </p>
-        </div>
-        <div id="photoPagination">
-            <?php echo "<span id='idAlb' style='display:none'>".$photoArray[0]->getIdAlbum()."</span>"; ?>
-            <a href="index.html" class="precedent"></a>
-            <span>2 / 42</span>
-            <a href="index.html" class="suivant"></a>
-        </div>
+        	<div id="photo">
+            	<div id="loader">
+                	<?php
+                    	echo("<img src='".$firstPhoto->getLien()."' alt='".$firstPhoto->getTitre()."' />");
+                	?>
+            	</div>
+            	<p>
+                	<?php
+                    	echo($firstPhoto->getDesc());
+                	?>
+            	</p>
+        	</div>
+        	<div id="photoPagination">
+            	<?php echo "<span id='idAlb' style='display:none'>".$firstPhoto->getIdAlbum()."</span>"; ?>
+            	<a href="index.html" class="precedent"></a>
+            	<span>2 / 42</span>
+            	<a href="index.html" class="suivant"></a>
+        	</div>
 
-        <div id="albumPhoto">
-            <a href="index.html" class="precedent"></a>
-            <ul id="photos">
-                <?php
-                    foreach($currentAlbum->getPhotos() as $photo)
-                    {
-                        echo "<li><a href='index.html' ><img src='".$photo->getLien()."' /><span class='idImg' style='display:none'>".$photo->getId()."</span></a></li>";
-                    }
-                ?>
-            </ul>
-            <a href="index.html" class="suivant"></a>
-        </div>	
+        	<div id="albumPhoto">
+            	<a href="index.html" class="precedent"></a>
+            	<ul id="photos">
+                	<?php
+                    	foreach($currentAlbum->getPhotos() as $photo)
+                    	{
+                        	echo "<li><a href='index.html' ><img src='".$photo->getLien()."' /><span class='idImg' style='display:none'>".$photo->getId()."</span></a></li>";
+                    	}
+                	?>
+            	</ul>
+            	<a href="index.html" class="suivant"></a>
+        	</div>	
 
-        <div id="footerCorps">
-            <p><?php echo($photoArray[0]->getDesc());?></p>
-        </div>
+        	<div id="footerCorps">
+            	<p><?php echo($firstPhoto->getDesc());?></p>
+        	</div>
+       <?php
+       	}
+       	else
+       	{
+       		echo "<p>Il n'y a pas encore de photo dans cet album</p>";
+       	}
+       ?>
     </div>
             <?php
                 include_once('footer.php');
             ?>
-        </body>
-    </html>
+  </body>
+</html>
