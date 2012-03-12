@@ -25,7 +25,7 @@ class ArticleBD extends BD
 			foreach($ResultQuery as $Art)
 			{// Parcours des articles rŽcupŽrŽs dans la base
 				//Ici on instancie un objet article ˆ l'aide des infos recupŽrŽes dans la base
-				$Article = new Article($Art['id_article'], $Art['id_rubrique'], $Art['titreFR_article'], $Art['titreEN_article'], $Art['contenuFR_article'], $Art['contenuEN_article'], $Art['autorisation_com'], $Art['date_article']);
+				$Article = new Article($Art['id_article'], $Art['id_rubrique'], $Art['titreFR_article'], $Art['titreEN_article'], $Art['contenuFR_article'], $Art['contenuEN_article'], $Art['autorisation_com'], $Art['date_article'], $Art['url_photo_principale'], $Art['visible_home']);
 				//On ajoute cet article dans le tableau des articles
 				array_push($ArticleTab, $Article);
 			}				
@@ -62,7 +62,7 @@ class ArticleBD extends BD
         
 			foreach($ResultQuery as $art)
         	{
-            	$Article = new Article($art['id_article'], $art['id_rubrique'], $art['titreFR_article'], $art['titreEN_article'], $art['contenuFR_article'], $art['contenuEN_article'], $art['autorisation_com'], $art['date_article']);
+            	$Article = new Article($art['id_article'], $art['id_rubrique'], $art['titreFR_article'], $art['titreEN_article'], $art['contenuFR_article'], $art['contenuEN_article'], $art['autorisation_com'], $art['date_article'], $art['url_photo_principale'], $art['visible_home']);
             	array_push($Articles, $Article);
         	}
 		}
@@ -76,7 +76,30 @@ class ArticleBD extends BD
 
 		return $Articles;
 	}
-
+	
+	function getHomeArticles()
+	{
+    	$return = array();
+    	try
+    	{
+        	$this->connexion();
+			$connexion = $this->getConnexion();
+        	$result = $connexion->query("SELECT * FROM ARTICLE WHERE visible_home = 1 LIMIT 3")->fetchAll();
+        
+        	foreach($result as $row)
+        	{
+            	$article = new Article($row['id_article'], $row['id_rubrique'], $row['titreFR_article'], $row['titreEN_article'], $row['contenuFR_article'], $row['contenuEN_article'], $row['autorisation_com'], $row['date_article'], $row['url_photo_principale'], $row['visible_home']);
+            	array_push($return, $article);
+        	}
+    	}
+    	catch(PDOException $e)
+    	{
+        
+    	}
+    
+    	$this->deconnexion();
+    	return $return;
+}
         
 }
 
@@ -96,7 +119,7 @@ function getArticleById ($idArt)
 		if($ResultQuery != NULL) // Pour eviter une erreur si l'id categorie passŽ est null
         {
             //Ici on instancie un objet categorie ˆ l'aide des infos recupŽrŽes dans la base
-            $Article = new Article($ResultQuery['id_article'], $ResultQuery['id_rubrique'], $ResultQuery['titreFR_article'], $ResultQuery['titreEN_article'], $ResultQuery['contenuFR_article'], $ResultQuery['contenuEN_article'], $ResultQuery['autorisation_com'], $ResultQuery['date_article']);
+            $Article = new Article($ResultQuery['id_article'], $ResultQuery['id_rubrique'], $ResultQuery['titreFR_article'], $ResultQuery['titreEN_article'], $ResultQuery['contenuFR_article'], $ResultQuery['contenuEN_article'], $ResultQuery['autorisation_com'], $ResultQuery['date_article'], $ResultQuery['url_photo_principale'], $ResultQuery['visible_home']);
         }
 	}
 	catch ( PDOException $e )
@@ -125,7 +148,7 @@ function getAllArticles()
         
         foreach($result as $row)
         {
-            $article = new Article($row['id_article'], $row['id_rubrique'], $row['titreFR_article'], $row['titreEN_article'], $row['contenuFR_article'], $row['contenuEN_article'], $row['autorisation_com'], $row['date_article']);
+            $article = new Article($row['id_article'], $row['id_rubrique'], $row['titreFR_article'], $row['titreEN_article'], $row['contenuFR_article'], $row['contenuEN_article'], $row['autorisation_com'], $row['date_article'], $row['url_photo_principale'], $row['visible_home']);
             array_push($return, $article);
         }
     }
@@ -166,7 +189,5 @@ function determineNbArticlesIndex()
     }
     return $nbArticles;
 }
-
-
 
 ?>

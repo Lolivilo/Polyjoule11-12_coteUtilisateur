@@ -41,7 +41,17 @@
 
                 foreach($TabArticles as $art)
                 {
-                    echo "<div class='listeArticle'><img src='Style/image/photo.png' /><div class='description'><h3>".$art->getTitre()."</h3><div class='italic'>".$art->getDate()."</div><p>".$art->getContenu()."</p></div><a href='".$art->getUrl()."'>Lire la suite ...</a><div class='clear'></div></div>";
+                    echo "<div class='listeArticle'>";
+                	$BasePhoto = $art->getBasePhoto();
+                		if($BasePhoto != NULL)
+                		{
+                			echo "<img style=\"width:100px\" src=\"".$BasePhoto."\"/>";
+                		}
+                		else
+                		{
+                			echo "<img style=\"width:100px\" src=\"Style/image/photo.png\" />";
+                		}
+                	echo "<div class='description'><h3>".$art->getTitre()."</h3><div class='italic'>".$art->getDate()."</div><p>".$art->getApercu()."</p></div><a href='".$art->getUrl()."'>Lire la suite ...</a><div class='clear'></div></div>";
                 }
                 //Si il n'y a pas d'article dans la catégorie
                 if(empty($TabArticles))

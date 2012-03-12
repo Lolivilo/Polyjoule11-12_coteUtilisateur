@@ -52,9 +52,14 @@
         </div>
     
         <ul id="menuAccueil">
-            <li><a href=""><img src="Style/image/photo2.png"><span>efzegzegez</span></a></li>
-            <li><a href=""><img src="Style/image/photo2.png"><span>efz ez eg zeg zeg</span></a></li>
-            <li><a href=""><img src="Style/image/photo2.png"><span>efz eefb fbe berbe berrbz eg zeg ze ezgzegzge zeg</span></a></li>				
+        	<?php
+        		$ArticleBD = new ArticleBD();
+        		$homeArticles = $ArticleBD->getHomeArticles();
+        		foreach($homeArticles as $art)
+        		{
+            		echo "<li><a href=\"".$art->getUrl()."\"><img src=\"".$art->getBasePhoto()."\"><span>".$art->getTitre()."</span></a></li>";	
+            	}
+            ?>			
         </ul>
         <?php
             include('footer.php');

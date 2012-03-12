@@ -38,6 +38,7 @@
                         echo $articleCourant->getTitre(); 
                     ?>
                 </h2> <!-- Titre page -->
+                <?php /* POUR LES PERSONNES */ /*
                 <div class="articleHeader"> <!-- header d'article  -->
                     <img src="image/photo.png" />
                     <div class="presentation italic">
@@ -48,8 +49,20 @@
                     <div class="clear"></div>
                 </div>
                 <h3>????</h3> <!-- Sous titre page -->
+                */ ?>
                 <div class="article">
-                    <img src="Style/image/photo.png" />
+                	<?php
+                	$BasePhoto = $articleCourant->getBasePhoto();
+                		if($BasePhoto != NULL)
+                		{
+                			echo "<img src=\"".$BasePhoto."\"/>";
+                		}
+                		else
+                		{
+                			echo "<img src=\"Style/image/photo.png\" />";
+                		}
+                	?>
+                    
                     <?php
                        echo $articleCourant->getContenu();
                     ?>

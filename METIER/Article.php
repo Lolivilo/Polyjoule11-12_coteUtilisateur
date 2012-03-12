@@ -8,6 +8,8 @@ class Article
 	private $contenuFR;
 	private $contenuEN;
 	private $autorisationCommentaire;
+	private $photo_principale;
+	private $visible_home;
 	
 	/** Constructeur de Article
 	 * 
@@ -19,7 +21,7 @@ class Article
 	 * @param unknown_type $contenuENArticle
 	 * @param unknown_type $autorisationCommentaire
 	 */
-	public function __construct( $idArticle , $idRubrique, $titreFRArticle , $titreENArticle , $contenuFRArticle, $contenuENArticle, $autorisationCommentaire, $date  )
+	public function __construct( $idArticle , $idRubrique, $titreFRArticle , $titreENArticle , $contenuFRArticle, $contenuENArticle, $autorisationCommentaire, $date, $photo_principale, $visible_home  )
 	{
 		$this->id = $idArticle;
 		$this->idRubrique - $idRubrique;
@@ -29,6 +31,8 @@ class Article
 		$this->contenuEN = $contenuENArticle;
 		$this->autorisationCommentaire = $autorisationCommentaire;
         $this->date = $date;
+        $this->photo_principale = $photo_principale;
+        $this->visible_home = $visible_home;
 	}
 	
 	public function getId()
@@ -97,6 +101,32 @@ class Article
         }
     }
     
+	
+    public function getApercu()
+    {
+    	$text = "";
+    	$nb_max_mots = 20;
+        if($_SESSION['langue'] == 'EN')
+        {
+            $text = $this->contenuEN;
+        }
+        else
+        {
+            $text = $this->contenuFR;
+        }
+        
+        $apercu = "";
+		$t_chaineNouvelle = explode(" ",$text);
+		foreach($t_chaineNouvelle as $cle => $mot)
+		{
+			if($cle < $nb_max_mots)
+			{
+				$apercu .= $mot." ";
+			}
+		}
+		return $apercu."...";
+    }
+    
 	public function getContenuFR()
 	{
 		return $this->contenuFR;
@@ -129,6 +159,18 @@ class Article
         $idArticle = intval($this->id);
         return "http://".$_SERVER['HTTP_HOST']."/PRESENTATION/article.php?article=".$idArticle;
     }
+    
+    public function getBasePhoto()
+    {
+    	return $this->photo_principale;
+    }
+    
+    public function getVisibleHome()
+    {
+    	return $this->visible_home;
+    }
+    
+    
 
 }
 ?>
