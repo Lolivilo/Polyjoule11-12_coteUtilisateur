@@ -20,4 +20,12 @@
         <fr>Album photo</fr>
         <en>Photo album</en>
     </word>
+    <word txt="personnages">
+        <fr>Personnages clés</fr>
+        <en>Figures</fr>
+    </word>
+    <word txt="quiEstIl">
+        <fr> Qui est-il ?</fr>
+        <en>Who is he ?</en>
+    </word>
 </lang>

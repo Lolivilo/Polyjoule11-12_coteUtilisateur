@@ -19,12 +19,32 @@
 <body>
     <?php 
         include('header.php');
+        include('explorer/explorer.php');
     ?>
-    <div id='global'>
+    <div id='corps'>
+        <h2>
+            <?php
+                echo("Personnages clés");   // A modifier par le parser
+                //echo( $parserLangue->getWord("personnages")->getTraduction() );
+            ?>
+        </h2>
         <?php
             for($i = 0 ; $i < getNbParticipants() ; $i++)
             {
-                echo("<div id='participant_".$tabParticipants[$i]->getId()."'>");
+                echo("<div>");
+                echo("<div class='articleHeader' id='participant_".$tabParticipants[$i]->getId()."'>");
+                echo("<img src='".$tabParticipants[$i]->getPhoto()."' alt='Photo de ".$tabParticipants[$i]->getNom()."'/>");
+                echo("<div class='presentation italic'>");
+                echo("<h3>".$tabParticipants[$i]->getPrenom()." ".$tabParticipants[$i]->getNom()."</h3>");
+                echo("<div>".$tabParticipants[$i]->getRole()."</div>");
+                echo("</div>");
+                echo("<div class='description'>Manque dans la base !<br/></div>");
+                echo("<div class='clear'></div>");
+                echo("</div>");
+                echo("<h4>Qui est-il ?</h4>");
+                echo($tabParticipants[$i]->getBioFr());
+                echo("</div>");
+                /*
                 echo("<table id='".$tabParticipants[$i]->getId()."'>");
                 echo("<tr><td><td>".$tabParticipants[$i]->getNom()." ".$tabParticipants[$i]->getPrenom()."</td><td></td></tr>");
                 echo("<tr><td></td><td></td><td>A ajouter dans la base</td></tr>");
@@ -33,6 +53,7 @@
                 echo("<h5>Qui est-il ?</h5>");
                 echo($tabParticipants[$i]->getBioFr());
                 echo("</div>");
+                 */
             }
         ?>
     </div>
