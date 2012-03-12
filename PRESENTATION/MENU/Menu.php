@@ -9,12 +9,14 @@
             {
                 $html.= "<li><a href='albumPhoto.php?idAlbum=".getMostRecentAlbum()."'>".$CatParent->getTitre()."</a>";
                 $tabAlbums = getAllAlbums();    // Si on est sur les albums, on affiche non pas des sous-categories
-                                                // mais des albums
+                
+                                            // mais des albums
+                $html.= "<ul>";
                 foreach($tabAlbums as $album)
                 {
-                    $html .= "<ul><a href='albumPhoto.php?idAlbum=".$album->getId()."'>".$album->getNom()."</a></ul>";
+                    $html .= "<li><a href='albumPhoto.php?idAlbum=".$album->getId()."'>".$album->getNom()."</a></li>";
                 }
-                $html .= "</li>";
+                $html .= "</ul></li>";
             }
             else
             {
