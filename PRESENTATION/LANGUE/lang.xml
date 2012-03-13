@@ -10,11 +10,20 @@
         <en>Photo album</en>
     </word>
     <word txt="personnages">
+<<<<<<< HEAD
         <fr>Personnages cles</fr>
         <en>Figures</fr>
     </word>
     <word txt="quiEstIl">
         <fr> Qui est-il</fr>
         <en>Who is he</en>
+=======
+        <fr>Personnages clés</fr>
+        <en>Figures</en>
+    </word>
+    <word txt="quiEstIl">
+        <fr>Qui est-il ?</fr>
+        <en>Who is he ?</en>
+>>>>>>> de6b33b4e1382fe107a36ec0dd2c7b1df7bc0226
     </word>
 </lang>

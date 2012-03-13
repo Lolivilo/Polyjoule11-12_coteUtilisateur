@@ -43,8 +43,11 @@
             }
             catch ( PDOException $e )
             {
-                $ex = new ConnexionException() ;
-                $ex->Message() ;
+                $ex = new ConnexionException();
+                $ex->Redirect();
+                //$ex->Message() ;
+                //echo("ERREUR BORDEL");
+                //echo($ex->getCode() );
             }
         }
         
