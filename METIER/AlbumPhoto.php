@@ -1,4 +1,6 @@
 <?php
+require_once('../BD/AlbumPhotoBd.php');
+
 class AlbumPhoto
 {
 	private $id;
@@ -36,6 +38,15 @@ class AlbumPhoto
         return $this->photos;
     }
     
+    public function getFirstPhoto()
+    {
+    	return getFirstPhotoById($this->id);
+    }
+    
+    public function getNbPhotos()
+    {
+    	return getNbPhotosById($this->id);
+    }
     
     public function getDesc()
     {
@@ -51,6 +62,11 @@ class AlbumPhoto
         {
             // LEVEE  EXCEPTION
         }
+    }
+    
+    public function getUrl()
+    {
+    	return("http://".$_SERVER['HTTP_HOST']."/PRESENTATION/albumPhoto.php?idAlbum=".$this->id);
     }
     
     public function addPhoto($photo)

@@ -24,11 +24,39 @@
 	<div id='corps'>
 		<?php
 			$tabAlbums = getAllAlbums();	// Tableau de tous les albums photos existants
-			foreach($tabAlbums as $row)
+			if(empty($tabAlbums))
 			{
-				echo("<div id='album_".$row->getId()."'>");
-				echo("</div>");
+				echo("<p>Il n'y a aucun album photo actuellement !</p>");
+			}
+			else
+			{
+				foreach($tabAlbums as $row)
+				{
+					echo("<div id='album_".$row->getId()."' class='listeArticle'>");
+					if($row->getFirstPhoto() != NULL)
+					{
+						echo("<img style='width:100px' src='".$row->getFirstPhoto()."' />");
+					}
+					else
+					{
+						echo("<img style='width:100px' src='http://3.bp.blogspot.com/-iJYUeULd-W0/TbR5YTwfiRI/AAAAAAAAAJ0/zIDyFheQVyY/s1600/n.a.jpg' />");
+					}
+					echo("<div class='description'><h3>".$row->getNom()."</h3>");
+					echo("<div class='italic'>".$row->getDate()."</div>" );
+					echo("<p>".$row->getDesc()."</p>");
+					echo("<p>".$row->getNbPhotos()." photos dans cet album</p>");
+					echo("</div>");
+					echo("<a href='".$row->getUrl()."'>Visionner cet album</a>");
+					echo("<div class='clear'></div>");
+					echo("</div>");
+				}
 			}
 		?>
 	</div>
+	<div id='otherPage'>
+	
+	</div>
+	<?php
+		include_once('footer.php');
+	?>
 </html>
