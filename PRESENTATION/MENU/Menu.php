@@ -7,7 +7,7 @@
 		{
             if( $CatParent->isAlbum() )
             {
-                $html.= "<li><a href='albumPhoto.php?idAlbum=".getMostRecentAlbum()."'>".$CatParent->getTitre()."</a>";
+                $html.= "<li><a href='listeAlbums.php'>".$CatParent->getTitre()."</a>";
                 $tabAlbums = getAllAlbums();    // Si on est sur les albums, on affiche non pas des sous-categories
                 
                                             // mais des albums

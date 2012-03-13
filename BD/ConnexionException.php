@@ -1,6 +1,6 @@
 <?php
 
-class ConnexionException extends Exception
+class ConnexionException extends PDOException
 {
 	public function __construct()
 	{
@@ -11,6 +11,14 @@ class ConnexionException extends Exception
 	{
 		echo('ConnexionException : Erreur lors de la connexion ˆ la base de donnŽes !') ;
 	}
+    
+    public function Redirect()
+    {
+        echo( parent::getCode() );
+        $url = "http://".$_SERVER['HTTP_HOST']."/PRESENTATION/erreur.php?code=".parent::getCode();
+        header('location: $url');
+        
+    }
 }
 
 ?>
