@@ -114,6 +114,14 @@
         
         
         
+        
     }
     
+    //FONCTIONS NON MEMBRES : FONCTION DE SECURITE
+    //
+    //
+    function NoHtml($string)
+    {
+    	return strip_tags($string);
+    }
     ?>
