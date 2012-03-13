@@ -84,7 +84,6 @@ class AlbumPhotoBD extends BD
         }
         $this->deconnexion();
     }
-    
 }
 
 function getNbAlbums()
@@ -148,5 +147,43 @@ function getAllAlbums()
     $bd->deconnexion();
     
     return $ret;
+}
+
+function getFirstPhotoById($idAlbum)
+{
+	$bd = new BD();
+	
+	try
+	{
+		$bd->connexion();
+		$connexion = $bd->getConnexion();
+		$result = $connexion->query("SELECT lien_photo FROM PHOTO WHERE id_album = $idAlbum ORDER BY id_photo LIMIT 1")->fetch();
+	}
+	catch(PDOException $e)
+	{
+		// A REMPLIR
+	}
+	$bd->deconnexion();
+	
+	return $result['lien_photo'];
+}
+
+function getNbPhotosById($idAlbum)
+{
+	$bd = new BD();
+	
+	try
+	{
+		$bd->connexion();
+		$connexion = $bd->getConnexion();
+		$result = $connexion->query("SELECT COUNT(*) FROM PHOTO WHERE id_album = $idAlbum")->fetch();
+	}
+	catch(PDOException $e)
+	{
+		// A REMPLIR
+	}
+	$bd->deconnexion();
+	
+	return $result['COUNT(*)'];
 }
 ?>
