@@ -1,16 +1,5 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<lang>
-    <word txt="contact">
-        <fr>Nous contacter</fr>
-        <en>Contact us</en>
-    </word>
-    <word txt="search">
-        <fr>Rechercher</fr>
-        <en>Search</en>
-    </word>
-    <word txt="LivreOr">
-        <fr>Livre d'or</fr>
-        <en>Guest book</en>
+<lang><word txt="contact"><fr>Nous contacter</fr><en>Contact us</en></word><word txt="search"><fr>Rechercher</fr><en>Search</en></word><word txt="LivreOr"><fr>Livre d'or</fr><en>Guest book</en>
     </word>
     <word txt="sign">
         <fr>Signer !</fr>
@@ -21,11 +10,11 @@
         <en>Photo album</en>
     </word>
     <word txt="personnages">
-        <fr>Personnages clés</fr>
+        <fr>Personnages cles</fr>
         <en>Figures</fr>
     </word>
     <word txt="quiEstIl">
-        <fr> Qui est-il ?</fr>
-        <en>Who is he ?</en>
+        <fr> Qui est-il</fr>
+        <en>Who is he</en>
     </word>
 </lang>
