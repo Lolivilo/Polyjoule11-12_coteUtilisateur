@@ -53,8 +53,10 @@
 			}
 		?>
 	</div>
-	<div id='otherPage'>
-	
+	<div id='pagination'>
+		<?php
+			
+		?>
 	</div>
 	<?php
 		include_once('footer.php');
