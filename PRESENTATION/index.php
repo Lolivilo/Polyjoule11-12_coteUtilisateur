@@ -26,27 +26,12 @@
                     for($i = 0 ; $i < determineNbArticlesIndex() ; $i++)
                     {
                         echo("<div class='news'>");
-                        echo("<h3>".$tab[$i]->getFormatedDate()." ".$tab[$i]->getTitreFR()."</h3>");
-                        echo("<p>".$tab[$i]->getContenuFR()."</p>");
+                        echo("<h3>".$tab[$i]->getFormatedDate()." ".$tab[$i]->getTitre()."</h3>");
+                        echo("<p>".$tab[$i]->getApercu()."</p>");
                         echo("<a href='article.php?article=".$tab[$i]->getId()."'>Lire la suite</a>");
                         echo("</div>");
                     }
                 ?>
-                <!-- <div class="news">
-                    <h3> 20-02-2012 Titre actu</h3>
-                        <p>Description egez gze gz egz eg zeg ze ggze </p>
-                        <a href="index.html">Lire la suite</a>
-                </div>
-                <div class="news">
-                    <h3> 20-02-2012 Titre actu</h3>
-                    <p>Description egez gze gz egz eg zeg ze ggze </p>
-                    <a href="index.html">Lire la suite</a>
-                </div>
-                <div class="news">
-                    <h3> 20-02-2012 Titre actu</h3>
-                    <p>Description egez gze gz egz eg zeg ze ggze </p>
-                    <a href="index.html">Lire la suite</a>
-                </div> -->
             </div>
             <div class="clear"></div>
         </div>

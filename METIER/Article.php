@@ -49,18 +49,6 @@ class Article
 		return $this->idRubrique;
 	}
     
-	public function getTitre()
-    {
-        if($_SESSION['langue'] == 'EN')
-        {
-            return $this->titreEN;
-        }
-        else
-        {
-            return $this->titreFR;
-        }
-
-    }
 	public function getTitreFR()
 	{
 		return $this->titreFR ;
@@ -68,6 +56,22 @@ class Article
 	public function setTitreFR($titreFR)
 	{
 		$this->titreFR = $titreFR;
+	}
+	
+	public function getTitre()
+	{
+		if( (ISSET($_SESSION['langue'])) && ($_SESSION['langue'] == 'FR') )
+		{
+			return $this->titreFR;
+		}
+		else if( (ISSET($_SESSION['langue'])) && ($_SESSION['langue'] == 'EN') )
+		{
+			return $this->titreEN;
+		}
+		else
+		{
+			// A TRAITER ???
+		}
 	}
 	
 	public function getTitreEN()
@@ -126,6 +130,7 @@ class Article
 		}
 		return $apercu."...";
     }
+    
     
 	public function getContenuFR()
 	{
