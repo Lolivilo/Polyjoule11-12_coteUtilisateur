@@ -2,15 +2,17 @@
 class Partenaire
 {
 	public $id;
+	public $idArticle;
 	public $nom;
 	public $logo;
 	public $site;
 	public $descFr;
 	public $descEn;
 	
-	public function __construct($id, $nom, $logo, $site, $descFr, $descEn)
+	public function __construct($id, $idArticle, $nom, $logo, $site, $descFr, $descEn)
 	{
 		$this->id = $id;
+		$this->idArticle = $idArticle;
 		$this->nom = $nom;
 		$this->logo = $logo;
 		$this->site = $site;
@@ -22,6 +24,11 @@ class Partenaire
 	private function getId()
 	{
 		return $this->id;
+	}
+	
+	public function getIdArticle()
+	{
+		return $this->idArticle;
 	}
 	
 	private function getNom()
@@ -60,4 +67,5 @@ class Partenaire
 	}
 
 }
+
 ?>

@@ -19,7 +19,7 @@ function getPartenaireById($id)
 		$bd->connexion();
 		$connexion= $bd->getConnexion();
 		$resultQuery = $connexion->query("SELECT * FROM PARTENAIRE WHERE id_partenaire = $id")->fetch();
-		$part = new Partenaire($resultQuery['id_partenaire'], $resultQuery['nom_partenaire'], $resultQuery['logo_partenaire'], $resultQuery['site_partenaire'], $resultQuery['descFR_partenaire'], $resultQuery['descEN_partenaire']);
+		$part = new Partenaire($resultQuery['id_partenaire'], $resultQuery['id_article'], $resultQuery['nom_partenaire'], $resultQuery['logo_partenaire'], $resultQuery['site_partenaire'], $resultQuery['descFR_partenaire'], $resultQuery['descEN_partenaire']);
 	}
 	catch(PDOException $e)
 	{
@@ -53,7 +53,7 @@ function getAllPartners()
 		// On parcourt le rsultat de la requte et on remplie le tableau ˆ retourner
 		foreach($resultQuery as $row)
 		{
-			$partenaire = new Partenaire($row['id_partenaire'], $row['nom_partenaire'], $row['logo_partenaire'], $row['site_partenaire'], $row['descFR_partenaire'], $row['descEN_partenaire']);
+			$partenaire = new Partenaire($row['id_partenaire'], $row['id_article'], $row['nom_partenaire'], $row['logo_partenaire'], $row['site_partenaire'], $row['descFR_partenaire'], $row['descEN_partenaire']);
 			array_push($tableauDePartenaires, $partenaire);
 		}		
 	}	

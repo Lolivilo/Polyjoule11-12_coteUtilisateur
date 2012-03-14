@@ -8,7 +8,7 @@
 			$tabPartenaires = getAllPartners();		// Tableau d'objets Partenaire
 			foreach($tabPartenaires as $part)
 			{
-				echo('<a href='.$part->site.'><img src='.$part->logo.' alt='.$part->nom.'></a>');
+				echo("<a href='article.php?article=".$part->getIdArticle()."'><img src='".$part->logo."' alt='".$part->nom."'></a>");
 			}
 		?>
 	</div>
