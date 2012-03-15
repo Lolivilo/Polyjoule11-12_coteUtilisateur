@@ -25,7 +25,17 @@ class ArticleBD extends BD
 			foreach($ResultQuery as $Art)
 			{// Parcours des articles récupérés dans la base
 				//Ici on instancie un objet article à l'aide des infos recupérées dans la base
-				$Article = new Article($Art['id_article'], $Art['id_rubrique'], $Art['titreFR_article'], $Art['titreEN_article'], $Art['contenuFR_article'], $Art['contenuEN_article'], $Art['autorisation_com'], $Art['date_article'], $Art['url_photo_principale'], $Art['visible_home']);
+				$Article = new Article($Art['id_article'],
+									   $Art['id_rubrique'],
+									   $Art['auteur_article'],
+									   $Art['titreFR_article'],
+									   $Art['titreEN_article'],
+									   $Art['contenuFR_article'],
+									   $Art['contenuEN_article'],
+									   $Art['autorisation_com'],
+									   $Art['date_article'],
+									   $Art['url_photo_principale'],
+									   $Art['visible_home']);
 				//On ajoute cet article dans le tableau des articles
 				array_push($ArticleTab, $Article);
 			}				
@@ -62,7 +72,17 @@ class ArticleBD extends BD
         
 			foreach($ResultQuery as $art)
         	{
-            	$Article = new Article($art['id_article'], $art['id_rubrique'], $art['titreFR_article'], $art['titreEN_article'], $art['contenuFR_article'], $art['contenuEN_article'], $art['autorisation_com'], $art['date_article'], $art['url_photo_principale'], $art['visible_home']);
+            	$Article = new Article($art['id_article'],
+            						   $art['id_rubrique'],
+            						   $art['auteur_article'],
+            						   $art['titreFR_article'],
+            						   $art['titreEN_article'],
+            						   $art['contenuFR_article'],
+            						   $art['contenuEN_article'],
+            						   $art['autorisation_com'],
+            						   $art['date_article'],
+            						   $art['url_photo_principale'],
+            						   $art['visible_home']);
             	array_push($Articles, $Article);
         	}
 		}
@@ -88,7 +108,18 @@ class ArticleBD extends BD
         
         	foreach($result as $row)
         	{
-            	$article = new Article($row['id_article'], $row['id_rubrique'], $row['titreFR_article'], $row['titreEN_article'], $row['contenuFR_article'], $row['contenuEN_article'], $row['autorisation_com'], $row['date_article'], $row['url_photo_principale'], $row['visible_home']);
+            	$article = new Article($row['id_article'],
+            						   $row['id_rubrique'],
+            						   $row['auteur_article'],
+            						   $row['titreFR_article'],
+            						   $row['titreEN_article'],
+            						   $row['contenuFR_article'],
+            						   $row['contenuEN_article'],
+            						   $row['autorisation_com'],
+            						   $row['date_article'],
+            						   $row['url_photo_principale'],
+            						   $row['visible_home']
+            						  );
             	array_push($return, $article);
         	}
     	}
@@ -119,7 +150,18 @@ function getArticleById ($idArt)
 		if($ResultQuery != NULL) // Pour eviter une erreur si l'id categorie passé est null
         {
             //Ici on instancie un objet categorie à l'aide des infos recupérées dans la base
-            $Article = new Article($ResultQuery['id_article'], $ResultQuery['id_rubrique'], $ResultQuery['titreFR_article'], $ResultQuery['titreEN_article'], $ResultQuery['contenuFR_article'], $ResultQuery['contenuEN_article'], $ResultQuery['autorisation_com'], $ResultQuery['date_article'], $ResultQuery['url_photo_principale'], $ResultQuery['visible_home']);
+            $Article = new Article($ResultQuery['id_article'],
+            					   $ResultQuery['id_rubrique'],
+            					   $ResultQuery['auteur_article'],
+            					   $ResultQuery['titreFR_article'],
+            					   $ResultQuery['titreEN_article'],
+            					   $ResultQuery['contenuFR_article'],
+            					   $ResultQuery['contenuEN_article'],
+            					   $ResultQuery['autorisation_com'],
+            					   $ResultQuery['date_article'],
+            					   $ResultQuery['url_photo_principale'],
+            					   $ResultQuery['visible_home']
+            					  );
         }
 	}
 	catch ( PDOException $e )
@@ -148,7 +190,18 @@ function getAllArticles()
         
         foreach($result as $row)
         {
-            $article = new Article($row['id_article'], $row['id_rubrique'], $row['titreFR_article'], $row['titreEN_article'], $row['contenuFR_article'], $row['contenuEN_article'], $row['autorisation_com'], $row['date_article'], $row['url_photo_principale'], $row['visible_home']);
+            $article = new Article($row['id_article'],
+            					   $row['id_rubrique'],
+            					   $row['auteur_article'],
+            					   $row['titreFR_article'],
+            					   $row['titreEN_article'],
+            					   $row['contenuFR_article'],
+            					   $row['contenuEN_article'],
+            					   $row['autorisation_com'],
+            					   $row['date_article'],
+            					   $row['url_photo_principale'],
+            					   $row['visible_home']
+            					  );
             array_push($return, $article);
         }
     }

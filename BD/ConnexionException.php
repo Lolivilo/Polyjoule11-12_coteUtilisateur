@@ -16,7 +16,7 @@ class ConnexionException extends PDOException
     {
         echo( parent::getCode() );
         $url = "http://".$_SERVER['HTTP_HOST']."/PRESENTATION/erreur.php?code=".parent::getCode();
-        header('location: $url');
+        header('location: $url');	// a changer
         
     }
 }

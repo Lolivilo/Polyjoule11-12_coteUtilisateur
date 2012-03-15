@@ -16,7 +16,7 @@ class CategorieBD extends BD
      */
     function getSousCategories ($CategorieParente)
     {
-    	
+    
     	$CategorieParente = parent::security($CategorieParente);
     	$this->connexion() ;
     	try

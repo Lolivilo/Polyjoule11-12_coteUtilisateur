@@ -12,7 +12,7 @@
 <div id="barre">
 <a href=""><?php echo $parserLangue->getWord("contact")->getTraduction(); ?></a>
 <a href="http://localhost:8888/index.php?lang=FR" class="active">FR</a> | <a href="http://localhost:8888/index.php?lang=EN">EN</a>
-<form method="get" action="http://localhost:8888/search.php"> 
+<form method="get" action="http://localhost:8888/PRESENTATION/search.php"> 
 	<input type="text" id="search" name="w">
 	<input type="submit" value="Search">
 </form>

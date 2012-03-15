@@ -51,7 +51,7 @@
                 		{
                 			echo "<img style=\"width:100px\" src=\"Style/image/photo.png\" />";
                 		}
-                	echo "<div class='description'><h3>".$art->getTitre()."</h3><div class='italic'>".$art->getDate()."</div><p>".$art->getApercu()."</p></div><a href='".$art->getUrl()."'>Lire la suite ...</a><div class='clear'></div></div>";
+                	echo "<div class='description'><h3>".$art->getTitre()."</h3><div class='italic'>".$art->getFormatedDate()."</div><p>".$art->getApercu()."</p></div><a href='".$art->getUrl()."'>Lire la suite ...</a><div class='clear'></div></div>";
                 }
                 //Si il n'y a pas d'article dans la catégorie
                 if(empty($TabArticles))

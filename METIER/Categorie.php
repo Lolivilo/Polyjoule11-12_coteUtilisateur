@@ -34,6 +34,7 @@ class Categorie
 	{
 		$this->idParent = $idParent_;
 	}
+	
 	public function getTitre()
     {
         if($_SESSION['langue'] == 'EN')

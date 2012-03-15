@@ -3,6 +3,7 @@ class Article
 {  
 	private $id;
 	private $idRubrique;
+	private $auteur;
 	private $titreFR;
 	private $titreEN;
 	private $contenuFR;
@@ -21,10 +22,11 @@ class Article
 	 * @param unknown_type $contenuENArticle
 	 * @param unknown_type $autorisationCommentaire
 	 */
-	public function __construct( $idArticle , $idRubrique, $titreFRArticle , $titreENArticle , $contenuFRArticle, $contenuENArticle, $autorisationCommentaire, $date, $photo_principale, $visible_home  )
+	public function __construct( $idArticle , $idRubrique, $auteur, $titreFRArticle , $titreENArticle , $contenuFRArticle, $contenuENArticle, $autorisationCommentaire, $date, $photo_principale, $visible_home  )
 	{
 		$this->id = $idArticle;
-		$this->idRubrique - $idRubrique;
+		$this->idRubrique = $idRubrique;
+		$this->auteur = $auteur;
 		$this->titreFR = $titreFRArticle;
 		$this->titreEN = $titreENArticle;
 		$this->contenuFR = $contenuFRArticle;
@@ -39,9 +41,10 @@ class Article
 	{
 		return $this->id ;
 	}
-	public function setId($id_)
+	
+	public function getAuteur()
 	{
-		$this->id = $id_;
+		return $this->auteur();
 	}
 	
 	public function getIdRubrique()
