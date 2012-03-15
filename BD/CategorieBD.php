@@ -33,7 +33,15 @@ class CategorieBD extends BD
 			foreach($ResultQuery as $Cat)
 			{// Parcours des catégories récupérées dans la base
 				//Ici on instancie un objet categorie à l'aide des infos recupérées dans la base
-				$Categorie = new Categorie($Cat['id_rubrique'], $Cat['id_mere'], $Cat['titreFR_rubrique'], $Cat['titreEN_rubrique'], $Cat['albumId'], $Cat['personneId'], $Cat['isLivreOr']);
+				$Categorie = new Categorie($Cat['id_rubrique'],
+										   $Cat['id_mere'],
+										   $Cat['titreFR_rubrique'],
+										   $Cat['titreEN_rubrique'],
+										   $Cat['descFR_rubrique'],
+										   $Cat['descEN_rubrique'],
+										   $Cat['albumId'],
+										   $Cat['personneId'],
+										   $Cat['isLivreOr']);
 				//On ajoute cette catégorie dans le tableau de catégories mères
 				array_push($categoriesTab, $Categorie);
 			}				
@@ -67,11 +75,19 @@ class CategorieBD extends BD
 			{
 				$ResultQuery = $ResultQuery->fetch();
 				//Ici on instancie un objet categorie à l'aide des infos recupérées dans la base
-				$Categorie = new Categorie($ResultQuery['id_rubrique'], $ResultQuery['id_mere'], $ResultQuery['titreFR_rubrique'], $ResultQuery['titreEN_rubrique'], $ResultQuery['albumId'], $ResultQuery['personneId'], $ResultQuery['isLivreOr']);
+				$Categorie = new Categorie($ResultQuery['id_rubrique'],
+										   $ResultQuery['id_mere'],
+										   $ResultQuery['titreFR_rubrique'],
+										   $ResultQuery['titreEN_rubrique'],
+										   $ResultQuery['descFR_rubrique'],
+										   $ResultQuery['descEN_rubrique'],
+										   $ResultQuery['albumId'],
+										   $ResultQuery['personneId'],
+										   $ResultQuery['isLivreOr']);
 			}
 			else 
 			{
-				$Categorie = new Categorie(0, NULL, NULL, NULL, 0, 0, 0);
+				$Categorie = new Categorie(0, NULL, NULL, NULL, NULL, NULL, 0, 0, 0);
 				// C'est la categorie par defaut ( categorie NULL)	
 			}			
 
@@ -113,7 +129,15 @@ class CategorieBD extends BD
 		}
 		// Déconnexion de la BD
 		$this->deconnexion();
-		$Categorie = new Categorie($resultQuery['id_rubrique'], $resultQuery['id_mere'], $resultQuery['titreFR_rubrique'], $resultQuery['titreEN_rubrique'], $resultQuery['albumId'], $resultQuery['personneId'], $resultQuery['isLivreOr']);
+		$Categorie = new Categorie($resultQuery['id_rubrique'],
+								   $resultQuery['id_mere'],
+								   $resultQuery['titreFR_rubrique'],
+								   $resultQuery['titreEN_rubrique'],
+								   $resultQuery['descFR_rubrique'],
+								   $resultQuery['descEN_rubrique'],
+								   $resultQuery['albumId'],
+								   $resultQuery['personneId'],
+								   $resultQuery['isLivreOr']);
 		return $Categorie;
     }
     
@@ -191,14 +215,32 @@ class CategorieBD extends BD
     		$connexion = parent::getConnexion();
     		//Recuperation, instanciation de la categorie en paramètre et ajout dans le tableau
     		$resultQuery = $connexion->query("SELECT * FROM RUBRIQUE WHERE id_rubrique = $idCat")->fetch();
-    		array_push($Tab_Arianne, new Categorie($ResultQuery['id_rubrique'], $ResultQuery['id_mere'], $ResultQuery['titreFR_rubrique'], $ResultQuery['titreEN_rubrique'], $ResultQuery['albumId'], $ResultQuery['personneId'], $ResultQuery['isLivreOr']));
+    		array_push($Tab_Arianne, new Categorie($ResultQuery['id_rubrique'],
+    											   $ResultQuery['id_mere'],
+    											   $ResultQuery['titreFR_rubrique'],
+    											   $ResultQuery['titreEN_rubrique'],
+    											   $ResultQuery['descFR_rubrique'],
+    											   $ResultQuery['descEN_rubrique'],
+    											   $ResultQuery['albumId'],
+    											   $ResultQuery['personneId'],
+    											   $ResultQuery['isLivreOr'])
+    											  );
     		$idMere = $ResultQuery['id_mere']; // catégorie mère à la dernière entrée dans le tableau de resultats
     		
     		while($idMere != NULL) // tant que l'id mère n'est pas null, donc tant que nous sommes pas dans la catégorie de niveau 0
     		{
     			// On récupère la catégorie mère à celle qu'on a déja
     			$resultQuery = $connexion->query("SELECT * FROM RUBRIQUE WHERE id_rubrique = $idMere")->fetch();
-    			array_push($Tab_Arianne, new Categorie($ResultQuery['id_rubrique'], $ResultQuery['id_mere'], $ResultQuery['titreFR_rubrique'], $ResultQuery['titreEN_rubrique'], $ResultQuery['livreOrId'], $ResultQuery['personneId'], $ResultQuery['isLivreOr']));
+    			array_push($Tab_Arianne, new Categorie($ResultQuery['id_rubrique'],
+    												   $ResultQuery['id_mere'],
+    												   $ResultQuery['titreFR_rubrique'],
+    												   $ResultQuery['titreEN_rubrique'],
+    												   $ResultQuery['descFR_rubrique'],
+    												   $ResultQuery['descEN_rubrique'],
+    												   $ResultQuery['livreOrId'],
+    												   $ResultQuery['personneId'],
+    												   $ResultQuery['isLivreOr'])
+    												  );
     			$idMere = $ResultQuery['id_mere']; // catégorie mère à la dernière entrée dans le tableau de resultats    			
     			
     		}
@@ -242,9 +284,12 @@ function getSousCategories ($idMere)
                                  $row['id_mere'],
                                  $row['titreFR_rubrique'],
                                  $row['titreEN_rubrique'],
+                                 $row['descFR_rubrique'],
+                                 $row['descEN_rubrique'],
                                  $row['albumId'],
                                  $row['personneId'],
-                                 $row['isLivreOr']);
+                                 $row['isLivreOr']
+                                );
             array_push($tabCategories, $cat);
             
         }
@@ -271,9 +316,12 @@ function getCategorieById( $id )
                              $result['id_mere'],
                              $result['titreFR_rubrique'],
                              $result['titreEN_rubrique'],
+                             $result['descFR_rubrique'],
+                             $result['descEN_rubrique'],
                              $result['albumId'],
                              $result['personneId'],
-                             $result['isLivreOr']);
+                             $result['isLivreOr']
+                            );
     }
     catch(PDOException $e)
     {

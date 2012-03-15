@@ -5,13 +5,17 @@ class Categorie
 	private $idParent;
 	private $titreFR;
 	private $titreEN;
+	private $descFR;
+	private $descEN;
     
-	public function __construct( $idCat , $idCatParent , $titreFRCat , $titreENCat, $albumId, $personneId, $isLivreOr )
+	public function __construct( $idCat , $idCatParent , $titreFRCat , $titreENCat, $descFR, $descEN, $albumId, $personneId, $isLivreOr )
 	{
 		$this->id = $idCat ;
 		$this->idParent = $idCatParent ;
 		$this->titreFR = $titreFRCat ;
 		$this->titreEN = $titreENCat ;
+		$this->descFR = $descEN;
+		$this->descEN = $descEN;
         $this->albumId = $albumId;
         $this->isLivreOr = $isLivreOr;
         $this->personneId = $personneId;
@@ -21,18 +25,10 @@ class Categorie
 	{
 		return $this->id ;
 	}
-	public function setId($id_)
-	{
-		$this->id = $id_;
-	}
 	
 	public function getIdParent()
 	{
 		return $this->idParent ;
-	}
-	public function setIdParent($idParent_)
-	{
-		$this->idParent = $idParent_;
 	}
 	
 	public function getTitre()
@@ -47,22 +43,21 @@ class Categorie
         }
     
     }
-	public function getTitreFR()
-	{
-		return $this->titreFR ;
-	}
-	public function setTitreFR($titreFR)
-	{
-		$this->titreFR = $titreFR;
-	}
 	
-	public function getTitreEN()
+	public function getDesc()
 	{
-		return $this->titreEN ;
-	}
-	public function setTitreEN($titreEN)
-	{
-		$this->titreEN = $titreEN;
+		if( (isset($_SESSION['langue'])) && ($_SESSION['langue'] == 'FR') )
+		{
+			return $this->descFR;
+		}
+		else if( (isset($_SESSION['langue'])) && ($_SESSION['langue'] == 'FR') )
+		{
+			return $this->descEN;
+		}
+		else
+		{
+			// A TRAITER ??????????
+		}
 	}
     
     public function getUrl()

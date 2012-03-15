@@ -19,7 +19,14 @@ function getPartenaireById($id)
 		$bd->connexion();
 		$connexion= $bd->getConnexion();
 		$resultQuery = $connexion->query("SELECT * FROM PARTENAIRE WHERE id_partenaire = $id")->fetch();
-		$part = new Partenaire($resultQuery['id_partenaire'], $resultQuery['id_article'], $resultQuery['nom_partenaire'], $resultQuery['logo_partenaire'], $resultQuery['site_partenaire'], $resultQuery['descFR_partenaire'], $resultQuery['descEN_partenaire']);
+		$part = new Partenaire($resultQuery['id_partenaire'],
+							   $resultQuery['id_article'],
+							   $resultQuery['nom_partenaire'],
+							   $resultQuery['logo_partenaire'],
+							   $resultQuery['site_partenaire'],
+							   $resultQuery['descFR_partenaire'],
+							   $resultQuery['descEN_partenaire']
+							  );
 	}
 	catch(PDOException $e)
 	{
