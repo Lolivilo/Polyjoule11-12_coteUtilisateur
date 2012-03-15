@@ -19,7 +19,7 @@ class ArticleBD extends BD
 		{
 			$connexion = parent::getConnexion();
 			//On rŽcupre tous les articles de la catŽgorie passŽe en paramtre
-			$ResultQuery = $connexion->query( "SELECT * FROM ARTICLE WHERE id_rubrique=$CategoryId" )->fetchAll();
+			$ResultQuery = $connexion->query( "SELECT * FROM ARTICLE WHERE id_rubrique=$CategoryId AND statut_article = 1" )->fetchAll();
 
 			$ArticleTab = array(); // tableau contenant les articles ˆ retourner
 			foreach($ResultQuery as $Art)
@@ -33,6 +33,7 @@ class ArticleBD extends BD
 									   $Art['contenuFR_article'],
 									   $Art['contenuEN_article'],
 									   $Art['autorisation_com'],
+									   $Art['statut_article'],
 									   $Art['date_article'],
 									   $Art['url_photo_principale'],
 									   $Art['visible_home']);
@@ -80,6 +81,7 @@ class ArticleBD extends BD
             						   $art['contenuFR_article'],
             						   $art['contenuEN_article'],
             						   $art['autorisation_com'],
+            						   $art['statut_article'],
             						   $art['date_article'],
             						   $art['url_photo_principale'],
             						   $art['visible_home']);
@@ -104,7 +106,7 @@ class ArticleBD extends BD
     	{
         	$this->connexion();
 			$connexion = $this->getConnexion();
-        	$result = $connexion->query("SELECT * FROM ARTICLE WHERE visible_home = 1 LIMIT 3")->fetchAll();
+        	$result = $connexion->query("SELECT * FROM ARTICLE WHERE visible_home = 1 AND statut_article = 1 LIMIT 3")->fetchAll();
         
         	foreach($result as $row)
         	{
@@ -116,6 +118,7 @@ class ArticleBD extends BD
             						   $row['contenuFR_article'],
             						   $row['contenuEN_article'],
             						   $row['autorisation_com'],
+            						   $row['statut_article'],
             						   $row['date_article'],
             						   $row['url_photo_principale'],
             						   $row['visible_home']
@@ -145,7 +148,7 @@ function getArticleById ($idArt)
 	{
 		$bd->connexion();
 		$connexion = $bd->getConnexion();
-		$ResultQuery = $connexion->query( "SELECT * FROM ARTICLE WHERE id_article=$idArt" )->fetch();
+		$ResultQuery = $connexion->query( "SELECT * FROM ARTICLE WHERE id_article=$idArt AND statut_article = 1" )->fetch();
         
 		if($ResultQuery != NULL) // Pour eviter une erreur si l'id categorie passŽ est null
         {
@@ -158,6 +161,7 @@ function getArticleById ($idArt)
             					   $ResultQuery['contenuFR_article'],
             					   $ResultQuery['contenuEN_article'],
             					   $ResultQuery['autorisation_com'],
+            					   $ResultQuery['statut_article'],
             					   $ResultQuery['date_article'],
             					   $ResultQuery['url_photo_principale'],
             					   $ResultQuery['visible_home']
@@ -186,7 +190,7 @@ function getAllArticles()
     {
         $bd->connexion();
 		$connexion = $bd->getConnexion();
-        $result = $connexion->query("SELECT * FROM ARTICLE ORDER BY date_article DESC")->fetchAll();
+        $result = $connexion->query("SELECT * FROM ARTICLE WHERE statut_article = 1 ORDER BY date_article DESC")->fetchAll();
         
         foreach($result as $row)
         {
@@ -198,6 +202,7 @@ function getAllArticles()
             					   $row['contenuFR_article'],
             					   $row['contenuEN_article'],
             					   $row['autorisation_com'],
+            					   $row['statut_article'],
             					   $row['date_article'],
             					   $row['url_photo_principale'],
             					   $row['visible_home']
@@ -222,7 +227,7 @@ function getNbArticles()
     {
         $bd->connexion();
         $connexion = $bd->getConnexion();
-        $result = $connexion->query("SELECT COUNT(*) FROM ARTICLE")->fetch();
+        $result = $connexion->query("SELECT COUNT(*) FROM ARTICLE WHERE statut_article = 1")->fetch();
     }
     catch(PDOException $e)
     {

@@ -9,6 +9,7 @@ class Article
 	private $contenuFR;
 	private $contenuEN;
 	private $autorisationCommentaire;
+	private $statut;
 	private $photo_principale;
 	private $visible_home;
 	
@@ -22,7 +23,7 @@ class Article
 	 * @param unknown_type $contenuENArticle
 	 * @param unknown_type $autorisationCommentaire
 	 */
-	public function __construct( $idArticle , $idRubrique, $auteur, $titreFRArticle , $titreENArticle , $contenuFRArticle, $contenuENArticle, $autorisationCommentaire, $date, $photo_principale, $visible_home  )
+	public function __construct( $idArticle , $idRubrique, $auteur, $titreFRArticle , $titreENArticle , $contenuFRArticle, $contenuENArticle, $autorisationCommentaire, 									$statut, $date, $photo_principale, $visible_home  )
 	{
 		$this->id = $idArticle;
 		$this->idRubrique = $idRubrique;
@@ -52,15 +53,6 @@ class Article
 		return $this->idRubrique;
 	}
     
-	public function getTitreFR()
-	{
-		return $this->titreFR ;
-	}
-	public function setTitreFR($titreFR)
-	{
-		$this->titreFR = $titreFR;
-	}
-	
 	public function getTitre()
 	{
 		if( (ISSET($_SESSION['langue'])) && ($_SESSION['langue'] == 'FR') )
@@ -77,11 +69,6 @@ class Article
 		}
 	}
 	
-	public function getTitreEN()
-	{
-		return $this->titreEN ;
-	}
-    
     public function getDate()
     {
         return $this->date;
@@ -92,10 +79,6 @@ class Article
         return( date('d/m/y', strtotime($this->date)) );
     }
     
-	public function setTitreEN($titreEN)
-	{
-		$this->titreEN = $titreEN;
-	}
 	public function getContenu()
     {
         if($_SESSION['langue'] == 'EN')
@@ -134,34 +117,16 @@ class Article
 		return $apercu."...";
     }
     
-    
-	public function getContenuFR()
-	{
-		return $this->contenuFR;
-	}
-	public function setContenuFR($contenuFR)
-	{
-		$this->contenuFR = $contenuFR;
-	}
-	
-	public function getContenuEN()
-	{
-		return $this->contenuEN;
-	}
-	public function setContenuEN($contenuEN)
-	{
-		$this->contenuEN = $contenuEN;
-	}
-	
-	public function getAutorisationCommentaire()
+   	public function getAutorisationCommentaire()
 	{
 		return $this->autorisationCommentaire ;
 	}
-	public function setAutorisationCommentaire($autCom)
+
+	public function getStatut()
 	{
-		$this->autorisationCommentaire = $autCom;
+		return $this->statut;
 	}
-    
+	
     public function getUrl()
     {
         $idArticle = intval($this->id);
