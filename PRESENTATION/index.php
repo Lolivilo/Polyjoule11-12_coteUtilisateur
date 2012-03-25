@@ -18,7 +18,7 @@
 				include('header.php');
 			?>
         <div id="diapoAcceuil">
-            <img src="image/photo3.png">
+            <img src='image/photo3.png' alt=''>
             <div id="newsAcceuil">
                 <h2>A la une</h2>
                 <?php
@@ -42,7 +42,7 @@
         		$homeArticles = $ArticleBD->getHomeArticles();
         		foreach($homeArticles as $art)
         		{
-            		echo "<li><a href=\"".$art->getUrl()."\"><img src=\"".$art->getBasePhoto()."\"><span>".$art->getTitre()."</span></a></li>";	
+            		echo("<li><a href='".$art->getUrl()."'><img src='".$art->getBasePhoto()."' alt='".$art->getTitre()."'><span>".$art->getTitre()."</span></a></li>");	
             	}
             ?>			
         </ul>
