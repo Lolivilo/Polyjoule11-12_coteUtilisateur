@@ -29,7 +29,7 @@
 			foreach($tab as $m)
 			{
 				echo("<div id='membre_".$m->getId()."'>");
-				
+				echo("<img src='".$m->getPhoto()."' alt='Photo de ".$m->getPrenom)
 				echo("</div>");
 			}
 		?>
