@@ -4,6 +4,8 @@ class Membre
 	private $id;
 	private $pseudo;
 	private $idEquipe;
+	private $nom;
+	private $prenom;
 	private $mdp;
 	private $mail;
 	private $departement;
@@ -15,6 +17,8 @@ class Membre
 	public function __construct($id,
 								$pseudo,
 								$idEquipe,
+								$nom,
+								$prenom,
 								$mdp,
 								$mail,
 								$departement,
@@ -26,6 +30,8 @@ class Membre
 		$this->id = $id;
 		$this->pseudo = $pseudo;
 		$this->idEquipe = $idEquipe;
+		$this->nom = $nom;
+		$this->prénom = $prenom;
 		$this->mdp = $mdp;
 		$this->mail = $mail;
 		$this->departement = $departement;
@@ -38,6 +44,61 @@ class Membre
 	public function getId()
 	{
 		return $this->id;
+	}
+	
+	public function getPseudo()
+	{
+		return $this->pseudo;
+	}
+	
+	public function getIdEquipe()
+	{
+		return $this->idEquipe;
+	}
+	
+	public function getNom()
+	{
+		return $this->nom;
+	}
+	
+	public function getPrenom()
+	{
+		return $this->prenom;
+	}
+	
+	public function getMdp()
+	{
+		return $this->mdp();
+	}
+	
+	public function getMail()
+	{
+		return $this->mail;
+	}
+	
+	public function getDepartement()
+	{
+		return $this->departement;
+	}
+	
+	public function getPromotion()
+	{
+		return $this->promotion;
+	}
+	
+	public function getStatut()
+	{
+		return $this->statut;
+	}
+	
+	public function getPhoto()
+	{
+		return $this->photo;
+	}
+	
+	public function getDate()
+	{
+		return $this->date;
 	}
 }
 ?>

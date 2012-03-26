@@ -29,7 +29,20 @@
 			foreach($tab as $m)
 			{
 				echo("<div id='membre_".$m->getId()."'>");
-				echo("<img src='".$m->getPhoto()."' alt='Photo de ".$m->getPrenom)
+				echo("<div id='left'>");
+				echo("<img src='".$m->getPhoto()."' alt='Photo de ".$m->getPrenom()."'/>");
+				echo("<h5>".$m->getPrenom()." ".strtoupper($m->getNom())."</h5>");
+				echo("<p>Département</p>");
+				echo("<p>Promo</p>");
+				echo("<p>Statut</p>");
+				echo("<p>Adresse</p>");
+				echo("</div>");
+				echo("<div id='right'>");
+				echo($m->getDepartement());
+				echo($m->getPromotion());
+				echo($m->getStatut());
+				echo($m->getMail());
+				echo("</div>");
 				echo("</div>");
 			}
 		?>

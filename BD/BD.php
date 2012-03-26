@@ -18,18 +18,18 @@
         // permet de valuer les 4 premiers attributs de la classe
         public function __construct()
         {
-        /*
+        
             $this->host = 'localhost' ;
-             $this->database = 'polyoule2' ;
+             $this->database = 'polyjoule' ;
              $this->user = 'polyjoule' ;
              $this->password = 'azerty' ;
-             */
+             /*
             $this->host = 'instance6964.db.xeround.com' ;
             $this->database = 'polyjoule' ;
             $this->port = '5214' ;
             $this->user = 'polyjoule' ;
             $this->password = 'admin' ;
-            
+            */
             
         }
         

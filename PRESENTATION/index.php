@@ -20,6 +20,7 @@
         <div id="diapoAcceuil">
             <img src='image/photo3.png' alt=''>
             <div id="newsAcceuil">
+            	<a href="trombinoscope.php?equipe=2">TROMBI</a>
                 <h2>A la une</h2>
                 <?php
                     $tab = getAllArticles();    // Tableau contenant tous les articles
