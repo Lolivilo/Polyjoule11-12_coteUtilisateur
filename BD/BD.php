@@ -22,7 +22,7 @@
             $this->host = 'localhost' ;
              $this->database = 'polyjoule' ;
              $this->user = 'polyjoule' ;
-             $this->password = 'azerty' ;
+             $this->password = 'polyjoule' ;
              /*
             $this->host = 'instance6964.db.xeround.com' ;
             $this->database = 'polyjoule' ;

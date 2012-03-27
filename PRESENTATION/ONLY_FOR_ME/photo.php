@@ -1,13 +1,13 @@
 <?php
 	$myTab = array();
 	$path = "/Users/antoninbiret/PROJETS_POLYTECH/Polyjoule11-12_coteUtilisateur/PRESENTATION/ONLY_FOR_ME/PHOTOS";
-	$imagePath = "http://localhost:8888/ONLY_FOR_ME/PHOTOS";
+	$imagePath = "http://localhost/PRESENTATION/ONLY_FOR_ME/PHOTOS";
 	$d = dir($path);
 	$cpt = 0;
 	while ($entry = $d->read())
 	{
 		$arrayImage = array();
-		if($entry != "." && $entry != "..")
+		if($entry != "." && $entry != ".." && $entry != ".DS_Store")
 		{
 			$filePath = $imagePath .'/'.$entry;
 			$arrayImage['idPhoto'] = $cpt."";

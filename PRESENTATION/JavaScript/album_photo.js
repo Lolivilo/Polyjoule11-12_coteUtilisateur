@@ -2,15 +2,17 @@ jQuery().ready(function(){
 
                $("#albumPhoto #photos li a").click(
                                            function () {
-                                                   
+                                                  alert('appel');
                                                   id__photo = $(this).children(".idImg").html();
                                                   id__album = $("#idAlb").html();
                                                   $("#loader").fadeIn();
-                                                  $.post("http://localhost:8888/script_ajax_album_photo.php",
+                                                  $.post("localhost:8888/PRESENTATION/script_ajax_album_photo.php",
                                                          {id_photo:id__photo,id_album:id__album},
                                                            function(data){
+                                                           alert(data);
                                                                 if(data.success == 'yes')
                                                                 {
+                                                                	 alert('success');
                                                                     $("#corps #photo > img#mainPhoto").attr('src',data.url);
                                                                     $("#corps #photo > p").html(data.commentaire);
                                                                     $("#corps > h4").html(data.titre);
@@ -18,6 +20,7 @@ jQuery().ready(function(){
                                                                 }
                                                                 else
                                                                 {
+                                                                	 alert('echec');
                                                                      $("#corps #photo > p").html(data.texte);
                                                                 }
                                                                 $("#loader").fadeOut();
@@ -27,14 +30,14 @@ jQuery().ready(function(){
                                            }
                );
                //Reference = $(".ul#photos li:first-child");
-               $("#albumPhoto .suivant").click(function()
+               /*$("#albumPhoto .suivant").click(function()
                                     {
                                                 alert('test');
                                         $("#photos").animate({    marginLeft : - (Reference.width() * 2 * 3)}); 
                                                return false;
                                     }
                                     
-                );
+                );*/
                
               /* Reference = $("#photos li:first-child");
                $("#photos").wrap('<div class="carrousel-conteneur"></div>')

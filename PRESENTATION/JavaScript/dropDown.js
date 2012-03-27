@@ -1,14 +1,14 @@
 jQuery().ready(function(){
-               $("#menuPage li > a").click(
+               $("#menuPage li > a").hover(
                     function () {
                             if($(this).next("ul").is(":hidden")){
                                          $(this).next("ul").slideDown();
                             }
-                            else
-                            {
+                    },
+                    function(){
+                    	if($(this).next("ul").is(":visible")){
                                          $(this).next("ul").slideUp();
-                            }
-                            return false;
+                        }
                     }
                 );
                

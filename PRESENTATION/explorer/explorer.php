@@ -47,7 +47,7 @@ foreach ($SousCategories as $_Categorie)
 	$html.="<li";
 	if( $_Categorie->getID() == $LinkedCategory->getID() )
     {
-		$html.=" class='active'";
+		$html.=" class='Nactive'";//active
     }
     
     if( $_Categorie->isAlbum() )    // Zone albums
@@ -73,7 +73,7 @@ foreach ($SousCategories as $_Categorie)
 			$html.="<li";
 			if( $CategorieN2->getID() == $LinkedCategory->getID() )
             {
-				$html.=" class='active'";
+				$html.=" class='Nactive'";
             }
             if( $CategorieN2->isLivreOr() )  // Lien special si livre d or
             {
@@ -95,7 +95,7 @@ foreach ($SousCategories as $_Categorie)
                 {
                     $html.="<li";
                     if($CategorieN3->getID() == $LinkedCategory->getID())
-                        $html.=" class='active'";
+                        $html.=" class='Nactive'";
                     $html.= "><a href='".$CategorieN3->getUrl()."'>".$CategorieN3->getTitre()."</a>";
                     
                 }

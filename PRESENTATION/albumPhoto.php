@@ -38,18 +38,18 @@
     <?php
         echo("<h2>".$parserLangue->getWord('AlbPhoto')->getTraduction()."</h2>");
         $photoArray = $currentAlbum->getPhotos();   // Tableau de photos de l album courant        
-        echo("<h3>".$currentAlbum->getNom()."</3>");
+        echo("<h3>".$currentAlbum->getNom()."</h3>");
         if($photoArray != NULL)
         {
         	$firstPhoto = array_pop($photoArray);
         	echo("<p>".$firstPhoto->getTitre()."</p>");            // On affiche la premiere photo au depart
     ?>
         	<div id="photo">
-            	<div id="loader">
+            	<div id="loader"></div>
                 	<?php
                     	echo("<img src='".$firstPhoto->getLien()."' alt='".$firstPhoto->getTitre()."' />");
                 	?>
-            	</div>
+            	
             	<p>
                 	<?php
                     	echo($firstPhoto->getDesc());
