@@ -10,8 +10,9 @@ class Participant
     private $role;
     private $bioFr;
     private $bioEn;
+    private $isProf;
     
-    public function __construct($id, $idEquipe, $nom, $prenom, $photo, $mail, $role, $bioFr, $bioEn)
+    public function __construct($id, $idEquipe, $nom, $prenom, $photo, $mail, $role, $bioFr, $bioEn, $isProf)
     {
         $this->id = $id;
         $this->idEquipe = $idEquipe;
@@ -22,6 +23,7 @@ class Participant
         $this->role = $role;
         $this->bioFr = $bioFr;
         $this->bioEn = $bioEn;
+        $this->isProf = $isProf;
     }
     
     function getId()
@@ -67,6 +69,11 @@ class Participant
     function getBioEn()
     {
         return $this->bioEn;
+    }
+    
+    function isProf()
+    {
+    	return $this->isProf;
     }
 }
 ?>

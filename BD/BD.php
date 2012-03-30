@@ -20,9 +20,9 @@
         {
         
             $this->host = 'localhost' ;
-             $this->database = 'polyjoule' ;
+             $this->database = 'pj2' ;
              $this->user = 'polyjoule' ;
-             $this->password = 'polyjoule' ;
+             $this->password = 'azerty' ;
              /*
             $this->host = 'instance6964.db.xeround.com' ;
             $this->database = 'polyjoule' ;
@@ -41,7 +41,7 @@
             {
                 $dns = "mysql:host=".$this->host.";port=".$this->port.";dbname=".$this->database;
                 //echo $dns.'      '.$this->user.$this->password;
-                $this->connexion = new PDO( $dns , $this->user , $this->password ) ;
+                $this->connexion = new PDO( $dns , $this->user , $this->password, array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8") ) ;
                 
             }
             catch ( PDOException $e )

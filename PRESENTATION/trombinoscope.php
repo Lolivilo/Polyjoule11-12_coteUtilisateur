@@ -1,8 +1,11 @@
 <?php
 	session_start();
-	require_once('../BD/MembreBD.php');
+	require_once('../BD/ParticipantBD.php');
+	require_once('../BD/EquipeBD.php');
 	
-	$tab = getMembreByEquipe($_GET['equipe']);
+	
+	$tab = createTrombinoscopeByEquipe($_GET['equipe']);	// Tableau de membre de l'équipe courante
+	$equipe = getEquipeById($_GET['equipe']);	// Equipe courante
 ?>
 
 	
@@ -25,6 +28,7 @@
 		include('explorer/explorer.php');
 	?>
 	<div id='corps'>
+		<h3>Trombinoscope / Equipe </h3>
 		<?php
 			foreach($tab as $m)
 			{
@@ -38,9 +42,9 @@
 				echo("<p>Adresse</p>");
 				echo("</div>");
 				echo("<div id='right'>");
-				echo($m->getDepartement());
-				echo($m->getPromotion());
-				echo($m->getStatut());
+				echo($m->getFormation());
+				echo($m->getAnnee());
+				echo($m->getRole());
 				echo($m->getMail());
 				echo("</div>");
 				echo("</div>");

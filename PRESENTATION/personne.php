@@ -1,7 +1,7 @@
 <?php
     session_start();
     require_once('../BD/ParticipantBD.php');
-    $tabParticipants = getAllParticipants();
+    $tabParticipants = getAllParticipantsProfs();
 ?>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">  
@@ -29,7 +29,7 @@
             ?>
         </h2>
         <?php
-            for($i = 0 ; $i < getNbParticipants() ; $i++)
+            for($i = 0 ; $i < getNbParticipantsProfs() ; $i++)
             {
                 echo("<div>");
                 echo("<div class='articleHeader' id='participant_".$tabParticipants[$i]->getId()."'>");
