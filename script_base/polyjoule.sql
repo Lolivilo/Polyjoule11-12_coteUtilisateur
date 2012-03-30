@@ -239,19 +239,17 @@ INSERT INTO `LIVRE_OR` (`id_post`, `posteur_post`, `mail_post`, `date_post`, `me
 -- Structure de la table `membre`
 --
 
-CREATE TABLE IF NOT EXISTS `MEMBRE` (
-  `id_membre` int(11) NOT NULL AUTO_INCREMENT,
-  `pseudo_membre` varchar(30) NOT NULL DEFAULT '',
-  `id_equipe` int(11) DEFAULT NULL,
-  `nom_membre` varchar(30) NOT NULL,
-  `prenom_membre` varchar(30) NOT NULL,
-  `mdp_membre` varchar(30) DEFAULT NULL,
-  `mail_membre` varchar(100) DEFAULT NULL,
-  `departement_membre` text NOT NULL,
-  `promotion_membre` int(4) NOT NULL,
-  `statut_membre` varchar(30) DEFAULT NULL,
-  `photo_membre` varchar(150) DEFAULT NULL,
-  `date_inscription` datetime DEFAULT NULL,
+
+/* Pour les comptes administrateurs */
+DROP TABLE IF EXISTS MEMBRE ;
+CREATE TABLE MEMBRE (
+	id_membre INT AUTO_INCREMENT NOT NULL,
+	pseudo_membre VARCHAR(30),
+	mdp_membre varchar(150),
+	mail_membre varchar(100),
+	statut_membre varchar(30) CHECK( statut_membre IN ('admin','user')),
+	photo_membre varchar(150),
+	date_inscription DATETIME,
   PRIMARY KEY (`id_membre`,`pseudo_membre`)
 ) ENGINE=Xeround DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
@@ -311,6 +309,7 @@ CREATE TABLE IF NOT EXISTS `PARTICIPANT` (
   `role_participant` varchar(100) DEFAULT NULL,
   `bioFR_participant` text,
   `bioEN_participant` text,
+  `isProf` boolean NOT NULL,
   PRIMARY KEY (`id_participant`),
   KEY `FK_PARTICIPANT_id_equipe` (`id_equipe`)
 ) ENGINE=Xeround DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
@@ -415,3 +414,7 @@ CREATE TABLE IF NOT EXISTS `SPONSORISE` (
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
+
+/*INSERTION DU COMPTE admin POUR LES TESTS */
+INSERT INTO MEMBRE VALUES (1,'admin','d033e22ae348aeb5660fc2140aec35850c4da997','admin@admin','admin','ressources/data/Membres/defaut.png',now());
