@@ -130,7 +130,7 @@ class Article
     public function getUrl()
     {
         $idArticle = intval($this->id);
-        return "http://".$_SERVER['HTTP_HOST']."/PRESENTATION/article.php?article=".$idArticle;
+        return("article.php?article=".$idArticle);
     }
     
     public function getBasePhoto()
