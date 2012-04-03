@@ -22,7 +22,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />  
     <title>Polyjoule</title>  
     <link rel="stylesheet" type="text/css" href="Style/index.css" />
-    <script  type="text/javascript" src="JavaScript/jquery.js"></script>
+    <script  type="text/javascript" src="JavaScript/jquery-1.4.1.min.js"></script>
     <script  type="text/javascript" src="JavaScript/menu.js"></script>
     <script  type="text/javascript" src="JavaScript/dropDown.js"></script>
     <script  type="text/javascript" src="JavaScript/album_photo.js"></script>

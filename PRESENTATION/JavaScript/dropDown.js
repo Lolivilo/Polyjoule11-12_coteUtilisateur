@@ -1,13 +1,13 @@
 jQuery().ready(function(){
-               $("#menuPage li > a").hover(
+               $("#menuPage li").hover(
                     function () {
-                            if($(this).next("ul").is(":hidden")){
-                                         $(this).next("ul").slideDown();
+                            if($(this).children("ul").is(":hidden")){
+                                         $(this).children("ul").slideDown();
                             }
                     },
                     function(){
-                    	if($(this).next("ul").is(":visible")){
-                                         $(this).next("ul").slideUp();
+                    	if($(this).children("ul").is(":visible")){
+                                         $(this).children("ul").slideUp();
                         }
                     }
                 );
