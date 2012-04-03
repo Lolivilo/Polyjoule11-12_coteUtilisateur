@@ -12,30 +12,37 @@ include_once '../METIER/Partenaire.php';
  */
 function getPartenaireById($id)
 {
-	$bd = new Bd();
-	try
+	if( !(intval($id)) )
 	{
-		// Connexion a la base de donnees
-		$bd->connexion();
-		$connexion= $bd->getConnexion();
-		$resultQuery = $connexion->query("SELECT * FROM PARTENAIRE WHERE id_partenaire = $id")->fetch();
-		$part = new Partenaire($resultQuery['id_partenaire'],
-							   $resultQuery['id_article'],
-							   $resultQuery['nom_partenaire'],
-							   $resultQuery['logo_partenaire'],
-							   $resultQuery['site_partenaire'],
-							   $resultQuery['descFR_partenaire'],
-							   $resultQuery['descEN_partenaire']
-							  );
+		throw new RequestException("Le parametre \"".(String)$id."\" ne permet pas de retrouver un partenaire dans la base !");
 	}
-	catch(PDOException $e)
+	else
 	{
-		$ex = new AccesTableException();
-		$ex->Message();
-	}
-	// Deconnexion de la base de donnees
-	$bd->deconnexion();
+		$bd = new Bd();
+		try
+		{
+			// Connexion a la base de donnees
+			$bd->connexion();
+			$connexion= $bd->getConnexion();
+			$resultQuery = $connexion->query("SELECT * FROM PARTENAIRE WHERE id_partenaire = $id")->fetch();
+			$part = new Partenaire($resultQuery['id_partenaire'],
+								   $resultQuery['id_article'],
+								   $resultQuery['nom_partenaire'],
+								   $resultQuery['logo_partenaire'],
+								   $resultQuery['site_partenaire'],
+								   $resultQuery['descFR_partenaire'],
+							   	$resultQuery['descEN_partenaire']
+							  	);
+		}
+		catch(PDOException $e)
+		{
+			$ex = new AccesTableException();
+			$ex->Message();
+		}
+		// Deconnexion de la base de donnees
+		$bd->deconnexion();
 	
+	}
 	return $part;
 }
 
