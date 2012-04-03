@@ -63,4 +63,14 @@
         <fr>Courriel</fr>
         <en>eMail</en>
     </word>
+    
+    <word txt="company">
+        <fr>L'entreprise</fr>
+        <en>The company</en>
+    </word>
+    
+    <word txt="assistant">
+        <fr>Son aide</fr>
+        <en>Its assistant</en>
+    </word>
 </lang>

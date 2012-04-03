@@ -30,6 +30,7 @@
             	<div class="scroll-pane">
             		<a href="trombinoscope.php?equipe=2">TROMBI</a>
             		<a href="listeEquipes.php">Historique</a>
+            		<a href="partenaire.php?partenaire=1">DCNS</a>
                 	<h2><?php echo($parserLangue->getWord("headlines")->getTraduction()); ?></h2>
                		<?php
                     	for($i = 0 ; $i < determineNbArticlesIndex() ; $i++)

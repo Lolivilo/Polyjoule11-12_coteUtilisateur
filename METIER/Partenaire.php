@@ -21,7 +21,7 @@ class Partenaire
 	}
 	
 ///// Getters /////
-	private function getId()
+	public function getId()
 	{
 		return $this->id;
 	}
@@ -31,21 +31,21 @@ class Partenaire
 		return $this->idArticle;
 	}
 	
-	private function getNom()
+	public function getNom()
 	{
 		return $this->nom;
 	}
 	
-	private function getLogo()
+	public function getLogo()
 	{
 		return $this->logo;
 	}
 	
-	private function getSite()
+	public function getSite()
 	{
 		return $this->site;
 	}
-	private function getDesc()
+	public function getDesc()
     {
         if($_SESSION['langue'] == 'EN')
         {
@@ -56,12 +56,12 @@ class Partenaire
             return $this->descFr;
         }
     }
-	private function getDescFr()
+	public function getDescFr()
 	{
 		return $this->descFr;
 	}
 	
-	private function getDescEn()
+	public function getDescEn()
 	{
 		return $this->descEn;
 	}
