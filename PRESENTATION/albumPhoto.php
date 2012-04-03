@@ -26,7 +26,7 @@
     <script  type="text/javascript" src="JavaScript/menu.js"></script>
     <script  type="text/javascript" src="JavaScript/dropDown.js"></script>
     <script  type="text/javascript" src="JavaScript/album_photo.js"></script>
-    <script  type="text/javascript" src="JavaScript/jquery.json-2.3.min.js"></script>
+    <?php //<script  type="text/javascript" src="JavaScript/jquery.json-2.3.min.js"></script> ?>
 </head>
 
 <body>
