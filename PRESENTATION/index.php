@@ -4,6 +4,7 @@
     require_once('../BD/ArticleBD.php');
     
     $tab = getAllArticles();    // Tableau contenant tous les articles
+    
 ?>
 
 

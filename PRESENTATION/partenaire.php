@@ -1,15 +1,14 @@
 <?php
 	session_start();
 	
-	// Redirection si erreur de GET
-	if( (!(isset($_GET['partenaire']))) || (!(is_int($_GET['partenaire']))) )
-	{
-		header("location : index.php");
-	}
-	
 	require_once("../BD/PartenaireBD.php");
 	
-	
+	// Redirection si erreur de GET
+	if( (!(isset($_GET['partenaire']))) || (!(intval($_GET['partenaire']))) || (intval($_GET['partenaire']) < 0) )
+	{
+		header("location: index.php");
+	}
+
 	$partenaire = getPartenaireById($_GET['partenaire']);	// Le partenaire courant
 ?>
 
@@ -47,7 +46,7 @@
 	</div>
 	<?php
     	include_once('footer.php');
-    	?>
+    ?>
 </body>
 
 </html>

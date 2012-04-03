@@ -3,7 +3,7 @@
     //chargement des classes correspondant aux 2 types d'exception
     include_once 'ConnexionException.php';
     include_once 'AccesTableException.php';
-    
+    include_once("RequestException.php");
     
     class Bd
     {  
