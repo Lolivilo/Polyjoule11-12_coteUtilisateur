@@ -10,6 +10,7 @@
 ?>
 
 <div id="header">
+<?php echo(); ?>
 <h1><a href=<?php echo("'http://".$allHeaders["Host"]."/PRESENTATION/index.php'"); ?>><img src="Style/image/logoPolyjoule.png" alt="Polyjoule"/></a></h1>
 <div id="barre">
 <a href=""><?php echo $parserLangue->getWord("contact")->getTraduction(); ?></a>
