@@ -104,6 +104,7 @@ class CategorieBD extends BD
     function getSuperParentCategoryOfCategory($idCat)
     {
     	$idCat = parent::security($idCat);
+    	echo "__".$idCat."__";
     	$this->connexion();	// Connexion ˆ la BD
     	$idMere = NULL;
     	

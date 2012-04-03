@@ -1,4 +1,5 @@
 <?php
+	include_once('../BD/BD.php');
 class Categorie
 {  
 	private $id;
@@ -35,11 +36,11 @@ class Categorie
     {
         if($_SESSION['langue'] == 'EN')
         {
-            return $this->titreEN;
+            return Bd::securityHTML($this->titreEN);
         }
         else
         {
-            return $this->titreFR;
+            return Bd::securityHTML($this->titreFR);
         }
     
     }
@@ -48,15 +49,11 @@ class Categorie
 	{
 		if( (isset($_SESSION['langue'])) && ($_SESSION['langue'] == 'FR') )
 		{
-			return $this->descFR;
+			return Bd::securityHTML($this->descFR);
 		}
 		else if( (isset($_SESSION['langue'])) && ($_SESSION['langue'] == 'FR') )
 		{
-			return $this->descEN;
-		}
-		else
-		{
-			// A TRAITER ??????????
+			return Bd::securityHTML($this->descEN);
 		}
 	}
     

@@ -110,11 +110,22 @@
         
         public function security($string)
         {
-            settype ($string, "string"); 
-            return $string;
-            
+            if(ctype_digit($string))
+			{
+				$string = intval($string);
+			}
+			else
+			{
+				$string = mysql_real_escape_string($string);
+				$string = addcslashes($string, '%_');
+			}
+			return $string;
         }
         
+        public static function securityHTML($string)
+        {
+        	return htmlentities($string);
+        }
         
         
         

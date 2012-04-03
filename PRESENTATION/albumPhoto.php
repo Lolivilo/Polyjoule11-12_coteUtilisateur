@@ -69,7 +69,7 @@
                 	<?php
                     	foreach($currentAlbum->getPhotos() as $photo)
                     	{
-                        	echo "<li><a href='index.html' ><img src='".$photo->getLien()."' /><span class='idImg' style='display:none'>".$photo->getId()."</span></a></li>";
+                        	echo "<li><a href='index.html' ><img src='".$photo->getThumbnail()."' /><span class='idImg' style='display:none'>".$photo->getId()."</span></a></li>";
                     	}
                 	?>
             	</ul>

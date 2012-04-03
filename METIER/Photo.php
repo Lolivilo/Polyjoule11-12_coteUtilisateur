@@ -25,12 +25,12 @@
         
         public function getId()
         {
-            return $this->id ;
+            return Bd::securityHTML($this->id) ;
         }
         
         public function getIdAlbum()
         {
-            return $this->id_album ;
+            return Bd::securityHTML($this->id_album) ;
         }
         
         public function getTitre()
@@ -48,13 +48,13 @@
         
         public function getTitreFR()
         {
-            return $this->titreFR ;
+            return Bd::securityHTML($this->titreFR) ;
         }
 
         
         public function getTitreEN()
         {
-            return $this->titreEN ;
+            return Bd::securityHTML($this->titreEN) ;
         }
 
         
@@ -62,26 +62,35 @@
         {
             return $this->lien ;
         }
+        
+        public function getThumbnail()
+        {
+        	/*$urlComplette = $this->lien;
+        	$urlThumbnail = "";
+        	$posExt = strrpos($urlComplette, ".");
+        	for ($i = 0; $i < $posExt; $i++) {
+    			$urlThumbnail .= $urlComplette[$i];
+			}
+			$urlThumbnail .= "_";
+			*/
+        	return $urlThumbnail; //."_".jpg
+        }
 
         
         public function getDate()
         {
-            return $this->date ;
+            return Bd::securityHTML($this->date) ;
         }
         
         public function getDesc()
         {
             if( (isset($_SESSION['langue'])) && ($_SESSION['langue'] == 'FR') )
             {
-               return $this->descFr;
+               return Bd::securityHTML($this->descFr);
             }
             else if( (isset($_SESSION['langue'])) && ($_SESSION['langue'] == 'EN') )
             {
-                return $this->descEn;
-            }
-            else
-            {
-                    // LANCER UNE ERREUR
+                return Bd::securityHTML($this->descEn);
             }
         }
 
