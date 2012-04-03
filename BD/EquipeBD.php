@@ -11,13 +11,11 @@ function getEquipeById($id)
 		$bd->connexion();
 		$connexion = $bd->getConnexion();
 		
-		$res = $connexion->query("SELECT * FROM EQUIPE WHERE id_equipe = $id")->fetchAll();
+		$res = $connexion->query("SELECT * FROM EQUIPE WHERE id_equipe = $id")->fetch();
+		print_r($res);
+		$e = new Equipe($res['id_equipe'], $res['annee_equipe']);
 		
-		foreach($res as $row)
-		{
-			$e = new Equipe($row['id_equipe'], $row['annee_equipe']);
-		}
-		
+		print_r($e);
 		
 		
 	}
@@ -26,7 +24,7 @@ function getEquipeById($id)
 	
 	}
 	
-	print_r($e);
+	
 	return $e;
 }
 	

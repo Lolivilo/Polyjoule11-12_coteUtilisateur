@@ -28,29 +28,33 @@
 		include('explorer/explorer.php');
 	?>
 	<div id='corps'>
-		<h3>Trombinoscope / Equipe </h3>
+		<h2><?php echo($parserLangue->getWord("trombinoscope")->getTraduction()); ?> / <?php echo($parserLangue->getWord("team")->getTraduction()); ?> <?php echo($equipe->getAnnee());?></h2>
 		<?php
 			foreach($tab as $m)
 			{
-				echo("<div id='membre_".$m->getId()."'>");
-				echo("<div id='left'>");
+				echo("<div class='personne' id='membre_".$m->getId()."'>");
+				echo("<h3>".$m->getPrenom()." ".strtoupper($m->getNom())."</h3>");
 				echo("<img src='".$m->getPhoto()."' alt='Photo de ".$m->getPrenom()."'/>");
-				echo("<h5>".$m->getPrenom()." ".strtoupper($m->getNom())."</h5>");
-				echo("<p>Département</p>");
-				echo("<p>Promo</p>");
-				echo("<p>Statut</p>");
-				echo("<p>Adresse</p>");
+				echo("<table>");
+				echo("<tr>");
+				echo("<th>".$parserLangue->getWord("department")->getTraduction()."</th><td>".$m->getFormation()."</td>");
+				echo("</tr>");
+				echo("<th>Promotion</th><td>".$m->getAnnee()."</td>");
+				echo("</tr>");
+				echo("<tr>");
+				echo("<th>".$parserLangue->getWord("status")->getTraduction()."</th><td>".$m->getRole()."</td>");
+				echo("</tr>");
+				echo("<tr>");
+				echo("<th>".$parserLangue->getWord("mail")->getTraduction()."</th><td>".$m->getMail()."</td>");
+				echo("</tr>");
+				echo("</table>");
 				echo("</div>");
-				echo("<div id='right'>");
-				echo($m->getFormation());
-				echo($m->getAnnee());
-				echo($m->getRole());
-				echo($m->getMail());
-				echo("</div>");
-				echo("</div>");
+				
 			}
 		?>
+		<div id="footerCorps"></div>
 	</div>
+	
 	<?php
 		include('footer.php');
 	?>

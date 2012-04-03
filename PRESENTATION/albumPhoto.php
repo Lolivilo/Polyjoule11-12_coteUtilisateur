@@ -3,10 +3,10 @@
     require_once('../BD/LangueParser.php');
 	require_once('../BD/AlbumPhotoBd.php');
     $album = NULL;
-    if(isset($_GET['idAlbum']) && $_GET['idAlbum'] != '')
+    if(isset($_GET['cat']) && $_GET['cat'] != '')
     {
         $AlbumPhotoBD = new AlbumPhotoBD();
-        $currentAlbum = $AlbumPhotoBD->getAlbumById($_GET['idAlbum']);
+        $currentAlbum = $AlbumPhotoBD->getAlbumById($_GET['cat']);
     }
     if($currentAlbum == NULL)
     {

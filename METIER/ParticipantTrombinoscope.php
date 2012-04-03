@@ -41,11 +41,11 @@ class ParticipantTrombinoscope
 	
 	public function getFormation()
 	{
-		if(  (isset($_GET['langue'])) && ($_GET['langue'] == 'FR') )
+		if(  (isset($_SESSION['langue'])) && ($_SESSION['langue'] == 'FR') )
 		{
 			return $this->formationFR;
 		}
-		else if( (isset($_GET['langue'])) && ($_GET['langue'] == 'EN') )
+		else if( (isset($_SESSION['langue'])) && ($_SESSION['langue'] == 'EN') )
 		{
 			return $this->formationEN;
 		}

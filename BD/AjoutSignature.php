@@ -38,6 +38,7 @@
     }
     catch(PDOException $e)
     {
+    	$ex = new ConnexionException();
     }
 	
     $bd->deconnexion();

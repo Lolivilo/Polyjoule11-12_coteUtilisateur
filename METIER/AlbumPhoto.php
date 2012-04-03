@@ -66,7 +66,7 @@ class AlbumPhoto
     
     public function getUrl()
     {
-    	return("http://".$_SERVER['HTTP_HOST']."/PRESENTATION/albumPhoto.php?idAlbum=".$this->id);
+    	return("http://".$_SERVER['HTTP_HOST']."/PRESENTATION/albumPhoto.php?cat=".$this->id);
     }
     
     public function addPhoto($photo)

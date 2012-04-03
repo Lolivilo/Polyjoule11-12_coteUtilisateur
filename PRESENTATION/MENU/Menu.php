@@ -14,7 +14,7 @@
                 $html.= "<ul>";
                 foreach($tabAlbums as $album)
                 {
-                    $html .= "<li><a href='albumPhoto.php?idAlbum=".$album->getId()."'>".$album->getNom()."</a></li>";
+                    $html .= "<li><a href='albumPhoto.php?cat=".$album->getId()."'>".$album->getNom()."</a></li>";
                 }
                 $html .= "</ul></li>";
             }

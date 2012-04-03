@@ -30,37 +30,36 @@
             ?>
         </div>
         <div id='right'>
-            <div id='content'>
-                <div id='titre'>
-                    <h1>
-                        <?php
-                            echo( $parserLangue->getWord('LivreOr')->getTraduction() );
-                        ?>
-                    </h1>
-                </div>
-                <div id='signatures'>
-                    <?php
-                        // Affichage des commentaires
-                        for($i = 0 ; $i <= (getNbOnPageLivreOr($_GET['numPage'])-1) ; $i++)
-                        {
-                            echo("<table id='signature_".$tabComment[$i+(10*($_GET['numPage']-1))]->getId()."' class='signature'>");
-                            echo("<tr>");
-                            echo("<td>".$tabComment[$i+(10*($_GET['numPage']-1))]->getPosteur()."</td><td>".$tabComment[$i+(10*($_GET['numPage']-1))]->getFormatedDate()."</td>");
-                            echo("</tr>");
-                            echo("<tr>");
-                            echo("<td colspan='2'>".$tabComment[$i+(10*($_GET['numPage']-1))]->getMessage()."</td>");
-                            echo("</tr>");
-                            echo("</table>");
-                        }
+            <div id='corps'>
+            	<h2 id='titreArticle'><img src="Style/image/livreOr.jpg" alt="Image du livre d'or"/></h2>
+                <h3>
+                	<?php
+                    	echo( $parserLangue->getWord('LivreOr')->getTraduction() );
                     ?>
-                </div>
-                <div id='otherPage'>
-                    <a href='livreDOr.php?numPage=1'><<</a>
-                    <?php echo("<a href='livreDOr.php?numPage=".getPreviousNumPageLivreOr($_GET['numPage'])."'><</a>"); ?>
-                    <?php echo( $_GET['numPage'] ); ?>
-                    <?php echo("<a href='livreDOr.php?numPage=".getNextNumPageLivreOr($_GET['numPage'])."'>></a>"); ?>
-                    <?php echo("<a href='livreDOr.php?numPage=".getLastNumPageLivreOr()."'>>></a>"); ?>
-                </div>
+                </h3>
+                
+                <?php
+                    // Affichage des commentaires
+                    for($i = 0 ; $i <= (getNbOnPageLivreOr($_GET['numPage'])-1) ; $i++)
+                    {
+                        echo("<div class='commentaire' id='signature_".$tabComment[$i]->getId()."'>");
+                        echo("<h4>".$tabComment[$i+(10*($_GET['numPage']-1))]->getPosteur()."<span class='date'>".$tabComment[$i+(10*($_GET['numPage']-1))]->getFormatedDate()."</span></h4>");
+                        echo("<p>".$tabComment[$i+(10*($_GET['numPage']-1))]->getMessage()."</p>");
+                        echo("</div>");
+                    }
+                ?>
+               
+               	<ul id='paginationLivre'>
+               		<li><a href='livreDOr.php?numPage=1'><<</a></li>
+               		<?php
+               			echo("<li><a href='livreDOr.php?numPage=".getPreviousNumPageLivreOr($_GET['numPage'])."'><</a></li>");
+               			echo("<li>".$_GET['numPage']."</li>");
+               			echo("<li><a href='livreDOr.php?numPage=".getNextNumPageLivreOr($_GET['numPage'])."'>></a></li>");
+               			echo("<li><a href='livreDOr.php?numPage=".getLastNumPageLivreOr()."'>>></a></li>");
+               		?>
+               	</ul>
+               	
+               
                 <div id='ajoutSignature'>
                     <?php
                         if(isset($_GET['emptyInput']) && $_GET['emptyInput'] == 'true')
@@ -80,13 +79,14 @@
                             echo("<p>Echec de l'ajout (problème serveur) !</p>");
                         }
                     ?>
-
-                    <form name='signer' action='../BD/AjoutSignature.php' method="post" onsubmit="return check()">
-                        Pseudo<input type="text" name='pseudo'/>Mail<input type="text" name='mail'/>
-                        Message<textarea name='message'></textarea>
-                        <input type="submit" id='signer' value='Signez'/>
-                    </form>
-                </div>
+				</div>
+                <form name='signer' id='ajoutSignature' action='../BD/AjoutSignature.php' method="post" onsubmit="return check()">
+                 	<label for='pseudo'>Pseudo</label><input type="text" name='pseudo'/><br/>
+                   	<label for='mail'>Mail</label><input type="text" name='mail'/><br/>
+                    <textarea name='message'></textarea>
+                    <input type="submit" id='signer' value='Signez'/>
+                </form>
+                <div id='footerCorps'></div>
             </div>
         </div>
     </div>

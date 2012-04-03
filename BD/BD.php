@@ -1,4 +1,4 @@
-<?php
+	<?php
     
     //chargement des classes correspondant aux 2 types d'exception
     include_once 'ConnexionException.php';

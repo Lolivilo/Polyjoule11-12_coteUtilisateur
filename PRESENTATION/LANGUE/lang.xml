@@ -33,4 +33,34 @@
         <fr>Qui est-il ?</fr>
         <en>Who is he?</en>
     </word>
+    
+    <word txt="department">
+        <fr>Département</fr>
+        <en>Department</en>
+    </word>
+    
+    <word txt="headlines">
+        <fr>A la une</fr>
+        <en>Headlines</en>
+    </word>
+    
+    <word txt="trombinoscope">
+        <fr>Trombinoscope</fr>
+        <en>Members</en>
+    </word>
+    
+    <word txt="team">
+        <fr>Equipe</fr>
+        <en>Team</en>
+    </word>
+    
+    <word txt="status">
+        <fr>Statut</fr>
+        <en>Status</en>
+    </word>
+    
+    <word txt="mail">
+        <fr>Courriel</fr>
+        <en>eMail</en>
+    </word>
 </lang>
