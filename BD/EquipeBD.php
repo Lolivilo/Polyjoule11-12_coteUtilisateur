@@ -12,10 +12,8 @@ function getEquipeById($id)
 		$connexion = $bd->getConnexion();
 		
 		$res = $connexion->query("SELECT * FROM EQUIPE WHERE id_equipe = $id")->fetch();
-		print_r($res);
 		$e = new Equipe($res['id_equipe'], $res['annee_equipe']);
 		
-		print_r($e);
 		
 		
 	}
@@ -26,6 +24,35 @@ function getEquipeById($id)
 	
 	
 	return $e;
+}
+
+
+function getAllEquipes()
+{
+	$bd = new BD();
+	
+	try
+	{
+		$bd->connexion();
+		$connexion = $bd->getConnexion();
+		
+		$res = $connexion->query("SELECT * FROM EQUIPE")->fetchAll();
+		$ret = array();
+		foreach($res as $e)
+		{
+			$eq = new Equipe($e['id_equipe'], $e['annee_equipe']);
+			array_push($ret, $eq);
+		}
+	}
+	
+	catch(PDOException $e)
+	{
+	
+	}
+	
+	$bd->deconnexion();
+	
+	return $ret;
 }
 	
 ?>

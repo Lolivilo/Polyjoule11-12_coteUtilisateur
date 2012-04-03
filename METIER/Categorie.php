@@ -60,10 +60,13 @@ class Categorie
 		}
 	}
     
+    /**
+    Sera toujours appelée dans le dossier PRESENTATION => lien relatif a partir de la
+    **/
     public function getUrl()
     {
         $idCat = intval($this->id); // ATTENTION DANS LE FUTUR IL FAUDRA GERER SI LA CATEGORIE RENVOIE VERS UNE LISTE DARTICLE OU VERS UNE LISTE DE NEWS !!!!
-        return( "http://".$_SERVER['HTTP_HOST']."/PRESENTATION/listArticle.php?cat=".$idCat );
+        return( "listArticle.php?cat=".$idCat );
     }
     
     public function getAlbumId()

@@ -29,6 +29,7 @@
             <div id="newsAcceuil">
             	<div class="scroll-pane">
             		<a href="trombinoscope.php?equipe=2">TROMBI</a>
+            		<a href="listeEquipes.php">Historique</a>
                 	<h2><?php echo($parserLangue->getWord("headlines")->getTraduction()); ?></h2>
                		<?php
                     	for($i = 0 ; $i < determineNbArticlesIndex() ; $i++)
@@ -36,7 +37,7 @@
                         	echo("<div class='news'>");
                         	echo("<h3><span class='date'>".$tab[$i]->getFormatedDate()."</span> ".$tab[$i]->getTitre()."</h3>");
                         	echo("<p>".$tab[$i]->getApercu()."</p>");
-                        	echo("<a href='article.php?article=".$tab[$i]->getId()."'>Lire la suite</a><div class='border'></div>");
+                        	echo("<a href='".$tab[$i]->getUrl()."'>Lire la suite</a><div class='border'></div>");
                         	echo("</div>");
                     	}
                 	?>
