@@ -31,14 +31,16 @@
     	}
     	else
     	{
+    		echo("<div class='listeArticle'");
     		foreach($equipes as $e)
     		{
-    			echo("<div class='listeArticle'");
+    			
     			echo("<div class='description'><h3>".$e->getAnnee()."</h3></div>");
     			echo("<a class='lienImportant' href='trombinoscope.php?equipe=".$e->getId()."'>Découvrez leur trombinoscope !</a>");
     			echo("<div class='clear'></div>");
-    			echo("</div>");
+    			
     		}
+    		echo("</div>");
     	}
                 /*
                 foreach($TabArticles as $art)
