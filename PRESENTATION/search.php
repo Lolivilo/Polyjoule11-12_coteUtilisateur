@@ -1,7 +1,9 @@
 <?php
 	session_start();
+	
 	require_once('../BD/ArticleBD.php');
-    $StringRecherche = NULL;
+	
+	$StringRecherche = NULL;
     if(isset($_GET['w']) && $_GET['w'] != '')
     {
         $StringRecherche = $_GET['w'];
@@ -10,7 +12,9 @@
     {
         header('Location: index.php?erreur=NO_TERM_SEARCH');
     }
-    ?>
+?>
+
+
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">  
 <html xmlns="http://www.w3.org/1999/xhtml">  
     <head>  

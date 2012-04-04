@@ -123,4 +123,15 @@ function getNbOnPageLivreOr($currentPage)
     
     return 10;
 }
+
+function getNbPagesLivreOr()
+{
+	$nb = getNbAcceptedLivreOr();	// Nombre de signatures
+	if($nb % 10 == 0)
+	{
+		return($nb / 10);
+	}
+	return( ($nb / 10) + 1);
+	
+}
 ?>

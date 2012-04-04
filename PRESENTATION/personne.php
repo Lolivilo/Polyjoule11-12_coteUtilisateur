@@ -1,6 +1,18 @@
 <?php
     session_start();
+    
     require_once('../BD/ParticipantBD.php');
+    require_once("../BD/CategorieBD.php");
+    
+    if( (!(isset($_GET['cat']))) || (!(intval($_GET['cat']))) )		// Si GET n est pas valide
+    {
+    	header('location: erreur.php?code=0');
+    }
+    else if( !(categorieExists($_GET['cat'])) )
+    {
+    	header('location: erreur.php?code=1');
+    }
+    
     $tabParticipants = getAllParticipantsProfs();
 ?>
 

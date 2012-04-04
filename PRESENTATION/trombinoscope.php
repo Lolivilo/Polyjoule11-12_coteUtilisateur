@@ -1,9 +1,18 @@
 <?php
 	session_start();
+	
 	require_once('../BD/ParticipantBD.php');
 	require_once('../BD/EquipeBD.php');
 	
-	
+	if( (!(isset($_GET['equipe']))) || (!(intval($_GET['equipe']))) )		// Si GET n est pas valide
+    {
+    	header('location: erreur.php?code=0');
+    }
+    else if( !(equipeExists($_GET['equipe'])) )
+    {
+    	header('location: erreur.php?code=1');
+    }
+    
 	$tab = createTrombinoscopeByEquipe($_GET['equipe']);	// Tableau de membre de l'équipe courante
 	$equipe = getEquipeById($_GET['equipe']);	// Equipe courante
 ?>

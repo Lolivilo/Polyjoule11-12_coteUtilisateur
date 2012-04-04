@@ -27,6 +27,10 @@
     			{
     				echo("Cette page n'existe pas dans la base de données !");
     			}
+    			else if($_GET['code'] == "NO_TERM_SEARCH")
+    			{
+    				echo("La recherche ne porte sur aucun terme !");
+    			}
     		?>
     	</h1>
     	<div id="footerCorps"></div>

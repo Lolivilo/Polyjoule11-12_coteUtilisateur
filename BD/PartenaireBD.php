@@ -81,4 +81,31 @@ function getAllPartners()
 		
 	return $tableauDePartenaires;
 }
+
+function partenaireExists($idPart)
+{
+	$bd = new Bd();
+	
+	try
+	{
+		// Connexion a la base de donnees
+		$bd->connexion();
+		$connexion = $bd->getConnexion();
+		$res = $connexion->query("SELECT * FROM PARTENAIRE WHERE id_partenaire = $idPart")->fetchAll();
+	}	
+	catch(PDOException $e)
+	{
+		$ex = new AccesTableException() ;
+		$ex->Message() ;
+	}
+	// DŽconnexion de la base
+	$bd->deconnexion();
+		
+	if($res == NULL)
+	{
+		return false;
+	}
+	return true;
+}
+
 ?>

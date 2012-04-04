@@ -1,9 +1,19 @@
 <?php
 	session_start();
+	
 	require_once('../BD/LivreDOrBD.php');
-    require_once('../BD/LangueParser.php');
+    require_once('../BD/CategorieBD.php');
+    
+    if( (!(isset($_GET['cat']))) || (!(intval($_GET['cat']))) || (!(isset($_GET['numPage']))) || (!(intval($_GET['numPage']))) )		// Si GET n est pas valide
+    {
+    	header('location: erreur.php?code=0');
+    }
+    else if( !(categorieExists($_GET['cat'])) || (getNbPagesLivreOr($_GET['numPage']) < $_GET['numPage']) )
+    {
+    	header('location: erreur.php?code=1');
+    }
+    
 	$tabComment = getAllAcceptedLivreDOr();	// Creation de la liste des commentaires a afficher
-    $parserLangue = new LangueParser();
     ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -12,11 +22,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <link rel="stylesheet" href="Style/index.css" type="text/css">
     <script language="javascript" src="JavaScript/checkLivreOr.js"></script>
-    <title>
-        <?php
-            echo( $parserLangue->getWord('LivreOr')->getTraduction() );
-        ?>
-    </title>
+    <title>Polyjoule</title>
 </head>
 
 <body>

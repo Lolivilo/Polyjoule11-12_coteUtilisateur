@@ -54,5 +54,31 @@ function getAllEquipes()
 	
 	return $ret;
 }
+
+function equipeExists($idEq)
+{
+	$bd = new BD();
+	
+	try
+	{
+		$bd->connexion();
+		$connexion = $bd->getConnexion();
+		
+		$res = $connexion->query("SELECT * FROM EQUIPE WHERE id_equipe = $idEq")->fetchAll();
+	}
+	
+	catch(PDOException $e)
+	{
+	
+	}
+	
+	$bd->deconnexion();
+	
+	if($res == NULL)
+	{
+		return FALSE;
+	}
+	return TRUE;
+}
 	
 ?>

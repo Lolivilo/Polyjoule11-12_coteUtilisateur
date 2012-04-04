@@ -1,25 +1,19 @@
 <?php
 	session_start();
 	
-	
-	
-	// Redirection si erreur de GET
-	if( (!(isset($_GET['partenaire']))) || (!(intval($_GET['partenaire']))) )
-	{
-		header("location: index.php");
-	}
-	
+	require_once("../BD/PartenaireBD.php");
 	require_once("../BD/PartenaireBD.php");
 	
-	try
-	{
-		$partenaire = getPartenaireById($_GET['partenaire']);	// Le partenaire courant
-	}
-	catch(RequestException $e)
-	{
-	}
-	
+	if( (!(isset($_GET['partenaire']))) || (!(intval($_GET['partenaire']))) )		// Si GET n est pas valide
+    {
+    	header('location: erreur.php?code=0');
+    }
+    else if( !(partenaireExists($_GET['partenaire'])) )
+    {
+    	header('location: erreur.php?code=1');
+    }
 
+	$partenaire = getPartenaireById($_GET['partenaire']);	// Le partenaire courant
 ?>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">  
