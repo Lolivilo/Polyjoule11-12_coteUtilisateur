@@ -6,18 +6,20 @@ class ParticipantTrombinoscope
 	private $prenom;
 	private $formationFR;
 	private $formationEN;
+	private $lienFormation;
 	private $annee;
 	private $photo;
 	private $mail;
 	private $role;
 	
-	public function __construct($id, $nom, $prenom, $formationFR, $formationEN, $annee, $photo, $mail, $role)
+	public function __construct($id, $nom, $prenom, $formationFR, $formationEN, $lienFormation, $annee, $photo, $mail, $role)
 	{
 		$this->id = $id;
 		$this->nom = $nom;
 		$this->prenom = $prenom;
 		$this->formationFR = $formationFR;
 		$this->formationEN = $formationEN;
+		$this->lienFormation = $lienFormation;
 		$this->annee = $annee;
 		$this->photo = $photo;
 		$this->mail = $mail;
@@ -53,6 +55,11 @@ class ParticipantTrombinoscope
 		{
 			// A TRAITER !!!!!
 		}
+	}
+	
+	public function getLienFormation()
+	{
+		return $this->lienFormation;
 	}
 	
 	public function getAnnee()

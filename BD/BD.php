@@ -20,7 +20,7 @@
         {
         
             $this->host = 'localhost' ;
-             $this->database = 'polyjoule' ;
+             $this->database = 'polyjoule2' ;
              $this->user = 'polyjoule' ;
              $this->password = 'polyjoule' ;
              /*

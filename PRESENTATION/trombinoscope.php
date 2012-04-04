@@ -37,7 +37,7 @@
 				echo("<img src='".$m->getPhoto()."' alt='Photo de ".$m->getPrenom()."'/>");
 				echo("<table>");
 				echo("<tr>");
-				echo("<th>".$parserLangue->getWord("department")->getTraduction()."</th><td>".$m->getFormation()."</td>");
+				echo("<th>".$parserLangue->getWord("department")->getTraduction()."</th><td><a href='".$m->getLienFormation()."'>".$m->getFormation()."</a></td>");
 				echo("</tr>");
 				echo("<th>Promotion</th><td>".$m->getAnnee()."</td>");
 				echo("</tr>");

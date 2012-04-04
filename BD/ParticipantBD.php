@@ -83,12 +83,12 @@ function createTrombinoscopeByEquipe($idEquipe)
 	{
 		$bd->connexion();
 		$connexion = $bd->getConnexion();
-		$result = $connexion->query("SELECT PARTICIPANT.id_participant, nom_participant, prenom_participant, titreFR_formation, titreEN_formation, annee_equipe, photo_participant, mail_participant, role_participant
+		$result = $connexion->query("SELECT PARTICIPANT.id_participant, nom_participant, prenom_participant, titreFR_formation, titreEN_formation, lien_formation, annee_equipe, photo_participant, mail_participant, role_participant
 									 FROM PARTICIPANT
 									 JOIN APPARTIENT ON PARTICIPANT.id_participant = APPARTIENT.id_participant
 									 JOIN FORMATION ON APPARTIENT.id_formation = FORMATION.id_formation
 									 JOIN EQUIPE ON PARTICIPANT.id_equipe = EQUIPE.id_equipe
-									 WHERE isProf = 0")->fetchAll();
+									 WHERE isProf = 0 AND PARTICIPANT.id_equipe = $idEquipe")->fetchAll();
 		$ret = array();						 
 		foreach($result as $t)	// On va instancier chaque tuple récupéré par un objet ParticipantTrombinoscope
 		{
@@ -97,6 +97,7 @@ function createTrombinoscopeByEquipe($idEquipe)
 											  $t['prenom_participant'],
 											  $t['titreFR_formation'],
 											  $t['titreEN_formation'],
+											  $t['lien_formation'], 
 											  $t['annee_equipe'],
 											  $t['photo_participant'],
 											  $t['mail_participant'],
