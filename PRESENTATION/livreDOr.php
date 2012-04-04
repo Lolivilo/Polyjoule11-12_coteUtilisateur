@@ -86,7 +86,7 @@
                         }
                     ?>
 				</div>
-                <form name='signer' id='ajoutSignature' action='../BD/AjoutSignature.php' method="post" onsubmit="return check()">
+                <form name='signer' id='ajoutSignature' action='../BD/TraitementsFormulaires/AjoutSignature.php' method="post" onsubmit="return check()">
                  	<label for='pseudo'>Pseudo</label><input type="text" name='pseudo'/><br/>
                    	<label for='mail'>Mail</label><input type="text" name='mail'/><br/>
                     <textarea name='message'></textarea>

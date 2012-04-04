@@ -1,3 +1,20 @@
+----- Arborescence -----
+°) BD -> Contient les fonctions réalisant des accès à la base de données.
+         Les fonctions sont regroupés selon la table principale visée dans les requêtes (ArticleBD interroge majoritairement la table ARTICLE)
+   °°) Exceptions -> Contient les classes d'exceptions susceptibles d'être levées lors de l'exécution des requêtes
+   °°) TraitementsFormulaires -> Contient les fichiers modifiant la base de données (insertions notamment) appelés via des formulaires
+
+°) METIER -> Contient les fonctionnalisées du site (redirections, récupérations des informations…)
+		  -> Tout se fait par des fonctions membres de différents objets instanciés selon la page visitée
+		     (ex : sur la page Article, on manipule un objet Article)
+		     
+°) PRESENTATION -> Contient tous les fichiers générant le html affiché
+   °°) JavaScript -> Contient tous les fichiers .js utilisés
+   °°) Style -> Contient toutes les ressources de style (CSS, images fixes…)
+   
+   
+
+
 Pour gérer une traduction d'un texte constant (ex: rechercher, contact...), tout ce qui n'est pas dans la base de donnée, il faut utiliser le fichier xml de langue:
 <word txt="MotCle">
     <fr>mot FR</fr>
