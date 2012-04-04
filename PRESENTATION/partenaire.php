@@ -50,7 +50,7 @@
         <p><?php echo($partenaire->getDesc()); ?></p>
         <h3><?php echo($parserLangue->getWord("assistant")->getTraduction()); ?></h3>
         <p>Manque dans la base ?!</p>
-        <a href='<?php echo($partenaire->getSite()); ?>'>Nous soutenir</a>
+        <p><a class="lienImportant" href='<?php echo($partenaire->getSite()); ?>'>Nous soutenir</a></p>
     
         <div id="footerCorps"></div>
 	</div>

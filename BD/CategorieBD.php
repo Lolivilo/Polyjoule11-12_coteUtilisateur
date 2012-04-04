@@ -39,9 +39,8 @@ class CategorieBD extends BD
 										   $Cat['titreEN_rubrique'],
 										   $Cat['descFR_rubrique'],
 										   $Cat['descEN_rubrique'],
-										   $Cat['albumId'],
-										   $Cat['personneId'],
-										   $Cat['isLivreOr']);
+										   $Cat['id_template']
+										  );
 				//On ajoute cette catŽgorie dans le tableau de catŽgories mres
 				array_push($categoriesTab, $Categorie);
 			}				
@@ -52,6 +51,7 @@ class CategorieBD extends BD
 			$ex->Message() ;
 		}
 		$this->deconnexion() ;
+		
 		return $categoriesTab;
         
     }
@@ -81,9 +81,8 @@ class CategorieBD extends BD
 										   $ResultQuery['titreEN_rubrique'],
 										   $ResultQuery['descFR_rubrique'],
 										   $ResultQuery['descEN_rubrique'],
-										   $ResultQuery['albumId'],
-										   $ResultQuery['personneId'],
-										   $ResultQuery['isLivreOr']);
+										   $ResultQuery['id_template']
+										  );
 			}
 			else 
 			{
@@ -135,9 +134,8 @@ class CategorieBD extends BD
 								   $resultQuery['titreEN_rubrique'],
 								   $resultQuery['descFR_rubrique'],
 								   $resultQuery['descEN_rubrique'],
-								   $resultQuery['albumId'],
-								   $resultQuery['personneId'],
-								   $resultQuery['isLivreOr']);
+								   $resultQuery['id_template']
+								  );
 		return $Categorie;
     }
     
@@ -221,9 +219,7 @@ class CategorieBD extends BD
     											   $ResultQuery['titreEN_rubrique'],
     											   $ResultQuery['descFR_rubrique'],
     											   $ResultQuery['descEN_rubrique'],
-    											   $ResultQuery['albumId'],
-    											   $ResultQuery['personneId'],
-    											   $ResultQuery['isLivreOr'])
+    											   $ResultQuery['id_template'])
     											  );
     		$idMere = $ResultQuery['id_mere']; // catŽgorie mre ˆ la dernire entrŽe dans le tableau de resultats
     		
@@ -237,9 +233,7 @@ class CategorieBD extends BD
     												   $ResultQuery['titreEN_rubrique'],
     												   $ResultQuery['descFR_rubrique'],
     												   $ResultQuery['descEN_rubrique'],
-    												   $ResultQuery['livreOrId'],
-    												   $ResultQuery['personneId'],
-    												   $ResultQuery['isLivreOr'])
+    												   $ResultQuery['id_template'])
     												  );
     			$idMere = $ResultQuery['id_mere']; // catŽgorie mre ˆ la dernire entrŽe dans le tableau de resultats    			
     			
@@ -286,9 +280,7 @@ function getSousCategories ($idMere)
                                  $row['titreEN_rubrique'],
                                  $row['descFR_rubrique'],
                                  $row['descEN_rubrique'],
-                                 $row['albumId'],
-                                 $row['personneId'],
-                                 $row['isLivreOr']
+                                 $row['id_template']
                                 );
             array_push($tabCategories, $cat);
             
@@ -318,9 +310,7 @@ function getCategorieById( $id )
                              $result['titreEN_rubrique'],
                              $result['descFR_rubrique'],
                              $result['descEN_rubrique'],
-                             $result['albumId'],
-                             $result['personneId'],
-                             $result['isLivreOr']
+                             $result['id_template']
                             );
     }
     catch(PDOException $e)
@@ -329,6 +319,28 @@ function getCategorieById( $id )
     }
     
     return $ret;
+}
+
+function getNomTemplateById($id)
+{
+	$bd = new BD();
+	
+	try
+	{
+		$bd->connexion();
+		$connexion = $bd->getConnexion();
+		$res = $connexion->query("SELECT template FROM TEMPLATE WHERE id=$id")->fetch();
+		if($res == NULL)
+		{
+			// EXCEPTION ?!
+		}
+	}
+	catch(PDOException $e)
+	{
+		// EXCEPTION
+	}
+	
+	return $res['template'];
 }
 
 ?>

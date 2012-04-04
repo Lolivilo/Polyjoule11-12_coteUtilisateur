@@ -1,5 +1,8 @@
 <?php
 	include_once('../BD/BD.php');
+	require_once('../BD/CategorieBD.php');
+	
+	
 class Categorie
 {  
 	private $id;
@@ -8,8 +11,10 @@ class Categorie
 	private $titreEN;
 	private $descFR;
 	private $descEN;
+	private $idTemplate;
+	
     
-	public function __construct( $idCat , $idCatParent , $titreFRCat , $titreENCat, $descFR, $descEN, $albumId, $personneId, $isLivreOr )
+	public function __construct( $idCat , $idCatParent , $titreFRCat , $titreENCat, $descFR, $descEN, $idTemplate)
 	{
 		$this->id = $idCat ;
 		$this->idParent = $idCatParent ;
@@ -17,9 +22,7 @@ class Categorie
 		$this->titreEN = $titreENCat ;
 		$this->descFR = $descEN;
 		$this->descEN = $descEN;
-        $this->albumId = $albumId;
-        $this->isLivreOr = $isLivreOr;
-        $this->personneId = $personneId;
+        $this->idTemplate = $idTemplate;
 	}
 	
 	public function getId()
@@ -62,53 +65,15 @@ class Categorie
     **/
     public function getUrl()
     {
-        $idCat = intval($this->id); // ATTENTION DANS LE FUTUR IL FAUDRA GERER SI LA CATEGORIE RENVOIE VERS UNE LISTE DARTICLE OU VERS UNE LISTE DE NEWS !!!!
-        return( "listArticle.php?cat=".$idCat );
+        $idCat = intval($this->id);
+        $ret = getNomTemplateById($this->idTemplate)."?cat=".$idCat."&numPage=1";
+        
+        return $ret;
     }
     
-    public function getAlbumId()
+    public function getIdTemplate()
     {
-        return $this->albumId;
-    }
-    
-    public function getIsLivreOr()
-    {
-        return $this->isLivreOr;
-    }
-    
-    public function getPersonneId()
-    {
-        return $this->personneId;
-    }
-    
-    public function isLivreOr()
-    {
-        if($this->getIsLivreOr() == 1 )
-        {
-            return true ;
-        }
-        return false;
-    }
-    
-    
-    public function isAlbum()
-    {
-        if( $this->getAlbumId() != NULL )
-        {
-            return true;
-        }
-        return false;
-    }
-    
-    
-    public function isPersonne()
-    {
-        if( $this->getPersonneId() != NULL )
-        {
-            return true;
-        }
-        return false;
-    }
-	
+    	return $this->idTemplate;
+    }	
 }
 ?>

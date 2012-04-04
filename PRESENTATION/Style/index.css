@@ -32,22 +32,23 @@ img{max-width:100%;border:0;}
 #header {width:90%;margin:auto;padding-bottom:10px;margin-bottom:10px;border-bottom:1px solid #919A9C;}
 #header h1 {padding:0;margin:0;width:50%;margin-top:30px;float:left;}
 #header #barre  {float:right;width:50%;text-align:right;font-size:0.9em;}
-#header #barre form {display:inline;}
+#header #barre form {display:inline-block;padding-top:10px;}
 #header #barre a, #header #barre .lang {padding-right:8%;}
 #header #barre .lang a {padding-right:3px;padding-left:3px;}
 #header #barre form {position:relative;}
-#header #barre input {border:1px solid #919A9C;}
-#header #barre input[type=submit] {border:0;position:absolute;right:4px;top:-2px;background:white;padding:0;}
+#header #barre input {border:1px solid #919A9C;padding:2px;}
+#header #barre input[type=submit] {display:inline-block;border-left:0;position:relative;right:10px;top:0px;background:white;}
 #header #barre input:focus {background:#E8E7E5;}
 #header #barre input[type=submit]:hover , #header #barre input[type=submit]:focus {background:#E8E7E5;cursor:pointer;}
 #header #barre form {white-space : nowrap;}
-#header #barre label {padding-right:2%;}
+input[type=submit]::-moz-focus-inner{border:0;padding:0}
+#header #barre label {padding-right:2%;display:inline-block;}
 
 #menuHeader {width:90%;margin:auto;text-align:center;margin-bottom:40px;}
 #menuHeader > li {display:inline-block;position:relative;vertical-align:middle;margin:0 1.5% 10px 1.5%;}
 #menuHeader > li > a {text-transform:uppercase;color:black;font-size:1.2em;text-decoration:none;}
 #menuHeader > li > a:hover, #menuHeader > li  > .active {text-decoration:underline;}
-#menuHeader ul {z-index:10;display:none;position:absolute;left:0;top:100%;padding:0;margin:0;padding-top:14px;margin-top:5px;width:100%;background:url(image/menu.png) no-repeat center top;}
+#menuHeader ul {z-index:10;display:none;position:absolute;left:0;top:100%;padding:0;margin:0;padding-top:14px;margin-top:0px;width:100%;background:url(image/menu.png) no-repeat center top;}
 #menuHeader ul li a{background-image:url(image/liste.png);background-position:left center;background:rgba(0,0,0,0.7);background-repeat:no-repeat;border-left:1px solid #c5c5c5;border-right:1px solid #c5c5c5;display:block;color:white;width:100%;text-align:left;color:white;font-size:0.9em;word-wrap: break-word;text-transform:uppercase;text-decoration:none;padding:3px 2% 3px 20px;filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#C0000000,endColorstr=#C0000000);}
 #menuHeader ul li:first-child a{-webkit-border-top-left-radius: 10px;-webkit-border-top-right-radius: 10px;-moz-border-radius-topleft: 10px;-moz-border-radius-topright: 10px;border-top-left-radius: 10px;border-top-right-radius: 10px;border-top:1px solid #c5c5c5; }
 #menuHeader ul li:last-child a{-webkit-border-bottom-right-radius: 10px;-webkit-border-bottom-left-radius: 10px;-moz-border-radius-bottomright: 10px;-moz-border-radius-bottomleft: 10px;border-bottom-right-radius: 10px;border-bottom-left-radius: 10px;border-bottom:1px solid #c5c5c5; }

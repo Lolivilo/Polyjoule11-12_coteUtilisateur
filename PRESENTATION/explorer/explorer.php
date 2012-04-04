@@ -12,10 +12,10 @@ $SousCategories = NULL;
 
 $html = NULL;
 
-if( isset($_GET['numPage']) )   // Si c est le livre d or, on recherche son identifiant de categorie dans la base
+/*if( isset($_GET['numPage']) )   // Si c est le livre d or, on recherche son identifiant de categorie dans la base
 {
     $_GET['cat'] = getIdRubrique();
-}
+}*/
 if(	(isset( $_GET['article'] ) ) )
 {
 	$LinkedCategoryID = $category->getAsssociateCategoryIDForArticle($_GET['article']);	
@@ -50,18 +50,8 @@ foreach ($SousCategories as $_Categorie)
 		$html.=" class='Nactive'";//active
     }
     
-    if( $_Categorie->isAlbum() )    // Zone albums
-    {
-        $html .= "><a href='albumPhoto.php?idAlbum=".getMostRecentAlbum()."'>".$_Categorie->getTitre()."</a>";
-    }
-    else if( $_Categorie->isLivreOr() )  // Lien special si livre d or
-    {
-        $html .= "><a href='livreDOr.php?numPage=1'>".$_Categorie->getTitre()."</a>";
-    }
-    else
-    {
-        $html.="><a href='".$_Categorie->getUrl()."'>".$_Categorie->getTitre()."</a>";
-    }
+    $html.="><a href='".$_Categorie->getUrl()."'>".$_Categorie->getTitre()."</a>";
+   
 	
 	$SousCategoriesN2 = NULL; // Catgories filles de la catgorie du tour de boucle du foreach
 	// Si la catgorie en cours ˆ des filles
@@ -75,14 +65,9 @@ foreach ($SousCategories as $_Categorie)
             {
 				$html.=" class='Nactive'";
             }
-            if( $CategorieN2->isLivreOr() )  // Lien special si livre d or
-            {
-                $html .= "><a href='livreDOr.php?numPage=1'>".$CategorieN2->getTitre()."</a>";
-            }
-            else
-            {
-                $html.= "><a href='".$CategorieN2->getUrl()."'>".$CategorieN2->getTitre()."</a>";
-            }
+            
+            $html.= "><a href='".$CategorieN2->getUrl()."'>".$CategorieN2->getTitre()."</a>";
+            
             
 			
             
