@@ -1,6 +1,6 @@
-jQuery().ready(function(){$("#albumPhoto #photos li a").click(
+jQuery().ready(function(){$("#mycarousel li img").click(
 	function () {
-		id__photo = $(this).children(".idImg").html();
+		id__photo = $(this).next(".idImg").html();
         id__album = $("#idAlb").html();
 		$.post("http://localhost:8888/PRESENTATION/script_ajax_album_photo.php", {id_photo:id__photo,id_album:id__album},
 			function(data) {

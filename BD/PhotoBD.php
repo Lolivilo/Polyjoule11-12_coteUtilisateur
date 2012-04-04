@@ -27,8 +27,8 @@
                                        $resultPhoto['titreEN_photo'],
                                        $resultPhoto['lien_photo'],
                                        $resultPhoto['date_photo'],
-                                       $resultQuery['descFR_photo'],
-                                       $resultQuery['descEN_photo']);
+                                       $resultPhoto['descFR_photo'],
+                                       $resultPhoto['descEN_photo']);
                 $this->deconnexion();
                 return $Photo;
             }
