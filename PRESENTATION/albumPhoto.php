@@ -22,11 +22,17 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />  
     <title>Polyjoule</title>  
     <link rel="stylesheet" type="text/css" href="Style/index.css" />
+    <link rel="stylesheet" type="text/css" href="Style/skins/tango/skin.css" />
     <script  type="text/javascript" src="JavaScript/jquery-1.4.1.min.js"></script>
     <script  type="text/javascript" src="JavaScript/menu.js"></script>
     <script  type="text/javascript" src="JavaScript/dropDown.js"></script>
     <script  type="text/javascript" src="JavaScript/album_photo.js"></script>
-    <?php //<script  type="text/javascript" src="JavaScript/jquery.json-2.3.min.js"></script> ?>
+    <script  type="text/javascript" src="JavaScript/jquery.jcarousel.min.js"></script>
+    <script type="text/javascript">
+		jQuery(document).ready(function() {
+    		jQuery('#mycarousel').jcarousel();
+		});
+	</script>
 </head>
 
 <body>
@@ -56,25 +62,28 @@
                 	?>
             	</p>
         	</div>
-        	<div id="photoPagination">
-            	<?php echo "<span id='idAlb' style='display:none'>".$firstPhoto->getIdAlbum()."</span>"; ?>
+        	<?php /*<div id="photoPagination">
+            	
             	<a href="index.html" class="precedent"></a>
-            	<span>2 / 42</span>
+            	<span>2 / 42</span> 
             	<a href="index.html" class="suivant"></a>
-        	</div>
+        	</div> */ ?>
 
         	<div id="albumPhoto">
-            	<a href="index.html" class="precedent"></a>
-            	<ul id="photos">
-                	<?php
-                    	foreach($currentAlbum->getPhotos() as $photo)
-                    	{
-                        	echo "<li><a href='index.html' ><img src='".$photo->getThumbnail()."' /><span class='idImg' style='display:none'>".$photo->getId()."</span></a></li>";
-                    	}
-                	?>
-            	</ul>
-            	<a href="index.html" class="suivant"></a>
-        	</div>	
+        		<?php echo "<span id='idAlb' style='display:none'>".$firstPhoto->getIdAlbum()."</span>"; ?>
+        		<div id="wrap">
+            		<?php //<a href="index.html" class="precedent"></a> ?>
+            		<ul id="mycarousel" class="jcarousel-skin-tango">
+                		<?php
+                    		foreach($currentAlbum->getPhotos() as $photo)
+                    		{
+                        		echo "<li><img src='".$photo->getThumbnail()."' style=\"width:100px; height:100px;\" /><span class='idImg' style='display:none'>".$photo->getId()."</span></li>";
+                    		}
+                		?>
+            		</ul>
+            		<?php //<a href="index.html" class="suivant"></a> ?>
+        		</div>
+        	</div>
 
         	<div id="footerCorps">
             	<p><?php echo($firstPhoto->getDesc());?></p>

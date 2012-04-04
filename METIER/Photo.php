@@ -73,7 +73,7 @@
 			}
 			$urlThumbnail .= "_";
 			*/
-        	return $urlThumbnail; //."_".jpg
+        	return $this->getLien(); //."_".jpg
         }
 
         
