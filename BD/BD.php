@@ -1,9 +1,9 @@
-	<?php
+<?php
     
     //chargement des classes correspondant aux 2 types d'exception
-    include_once 'ConnexionException.php';
-    include_once 'AccesTableException.php';
-    include_once("RequestException.php");
+    require_once('ConnexionException.php');
+    require_once('AccesTableException.php');
+    require_once("RequestException.php");
     
     class Bd
     {  

@@ -1,6 +1,6 @@
 <?php
-include_once 'BD.php';
-include_once '../METIER/Article.php';
+require_once('BD.php');
+require_once('../METIER/Article.php');
 
 
 class ArticleBD extends BD
@@ -246,6 +246,34 @@ function determineNbArticlesIndex()
         return 5;
     }
     return $nbArticles;
+}
+
+function articleExists($idArticle)
+{
+	$bd = new BD();
+	$ret;
+	try
+	{
+		$bd->connexion();
+		$connexion = $bd->getConnexion();
+		$res = $connexion->query("SELECT * FROM ARTICLE WHERE id_article = $idArticle")->fetch();
+		if($res == NULL)
+		{
+			$ret = FALSE;
+		}
+		else
+		{
+			$ret = TRUE;
+		}
+	}
+	catch(PDOExcpetion $e)
+	{
+		// EXCEPION
+	}
+	
+	$bd->deconnexion();
+	
+	return $ret;
 }
 
 ?>

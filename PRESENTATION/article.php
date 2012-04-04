@@ -1,16 +1,20 @@
 <?php
 	session_start();
-	require_once('../BD/ArticleBD.php');
-    $articleCourant = NULL;
-    if(isset($_GET['article']) && $_GET['article'] != '')
+	    
+    require_once('../BD/ArticleBD.php');
+    
+    if( (!(isset($_GET['article']))) || (!(intval($_GET['article']))) )		// Si GET n est pas valide
     {
-       $articleCourant = getArticleById($_GET['article']);
+    	header('location: erreur.php?code=0');
     }
-    if($articleCourant == NULL)
+    else if( !(articleExists($_GET['article'])) )
     {
-        header('Location: index.php');
+    	header('location: erreur.php?code=1');
     }
+    
+    $articleCourant = getArticleById($_GET['article']);	// Article courant de la page
 ?>
+
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">  
 <html xmlns="http://www.w3.org/1999/xhtml">  
     <head>  
