@@ -8,7 +8,7 @@ jQuery().ready(function(){$("#mycarousel li img").click(
                 {
                     $("#photo > img").attr('src',data.url);
                     $("#photo > p").html(data.commentaire);
-                    $("#corps > h3").html(data.titre);
+                    $("#corps p").html(data.titre);
                  }
                  else
                  {

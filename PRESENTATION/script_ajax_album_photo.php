@@ -19,7 +19,7 @@
     }
     else
     {
-        $Array = array('success' => 'yes', 'id' => $Photo->getId(), 'url' => $Photo->getlien(), 'titre' => $Photo->getTitre(), 'date' => $Photo->getDate(), 'commentaire' => 'Commentaire...' );
+        $Array = array('success' => 'yes', 'id' => $Photo->getId(), 'url' => $Photo->getlien(), 'titre' => $Photo->getTitre(), 'date' => $Photo->getDate(), 'commentaire' =>  $Photo->getDesc());
     }
     $JSON = json_encode($Array);
     echo $JSON;

@@ -85,9 +85,7 @@
         		</div>
         	</div>
 
-        	<div id="footerCorps">
-            	<p><?php echo($firstPhoto->getDesc());?></p>
-        	</div>
+        	
        <?php
        	}
        	else
