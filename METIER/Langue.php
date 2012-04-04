@@ -1,5 +1,5 @@
 <?php 
-    require_once '../BD/LangueParser.php';
+    require_once 'LangueParser.php';
     class Langue
     {
         private $name; // attr XML
