@@ -66,7 +66,11 @@ class Categorie
     public function getUrl()
     {
         $idCat = intval($this->id);
-        $ret = getNomTemplateById($this->idTemplate)."?cat=".$idCat."&numPage=1";
+        $ret = getNomTemplateById($this->idTemplate)."?cat=".$idCat;
+        if($this->idTemplate == 4)
+        {
+        	$ret .= "&numPage=1";
+        }
         
         return $ret;
     }

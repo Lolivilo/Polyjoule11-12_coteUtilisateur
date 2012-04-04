@@ -1,17 +1,20 @@
 <?php
 	session_start();
+	
 	require_once('../BD/CategorieBD.php');
     require_once('../BD/ArticleBD.php');
-    $categorieCourante = NULL;
-    if(isset($_GET['cat']) && $_GET['cat'] != '')
+    
+    if( (!(isset($_GET['cat']))) || (!(intval($_GET['cat']))) )		// Si GET n est pas valide
     {
-        $categorieCourante = new CategorieBD();
-        $categorieCourante = $categorieCourante->getCategorieWithId($_GET['cat']);
+    	header('location: erreur.php?code=0');
     }
-    if($categorieCourante == NULL)
+    else if( !(categorieExists($_GET['cat'])) )
     {
-        header('Location: index.php?erreur=NO_CAT_ID');
+    	header('location: erreur.php?code=1');
     }
+    
+    $categorieCourante = new CategorieBD();
+    $categorieCourante = $categorieCourante->getCategorieWithId($_GET['cat']);
 ?>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">  

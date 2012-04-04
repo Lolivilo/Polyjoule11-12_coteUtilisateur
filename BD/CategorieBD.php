@@ -339,8 +339,31 @@ function getNomTemplateById($id)
 	{
 		// EXCEPTION
 	}
-	
+	$bd->deconnexion();
 	return $res['template'];
 }
 
+function categorieExists($idCat)
+{
+	$bd = new BD();
+	
+	try
+	{
+		$bd->connexion();
+		$connexion = $bd->getConnexion();
+		$res = $connexion->query("SELECT * FROM RUBRIQUE WHERE id_rubrique=$idCat")->fetch();
+	}
+	catch(PDOException $e)
+	{
+		// EXCEPTION
+	}
+	
+	$bd->deconnexion();
+	
+	if($res == NULL)
+	{
+		return FALSE;
+	}
+	return TRUE;
+}
 ?>

@@ -237,6 +237,18 @@ function getNbArticles()
     $bd->deconnexion();
     return $result['COUNT(*)'];
 }
+
+
+function getNbPagesListeArticles()
+{
+	$nbArt = getNbArticles();
+	if( ($nbArt % 10) == 0)
+	{
+		return($nbArt / 10);
+	}
+	return( ($nbArt / 10) + 1);
+}
+ 
     
 function determineNbArticlesIndex()
 {

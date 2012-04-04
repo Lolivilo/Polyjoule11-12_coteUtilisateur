@@ -186,4 +186,32 @@ function getNbPhotosById($idAlbum)
 	
 	return $result['COUNT(*)'];
 }
+
+
+
+function albumPhotoExists($idAlb)
+{
+	$bd = new BD();
+	
+	try
+	{
+		$bd->connexion();
+		$connexion = $bd->getConnexion();
+		$result = $connexion->query("SELECT * FROM ALBUM WHERE id_album = $idAlb")->fetch();
+	}
+	catch(PDOException $e)
+	{
+		// A REMPLIR
+	}
+	$bd->deconnexion();
+	
+	if($result == NULL)
+	{
+		return false;
+	}
+	
+	return true;
+}
+
+
 ?>

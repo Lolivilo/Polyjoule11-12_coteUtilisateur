@@ -1,17 +1,20 @@
 <?php
 	session_start();
-    require_once('../BD/LangueParser.php');
+	
+    //require_once('../BD/LangueParser.php');
 	require_once('../BD/AlbumPhotoBd.php');
-    $album = NULL;
-    if(isset($_GET['cat']) && $_GET['cat'] != '')
+	
+	if( (!(isset($_GET['cat']))) || (!(intval($_GET['cat']))) )		// Si GET n est pas valide
     {
-        $AlbumPhotoBD = new AlbumPhotoBD();
-        $currentAlbum = $AlbumPhotoBD->getAlbumById($_GET['cat']);
+    	header('location: erreur.php?code=0');
     }
-    if($currentAlbum == NULL)
+    else if( !(albumPhotoExists($_GET['cat'])) )
     {
-        header('Location: index.php');
+    	header('location: erreur.php?code=1');
     }
+    
+    $AlbumPhotoBD = new AlbumPhotoBD();
+    $currentAlbum = $AlbumPhotoBD->getAlbumById($_GET['cat']);
     
 	
 ?>
