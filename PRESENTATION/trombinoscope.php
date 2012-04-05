@@ -48,6 +48,7 @@
 				echo("<tr>");
 				echo("<th>".$parserLangue->getWord("department")->getTraduction()."</th><td><a href='".$m->getLienFormation()."'>".$m->getFormation()."</a></td>");
 				echo("</tr>");
+				echo("<tr>");
 				echo("<th>Promotion</th><td>".$m->getAnnee()."</td>");
 				echo("</tr>");
 				echo("<tr>");

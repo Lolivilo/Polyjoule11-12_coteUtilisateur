@@ -266,11 +266,13 @@ class CategorieBD extends BD
 function getSousCategories ($idMere)
 {
     $bd = new BD();
+    $param = intval($bd->security($idMere));
+    
     try
     {
         $connexion = $bd->getConnexion();
         // si on cherche ˆ obtenir les sous catŽgories de la catŽgorie donnŽe en paramtre
-        $result = $connexion->query( "SELECT * FROM RUBRIQUE WHERE id_mere=$idMere" )->fetchAll();
+        $result = $connexion->query( "SELECT * FROM RUBRIQUE WHERE id_mere=$param" )->fetchAll();
         $tabCategories = array();
         foreach($result as $row)
         {
@@ -298,12 +300,13 @@ function getSousCategories ($idMere)
 function getCategorieById( $id )
 {
     $bd = new Bd();
+    $param = intval($bd->security($id));
     
     try
     {
         $bd->connexion();
         $conexion = $bd->getConnexion();
-        $result = $connexion->query("SELECT * FROM RUBRIQUE WHERE id_rubrique = $id")->fetch();
+        $result = $connexion->query("SELECT * FROM RUBRIQUE WHERE id_rubrique = $param")->fetch();
         $ret = new Categorie($result['id_rubrique'],
                              $result['id_mere'],
                              $result['titreFR_rubrique'],
@@ -324,12 +327,13 @@ function getCategorieById( $id )
 function getNomTemplateById($id)
 {
 	$bd = new BD();
+	$param = intval($bd->security($id));
 	
 	try
 	{
 		$bd->connexion();
 		$connexion = $bd->getConnexion();
-		$res = $connexion->query("SELECT template FROM TEMPLATE WHERE id=$id")->fetch();
+		$res = $connexion->query("SELECT template FROM TEMPLATE WHERE id=$param")->fetch();
 		if($res == NULL)
 		{
 			// EXCEPTION ?!
@@ -346,12 +350,13 @@ function getNomTemplateById($id)
 function categorieExists($idCat)
 {
 	$bd = new BD();
+	$param = intval($bd->security($idCat));
 	
 	try
 	{
 		$bd->connexion();
 		$connexion = $bd->getConnexion();
-		$res = $connexion->query("SELECT * FROM RUBRIQUE WHERE id_rubrique=$idCat")->fetch();
+		$res = $connexion->query("SELECT * FROM RUBRIQUE WHERE id_rubrique=$param")->fetch();
 	}
 	catch(PDOException $e)
 	{

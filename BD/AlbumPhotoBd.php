@@ -107,6 +107,7 @@ function getNbAlbums()
 function getMostRecentAlbum()
 {
     $bd = new BD();
+    
     try
     {
         $bd->connexion();
@@ -124,6 +125,7 @@ function getMostRecentAlbum()
 function getAllAlbums()
 {
     $bd = new Bd();
+    
     try
     {
         $bd->connexion();
@@ -152,12 +154,13 @@ function getAllAlbums()
 function getFirstPhotoById($idAlbum)
 {
 	$bd = new BD();
+	$param = intval($bd->security($idAlbum));
 	
 	try
 	{
 		$bd->connexion();
 		$connexion = $bd->getConnexion();
-		$result = $connexion->query("SELECT lien_photo FROM PHOTO WHERE id_album = $idAlbum ORDER BY id_photo LIMIT 1")->fetch();
+		$result = $connexion->query("SELECT lien_photo FROM PHOTO WHERE id_album = $param ORDER BY id_photo LIMIT 1")->fetch();
 	}
 	catch(PDOException $e)
 	{
@@ -171,12 +174,13 @@ function getFirstPhotoById($idAlbum)
 function getNbPhotosById($idAlbum)
 {
 	$bd = new BD();
+	$param = intval($bd->security($idAlbum));
 	
 	try
 	{
 		$bd->connexion();
 		$connexion = $bd->getConnexion();
-		$result = $connexion->query("SELECT COUNT(*) FROM PHOTO WHERE id_album = $idAlbum")->fetch();
+		$result = $connexion->query("SELECT COUNT(*) FROM PHOTO WHERE id_album = $param")->fetch();
 	}
 	catch(PDOException $e)
 	{
@@ -192,12 +196,13 @@ function getNbPhotosById($idAlbum)
 function albumPhotoExists($idAlb)
 {
 	$bd = new BD();
+	$param = intval($bd->security($idAlb));
 	
 	try
 	{
 		$bd->connexion();
 		$connexion = $bd->getConnexion();
-		$result = $connexion->query("SELECT * FROM ALBUM WHERE id_album = $idAlb")->fetch();
+		$result = $connexion->query("SELECT * FROM ALBUM WHERE id_album = $param")->fetch();
 	}
 	catch(PDOException $e)
 	{

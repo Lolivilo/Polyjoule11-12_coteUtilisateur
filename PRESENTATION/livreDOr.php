@@ -56,12 +56,12 @@
                 ?>
                
                	<ul id='paginationLivre'>
-               		<li><a href='livreDOr.php?numPage=1'><<</a></li>
+               		<li><a href='livreDOr.php?cat=<?php echo $_GET['cat']; ?>&numPage=1'><<</a></li>
                		<?php
-               			echo("<li><a href='livreDOr.php?numPage=".getPreviousNumPageLivreOr($_GET['numPage'])."'><</a></li>");
+               			echo("<li><a href='livreDOr.php?cat=".$_GET['cat']."&numPage=".getPreviousNumPageLivreOr($_GET['numPage'])."'><</a></li>");
                			echo("<li>".$_GET['numPage']."</li>");
-               			echo("<li><a href='livreDOr.php?numPage=".getNextNumPageLivreOr($_GET['numPage'])."'>></a></li>");
-               			echo("<li><a href='livreDOr.php?numPage=".getLastNumPageLivreOr()."'>>></a></li>");
+               			echo("<li><a href='livreDOr.php?cat=".$_GET['cat']."&numPage=".getNextNumPageLivreOr($_GET['numPage'])."'>></a></li>");
+               			echo("<li><a href='livreDOr.php?cat=".$_GET['cat']."&numPage=".getLastNumPageLivreOr()."'>>></a></li>");
                		?>
                	</ul>
                	

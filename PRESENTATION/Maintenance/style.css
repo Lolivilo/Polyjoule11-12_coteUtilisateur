@@ -1,0 +1,21 @@
+body {
+	background-image : url("images/trame.png");
+	background-repeat : repeat;
+	padding : 0;
+	margin : 0;
+	min-width:1200px;
+	height : 200px;
+	}
+#logo {
+	background-image : url("images/maintenance.png");
+	width : 800px;
+	height : 600px;
+	margin : auto auto auto auto;
+	text-align : center;
+	}
+	
+footer {
+	text-align : center;
+	font-family : arial;
+	font-size : 10px;
+	}

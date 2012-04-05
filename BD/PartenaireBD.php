@@ -85,13 +85,14 @@ function getAllPartners()
 function partenaireExists($idPart)
 {
 	$bd = new Bd();
+	$param = intval($bd->security($idPart));
 	
 	try
 	{
 		// Connexion a la base de donnees
 		$bd->connexion();
 		$connexion = $bd->getConnexion();
-		$res = $connexion->query("SELECT * FROM PARTENAIRE WHERE id_partenaire = $idPart")->fetchAll();
+		$res = $connexion->query("SELECT * FROM PARTENAIRE WHERE id_partenaire = $param")->fetchAll();
 	}	
 	catch(PDOException $e)
 	{

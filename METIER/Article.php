@@ -96,14 +96,8 @@ class Article
     {
     	$text = "";
     	$nb_max_mots = 20;
-        if($_SESSION['langue'] == 'EN')
-        {
-            $text = $this->contenuEN;
-        }
-        else
-        {
-            $text = $this->contenuFR;
-        }
+    	
+        $text = $this->getContenu();
         
         $apercu = "";
 		$t_chaineNouvelle = explode(" ",$text);

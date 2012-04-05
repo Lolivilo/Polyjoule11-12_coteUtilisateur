@@ -41,11 +41,13 @@ function getAllParticipantsProfs()
 function getAllParticipantsNonProfsByEquipe($idEquipe)
 {
     $bd = new BD();
+    $param = intval($bd->security($idEquipe));
+    
     try
     {
         $bd->connexion();                   // Connexion a la BD
         $connexion = $bd->getConnexion();  
-        $result = $connexion->query("SELECT * FROM PARTICIPANT WHERE isProf = 0 AND id_equipe = $idEquipe")->fetchAll();   // Execution de la requete
+        $result = $connexion->query("SELECT * FROM PARTICIPANT WHERE isProf = 0 AND id_equipe = $param")->fetchAll();   // Execution de la requete
         $ret = array();
         foreach($result as $row)    // Chaque tuple retourne est instancie et stocke dans un tableau
         {
@@ -79,6 +81,8 @@ Cree des objets "ParticipantTrombinoscope"
 function createTrombinoscopeByEquipe($idEquipe)
 {
 	$bd = new BD();
+	$param = intval($bd->security($idEquipe));
+	
 	try
 	{
 		$bd->connexion();
@@ -88,7 +92,7 @@ function createTrombinoscopeByEquipe($idEquipe)
 									 JOIN APPARTIENT ON PARTICIPANT.id_participant = APPARTIENT.id_participant
 									 JOIN FORMATION ON APPARTIENT.id_formation = FORMATION.id_formation
 									 JOIN EQUIPE ON PARTICIPANT.id_equipe = EQUIPE.id_equipe
-									 WHERE isProf = 0 AND PARTICIPANT.id_equipe = $idEquipe")->fetchAll();
+									 WHERE isProf = 0 AND PARTICIPANT.id_equipe = $param")->fetchAll();
 		$ret = array();						 
 		foreach($result as $t)	// On va instancier chaque tuple récupéré par un objet ParticipantTrombinoscope
 		{

@@ -5,13 +5,14 @@ include_once('../METIER/Equipe.php');
 function getEquipeById($id)
 {
 	$bd = new BD();
+	$param = $bd->security($id);
 	
 	try
 	{
 		$bd->connexion();
 		$connexion = $bd->getConnexion();
 		
-		$res = $connexion->query("SELECT * FROM EQUIPE WHERE id_equipe = $id")->fetch();
+		$res = $connexion->query("SELECT * FROM EQUIPE WHERE id_equipe = $param")->fetch();
 		$e = new Equipe($res['id_equipe'], $res['annee_equipe']);
 		
 		
@@ -58,6 +59,7 @@ function getAllEquipes()
 function equipeExists($idEq)
 {
 	$bd = new BD();
+	$param = intval($bd->security($idEq));
 	
 	try
 	{

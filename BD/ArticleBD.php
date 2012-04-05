@@ -263,20 +263,13 @@ function determineNbArticlesIndex()
 function articleExists($idArticle)
 {
 	$bd = new BD();
-	$ret;
+	$param = intval($bd->security($idArticle));
+	
 	try
 	{
 		$bd->connexion();
 		$connexion = $bd->getConnexion();
-		$res = $connexion->query("SELECT * FROM ARTICLE WHERE id_article = $idArticle")->fetch();
-		if($res == NULL)
-		{
-			$ret = FALSE;
-		}
-		else
-		{
-			$ret = TRUE;
-		}
+		$res = $connexion->query("SELECT * FROM ARTICLE WHERE id_article = $param")->fetch();
 	}
 	catch(PDOExcpetion $e)
 	{
@@ -285,7 +278,11 @@ function articleExists($idArticle)
 	
 	$bd->deconnexion();
 	
-	return $ret;
+	if($res == NULL)
+	{
+		return FALSE;
+	}
+	return TRUE;
 }
 
 ?>
