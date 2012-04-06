@@ -3,7 +3,7 @@
 	require_once('MENU/Menu.php');
     require_once('../METIER/LangueParser.php');
 	include_once('LANGUE/sessionLangue.php');
-    require_once('../BD/AlbumPhotoBd.php');
+    require_once('../BD/acces_albumPhoto.php');
     
     $parserLangue = new LangueParser();
 ?>

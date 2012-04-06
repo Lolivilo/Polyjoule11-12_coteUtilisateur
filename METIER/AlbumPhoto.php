@@ -1,5 +1,5 @@
 <?php
-require_once('../BD/AlbumPhotoBd.php');
+require_once('../BD/acces_albumPhoto.php');
 
 class AlbumPhoto
 {
@@ -66,7 +66,7 @@ class AlbumPhoto
     
     public function getUrl()
     {
-    	return("http://".$_SERVER['HTTP_HOST']."/PRESENTATION/albumPhoto.php?cat=".$this->id);
+    	return("albumPhoto.php?cat=".$this->id);
     }
     
     public function addPhoto($photo)

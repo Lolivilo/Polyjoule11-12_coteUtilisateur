@@ -1,7 +1,7 @@
 <?php
 	session_start();
 	
-	require_once('../BD/AlbumPhotoBd.php');
+	require_once('../BD/acces_albumPhoto.php');
 	require_once('../BD/CategorieBD.php');
 	
 	if( (!(isset($_GET['cat']))) || (!(intval($_GET['cat']))) )		// Si GET n est pas valide
