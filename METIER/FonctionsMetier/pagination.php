@@ -46,4 +46,18 @@ function generatePagination($nbItems, $catCourante)
 }
 
 
+function getIndexDebutFor($currentPage, $nbParPage)
+{
+	return( $nbParPage * ($currentPage - 1) );
+}
+
+function getIndexFinFor($indexDebut, $nbItems, $nbParPage)
+{
+	if( ($nbItems - $indexDebut) < $nbParPage)
+	{
+		return( $indexDebut + ($nbItems - $indexDebut) );
+	}
+	
+	return($indexDebut + 5);
+}
 ?>

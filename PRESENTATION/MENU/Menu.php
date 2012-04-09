@@ -31,7 +31,7 @@
             
             foreach ($ChildrenCategories as $SousCat)// parcours des catgories de second niveau
             {
-            	$html.= "<li><a href='".$SousCat->getUrl()."'>".$SousCat->getTitre()."</a></li>"; 
+            	$html.= "<li><a href='".$SousCat->getUrl()."&numPage=1'>".$SousCat->getTitre()."</a></li>"; 
             }
             if($HasChildren)
             {

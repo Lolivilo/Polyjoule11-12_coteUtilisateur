@@ -40,7 +40,12 @@
             ?>
         </h2>
         <?php
-            for($i = 0 ; $i < getNbParticipantsProfs() ; $i++)
+        	//$debut = 5 * ($_GET['numPage'] - 1); 	// 0 puis 5 puis 10…
+        	$debut = getIndexDebutFor($_GET['numPage'], 5);
+        	$fin = getIndexFinFor($debut, getNbParticipantsProfs(), 5);
+        	//$nbSurCettePage = getNbParticipantsProfs() - $debut;
+        	
+            for($i = $debut ; $i < $fin ; $i++)
             {
                 //echo("<div>");
                 echo("<div class='articleHeader' id='participant_".$tabParticipants[$i]->getId()."'>");
@@ -54,18 +59,10 @@
                 echo("</div>");
                 echo("<h4>".$parserLangue->getWord("quiEstIl")->getTraduction()."</h4>");
                 echo("<p>".$tabParticipants[$i]->getBioFr()."</p>");
-                //echo("</div>");
-                /*
-                echo("<table id='".$tabParticipants[$i]->getId()."'>");
-                echo("<tr><td><td>".$tabParticipants[$i]->getNom()." ".$tabParticipants[$i]->getPrenom()."</td><td></td></tr>");
-                echo("<tr><td></td><td></td><td>A ajouter dans la base</td></tr>");
-                echo("<tr><td></td><td>".$tabParticipants[$i]->getRole()."</td></td></tr>");
-                echo("</table>");
-                echo("<h5>Qui est-il ?</h5>");
-                echo($tabParticipants[$i]->getBioFr());
-                echo("</div>");
-                 */
             }
+        ?>
+        <?php
+        	echo(generatePagination(getNbParticipantsProfs(), $_GET['cat']));
         ?>
          <div id='footerCorps'></div>
     </div>
