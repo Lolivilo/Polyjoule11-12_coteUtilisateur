@@ -6,6 +6,7 @@
     require_once('../BD/acces_albumPhoto.php');
     require_once('../METIER/FonctionsMetier/pagination.php');
     
+    
     $parserLangue = new LangueParser();
 ?>
 
