@@ -12,5 +12,6 @@
 			}
 		?>
 	</div>
-	<span id='signature'>Polyjoule 2012 - All rights reserved</span>
+	<span id='signature'>Polyjoule 2012 - All rights reserved</span><br/>
+	<span id='developpeurs'><a href='trombiDev.php'>Développeurs 2012</a></span>
 </div>

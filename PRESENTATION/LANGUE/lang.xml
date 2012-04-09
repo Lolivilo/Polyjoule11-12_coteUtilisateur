@@ -73,4 +73,9 @@
         <fr>Son aide</fr>
         <en>Its assistant</en>
     </word>
+    
+    <word txt="trombiDev">
+        <fr>Le trombinoscope des développeurs</fr>
+        <en>Developpers</en>
+    </word>
 </lang>
