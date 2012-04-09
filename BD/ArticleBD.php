@@ -239,6 +239,29 @@ function getNbArticles()
 }
 
 
+
+function getNbArticlesByCategorie($idCat)
+{
+	$bd = new Bd();
+    
+    try
+    {
+        $bd->connexion();
+        $connexion = $bd->getConnexion();
+        $result = $connexion->query("SELECT COUNT(*) FROM ARTICLE WHERE statut_article = 1 AND id_rubrique = $idCat")->fetch();
+    }
+    catch(PDOException $e)
+    {
+        
+    }
+    
+    $bd->deconnexion();
+    
+    return $result['COUNT(*)'];
+}
+
+
+
 function getNbPagesListeArticles()
 {
 	$nbArt = getNbArticles();

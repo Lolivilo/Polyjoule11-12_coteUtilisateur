@@ -8,7 +8,7 @@
 		{
         	$HasChildren = FALSE;
             $idCatParent = $CatParent->getId();
-            $html.= "<li><a href='".$CatParent->getUrl()."'>".$CatParent->getTitre()."</a>";
+            $html.= "<li><a href='".$CatParent->getUrl()."&numPage=1'>".$CatParent->getTitre()."</a>";
             $ChildrenCategories = $CategorieBD->getSousCategories($idCatParent);// tableau d'objets categorie
             
             if($CatParent->getIdTemplate() == 2)

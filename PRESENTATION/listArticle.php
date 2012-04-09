@@ -63,6 +63,11 @@
                     echo "<p>Il n'y a pas d'article dans cette cat&eacute;gorie</p>";
                 }
             ?>
+            
+            <?php
+            	$nbArticles = getNbArticlesByCategorie($categorieCourante->getId());
+            	echo(generatePagination($nbArticles, $_GET['cat']));
+            ?>
 
             <div id="footerCorps">
             </div>
