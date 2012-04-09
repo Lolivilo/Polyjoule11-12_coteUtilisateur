@@ -28,67 +28,55 @@
 <body>
     <?php 
         include_once('header.php');
+        include_once('explorer/explorer.php');
     ?>
-    <div id='global'>
-        <div id='left'>
-            <?php
-                include_once('explorer/explorer.php');
+    <div id='corps'>
+    	<h2 id='titreArticle'><img src="Style/image/livreOr.jpg" alt="Image du livre d'or"/></h2>
+        <h3><?php echo( $parserLangue->getWord('LivreOr')->getTraduction() );?></h3>
+        	<?php
+            // Affichage des commentaires
+            	$debut = getIndexDebutFor($_GET['numPage'], 5);
+               	$fin = getIndexFinFor($debut, getNbAcceptedLivreOr(), 5);
+                for($i = $debut ; $i < $fin ; $i++)
+                {
+                    echo("<div class='commentaire' id='signature_".$tabComment[$i]->getId()."'>");
+                    echo("<h4>".$tabComment[$i+(10*($_GET['numPage']-1))]->getPosteur()."<span class='date'>".$tabComment[$i+(10*($_GET['numPage']-1))]->getFormatedDate()."</span></h4>");
+                    echo("<p>".$tabComment[$i+(10*($_GET['numPage']-1))]->getMessage()."</p>");
+                    echo("</div>");
+                }
             ?>
-        </div>
-        <div id='right'>
-            <div id='corps'>
-            	<h2 id='titreArticle'><img src="Style/image/livreOr.jpg" alt="Image du livre d'or"/></h2>
-                <h3>
-                	<?php
-                    	echo( $parserLangue->getWord('LivreOr')->getTraduction() );
-                    ?>
-                </h3>
-                
+              	
+           	<?php
+           		echo(generatePagination(getNbAcceptedLivreOr(), $_GET['cat']));
+           	?>
+       
+            <div id='ajoutSignature'>
                 <?php
-                    // Affichage des commentaires
-                    $debut = getIndexDebutFor($_GET['numPage'], 5);
-                    $fin = getIndexFinFor($debut, getNbAcceptedLivreOr(), 5);
-                    for($i = $debut ; $i < $fin ; $i++)
+                    if(isset($_GET['emptyInput']) && $_GET['emptyInput'] == 'true')
                     {
-                        echo("<div class='commentaire' id='signature_".$tabComment[$i]->getId()."'>");
-                        echo("<h4>".$tabComment[$i+(10*($_GET['numPage']-1))]->getPosteur()."<span class='date'>".$tabComment[$i+(10*($_GET['numPage']-1))]->getFormatedDate()."</span></h4>");
-                        echo("<p>".$tabComment[$i+(10*($_GET['numPage']-1))]->getMessage()."</p>");
-                        echo("</div>");
+                        echo("<p>Tous les champs doivent être remplis !</p>");
+                    }
+                    if(isset($_GET['mailSyntax']) && $_GET['mailSyntax'] == 'false')
+                    {
+                        echo("<p>L'adresse mail doit être valide !</p>");
+                    }
+                    if(isset($_GET['signAttempt']) && $_GET['signAttempt'] == 'true')
+                    {
+                        echo("<p>Signature ajoutée avec succès ! En attente d'approbation.</p>");
+                    }
+                    if(isset($_GET['signAttempt']) && $_GET['signAttempt'] == 'false')
+                    {
+                        echo("<p>Echec de l'ajout (problème serveur) !</p>");
                     }
                 ?>
-               	
-               	<?php
-               		echo(generatePagination(getNbAcceptedLivreOr(), $_GET['cat']));
-               	?>
-       
-                <div id='ajoutSignature'>
-                    <?php
-                        if(isset($_GET['emptyInput']) && $_GET['emptyInput'] == 'true')
-                        {
-                            echo("<p>Tous les champs doivent être remplis !</p>");
-                        }
-                        if(isset($_GET['mailSyntax']) && $_GET['mailSyntax'] == 'false')
-                        {
-                            echo("<p>L'adresse mail doit être valide !</p>");
-                        }
-                        if(isset($_GET['signAttempt']) && $_GET['signAttempt'] == 'true')
-                        {
-                            echo("<p>Signature ajoutée avec succès ! En attente d'approbation.</p>");
-                        }
-                        if(isset($_GET['signAttempt']) && $_GET['signAttempt'] == 'false')
-                        {
-                            echo("<p>Echec de l'ajout (problème serveur) !</p>");
-                        }
-                    ?>
-				</div>
-                <form name='signer' id='ajoutSignature' action='../BD/TraitementsFormulaires/AjoutSignature.php' method="post" onsubmit="return check()">
-                 	<label for='pseudo'>Pseudo</label><input type="text" name='pseudo'/><br/>
-                   	<label for='mail'>Mail</label><input type="text" name='mail'/><br/>
-                    <textarea name='message'></textarea>
-                    <input type="submit" id='signer' value='Signez'/>
-                </form>
-                <div id='footerCorps'></div>
-            </div>
+			</div>
+            <form name='signer' id='ajoutSignature' action='../BD/TraitementsFormulaires/AjoutSignature.php' method="post" onsubmit="return check()">
+            	<label for='pseudo'>Pseudo</label><input type="text" name='pseudo'/><br/>
+                <label for='mail'>Mail</label><input type="text" name='mail'/><br/>
+                <textarea name='message'></textarea>
+                <input type="submit" id='signer' value='Signez'/>
+            </form>
+            <div id='footerCorps'></div>
         </div>
     </div>
     <?php

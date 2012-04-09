@@ -42,16 +42,21 @@
     	else
     	{
     		echo("<div class='listeArticle'>");
-    		foreach($equipes as $e)
-    		{
-    			echo("BORDEL IL ME FAUT LES ANNEES : ".$e->getAnnee().print_r($e));
-    			echo("<div class='description'><h3>Equipe de l'année ".$e->getAnnee()."</h3></div>");
-    			echo("<a class='lienImportant' href='trombinoscope.php?equipe=".$e->getId()."'>Découvrez leur trombinoscope !</a>");
+    		
+    		$debut = getIndexDebutFor($_GET['numPage'], 5);
+			$fin = getIndexFinFor($debut, getNbEquipes(), 5);
+			for($i = $debut ; $i < $fin ; $i++)
+			{
+				echo("BORDEL IL ME FAUT LES ANNEES : ".$equipes[$i]->getAnnee().print_r($equipes[$i]));
+    			echo("<div class='description'><h3>Equipe de l'année ".$equipes[$i]->getAnnee()."</h3></div>");
+    			echo("<a class='lienImportant' href='trombinoscope.php?equipe=".$equipes[$i]->getId()."'>Découvrez leur trombinoscope !</a>");
     			echo("<div class='clear'></div>");
-    			
-    		}
+			}
     		echo("</div>");
     	}
+    ?>
+    <?php
+    	echo(generatePagination(getNbEquipes(), $_GET['cat']));
     ?>
 
     <div id="footerCorps"></div>

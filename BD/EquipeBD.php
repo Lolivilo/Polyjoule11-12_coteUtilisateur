@@ -56,6 +56,31 @@ function getAllEquipes()
 	return $ret;
 }
 
+
+function getNbEquipes()
+{
+$bd = new BD();
+	
+	try
+	{
+		$bd->connexion();
+		$connexion = $bd->getConnexion();
+		
+		$res = $connexion->query("SELECT COUNT(*) FROM EQUIPE")->fetch();
+	}
+	
+	catch(PDOException $e)
+	{
+	
+	}
+	
+	$bd->deconnexion();
+	
+	return $res['COUNT(*)'];
+
+}
+
+
 function equipeExists($idEq)
 {
 	$bd = new BD();
