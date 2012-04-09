@@ -15,7 +15,17 @@
 
 
 <span class="lang">
-	<a href=<?php echo("'".$_SERVER['PHP_SELF']."?lang=FR'");?> class="active">FR</a> | <a href=<?php echo("'".$_SERVER['PHP_SELF']."?lang=EN'");?>>EN</a>
+	<?php
+		if($_SERVER['QUERY_STRING'] == NULL)
+		{
+			$link = "'".$_SERVER['PHP_SELF']."?lang=";
+		}
+		else
+		{
+			$link = "'".$_SERVER['PHP_SELF']."?".$_SERVER['QUERY_STRING']."&lang=";
+		}
+	?>
+	<a href=<?php echo($link."FR'");?> class="active">FR</a> | <a href=<?php echo($link."EN'");?>>EN</a>
 </span>
 <form method="get" action="search.php">
 	<label for="search"><?php echo($parserLangue->getWord("search")->getTraduction());?></p></label>
