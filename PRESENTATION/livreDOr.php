@@ -46,7 +46,9 @@
                 
                 <?php
                     // Affichage des commentaires
-                    for($i = 0 ; $i <= (getNbOnPageLivreOr($_GET['numPage'])-1) ; $i++)
+                    $debut = getIndexDebutFor($_GET['numPage'], 5);
+                    $fin = getIndexFinFor($debut, getNbAcceptedLivreOr(), 5);
+                    for($i = $debut ; $i < $fin ; $i++)
                     {
                         echo("<div class='commentaire' id='signature_".$tabComment[$i]->getId()."'>");
                         echo("<h4>".$tabComment[$i+(10*($_GET['numPage']-1))]->getPosteur()."<span class='date'>".$tabComment[$i+(10*($_GET['numPage']-1))]->getFormatedDate()."</span></h4>");
@@ -54,18 +56,11 @@
                         echo("</div>");
                     }
                 ?>
-               
-               	<ul id='paginationLivre'>
-               		<li><a href='livreDOr.php?cat=<?php echo $_GET['cat']; ?>&numPage=1'><<</a></li>
-               		<?php
-               			echo("<li><a href='livreDOr.php?cat=".$_GET['cat']."&numPage=".getPreviousNumPageLivreOr($_GET['numPage'])."'><</a></li>");
-               			echo("<li>".$_GET['numPage']."</li>");
-               			echo("<li><a href='livreDOr.php?cat=".$_GET['cat']."&numPage=".getNextNumPageLivreOr($_GET['numPage'])."'>></a></li>");
-               			echo("<li><a href='livreDOr.php?cat=".$_GET['cat']."&numPage=".getLastNumPageLivreOr()."'>>></a></li>");
-               		?>
-               	</ul>
                	
-               
+               	<?php
+               		echo(generatePagination(getNbAcceptedLivreOr(), $_GET['cat']));
+               	?>
+       
                 <div id='ajoutSignature'>
                     <?php
                         if(isset($_GET['emptyInput']) && $_GET['emptyInput'] == 'true')
