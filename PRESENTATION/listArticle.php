@@ -42,7 +42,32 @@
                 $ArticleBD = new ArticleBD();
                 $TabArticles = array();
                 $TabArticles = $ArticleBD->getArticlesWithCategory($categorieCourante->getId());
+                
+                if(empty($TabArticles))
+                {
+                    echo "<p>Il n'y a pas d'article dans cette cat&eacute;gorie</p>";
+                }
+                else
+                {
+                
+                	$debut = getIndexDebutFor($_GET['numPage'], 5);
+					for($i = $debut ; $i < getIndexFinFor($debut, getNbArticlesByCategorie($categorieCourante->getId()), 5) ; $i++ )
+					{
+						echo "<div class='listeArticle'>";
+                		$BasePhoto = $TabArticles[$i]->getBasePhoto();
+                		if($BasePhoto != NULL)
+                		{
+                			echo "<img style=\"width:100px\" src=\"".$BasePhoto."\"/>";
+                		}
+                		else
+                		{
+                			echo "<img style=\"width:100px\" src=\"Style/image/photo.png\" />";
+                		}
+                	echo "<div class='description'><h3>".$TabArticles[$i]->getTitre()."</h3><div class='date'>".$TabArticles[$i]->getFormatedDate()."</div><p>".$TabArticles[$i]->getApercu()."</p></div><a href='".$TabArticles[$i]->getUrl()."'>Lire la suite ...</a><div class='clear'></div></div>";
 
+					}
+				}
+				/*
                 foreach($TabArticles as $art)
                 {
                     echo "<div class='listeArticle'>";
@@ -56,12 +81,8 @@
                 			echo "<img style=\"width:100px\" src=\"Style/image/photo.png\" />";
                 		}
                 	echo "<div class='description'><h3>".$art->getTitre()."</h3><div class='date'>".$art->getFormatedDate()."</div><p>".$art->getApercu()."</p></div><a href='".$art->getUrl()."'>Lire la suite ...</a><div class='clear'></div></div>";
-                }
+                }*/
                 //Si il n'y a pas d'article dans la catégorie
-                if(empty($TabArticles))
-                {
-                    echo "<p>Il n'y a pas d'article dans cette cat&eacute;gorie</p>";
-                }
             ?>
             
             <?php
