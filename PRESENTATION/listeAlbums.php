@@ -3,15 +3,9 @@
 	
 	require_once('../BD/acces_albumPhoto.php');
 	require_once('../BD/CategorieBD.php');
+	require_once('../METIER/FonctionsMetier/verificationGet.php');
 	
-	if( (!(isset($_GET['cat']))) || (!(intval($_GET['cat']))) )		// Si GET n est pas valide
-    {
-    	header('location: erreur.php?code=0');
-    }
-    else if( !(categorieExists($_GET['cat'])) )
-    {
-    	header('location: erreur.php?code=1');
-    }
+	verifGet();
 ?>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">  

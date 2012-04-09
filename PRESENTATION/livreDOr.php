@@ -3,18 +3,12 @@
 	
 	require_once('../BD/LivreDOrBD.php');
     require_once('../BD/CategorieBD.php');
+    require_once('../METIER/FonctionsMetier/verificationGet.php');
     
-    if( (!(isset($_GET['cat']))) || (!(intval($_GET['cat']))) || (!(isset($_GET['numPage']))) || (!(intval($_GET['numPage']))) )		// Si GET n est pas valide
-    {
-    	header('location: erreur.php?code=0');
-    }
-    else if( !(categorieExists($_GET['cat'])) || (getNbPagesLivreOr($_GET['numPage']) < $_GET['numPage']) )
-    {
-    	header('location: erreur.php?code=1');
-    }
+    verifGet();
     
 	$tabComment = getAllAcceptedLivreDOr();	// Creation de la liste des commentaires a afficher
-    ?>
+?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">

@@ -5,7 +5,7 @@
     require_once('../BD/ArticleBD.php');
     require_once('../METIER/FonctionsMetier/verificationGet.php');
     
-    verifGet(1);
+    verifGet();
     
     $categorieCourante = new CategorieBD();
     $categorieCourante = $categorieCourante->getCategorieWithId($_GET['cat']);

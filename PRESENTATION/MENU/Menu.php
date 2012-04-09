@@ -11,7 +11,7 @@
             $html.= "<li><a href='".$CatParent->getUrl()."&numPage=1'>".$CatParent->getTitre()."</a>";
             $ChildrenCategories = $CategorieBD->getSousCategories($idCatParent);// tableau d'objets categorie
             
-            if($CatParent->getIdTemplate() == 2)
+            if($CatParent->getIdTemplate() == 2)	// Si c'est la rubrique d'albums, on affiche tous les albums en tant que sous rubrique
             {
             	$HasChildren = TRUE;
             	$html .= "<ul>";
