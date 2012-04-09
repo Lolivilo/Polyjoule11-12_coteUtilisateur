@@ -9,7 +9,7 @@ class Equipe
 	public function __construct($id, $annee)
 	{
 		$this->id = $id;
-		$this->anne = $annee;
+		$this->annee = $annee;
 	}
 	
 	public function getId()

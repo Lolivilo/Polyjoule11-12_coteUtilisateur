@@ -53,10 +53,6 @@ function getAllEquipes()
 	
 	$bd->deconnexion();
 	
-	echo("TEST NIVEAU REQUETE");
-	print_r($ret);
-	echo("FIN TEST NIVEAU REQUETE");
-	
 	return $ret;
 }
 
