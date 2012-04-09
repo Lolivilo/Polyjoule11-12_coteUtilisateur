@@ -1,5 +1,5 @@
 <?php 
-	require_once('../BD/CategorieBD.php');
+	require_once('../BD/acces_rubrique.php');
 	require_once('MENU/Menu.php');
     require_once('../METIER/LangueParser.php');
 	include_once('LANGUE/sessionLangue.php');

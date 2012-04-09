@@ -48,7 +48,7 @@
             {
                 $ex = new ConnexionException();
                 //$ex->Redirect();
-                $ex->Message() ;
+                $ex->message();
                 //echo("ERREUR BORDEL");
                 //echo($ex->getCode() );
             }

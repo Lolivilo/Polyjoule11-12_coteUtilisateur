@@ -1,8 +1,8 @@
 <?php
 	session_start();
 	
-	require_once('../BD/ParticipantBD.php');
-	require_once('../BD/EquipeBD.php');
+	require_once('../BD/acces_participant.php');
+	require_once('../BD/acces_equipe.php');
 	
 	if( (!(isset($_GET['equipe']))) || (!(intval($_GET['equipe']))) )		// Si GET n est pas valide
     {

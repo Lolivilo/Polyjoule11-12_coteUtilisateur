@@ -1,8 +1,7 @@
 <?php
 	session_start();
 	
-	require_once("../BD/PartenaireBD.php");
-	require_once("../BD/PartenaireBD.php");
+	require_once("../BD/acces_partenaire.php");
 	
 	if( (!(isset($_GET['partenaire']))) || (!(intval($_GET['partenaire']))) )		// Si GET n est pas valide
     {

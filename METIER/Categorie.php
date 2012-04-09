@@ -1,6 +1,6 @@
 <?php
 	include_once('../BD/BD.php');
-	require_once('../BD/CategorieBD.php');
+	require_once('../BD/acces_rubrique.php');
 	
 	
 class Categorie
@@ -67,10 +67,7 @@ class Categorie
     {
         $idCat = intval($this->id);
         $ret = getNomTemplateById($this->idTemplate)."?cat=".$idCat;
-        if($this->idTemplate == 4)
-        {
-        	$ret .= "&numPage=1";
-        }
+        
         
         return $ret;
     }

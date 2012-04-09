@@ -1,7 +1,7 @@
 <?php
 	session_start();
 	
-	require_once('../BD/ArticleBD.php');
+	require_once('../BD/acces_article.php');
 	
 	$StringRecherche = NULL;
     if(isset($_GET['w']) && $_GET['w'] != '')

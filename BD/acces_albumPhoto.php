@@ -1,7 +1,8 @@
 <?php
-	require_once('BD.php');
+	require_once("BD.php");
 	require_once('../METIER/AlbumPhoto.php');
     require_once('../METIER/Photo.php');
+
 
 class AlbumPhotoBD extends BD
 {   

@@ -4,21 +4,13 @@ class ConnexionException extends PDOException
 {
 	public function __construct()
 	{
-		parent::__construct("Echec lors de la connexion à la base de données Poyjoule !", 100, NULL);
+		parent::__construct("Echec lors de la connexion à la base de données Polyjoule !", 100, NULL);
 	}
-
-	public function Message()
+	
+	public function message()
 	{
-		echo('ConnexionException : Erreur lors de la connexion à la base de données !') ;
+		echo("<p>ConnexionException : ".$this->message." (Peut-être est-elle hors ligne ?)</p>");
 	}
-    
-    public function Redirect()
-    {
-        echo( parent::getCode() );
-        $url = "http://".$_SERVER['HTTP_HOST']."/PRESENTATION/erreur.php?code=".parent::getCode();
-        header('location: $url');	// a changer
-        
-    }
 }
 
 ?>

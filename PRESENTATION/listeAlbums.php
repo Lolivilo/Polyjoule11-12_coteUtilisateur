@@ -2,7 +2,7 @@
 	session_start();
 	
 	require_once('../BD/acces_albumPhoto.php');
-	require_once('../BD/CategorieBD.php');
+	require_once('../BD/acces_rubrique.php');
 	require_once('../METIER/FonctionsMetier/verificationGet.php');
 	
 	verifGet();

@@ -1,5 +1,5 @@
 <?php 
-	include_once '../BD/PartenaireBD.php';
+	include_once '../BD/acces_partenaire.php';
 ?>
 
 <div id='footer'>

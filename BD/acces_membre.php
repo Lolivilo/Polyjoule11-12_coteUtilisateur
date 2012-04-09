@@ -1,4 +1,6 @@
 <?php
+/** Fichier finalement non utilisé **/
+
 	include_once('BD.php');
 	include_once('../METIER/Membre.php');
 	

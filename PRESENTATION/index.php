@@ -1,7 +1,7 @@
 <?php 
 	session_start();
     require_once('../BD/acces_albumPhoto.php');
-    require_once('../BD/ArticleBD.php');
+    require_once('../BD/acces_article.php');
     
     $tab = getAllArticles();    // Tableau contenant tous les articles
     

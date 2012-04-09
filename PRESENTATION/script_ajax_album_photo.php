@@ -1,7 +1,7 @@
 <?php
     session_start();
-    require_once('../BD/AlbumPhotoBd.php');
-    require_once('../BD/PhotoBD.php');
+    require_once('../BD/AccesTables/acces/albumPhoto.php');
+    require_once('../BD/AccesTables/acces_photo.php');
     $Array = array();
     $Photo = NULL;
 
