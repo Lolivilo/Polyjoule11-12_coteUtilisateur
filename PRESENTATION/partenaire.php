@@ -40,10 +40,7 @@
             <div><?php echo($partenaire->getNom()); ?><span class='sousTitre'>SOUS TITRE</span></div>
             <img src=<?php echo("'".$partenaire->getLogo()."' alt='Logo de ".$partenaire->getNom()."'") ?>/>
         </h2>
-        <h3><?php echo($parserLangue->getWord("company")->getTraduction()); ?></h3>
         <p><?php echo($partenaire->getDesc()); ?></p>
-        <h3><?php echo($parserLangue->getWord("assistant")->getTraduction()); ?></h3>
-        <p>Manque dans la base ?!</p>
         <p><a class="lienImportant" href='<?php echo($partenaire->getSite()); ?>'>Nous soutenir</a></p>
     
         <div id="footerCorps"></div>
