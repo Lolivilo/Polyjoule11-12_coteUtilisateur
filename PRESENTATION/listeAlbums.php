@@ -41,34 +41,38 @@
 			}
 			else
 			{
-				foreach($tabAlbums as $row)
+				$debut = getIndexDebutFor($_GET['numPage'], 5);
+				$fin = getIndexFinFor($debut, getNbAlbums(), 5);
+				for($i = $debut ; $i < $fin ; $i++)
 				{
-					echo("<div id='album_".$row->getId()."' class='listeArticle'>");
-					if($row->getFirstPhoto() != NULL)
+					echo("<div id='album_".$tabAlbums[$i]->getId()."' class='listeArticle'>");
+					if($tabAlbums[$i]->getFirstPhoto() != NULL)
 					{
-						echo("<img style='width:100px' src='".$row->getFirstPhoto()."' />");
+						echo("<img style='width:100px' src='".$tabAlbums[$i]->getFirstPhoto()."' />");
 					}
 					else
 					{
 						echo("<img style='width:100px' src='http://3.bp.blogspot.com/-iJYUeULd-W0/TbR5YTwfiRI/AAAAAAAAAJ0/zIDyFheQVyY/s1600/n.a.jpg' />");
 					}
-					echo("<div class='description'><h3>".$row->getNom()."</h3>");
-					echo("<div class='italic'>".$row->getDate()."</div>" );
-					echo("<p>".$row->getDesc()."</p>");
-					echo("<p>".$row->getNbPhotos()." photos dans cet album</p>");
+					echo("<div class='description'><h3>".$tabAlbums[$i]->getNom()."</h3>");
+					echo("<div class='italic'>".$tabAlbums[$i]->getDate()."</div>" );
+					echo("<p>".$tabAlbums[$i]->getDesc()."</p>");
+					echo("<p>".$tabAlbums[$i]->getNbPhotos()." photos dans cet album</p>");
 					echo("</div>");
-					echo("<a href='".$row->getUrl()."'>Visionner cet album</a>");
+					echo("<a href='".$tabAlbums[$i]->getUrl()."'>Visionner cet album</a>");
 					echo("<div class='clear'></div>");
 					echo("</div>");
+
 				}
 			}
 		?>
-	</div>
-	<div id='pagination'>
+		
 		<?php
-			
+			echo(generatePagination(getNbAlbums(), $_GET['cat']));
 		?>
 	</div>
+	
+	
 	<?php
 		include_once('footer.php');
 	?>
