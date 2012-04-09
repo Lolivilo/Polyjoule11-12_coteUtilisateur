@@ -35,6 +35,9 @@
 	<input type="text" id="search" name="w">
 	<input type="submit" value="ok">
 </form>
+<iframe src="https://www.facebook.com/plugins/like.php?href=https://www.facebook.com/pages/Polyjoule/121213844627305"
+        scrolling="no" frameborder="0"
+        style="border:none; width:450px; height:80px"></iframe>
 </div>		
 <div class="clear"></div>
 </div>
