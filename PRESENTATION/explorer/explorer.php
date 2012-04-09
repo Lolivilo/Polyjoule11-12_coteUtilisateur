@@ -12,10 +12,6 @@ $SousCategories = NULL;
 
 $html = NULL;
 
-/*if( isset($_GET['numPage']) )   // Si c est le livre d or, on recherche son identifiant de categorie dans la base
-{
-    $_GET['cat'] = getIdRubrique();
-}*/
 if(	(isset( $_GET['article'] ) ) )
 {
 	$LinkedCategoryID = $category->getAsssociateCategoryIDForArticle($_GET['article']);	
@@ -42,6 +38,15 @@ $SousCategories = $category->getSousCategories($SuperParentCategory->getId());
 // DEBUT AFFICHAGE HTML
 
 $html.="<ul id='menuPage'><li><h2>".$SuperParentCategory->getTitre()."</h2></li>";
+if($SuperParentCategory->getIdTemplate() == 2)	// Si c'est la rubrique de liste d'albums, on les affiche
+{
+	$tabAlb = getAllAlbums();
+	foreach($tabAlb as $tab)
+	{
+		$html .= "<li>";
+		$html .= "<a href='".$tab->getUrl()."'>".$tab->getNom()."</a>";
+	}
+}
 foreach ($SousCategories as $_Categorie)
 {
 	$html.="<li";

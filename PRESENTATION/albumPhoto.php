@@ -13,6 +13,8 @@
         header('Location: index.php');
     }
     
+    $photoArray = $currentAlbum->getPhotos();   // Tableau de photos de l album courant   
+    
 
 ?>
 
@@ -42,21 +44,20 @@
     ?>
     <div id="corps">
     <?php
-        echo("<h2>".$parserLangue->getWord('AlbPhoto')->getTraduction()."</h2>");
-        $photoArray = $currentAlbum->getPhotos();   // Tableau de photos de l album courant        
-        echo("<h3>".$currentAlbum->getNom()."</h3>");
+        echo("<h2>".$parserLangue->getWord('AlbPhoto')->getTraduction()."<span class='titreAlbum'>".$currentAlbum->getNom()."</span></h2>");
         if($photoArray != NULL)
         {
         	$firstPhoto = array_pop($photoArray);
-        	echo("<p>".$firstPhoto->getTitre()."</p>");            // On affiche la premiere photo au depart
+        	echo("<h3>".$firstPhoto->getTitre()."</h3>");            // On affiche la premiere photo au depart
     ?>
         	<div id="photo">
             	<div id="loader"></div>
                 	<?php
                     	echo("<img src='".$firstPhoto->getLien()."' alt='".$firstPhoto->getTitre()."' />");
                 	?>
+                <a id='descriptionLien'>Description</a>
             	
-            	<p>
+            	<p id='description'>
                 	<?php
                     	echo($firstPhoto->getDesc());
                 	?>
