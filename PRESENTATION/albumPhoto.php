@@ -57,7 +57,7 @@
                 	?>
                 <a id='descriptionLien'>Description</a>
             	
-            	<p id='description'>
+            	<p id='description' style="display:none;">
                 	<?php
                     	echo($firstPhoto->getDesc());
                 	?>
