@@ -84,6 +84,9 @@
             	echo(generatePagination($nbArticles, $_GET['cat']));
             ?>
 
+			<?php
+				//generateCalendrier();
+			?>
             <div id="footerCorps">
             </div>
         </div>

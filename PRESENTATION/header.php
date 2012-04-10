@@ -5,7 +5,7 @@
 	include_once('LANGUE/sessionLangue.php');
     require_once('../BD/acces_albumPhoto.php');
     require_once('../METIER/FonctionsMetier/pagination.php');
-    
+    require_once('../METIER/FonctionsMetier/calendrier.php');
     
     $parserLangue = new LangueParser();
 ?>
