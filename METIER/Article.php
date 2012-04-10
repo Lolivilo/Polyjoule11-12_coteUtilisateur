@@ -75,8 +75,60 @@ class Article
     }
     
     public function getFormatedDate()
+    {	
+        return date('d', strtotime($this->date))." ".$this->getStringMonth(strtotime($this->date))." ".date('Y', strtotime($this->date));
+    }
+    
+    private function getStringMonth($date)
     {
-        return( date('d/m/y', strtotime($this->date)) );
+    	$stringDay = "";
+    	if($_SESSION['langue'] == 'EN')
+    	{
+    		$stringDay = date("F",$date);
+    	}
+    	else
+    	{
+    		switch(intval(date("m",$date)))
+    		{
+    			case 1:
+    				$stringDay = "Janvier";
+    				break;
+    			case 2:
+    				$stringDay = "F&eacute;vrier";
+    				break;
+    			case 3:
+    				$stringDay = "Mars";
+    				break;
+    			case 4:
+    				$stringDay = "Avril";
+    				break;
+    			case 5:
+    				$stringDay = "Mai";
+    				break;
+    			case 6:
+    				$stringDay = "Juin";
+    				break;
+    			case 7:
+    				$stringDay = "Juillet";
+    				break;
+    			case 8:
+    				$stringDay = "Ao&ucirc;t";
+    				break;
+    			case 9:
+    				$stringDay = "Septembre";
+    				break;
+    			case 10:
+    				$stringDay = "Octobre";
+    				break;
+    			case 11:
+    				$stringDay = "Novembre";
+    				break;
+    			case 12:
+    				$stringDay = "D&eacute;cembre";
+    				break;
+    		}
+    	}
+    	return $stringDay;
     }
     
 	public function getContenu()
