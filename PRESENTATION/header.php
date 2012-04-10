@@ -12,7 +12,6 @@
 
 <div id="header">
 <h1><a href=<?php echo("'index.php'"); ?>><img src="Style/image/logoPolyjoule.png" alt="Polyjoule"/></a></h1>
-<div id='versAdmin'><a href='../../Polyjoule_siteWeb/administration'><img src='Style/image/logo_admin.gif' alt='Logo vers administration' width='25px' height='25px'/></a></div>
 <div id="barre">
 <a href=""><?php echo $parserLangue->getWord("contact")->getTraduction(); ?></a>
 

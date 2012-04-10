@@ -16,7 +16,7 @@
 	<?php 
         include('header.php');
     ?>
-    <div id='corps'>
+    <div id='erreur'>
     	<h1>
     		<?php
     			if($_GET['code'] == 0)
@@ -33,11 +33,9 @@
     			}
     		?>
     	</h1>
-    	<div id="footerCorps"></div>
+    	<!--<div id="footerCorps"></div>-->
     </div>
-	<?php
-    include_once('footer.php');
-    ?>
+	
 
 </body>
 

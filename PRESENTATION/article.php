@@ -37,11 +37,21 @@
         ?>
         <?php // AFFICHAGE DE L'ARTICLE ?>
         <div id="corps">
-                <h2>
+                <h2 id='titreArticle'>
                     <?php 
-                        echo $articleCourant->getTitre(); 
+                        $BasePhoto = $articleCourant->getBasePhoto();
+                		if($BasePhoto != NULL)
+                		{
+                			echo "<img src=\"".$BasePhoto."\"/>";
+                		}
+                		else
+                		{
+                			echo "<img src=\"Style/image/photo.png\" />";
+                		}
+
                     ?>
                 </h2> <!-- Titre page -->
+                <h3><?php echo $articleCourant->getTitre(); ?></h3>
                 <?php /* POUR LES PERSONNES */ /*
                 <div class="articleHeader"> <!-- header d'article  -->
                     <img src="image/photo.png" />
@@ -56,16 +66,7 @@
                 */ ?>
                 <div class="article">
                 	<?php
-                	$BasePhoto = $articleCourant->getBasePhoto();
-                		if($BasePhoto != NULL)
-                		{
-                			echo "<img src=\"".$BasePhoto."\"/>";
-                		}
-                		else
-                		{
-                			echo "<img src=\"Style/image/photo.png\" />";
-                		}
-                	?>
+                	                	?>
                     
                     <?php
                        echo $articleCourant->getContenu();

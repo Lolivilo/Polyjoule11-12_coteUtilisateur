@@ -84,10 +84,11 @@
             		</ul>
             		<?php //<a href="index.html" class="suivant"></a> ?>
         		</div>
+        		<p><?php echo($currentAlbum->getDesc());?></p>
         	</div>
 
         	<div id="footerCorps">
-            	<p><?php echo($currentAlbum->getDesc());?></p>
+            	
         	</div>
        <?php
        	}

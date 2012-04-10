@@ -29,12 +29,6 @@
 		<?php 
 			include('header.php');
 		?>
-		<div id="ariane">
-			<a href="index.html">Notre Association</a> > <a href="index.html">Notre aaa</a> > <a href="index.html">Nzevgzg</a>
-		</div>
-		<?php
-    		include('explorer/explorer.php');
-    	?>
 
         <div id="corps">
             <?php
