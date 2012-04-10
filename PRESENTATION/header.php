@@ -18,16 +18,23 @@
 
 <span class="lang">
 	<?php
-		echo $_SERVER['PHP_SELF'];
-		/*if($_SERVER['QUERY_STRING'] == NULL)
+		if($_SERVER['QUERY_STRING'] == NULL)
 		{
 			$link = "'".$_SERVER['PHP_SELF']."?lang=";
 		}
 		else
 		{
-			$link = "'".$_SERVER['PHP_SELF']."?".$_SERVER['QUERY_STRING']."&lang=";
-		}*/
-		$link = "'".$_SERVER['PHP_SELF']."?lang=";
+			$queryString = str_replace("lang=EN", "", $_SERVER['QUERY_STRING']);
+			$queryString = str_replace("lang=FR", "", $queryString);
+			if($queryString != "")
+			{			
+				$link = "'".$_SERVER['PHP_SELF']."?".$queryString."&lang=";
+			}
+			else
+			{
+				$link = "'".$_SERVER['PHP_SELF']."?lang=";
+			}
+		}
 	?>
 	<a href=<?php echo($link."FR'");?> class="active">FR</a> | <a href=<?php echo($link."EN'");?>>EN</a>
 </span>
