@@ -43,14 +43,14 @@
                 </div>
             </div>
         </div>
-    
+    	<img src="Style/image/ombreAccueil.png" class="ombreAccueil"/>
         <ul id="menuAccueil">
         	<?php
         		$ArticleBD = new ArticleBD();
         		$homeArticles = $ArticleBD->getHomeArticles();
         		foreach($homeArticles as $art)
         		{
-            		echo("<li><a href='".$art->getUrl()."'><img src='".$art->getBasePhoto()."' alt='".$art->getTitre()."'><span>".$art->getTitre()."</span></a></li>");	
+            		echo("<li><a href='".$art->getUrl()."'><img src='".$art->getBasePhoto()."' alt='".$art->getTitre()."'><span>".$art->getTitre()."</span></a><img src='Style/image/ombreAccueil.png' class='ombreAccueil'/></li>");	
             	}
             ?>			
         </ul>
