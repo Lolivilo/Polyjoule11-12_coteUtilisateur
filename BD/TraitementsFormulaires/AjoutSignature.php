@@ -9,12 +9,12 @@
         
         if( ($_POST['pseudo'] == "") || ($_POST['mail'] == "") || ($_POST['message'] == "") )   // Verifie les champs remplis
         {
-            header('Location: ../PRESENTATION/livreDOr.php?emptyInput=true');   // On redirige vers la page avec un argument false
+            header('Location: ../PRESENTATION/livredor.php?emptyInput=true');   // On redirige vers la page avec un argument false
 
         }
         elseif ( !(preg_match($regExp, $_POST['mail'])) )  // Verification adresse mail
         {
-            header('Location: ../PRESENTATION/livreDOr.php?mailSyntax=false');
+            header('Location: ../PRESENTATION/livredor.php?mailSyntax=false');
         }
 		else
         {
@@ -28,11 +28,11 @@
             // On recherche cette nouvelle signature pour verifier que l insertion s est bien passee
             if( ($connexion->query("SELECT * FROM LIVRE_OR WHERE id_post = $newId")->rowCount()) == 1 )
             {
-                header('Location: ../PRESENTATION/livreDOr.php?signAttempt=true');
+                header('Location: ../PRESENTATION/livredor.php?signAttempt=true');
             }
             else
             {
-                header('Location: ../PRESENTATION/livreDOr.php?signAttempt=false');
+                header('Location: ../PRESENTATION/livredor.php?signAttempt=false');
             }
         }
     }
