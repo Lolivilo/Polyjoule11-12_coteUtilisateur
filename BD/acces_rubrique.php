@@ -360,6 +360,7 @@ function getNomTemplateById($id)
 		// EXCEPTION
 	}
 	$bd->deconnexion();
+	
 	return $res['template'];
 }
 
