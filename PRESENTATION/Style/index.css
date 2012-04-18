@@ -139,7 +139,7 @@ border:1px solid #636363;-webkit-border-top-left-radius:8px;-webkit-border-botto
 #albumPhoto > .precedent {position:absolute;top:29px;left:15px;width:23px;height:57px;background:url(image/albumFlecheGauche.png) no-repeat;display:block;}
 #albumPhoto > .suivant {position:absolute;top:29px;right:15px;width:23px;height:57px;background:url(image/albumFlecheDroit.png) no-repeat;display:block;}
 #corps h2 .titreAlbum {font-style:italic;font-size:1em;float:right;max-width:50%;text-transform:none;}
-
+#description, #descriptionLien {cursor: pointer;}
 #menuAccueil {margin:50px 0 70px 0;text-align:center;}
 #menuAccueil li {border:1px solid #CFCFCF;display:inline-block;width:18%;margin:0 5% 0 5%;padding:0;position:relative;}/*box-shadow:0 0 20px #919A9C;*/
 #menuAccueil li > a > img{vertical-align: middle;display: block;max-width:100%;margin:auto;}

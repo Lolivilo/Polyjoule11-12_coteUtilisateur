@@ -9,7 +9,7 @@ jQuery().ready(function(){
                 	{
                     	$("#photo > img").attr('src',data.url);
                     	$("#photo > p").html(data.commentaire);
-                    	$("#corps p").html(data.titre);
+                    	$("#corps > h3").html(data.titre);
                  	}
                  	else
                  	{
@@ -26,6 +26,12 @@ jQuery().ready(function(){
 	$("#descriptionLien").click(
   		function () {
     		$(this).next("p").fadeIn();
+  		}
+	);
+	$("#description").click(
+  		function () {
+    		$(this).fadeOut();
+    		return false;
   		}
 	);
 	
