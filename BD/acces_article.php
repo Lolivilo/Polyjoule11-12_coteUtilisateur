@@ -72,23 +72,38 @@ class ArticleBD extends BD
 			
 			$connexion = $bd->getConnexion();
 			$QueryString = $bd->security($connexion, $QueryString);
-			$ResultQuery = $connexion->query($QueryString)->fetchAll();
+			if($QueryString != NULL)
+			{
+				$ResultQuery = $connexion->query($QueryString);
+				if($ResultQuery == NULL)
+				{
+					return NULL;
+				}
+				else
+				{
+					$ResultQuery->fetchAll();
         
-			foreach($ResultQuery as $art)
+					foreach($ResultQuery as $art)
+        			{
+            			$Article = new Article($art['id_article'],
+            								   $art['id_rubrique'],
+            								   $art['auteur_article'],
+            								   $art['titreFR_article'],
+            								   $art['titreEN_article'],
+            								   $art['contenuFR_article'],
+          	  								   $art['contenuEN_article'],
+            								   $art['autorisation_com'],
+            								   $art['statut_article'],
+            								   $art['date_article'],
+            								   $art['url_photo_principale'],
+            								   $art['visible_home']);
+            			array_push($Articles, $Article);
+        			}
+        		}
+        	}
+        	else
         	{
-            	$Article = new Article($art['id_article'],
-            						   $art['id_rubrique'],
-            						   $art['auteur_article'],
-            						   $art['titreFR_article'],
-            						   $art['titreEN_article'],
-            						   $art['contenuFR_article'],
-            						   $art['contenuEN_article'],
-            						   $art['autorisation_com'],
-            						   $art['statut_article'],
-            						   $art['date_article'],
-            						   $art['url_photo_principale'],
-            						   $art['visible_home']);
-            	array_push($Articles, $Article);
+        		return NULL;
         	}
 		}
 		catch ( PDOException $e )

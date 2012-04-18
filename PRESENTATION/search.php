@@ -35,15 +35,18 @@
             $ArticleBD = new ArticleBD();
             $resultats = array();
             $resultats = $ArticleBD->getArticlesWithSearchTerms($StringRecherche,NULL,NULL);
-			foreach($resultats as $art)
-            {
-            	echo "<div class='listeArticle'><img src='Style/image/photo.png' /><div class='description'><h3>".$art->getTitre()."</h3><div class='italic'>".$art->getDate()."</div><p>".$art->getContenu()."</p></div><a href='".$art->getUrl()."'>Lire la suite ...</a><div class='clear'></div></div>";
-            }
             //Si il n'y a pas d'article dans la catégorie
             if(empty($resultats))
             {
             	echo "<p>Il n'y a aucun resultat</p>";
             }
+			else
+			{
+				foreach($resultats as $art)
+            	{
+            		echo "<div class='listeArticle'><img src='Style/image/photo.png' /><div class='description'><h3>".$art->getTitre()."</h3><div class='italic'>".$art->getDate()."</div><p>".$art->getContenu()."</p></div><a href='".$art->getUrl()."'>Lire la suite ...</a><div class='clear'></div></div>";
+           		}
+           	}
             ?>
 
             <div id="footerCorps">

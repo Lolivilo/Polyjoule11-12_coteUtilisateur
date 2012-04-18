@@ -19,16 +19,18 @@
         public function __construct()
         {
         
-             $this->host = 'mysql51-62.perso';
-             $this->database = 'polyjoule01';
-             $this->user = 'polyjoule01';
-             $this->password = '01admPoly';
-             /*
-            $this->host = 'instance6964.db.xeround.com' ;
-            $this->database = 'polyjoule' ;
-            $this->port = '5214' ;
-            $this->user = 'polyjoule' ;
-            $this->password = 'admin' ;
+        	// Connexion a une BD locale vide
+			$this->host = 'localhost' ;
+			$this->database = 'pj' ;
+			$this->user = 'polyjoule' ;
+			$this->password = 'polyjoule' ;
+			
+			// Connexion a la BD OVH
+			/*
+			$this->host = 'mysql51-62.perso' ;
+			$this->database = 'polyjoule01' ;
+			$this->user = 'polyjoule01' ;
+			$this->password = '01admPoly' ;
             */
             
         }
@@ -39,15 +41,12 @@
         {
             try
             {
-                //$dns = "mysql:host=".$this->host.";port=".$this->port.";dbname=".$this->database;
                 $dns = "mysql:host=".$this->host.";dbname=".$this->database;
-                //echo $dns.'      '.$this->user.$this->password;
                 $this->connexion = new PDO( $dns , $this->user , $this->password, array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8") ) ;
                 
             }
             catch ( PDOException $e )
             {
-            	echo $e->getMessage();
                 $ex = new ConnexionException();
                 //$ex->Redirect();
                 $ex->message();

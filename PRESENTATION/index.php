@@ -26,18 +26,35 @@
 				include('header.php');
 			?>
         <div id="diapoAcceuil">
-            <img src=<?php echo("'".$tab[0]->getBasePhoto()."'");?> alt=''>
+        	<?php	// S il n y a pas d articles, on affiche une image specifique
+        		if( empty($tab) )
+        		{
+        			echo("<img src='Style/image/pasDePhoto.jpg' alt='Pas d image' />");
+        		}
+        		else
+        		{
+        			echo("<img src='".$tab[0]->getBasePhoto()."' alt='Image principale' />");
+        		}
+        	?>
+            
             <div id="newsAcceuil">
             	<div class="scroll-pane">
                 	<h2><?php echo($parserLangue->getWord("headlines")->getTraduction()); ?></h2>
                		<?php
-                    	for($i = 0 ; $i < determineNbArticlesIndex() ; $i++)
-                    	{
-                        	echo("<div class='news'>");
-                        	echo("<h3><span class='date'>".$tab[$i]->getFormatedDate()."</span> ".$tab[$i]->getTitre()."</h3>");
-                        	echo("<p>".$tab[$i]->getApercu()."</p>");
-                        	echo("<a href='".$tab[$i]->getUrl()."'>Lire la suite</a><div class='border'></div>");
-                        	echo("</div>");
+               			if( ($nbArticlesIndex = determineNbArticlesIndex()) == 0)
+               			{
+               				echo("<p>Il n'y a aucun article à la une !</p>");
+               			}
+               			else
+               			{
+                    		for($i = 0 ; $nbArticlesIndex ; $i++)
+                    		{
+                        		echo("<div class='news'>");
+                        		echo("<h3><span class='date'>".$tab[$i]->getFormatedDate()."</span> ".$tab[$i]->getTitre()."</h3>");
+                        		echo("<p>".$tab[$i]->getApercu()."</p>");
+                        		echo("<a href='".$tab[$i]->getUrl()."'>Lire la suite</a><div class='border'></div>");
+                        		echo("</div>");
+                    		}
                     	}
                 	?>
                 </div>
