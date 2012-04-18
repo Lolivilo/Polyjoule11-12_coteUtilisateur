@@ -118,7 +118,6 @@
 			}
 			else
 			{
-				$this->connexion();
 				$string = mysql_real_escape_string($string);
 				$string = addcslashes($string, '%_');
 			}

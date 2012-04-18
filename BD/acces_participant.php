@@ -41,11 +41,12 @@ function getAllParticipantsProfs()
 function getAllParticipantsNonProfsByEquipe($idEquipe)
 {
     $bd = new BD();
-    $param = intval($bd->security($idEquipe));
+    
     
     try
     {
         $bd->connexion();                   // Connexion a la BD
+        $param = intval($bd->security($idEquipe));
         $connexion = $bd->getConnexion();  
         $result = $connexion->query("SELECT * FROM PARTICIPANT WHERE isProf = 0 AND id_equipe = $param")->fetchAll();   // Execution de la requete
         $ret = array();
@@ -81,11 +82,12 @@ Cree des objets "ParticipantTrombinoscope"
 function createTrombinoscopeByEquipe($idEquipe)
 {
 	$bd = new BD();
-	$param = intval($bd->security($idEquipe));
+	
 	
 	try
 	{
 		$bd->connexion();
+		$param = intval($bd->security($idEquipe));
 		$connexion = $bd->getConnexion();
 		$result = $connexion->query("SELECT PARTICIPANT.id_participant, nom_participant, prenom_participant, titreFR_formation, titreEN_formation, lien_formation, annee_equipe, photo_participant, mail_participant, role_participant
 									 FROM PARTICIPANT

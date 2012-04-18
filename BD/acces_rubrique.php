@@ -17,8 +17,9 @@ class CategorieBD extends BD
     function getSousCategories ($CategorieParente)
     {
     
-    	$CategorieParente = parent::security($CategorieParente);
+    	
     	$this->connexion() ;
+    	$CategorieParente = parent::security($CategorieParente);
     	try
 		{
 			$connexion = parent::getConnexion();
@@ -64,11 +65,12 @@ class CategorieBD extends BD
 	 */
 	function getCategorieWithId ($idCat)
 	{
-        $idCat = intval(parent::security($idCat));
+        
 		$this->connexion() ;
     	
 		try
 		{
+			$idCat = intval(parent::security($idCat));
 			$connexion = parent::getConnexion();
 			$ResultQuery = $connexion->query( "SELECT * FROM RUBRIQUE WHERE id_rubrique=$idCat" );
 			if($ResultQuery != NULL) // Pour eviter une erreur si l'id categorie passŽ est null
@@ -102,8 +104,9 @@ class CategorieBD extends BD
     
     function getSuperParentCategoryOfCategory($idCat)
     {
-    	$idCat = parent::security($idCat);
+    	
     	$this->connexion();	// Connexion ˆ la BD
+    	$idCat = parent::security($idCat);
     	$idMere = NULL;
     	
     	try
@@ -143,9 +146,10 @@ class CategorieBD extends BD
     // retourne l'id de la categorie parente la plus haute dans la hiŽrarchie
     function getSuperParentCategoryOfArticle($idArt)
     {
-    	$idArt = parent::security($idArt);
+    	
     	// Connexion ˆ la BD
     	$this->connexion();
+    	$idArt = parent::security($idArt);
     	$idDirectCat = NULL;	// CatŽgorie liŽe ˆ l'article
     	
     	try
@@ -179,9 +183,10 @@ class CategorieBD extends BD
 	// retourne l'ID de la catŽgorie directement associŽe ˆ un article
     function getAsssociateCategoryIDForArticle($idArt)
     {
-    	$idArt = parent::security($idArt);
+    	
     	// Connexion ˆ la BD
     	$this->connexion();
+    	$idArt = parent::security($idArt);
     	
     	try
     	{
@@ -204,9 +209,10 @@ class CategorieBD extends BD
     // Retourne un tableau contenant le fil d'arianne en passant en param une catŽgorie
     function getFilArianneWithCategorie($idCat)
     {
-    	$idCat = parent::security($idCat);
+    	
     	// Connexion ˆ la BD
     	$this->connexion();
+    	$idCat = parent::security($idCat);
     	$Tab_Arianne = array();
     	try
     	{
@@ -256,7 +262,6 @@ class CategorieBD extends BD
     // Retourne un tableau contenant le fil d'arianne en passant en param un article
     function getFilArianneWithArticle($idArt)
     {
-    	$idArt = parent::security($idArt);
     	return ($this->getFilArianneWithCategorie($this->getAsssociateCategoryIDForArticle($idArt)));
     }
     
@@ -266,11 +271,12 @@ class CategorieBD extends BD
 function getSousCategories ($idMere)
 {
     $bd = new BD();
-    $param = intval($bd->security($idMere));
+    $this->connexion();
     
     try
     {
         $connexion = $bd->getConnexion();
+        $param = intval($bd->security($idMere));
         // si on cherche ˆ obtenir les sous catŽgories de la catŽgorie donnŽe en paramtre
         $result = $connexion->query( "SELECT * FROM RUBRIQUE WHERE id_mere=$param" )->fetchAll();
         $tabCategories = array();
@@ -300,11 +306,12 @@ function getSousCategories ($idMere)
 function getCategorieById( $id )
 {
     $bd = new Bd();
-    $param = intval($bd->security($id));
+    
     
     try
     {
         $bd->connexion();
+        $param = intval($bd->security($id));
         $conexion = $bd->getConnexion();
         $result = $connexion->query("SELECT * FROM RUBRIQUE WHERE id_rubrique = $param")->fetch();
         $ret = new Categorie($result['id_rubrique'],
@@ -327,11 +334,12 @@ function getCategorieById( $id )
 function getNomTemplateById($id)
 {
 	$bd = new BD();
-	$param = intval($bd->security($id));
+	
 	
 	try
 	{
 		$bd->connexion();
+		$param = intval($bd->security($id));
 		$connexion = $bd->getConnexion();
 		$res = $connexion->query("SELECT template FROM TEMPLATE WHERE id=$param")->fetch();
 		if($res == NULL)
@@ -350,11 +358,12 @@ function getNomTemplateById($id)
 function categorieExists($idCat)
 {
 	$bd = new BD();
-	$param = intval($bd->security($idCat));
+	
 	
 	try
 	{
 		$bd->connexion();
+		$param = intval($bd->security($idCat));
 		$connexion = $bd->getConnexion();
 		$res = $connexion->query("SELECT * FROM RUBRIQUE WHERE id_rubrique=$param")->fetch();
 	}

@@ -13,8 +13,9 @@ class ArticleBD extends BD
     //retourne un tableau contenant les artciles directements associŽs ˆ une catŽgorie
 	function getArticlesWithCategory ($CategoryId) {
 		
-		$CategoryId = intval(parent::security($CategoryId));
+		
 		$this->connexion() ;
+		$CategoryId = intval(parent::security($CategoryId));
     	try
 		{
 			$connexion = parent::getConnexion();
@@ -55,7 +56,6 @@ class ArticleBD extends BD
 		$Articles = array();
 		$ArrayTerms = array();
 		$bd = new Bd();
-    	$terms = $bd->security($terms);
 		$ArrayTerms = explode(" ",$terms);
 		$QueryString = "SELECT * FROM ARTICLE WHERE ";
 		foreach($ArrayTerms as $key => $term)
@@ -68,6 +68,7 @@ class ArticleBD extends BD
 		try
 		{
 			$bd->connexion();
+			$QueryString = $bd->security($QueryString);
 			$connexion = $bd->getConnexion();
 			$ResultQuery = $connexion->query($QueryString)->fetchAll();
         
@@ -141,13 +142,13 @@ class ArticleBD extends BD
 function getArticleById ($idArt)
 {
 	$bd = new Bd();
-    $idArt = intval($bd->security($idArt));
     $Article = NULL;
 	 
 	try
 	{
 		$bd->connexion();
 		$connexion = $bd->getConnexion();
+		$idArt = intval($bd->security($idArt));
 		$ResultQuery = $connexion->query( "SELECT * FROM ARTICLE WHERE id_article=$idArt AND statut_article = 1" )->fetch();
         
 		if($ResultQuery != NULL) // Pour eviter une erreur si l'id categorie passŽ est null
@@ -286,11 +287,11 @@ function determineNbArticlesIndex()
 function articleExists($idArticle)
 {
 	$bd = new BD();
-	$param = intval($bd->security($idArticle));
-	
+		
 	try
 	{
 		$bd->connexion();
+		$param = intval($bd->security($idArticle));
 		$connexion = $bd->getConnexion();
 		$res = $connexion->query("SELECT * FROM ARTICLE WHERE id_article = $param")->fetch();
 	}

@@ -7,11 +7,12 @@
 	function getMembreByEquipe($idEquipe)
 	{
 		$bd = new BD();
-		$param = intval($bd->security($idEquipe));
+		
 		
 		try
 		{
 			$bd->connexion();
+			$param = intval($bd->security($idEquipe));
 			$connexion = $bd->getConnexion();
 			
 			$result = $connexion->query("SELECT * FROM MEMBRE WHERE id_equipe=$param")->fetchAll();
