@@ -29,14 +29,21 @@
         <h3><?php echo( $parserLangue->getWord('LivreOr')->getTraduction() );?></h3>
         	<?php
             // Affichage des commentaires
-            	$debut = getIndexDebutFor($_GET['numPage'], 5);
-               	$fin = getIndexFinFor($debut, getNbAcceptedLivreOr(), 5);
-                for($i = $debut ; $i < $fin ; $i++)
-                {
-                    echo("<div class='commentaire' id='signature_".$tabComment[$i]->getId()."'>");
-                    echo("<h4>".$tabComment[$i+(10*($_GET['numPage']-1))]->getPosteur()."<span class='date'>".$tabComment[$i+(10*($_GET['numPage']-1))]->getFormatedDate()."</span></h4>");
-                    echo("<p>".$tabComment[$i+(10*($_GET['numPage']-1))]->getMessage()."</p>");
-                    echo("</div>");
+            	if( empty($tabComment) )
+            	{
+            		echo("<p>Il n'y a encore aucune signature d'acceptée sur le site !</p>");
+            	}
+            	else
+            	{
+            		$debut = getIndexDebutFor($_GET['numPage'], 5);
+               		$fin = getIndexFinFor($debut, getNbAcceptedLivreOr(), 5);
+                	for($i = $debut ; $i < $fin ; $i++)
+                	{
+                    	echo("<div class='commentaire' id='signature_".$tabComment[$i]->getId()."'>");
+                    	echo("<h4>".$tabComment[$i+(10*($_GET['numPage']-1))]->getPosteur()."<span class='date'>".$tabComment[$i+(10*($_GET['numPage']-1))]->getFormatedDate()."</span></h4>");
+                    	echo("<p>".$tabComment[$i+(10*($_GET['numPage']-1))]->getMessage()."</p>");
+                    	echo("</div>");
+                	}
                 }
             ?>
               	

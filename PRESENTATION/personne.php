@@ -34,25 +34,29 @@
             ?>
         </h2>
         <?php
-        	//$debut = 5 * ($_GET['numPage'] - 1); 	// 0 puis 5 puis 10…
-        	$debut = getIndexDebutFor($_GET['numPage'], 5);
-        	$fin = getIndexFinFor($debut, getNbParticipantsProfs(), 5);
-        	//$nbSurCettePage = getNbParticipantsProfs() - $debut;
+        	if( empty($tabParticipants) )
+        	{
+        		echo("<p>Aucune personnage clé n'a encore été ajouté !</p>");
+        	}
+        	else
+        	{
+        		$debut = getIndexDebutFor($_GET['numPage'], 5);
+        		$fin = getIndexFinFor($debut, getNbParticipantsProfs(), 5);
         	
-            for($i = $debut ; $i < $fin ; $i++)
-            {
-                //echo("<div>");
-                echo("<div class='articleHeader' id='participant_".$tabParticipants[$i]->getId()."'>");
-                echo("<img src='".$tabParticipants[$i]->getPhoto()."' alt='Photo de ".$tabParticipants[$i]->getNom()."'/>");
-                echo("<div class='description'>");
-                echo("<h3>".$tabParticipants[$i]->getPrenom()." ".$tabParticipants[$i]->getNom()."</h3>");
-                echo("<div class='italic'>".$tabParticipants[$i]->getRole()."</div>");
-                echo("</div>");
-                echo("<div class='presentation'>Manque dans la base !<br/></div>");
-                echo("<div class='clear'></div>");
-                echo("</div>");
-                echo("<h4>".$parserLangue->getWord("quiEstIl")->getTraduction()."</h4>");
-                echo("<p>".$tabParticipants[$i]->getBioFr()."</p>");
+            	for($i = $debut ; $i < $fin ; $i++)
+            	{
+ 	               echo("<div class='articleHeader' id='participant_".$tabParticipants[$i]->getId()."'>");
+    	            echo("<img src='".$tabParticipants[$i]->getPhoto()."' alt='Photo de ".$tabParticipants[$i]->getNom()."'/>");
+        	        echo("<div class='description'>");
+            	    echo("<h3>".$tabParticipants[$i]->getPrenom()." ".$tabParticipants[$i]->getNom()."</h3>");
+	                echo("<div class='italic'>".$tabParticipants[$i]->getRole()."</div>");
+    	            echo("</div>");
+        	        echo("<div class='presentation'>Manque dans la base !<br/></div>");
+            	    echo("<div class='clear'></div>");
+	                echo("</div>");
+    	            echo("<h4>".$parserLangue->getWord("quiEstIl")->getTraduction()."</h4>");
+        	        echo("<p>".$tabParticipants[$i]->getBioFr()."</p>");
+            	}
             }
         ?>
         <?php
