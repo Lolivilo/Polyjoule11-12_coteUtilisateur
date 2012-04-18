@@ -20,18 +20,26 @@
         {
         
         	// Connexion a une BD locale vide
+        	/*
 			$this->host = 'localhost' ;
 			$this->database = 'pj' ;
 			$this->user = 'polyjoule' ;
 			$this->password = 'polyjoule' ;
-			
-			// Connexion a la BD OVH
+			*/
+			// Connexion a une BD locale de test
 			/*
+			$this->host = 'localhost' ;
+			$this->database = 'polyjoule' ;
+			$this->user = 'polyjoule' ;
+			$this->password = 'polyjoule' ;
+			*/
+			// Connexion a la BD OVH
+			
 			$this->host = 'mysql51-62.perso' ;
 			$this->database = 'polyjoule01' ;
 			$this->user = 'polyjoule01' ;
 			$this->password = '01admPoly' ;
-            */
+            
             
         }
         
@@ -53,8 +61,9 @@
                 //echo("ERREUR BORDEL");
                 //echo($ex->getCode() );
             }
-        }
+        }   
         
+            
         //Methode permettant la deconnexion de la base de donnees
         public function deconnexion()
         {
@@ -109,6 +118,7 @@
             $this->password = $password ;
         }
         
+        
         public function security($pdo, $string)
         {
             if(ctype_digit($string))
@@ -117,11 +127,12 @@
 			}
 			else
 			{
-				$string = $pdo->quote($string);
+				//$string = $pdo->quote($string);
 				$string = addcslashes($string, '%_');
 			}
 			return $string;
         }
+        
         
         public static function securityHTML($string)
         {

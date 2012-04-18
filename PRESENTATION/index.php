@@ -23,7 +23,7 @@
     </head>
     <body>
 			<?php 
-				include('header.php');
+				include("header.php");
 			?>
         <div id="diapoAcceuil">
         	<?php	// S il n y a pas d articles, on affiche une image specifique

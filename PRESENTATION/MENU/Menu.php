@@ -4,6 +4,8 @@
 	{
 		$html = "";
 		$ParentsCategories = $CategorieBD->getSousCategories(NULL);// tableau d'objets categorie
+
+
 		foreach ($ParentsCategories as $CatParent)// parcours des catégories parentes
 		{
         	$HasChildren = FALSE;
