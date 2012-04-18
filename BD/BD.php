@@ -19,10 +19,10 @@
         public function __construct()
         {
         
-            $this->host = 'localhost' ;
-             $this->database = 'polyjoule' ;
-             $this->user = 'polyjoule' ;
-             $this->password = 'polyjoule' ;
+             $this->host = 'mysql51-62.perso';
+             $this->database = 'polyjoule01';
+             $this->user = 'polyjoule01';
+             $this->password = '01admPoly';
              /*
             $this->host = 'instance6964.db.xeround.com' ;
             $this->database = 'polyjoule' ;
@@ -39,13 +39,15 @@
         {
             try
             {
-                $dns = "mysql:host=".$this->host.";port=".$this->port.";dbname=".$this->database;
+                //$dns = "mysql:host=".$this->host.";port=".$this->port.";dbname=".$this->database;
+                $dns = "mysql:host=".$this->host.";dbname=".$this->database;
                 //echo $dns.'      '.$this->user.$this->password;
                 $this->connexion = new PDO( $dns , $this->user , $this->password, array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8") ) ;
                 
             }
             catch ( PDOException $e )
             {
+            	echo $e->getMessage();
                 $ex = new ConnexionException();
                 //$ex->Redirect();
                 $ex->message();
@@ -116,6 +118,7 @@
 			}
 			else
 			{
+				$this->connexion();
 				$string = mysql_real_escape_string($string);
 				$string = addcslashes($string, '%_');
 			}
