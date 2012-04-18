@@ -110,7 +110,7 @@
             $this->password = $password ;
         }
         
-        public function security($string)
+        public function security($pdo, $string)
         {
             if(ctype_digit($string))
 			{
@@ -118,7 +118,7 @@
 			}
 			else
 			{
-				$string = mysql_real_escape_string($string);
+				$string = $pdo->quote($string);
 				$string = addcslashes($string, '%_');
 			}
 			return $string;

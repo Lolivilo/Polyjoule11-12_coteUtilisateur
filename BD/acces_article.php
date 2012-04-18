@@ -15,10 +15,11 @@ class ArticleBD extends BD
 		
 		
 		$this->connexion() ;
-		$CategoryId = intval(parent::security($CategoryId));
+		
     	try
 		{
 			$connexion = parent::getConnexion();
+			$CategoryId = intval(parent::security($connexion, $CategoryId));
 			//On rŽcupre tous les articles de la catŽgorie passŽe en paramtre
 			$ResultQuery = $connexion->query( "SELECT * FROM ARTICLE WHERE id_rubrique=$CategoryId AND statut_article = 1" )->fetchAll();
 
@@ -68,8 +69,9 @@ class ArticleBD extends BD
 		try
 		{
 			$bd->connexion();
-			$QueryString = $bd->security($QueryString);
+			
 			$connexion = $bd->getConnexion();
+			$QueryString = $bd->security($connexion, $QueryString);
 			$ResultQuery = $connexion->query($QueryString)->fetchAll();
         
 			foreach($ResultQuery as $art)
@@ -148,7 +150,7 @@ function getArticleById ($idArt)
 	{
 		$bd->connexion();
 		$connexion = $bd->getConnexion();
-		$idArt = intval($bd->security($idArt));
+		$idArt = intval($bd->security($connexion, $idArt));
 		$ResultQuery = $connexion->query( "SELECT * FROM ARTICLE WHERE id_article=$idArt AND statut_article = 1" )->fetch();
         
 		if($ResultQuery != NULL) // Pour eviter une erreur si l'id categorie passŽ est null
@@ -291,8 +293,9 @@ function articleExists($idArticle)
 	try
 	{
 		$bd->connexion();
-		$param = intval($bd->security($idArticle));
+		
 		$connexion = $bd->getConnexion();
+		$param = intval($bd->security($connexion, $idArticle));
 		$res = $connexion->query("SELECT * FROM ARTICLE WHERE id_article = $param")->fetch();
 	}
 	catch(PDOExcpetion $e)

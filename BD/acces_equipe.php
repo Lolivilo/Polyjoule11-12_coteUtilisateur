@@ -10,8 +10,9 @@ function getEquipeById($id)
 	try
 	{
 		$bd->connexion();
-		$param = $bd->security($id);
+		
 		$connexion = $bd->getConnexion();
+		$param = $bd->security($connexion, $id);
 		
 		$res = $connexion->query("SELECT * FROM EQUIPE WHERE id_equipe = $param")->fetch();
 		$e = new Equipe($res['id_equipe'], $res['annee_equipe']);
@@ -90,9 +91,9 @@ function equipeExists($idEq)
 	try
 	{
 		$bd->connexion();
-		$idEq = intval($bd->security($idEq));
-		$connexion = $bd->getConnexion();
 		
+		$connexion = $bd->getConnexion();
+		$idEq = intval($bd->security($connexion, $idEq));
 		$res = $connexion->query("SELECT * FROM EQUIPE WHERE id_equipe = $idEq")->fetchAll();
 	}
 	

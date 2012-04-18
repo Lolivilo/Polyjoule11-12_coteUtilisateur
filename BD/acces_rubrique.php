@@ -19,10 +19,11 @@ class CategorieBD extends BD
     
     	
     	$this->connexion() ;
-    	$CategorieParente = parent::security($CategorieParente);
+    	
     	try
 		{
 			$connexion = parent::getConnexion();
+			$CategorieParente = parent::security($connexion, $CategorieParente);
 			if($CategorieParente == NULL)//Si on cherche ˆ obtenir les catŽgories parentes ( 1er niveau)
 			{
 				$ResultQuery = $connexion->query( "SELECT * FROM RUBRIQUE WHERE id_mere IS NULL" )->fetchAll();
@@ -70,8 +71,9 @@ class CategorieBD extends BD
     	
 		try
 		{
-			$idCat = intval(parent::security($idCat));
+			
 			$connexion = parent::getConnexion();
+			$idCat = intval(parent::security($connexion, $idCat));
 			$ResultQuery = $connexion->query( "SELECT * FROM RUBRIQUE WHERE id_rubrique=$idCat" );
 			if($ResultQuery != NULL) // Pour eviter une erreur si l'id categorie passŽ est null
 			{
@@ -106,12 +108,13 @@ class CategorieBD extends BD
     {
     	
     	$this->connexion();	// Connexion ˆ la BD
-    	$idCat = parent::security($idCat);
     	$idMere = NULL;
     	
     	try
     	{
     		$connexion = parent::getConnexion();
+    		$idCat = parent::security($connexion, $idCat);
+
     		do
     		{
     			// On rŽcupre l'id_mere de la catŽgorie courante
@@ -149,12 +152,13 @@ class CategorieBD extends BD
     	
     	// Connexion ˆ la BD
     	$this->connexion();
-    	$idArt = parent::security($idArt);
+    	
     	$idDirectCat = NULL;	// CatŽgorie liŽe ˆ l'article
     	
     	try
     	{
     		$connexion = parent::getConnexion();
+    		$idArt = parent::security($connexion, $idArt);
     		// On rŽcupre l'id_rubrique de l'article
     		$resultQuery = $connexion->query("SELECT id_rubrique FROM ARTICLE WHERE id_article = $idArt")->fetch();
 			
@@ -186,11 +190,12 @@ class CategorieBD extends BD
     	
     	// Connexion ˆ la BD
     	$this->connexion();
-    	$idArt = parent::security($idArt);
+    	
     	
     	try
     	{
     		$connexion = parent::getConnexion();
+    		$idArt = parent::security($connexion, $idArt);
     		// On rŽcupre l'id_rubrique de l'article
     		$ResultQuery = $connexion->query("SELECT id_rubrique FROM ARTICLE WHERE id_article = $idArt")->fetch();
 			$Categorie = $ResultQuery['id_rubrique'];
@@ -212,11 +217,12 @@ class CategorieBD extends BD
     	
     	// Connexion ˆ la BD
     	$this->connexion();
-    	$idCat = parent::security($idCat);
+    	
     	$Tab_Arianne = array();
     	try
     	{
     		$connexion = parent::getConnexion();
+    		$idCat = parent::security($connexion, $idCat);
     		//Recuperation, instanciation de la categorie en paramtre et ajout dans le tableau
     		$resultQuery = $connexion->query("SELECT * FROM RUBRIQUE WHERE id_rubrique = $idCat")->fetch();
     		array_push($Tab_Arianne, new Categorie($ResultQuery['id_rubrique'],
@@ -276,7 +282,7 @@ function getSousCategories ($idMere)
     try
     {
         $connexion = $bd->getConnexion();
-        $param = intval($bd->security($idMere));
+        $param = intval($bd->security($connexion, $idMere));
         // si on cherche ˆ obtenir les sous catŽgories de la catŽgorie donnŽe en paramtre
         $result = $connexion->query( "SELECT * FROM RUBRIQUE WHERE id_mere=$param" )->fetchAll();
         $tabCategories = array();
@@ -311,8 +317,9 @@ function getCategorieById( $id )
     try
     {
         $bd->connexion();
-        $param = intval($bd->security($id));
+        
         $conexion = $bd->getConnexion();
+        $param = intval($bd->security($conexion, $id));
         $result = $connexion->query("SELECT * FROM RUBRIQUE WHERE id_rubrique = $param")->fetch();
         $ret = new Categorie($result['id_rubrique'],
                              $result['id_mere'],
@@ -339,8 +346,9 @@ function getNomTemplateById($id)
 	try
 	{
 		$bd->connexion();
-		$param = intval($bd->security($id));
+		
 		$connexion = $bd->getConnexion();
+		$param = intval($bd->security($connexion, $id));
 		$res = $connexion->query("SELECT template FROM TEMPLATE WHERE id=$param")->fetch();
 		if($res == NULL)
 		{
@@ -363,8 +371,8 @@ function categorieExists($idCat)
 	try
 	{
 		$bd->connexion();
-		$param = intval($bd->security($idCat));
 		$connexion = $bd->getConnexion();
+		$param = intval($bd->security($connexion, $idCat));
 		$res = $connexion->query("SELECT * FROM RUBRIQUE WHERE id_rubrique=$param")->fetch();
 	}
 	catch(PDOException $e)

@@ -24,6 +24,7 @@ function getPartenaireById($id)
 			// Connexion a la base de donnees
 			$bd->connexion();
 			$connexion= $bd->getConnexion();
+			$id = intval($bd->security($connexion, $id));
 			$resultQuery = $connexion->query("SELECT * FROM PARTENAIRE WHERE id_partenaire = $id")->fetch();
 			$part = new Partenaire($resultQuery['id_partenaire'],
 								   $resultQuery['id_article'],
@@ -91,8 +92,8 @@ function partenaireExists($idPart)
 	{
 		// Connexion a la base de donnees
 		$bd->connexion();
-		$param = intval($bd->security($idPart));
 		$connexion = $bd->getConnexion();
+		$param = intval($bd->security($connexion, $idPart));
 		$res = $connexion->query("SELECT * FROM PARTENAIRE WHERE id_partenaire = $param")->fetchAll();
 	}	
 	catch(PDOException $e)

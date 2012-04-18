@@ -34,11 +34,11 @@ class AlbumPhotoBD extends BD
 
     function getAlbumById($id)
     {
-        $id = intval(parent::security($id));
         try
         {
             $this->connexion() ;                
             $connexion = parent::getConnexion();
+            $id = intval(parent::security($connexion, $id));
             $resultQuery = $connexion->query("SELECT * FROM ALBUM WHERE id_album = $id")->fetch();
             $album = new AlbumPhoto($resultQuery['id_album'],
                                     $resultQuery['nom_album'],
@@ -58,11 +58,12 @@ class AlbumPhotoBD extends BD
     
     function addPhotosToAlbum($Album)
     {
-        $AlbumID = intval(parent::security($Album->getId()));
+        
         try
         {
             $this->connexion() ;                
             $connexion = parent::getConnexion();
+            $AlbumID = intval(parent::security($connexion, $Album->getId()));
             $res = $connexion->query("SELECT * FROM PHOTO JOIN ALBUM WHERE PHOTO.id_album = ALBUM.id_album AND ALBUM.id_album = $AlbumID")->fetchAll();
             
             foreach($res as $resultPhoto)
@@ -155,12 +156,13 @@ function getAllAlbums()
 function getFirstPhotoById($idAlbum)
 {
 	$bd = new BD();
-	$param = intval($bd->security($idAlbum));
+	
 	
 	try
 	{
 		$bd->connexion();
 		$connexion = $bd->getConnexion();
+		$param = intval($bd->security($connexion , $idAlbum));
 		$result = $connexion->query("SELECT lien_photo FROM PHOTO WHERE id_album = $param ORDER BY id_photo LIMIT 1")->fetch();
 	}
 	catch(PDOException $e)
@@ -175,12 +177,13 @@ function getFirstPhotoById($idAlbum)
 function getNbPhotosById($idAlbum)
 {
 	$bd = new BD();
-	$param = intval($bd->security($idAlbum));
+	
 	
 	try
 	{
 		$bd->connexion();
 		$connexion = $bd->getConnexion();
+		$param = intval($bd->security($connexion, $idAlbum));
 		$result = $connexion->query("SELECT COUNT(*) FROM PHOTO WHERE id_album = $param")->fetch();
 	}
 	catch(PDOException $e)
@@ -197,12 +200,13 @@ function getNbPhotosById($idAlbum)
 function albumPhotoExists($idAlb)
 {
 	$bd = new BD();
-	$param = intval($bd->security($idAlb));
+	
 	
 	try
 	{
 		$bd->connexion();
 		$connexion = $bd->getConnexion();
+		$param = intval($bd->security($connexion, $idAlb));
 		$result = $connexion->query("SELECT * FROM ALBUM WHERE id_album = $param")->fetch();
 	}
 	catch(PDOException $e)

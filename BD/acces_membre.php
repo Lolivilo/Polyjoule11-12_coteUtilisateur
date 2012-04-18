@@ -12,9 +12,9 @@
 		try
 		{
 			$bd->connexion();
-			$param = intval($bd->security($idEquipe));
-			$connexion = $bd->getConnexion();
 			
+			$connexion = $bd->getConnexion();
+			$param = intval($bd->security($connexion, $idEquipe));
 			$result = $connexion->query("SELECT * FROM MEMBRE WHERE id_equipe=$param")->fetchAll();
 			$ret = array();
 			foreach($result as $row)

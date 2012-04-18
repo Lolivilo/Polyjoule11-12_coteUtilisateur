@@ -16,10 +16,10 @@
             $Photo = NULL;
             try
             {
-                $this->connexion() ; 
-                $id_photo = intval(parent::security($id_photo));
-            	$id_album = intval(parent::security($id_album));               
+                $this->connexion() ;                
                 $connexion = parent::getConnexion();
+                $id_photo = intval(parent::security($connexion, $id_photo));
+            	$id_album = intval(parent::security($connexion, $id_album));
                 $resultPhoto = $connexion->query("SELECT * FROM PHOTO WHERE id_photo=$id_photo AND id_album=$id_album")->fetch();
                 if($resultPhoto)
                     $Photo = new Photo($resultPhoto['id_photo'],
