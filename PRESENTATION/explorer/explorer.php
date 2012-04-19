@@ -55,7 +55,7 @@ foreach ($SousCategories as $_Categorie)
 		$html.=" class='Nactive'";//active
     }
     
-    $html.="><a href='".$_Categorie->getUrl()."&numPage=1'>".$_Categorie->getTitre()."</a>";
+    $html.="><a href='".$_Categorie->getUrl()."'>".$_Categorie->getTitre()."</a>";
    
 	
 	$SousCategoriesN2 = NULL; // CatŽgories filles de la catŽgorie du tour de boucle du foreach
@@ -71,7 +71,7 @@ foreach ($SousCategories as $_Categorie)
 				$html.=" class='Nactive'";
             }
             
-            $html.= "><a href='".$CategorieN2->getUrl()."&numPage=1'>".$CategorieN2->getTitre()."</a>";
+            $html.= "><a href='".$CategorieN2->getUrl()."'>".$CategorieN2->getTitre()."</a>";
             
             
 			
@@ -86,7 +86,7 @@ foreach ($SousCategories as $_Categorie)
                     $html.="<li";
                     if($CategorieN3->getID() == $LinkedCategory->getID())
                         $html.=" class='Nactive'";
-                    $html.= "><a href='".$CategorieN3->getUrl()."&numPage=1'>".$CategorieN3->getTitre()."</a>";
+                    $html.= "><a href='".$CategorieN3->getUrl()."'>".$CategorieN3->getTitre()."</a>";
                     
                 }
                 $html.="</ul>";

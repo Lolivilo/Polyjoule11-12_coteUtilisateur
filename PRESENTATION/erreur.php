@@ -21,15 +21,15 @@
     		<?php
     			if($_GET['code'] == 0)
     			{
-    				echo("L'URL n'est pas valide !");
+    				echo $parserLangue->getWord("invalidURL")->getTraduction();
     			}
     			else if($_GET['code'] == 1)
     			{
-    				echo("Cette page n'existe pas dans la base de données !");
+    				echo $parserLangue->getWord("404Error")->getTraduction();
     			}
     			else if($_GET['code'] == "NO_TERM_SEARCH")
     			{
-    				echo("La recherche ne porte sur aucun terme !");
+    				echo $parserLangue->getWord("NoTermSearch")->getTraduction();
     			}
     		?>
     	</h1>
