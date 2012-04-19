@@ -349,10 +349,14 @@ function getNomTemplateById($id)
 		
 		$connexion = $bd->getConnexion();
 		$param = intval($bd->security($connexion, $id));
-		$res = $connexion->query("SELECT template FROM TEMPLATE WHERE id=$param")->fetch();
-		if($res == NULL)
+		$res = $connexion->query("SELECT template FROM TEMPLATE WHERE id=$param");
+		if($res != NULL)
 		{
-			// EXCEPTION ?!
+			$res = $res->fetch();
+		}
+		else
+		{
+			return NULL;
 		}
 	}
 	catch(PDOException $e)

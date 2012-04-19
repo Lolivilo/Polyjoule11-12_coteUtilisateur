@@ -38,7 +38,7 @@
             //Si il n'y a pas d'article dans la catégorie
             if(empty($resultats))
             {
-            	echo "<p>Il n'y a aucun resultat</p>";
+            	echo "<p>".$parserLangue->getWord("aucun_resultat")->getTraduction()."</p>";
             }
 			else
 			{

@@ -176,7 +176,7 @@ class Article
     public function getUrl()
     {
         $idArticle = intval($this->id);
-        return("article.php?article=".$idArticle);
+        return("article-".$idArticle);
     }
     
     public function getBasePhoto()

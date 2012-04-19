@@ -67,10 +67,21 @@ class Categorie
     {
         $idCat = intval($this->id);
 
-        $ret = getNomTemplateById($this->idTemplate)."?cat=".$idCat;
+        //$ret = getNomTemplateById($this->idTemplate)."?cat=".$idCat;
+		$template = getNomTemplateById($this->idTemplate);
+		$url = NULL;
+		switch($template)
+		{
+			case "rubrique": 
+				$url = "rubrique-".$idCat;
+				break;
+			default: 
+				$url = $template;
+				break;
+		}
         
         
-        return $ret;
+        return $url;
     }
     
     public function getIdTemplate()

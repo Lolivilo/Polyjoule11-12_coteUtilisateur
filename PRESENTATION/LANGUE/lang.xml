@@ -78,4 +78,10 @@
         <fr>Le trombinoscope des développeurs</fr>
         <en>Developpers</en>
     </word>
+    
+    <word txt="aucun_resultat">
+        <fr>Il n'y a aucun resultat</fr>
+        <en>No result</en>
+    </word>
+ 
 </lang>
