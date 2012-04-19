@@ -38,7 +38,7 @@
 	?>
 	<a href=<?php echo($link."FR'");?> class="active">FR</a> | <a href=<?php echo($link."EN'");?>>EN</a>
 </span>
-<form method="get" action="search.php">
+<form method="get" action="recherche.php">
 	<label for="search"><?php echo($parserLangue->getWord("search")->getTraduction());?></p></label>
 	<input type="text" id="search" name="w">
 	<input type="submit" value="ok">
