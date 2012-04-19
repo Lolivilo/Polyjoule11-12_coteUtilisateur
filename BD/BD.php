@@ -128,8 +128,11 @@
 			}
 			else
 			{
-				$string = $pdo->quote($string);
-				$string = addcslashes($string, '%_');
+				if($string != NULL)
+				{
+					$string = $pdo->quote($string);
+					$string = addcslashes($string, '%_');
+				}
 			}
 			return $string;
         }
