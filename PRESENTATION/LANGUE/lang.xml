@@ -83,5 +83,10 @@
         <fr>Il n'y a aucun resultat</fr>
         <en>No result</en>
     </word>
+    
+    <word txt="aucun_article">
+        <fr>Il n'y a pas d'article dans cette catégorie</fr>
+        <en>No article in this category</en>
+    </word>
  
 </lang>

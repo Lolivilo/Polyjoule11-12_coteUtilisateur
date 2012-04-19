@@ -39,7 +39,7 @@
                 
                 if(empty($TabArticles))
                 {
-                    echo "<p>Il n'y a pas d'article dans cette cat&eacute;gorie</p>";
+                    echo "<p>".$parserLangue->getWord("aucun_article")->getTraduction()."</p>";
                 }
                 else
                 {

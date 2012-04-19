@@ -10,7 +10,7 @@
 		{
         	$HasChildren = FALSE;
             $idCatParent = $CatParent->getId();
-            $html.= "<li><a href='".$CatParent->getUrl()."&numPage=1'>".$CatParent->getTitre()."</a>";
+            $html.= "<li><a href='".$CatParent->getUrl()."'>".$CatParent->getTitre()."</a>";
             $ChildrenCategories = $CategorieBD->getSousCategories($idCatParent);// tableau d'objets categorie
             
             if($CatParent->getIdTemplate() == 2)	// Si c'est la rubrique d'albums, on affiche tous les albums en tant que sous rubrique
@@ -33,7 +33,7 @@
             
             foreach ($ChildrenCategories as $SousCat)// parcours des catgories de second niveau
             {
-            	$html.= "<li><a href='".$SousCat->getUrl()."&numPage=1'>".$SousCat->getTitre()."</a></li>"; 
+            	$html.= "<li><a href='".$SousCat->getUrl()."'>".$SousCat->getTitre()."</a></li>"; 
             }
             if($HasChildren)
             {
