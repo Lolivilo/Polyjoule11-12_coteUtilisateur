@@ -49,11 +49,14 @@
                			{
                     		for($i = 0 ; $nbArticlesIndex ; $i++)
                     		{
-                        		echo("<div class='news'>");
-                        		echo("<h3><span class='date'>".$tab[$i]->getFormatedDate()."</span> ".$tab[$i]->getTitre()."</h3>");
-                        		echo("<p>".$tab[$i]->getApercu()."</p>");
-                        		echo("<a href='".$tab[$i]->getUrl()."'>Lire la suite</a><div class='border'></div>");
-                        		echo("</div>");
+                    			if($tab[$i] != NULL)
+                    			{
+                        			echo("<div class='news'>");
+                        			echo("<h3><span class='date'>".$tab[$i]->getFormatedDate()."</span> ".$tab[$i]->getTitre()."</h3>");
+                        			echo("<p>".$tab[$i]->getApercu()."</p>");
+                        			echo("<a href='".$tab[$i]->getUrl()."'>Lire la suite</a><div class='border'></div>");
+                        			echo("</div>");
+                        		}
                     		}
                     	}
                 	?>
