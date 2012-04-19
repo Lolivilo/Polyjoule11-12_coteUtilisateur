@@ -47,7 +47,7 @@
                			}
                			else
                			{
-                    		/*for($i = 0 ; $nbArticlesIndex ; $i++)
+                    		for($i = 0 ; 5 ; $i++)
                     		{
                     			if($tab[$i] != NULL)
                     			{
@@ -57,7 +57,7 @@
                         			echo("<a href='".$tab[$i]->getUrl()."'>Lire la suite</a><div class='border'></div>");
                         			echo("</div>");
                         		}
-                    		}*/
+                    		}
                     	}
                 	?>
                 </div>

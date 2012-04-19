@@ -152,7 +152,7 @@ class Article
     	$text = "";
     	$nb_max_mots = 20;
     	
-        //$text = Bd::securityHTML($this->getContenu());
+        $text = Bd::securityHTML($this->getContenu());
         
         $apercu = "";
 		$t_chaineNouvelle = explode(" ",$text);
