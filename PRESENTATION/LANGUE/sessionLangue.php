@@ -6,11 +6,11 @@
 	}
 	
 	// Si un choix est fait (envoi de l'information via un GET), on rŽcupre le langue sŽlectionnŽe
-	if(isset($_GET['lang']))
+	if(isset($_POST['lang']))
 	{
-		if($_GET['lang'] == 'FR' || $_GET['lang'] == 'EN')
+		if($_POST['lang'] == 'FR' || $_POST['lang'] == 'EN')
 		{
-			$_SESSION['langue'] = $_GET['lang'];	
+			$_SESSION['langue'] = $_POST['lang'];	
 		}
 	}
 ?>	 

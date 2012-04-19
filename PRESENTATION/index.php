@@ -47,7 +47,7 @@
                			}
                			else
                			{
-                    		for($i = 0 ; 5 ; $i++)
+                    		/*for($i = 0 ; 5 ; $i++)
                     		{
                     			if($tab[$i] != NULL)
                     			{
@@ -57,7 +57,13 @@
                         			echo("<a href='".$tab[$i]->getUrl()."'>Lire la suite</a><div class='border'></div>");
                         			echo("</div>");
                         		}
-                    		}
+                    		}*/
+                    		echo("<div class='news'>");
+                        	echo("<h3><span class='date'>".$tab[1]->getFormatedDate()."</span> ".$tab[1]->getTitre()."</h3>");
+                        	echo("<p>".$tab[1]->getApercu()."</p>");
+                        	echo("<a href='".$tab[1]->getUrl()."'>Lire la suite</a><div class='border'></div>");
+                        	echo("</div>");
+
                     	}
                 	?>
                 </div>

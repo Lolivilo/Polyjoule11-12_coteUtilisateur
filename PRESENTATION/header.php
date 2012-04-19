@@ -15,28 +15,25 @@
 <div id="barre">
 <a href=""><?php echo $parserLangue->getWord("contact")->getTraduction(); ?></a>
 
-
-<span class="lang">
-	<?php
-		if($_SERVER['QUERY_STRING'] == NULL)
-		{
-			$link = "'".$_SERVER['PHP_SELF']."?lang=";
-		}
-		else
-		{
-			$queryString = str_replace("lang=EN", "", $_SERVER['QUERY_STRING']);
-			$queryString = str_replace("lang=FR", "", $queryString);
-			if($queryString != "")
-			{			
-				$link = "'".$_SERVER['PHP_SELF']."?".$queryString."&lang=";
-			}
-			else
+<script  type="text/javascript" src="JavaScript/jquery-1.4.1.min.js"></script>
+<script language="javascript">
+	jQuery().ready(function(){
+		$(".changeLangue").click(function () 
 			{
-				$link = "'".$_SERVER['PHP_SELF']."?lang=";
+				$("#Formlangue > input").attr('value', $(this).attr("id"));
+				$("#Formlangue").submit();
+				return false;
 			}
-		}
-	?>
-	<a href=<?php echo($link."FR'");?> class="active">FR</a> | <a href=<?php echo($link."EN'");?>>EN</a>
+		);
+
+	});
+</script>
+<span class="lang">
+<?php $link = $_SERVER['REQUEST_URI']; ?>
+<form style="display:none;" id="Formlangue" method="post" action="<?php echo $link; ?>">
+		<input type="hidden" name="lang" value="FR">
+</form>
+<a href="" class="changeLangue active" id="FR">FR</a> | <a href="" class="changeLangue" id="EN">EN</a>
 </span>
 <form method="get" action="recherche.php">
 	<label for="search"><?php echo($parserLangue->getWord("search")->getTraduction()); ?></p></label>
