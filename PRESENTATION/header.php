@@ -2,7 +2,7 @@
 	require_once('../BD/acces_rubrique.php');
 	require_once('MENU/Menu.php');
     require_once('../METIER/LangueParser.php');
-	include_once('LANGUE/sessionLangue.php');
+	require_once('LANGUE/sessionLangue.php');
     require_once('../BD/acces_albumPhoto.php');
     require_once('../METIER/FonctionsMetier/pagination.php');
     require_once('../METIER/FonctionsMetier/calendrier.php');
@@ -39,7 +39,7 @@
 	<a href=<?php echo($link."FR'");?> class="active">FR</a> | <a href=<?php echo($link."EN'");?>>EN</a>
 </span>
 <form method="get" action="recherche.php">
-	<label for="search"><?php echo($parserLangue->getWord("search")->getTraduction());?></p></label>
+	<label for="search"><?php echo($parserLangue->getWord("search")->getTraduction()); ?></p></label>
 	<input type="text" id="search" name="w">
 	<input type="submit" value="ok">
 </form>

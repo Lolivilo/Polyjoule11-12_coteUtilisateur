@@ -23,7 +23,7 @@
     </head>
     <body>
 			<?php 
-				include("header.php");
+				include_once("header.php");
 			?>
         <div id="diapoAcceuil">
         	<?php	// S il n y a pas d articles, on affiche une image specifique
@@ -47,7 +47,7 @@
                			}
                			else
                			{
-                    		for($i = 0 ; $nbArticlesIndex ; $i++)
+                    		/*for($i = 0 ; $nbArticlesIndex ; $i++)
                     		{
                     			if($tab[$i] != NULL)
                     			{
@@ -57,7 +57,7 @@
                         			echo("<a href='".$tab[$i]->getUrl()."'>Lire la suite</a><div class='border'></div>");
                         			echo("</div>");
                         		}
-                    		}
+                    		}*/
                     	}
                 	?>
                 </div>
@@ -75,7 +75,7 @@
             ?>			
         </ul>
         <?php
-            include('footer.php');
+            include_once('footer.php');
         ?>
     </body>
 </html>

@@ -1,4 +1,7 @@
 <?php
+
+//require_once('../BD/BD.php');
+
 class Article
 {  
 	private $id;
@@ -149,7 +152,7 @@ class Article
     	$text = "";
     	$nb_max_mots = 20;
     	
-        $text = $this->getContenu();
+        //$text = Bd::securityHTML($this->getContenu());
         
         $apercu = "";
 		$t_chaineNouvelle = explode(" ",$text);
@@ -161,6 +164,7 @@ class Article
 			}
 		}
 		return $apercu."...";
+		
     }
     
    	public function getAutorisationCommentaire()
