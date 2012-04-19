@@ -10,7 +10,7 @@
     }
     if($StringRecherche == NULL)
     {
-        header('Location: index.php?erreur=NO_TERM_SEARCH');
+        header('Location: erreur-2');
     }
 ?>
 

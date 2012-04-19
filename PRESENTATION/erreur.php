@@ -27,7 +27,7 @@
     			{
     				echo $parserLangue->getWord("404Error")->getTraduction();
     			}
-    			else if($_GET['code'] == "NO_TERM_SEARCH")
+    			else if($_GET['code'] == 2)
     			{
     				echo $parserLangue->getWord("NoTermSearch")->getTraduction();
     			}
