@@ -23,7 +23,8 @@ class CategorieBD extends BD
     	try
 		{
 			$connexion = parent::getConnexion();
-			$CategorieParente = parent::security($connexion, $CategorieParente);
+			if($CategorieParente != NULL)
+				$CategorieParente = parent::security($connexion, $CategorieParente);
 			if($CategorieParente == NULL)//Si on cherche ˆ obtenir les catŽgories parentes ( 1er niveau)
 			{
 				$ResultQuery = $connexion->query( "SELECT * FROM RUBRIQUE WHERE id_mere IS NULL" )->fetchAll();

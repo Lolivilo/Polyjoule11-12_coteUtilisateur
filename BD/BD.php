@@ -27,18 +27,19 @@
 			$this->password = 'polyjoule' ;
 			*/
 			// Connexion a une BD locale de test
-			/*
+			
 			$this->host = 'localhost' ;
 			$this->database = 'polyjoule' ;
 			$this->user = 'polyjoule' ;
 			$this->password = 'polyjoule' ;
-			*/
-			// Connexion a la BD OVH
 			
+			// Connexion a la BD OVH
+			/*
 			$this->host = 'mysql51-62.perso' ;
 			$this->database = 'polyjoule01' ;
 			$this->user = 'polyjoule01' ;
 			$this->password = '01admPoly' ;
+			*/
             
             
         }
@@ -127,7 +128,7 @@
 			}
 			else
 			{
-				//$string = $pdo->quote($string);
+				$string = $pdo->quote($string);
 				$string = addcslashes($string, '%_');
 			}
 			return $string;
