@@ -34,9 +34,21 @@ function getNextPage($nbItems, $nbParPage, $currentPage)
 
 function generatePagination($nbItems, $catCourante)
 {
+	$currentTemplate = getNomTemplateByIdRubrique($catCourante);	// On recupere le template correspondant
+	
+	
 	$ret = "<ul id='paginationLivre'>";
-	$ret .= "<li><a href='".$_SERVER['PHP_SELF']."?cat=".$catCourante."&numPage=1'><<</a></li>";
-	$ret .= "<li><a href='".$_SERVER['PHP_SELF']."?cat=".$catCourante."&numPage=".getPreviousPage($_GET['numPage'])."'><</a></li>";
+	$ret .= "<li><a href='".$currentTemplate."'><<</a></li>";	// Retour a la page 1
+	
+	if(($prev = getPreviousPage($_GET['numPage'])) == 1)		// Page precedente
+	{
+		$ret .= "<li><a href='".$currentTemplate."'><<</a></li>";	
+	}
+	else
+	{
+		$ret .= "<li><a href='".$currentTemplate."-".$prev."'><</a></li>";
+	}
+	
 	$ret .= "<li>".$_GET['numPage']."</li>";
 	$ret .= "<li><a href='".$_SERVER['PHP_SELF']."?cat=".$catCourante."&numPage=".getNextPage($nbItems, 5, $_GET['numPage'])."'>></a></li>";
 	$ret .= "<li><a href='".$_SERVER['PHP_SELF']."?cat=".$catCourante."&numPage=".getLastPage($nbItems, 5)."'>>></a></li>";

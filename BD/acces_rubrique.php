@@ -368,6 +368,35 @@ function getNomTemplateById($id)
 	return $res['template'];
 }
 
+function getNomTemplateByIdRubrique($idCat)
+{
+	$bd = new BD();
+	
+	try
+	{
+		$bd->connexion();
+	
+		$connexion = $bd->getConnexion();
+		$param = intval($bd->security($connexion, $idCat));
+		$res = $connexion->query("SELECT template FROM TEMPLATE JOIN RUBRIQUE ON RUBRIQUE.id_template = TEMPLATE.id WHERE RUBRIQUE.id_rubrique = $param");
+		if($res != NULL)
+		{
+			$res = $res->fetch();
+		}
+		else
+		{
+			return NULL;
+		}
+	}
+	catch(PDOException $e)
+	{
+	
+	}
+	
+	return $res['template'];
+}
+
+
 function categorieExists($idCat)
 {
 	$bd = new BD();
