@@ -131,7 +131,7 @@
 				if($string != NULL)
 				{
 					$string = $pdo->quote($string);
-					$string = addcslashes($string, '%_');
+					//$string = addcslashes($string, '%_');
 				}
 			}
 			return $string;

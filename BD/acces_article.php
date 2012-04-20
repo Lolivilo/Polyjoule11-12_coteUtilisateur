@@ -10,7 +10,7 @@ class ArticleBD extends BD
 		parent::__construct();
 	}
     
-    //retourne un tableau contenant les artciles directements associŽs ˆ une catŽgorie
+    //retourne un tableau contenant les artciles directements associÂŽs Âˆ une catÂŽgorie
 	function getArticlesWithCategory ($CategoryId) {
 		
 		
@@ -20,13 +20,13 @@ class ArticleBD extends BD
 		{
 			$connexion = parent::getConnexion();
 			$CategoryId = intval(parent::security($connexion, $CategoryId));
-			//On rŽcupre tous les articles de la catŽgorie passŽe en paramtre
+			//On rÂŽcupÂre tous les articles de la catÂŽgorie passÂŽe en paramÂtre
 			$ResultQuery = $connexion->query( "SELECT * FROM ARTICLE WHERE id_rubrique=$CategoryId AND statut_article = 1" )->fetchAll();
 
-			$ArticleTab = array(); // tableau contenant les articles ˆ retourner
+			$ArticleTab = array(); // tableau contenant les articles Âˆ retourner
 			foreach($ResultQuery as $Art)
-			{// Parcours des articles rŽcupŽrŽs dans la base
-				//Ici on instancie un objet article ˆ l'aide des infos recupŽrŽes dans la base
+			{// Parcours des articles rÂŽcupÂŽrÂŽs dans la base
+				//Ici on instancie un objet article Âˆ l'aide des infos recupÂŽrÂŽes dans la base
 				$Article = new Article($Art['id_article'],
 									   $Art['id_rubrique'],
 									   $Art['auteur_article'],
@@ -65,24 +65,24 @@ class ArticleBD extends BD
 			$QueryString = "SELECT * FROM ARTICLE WHERE ";
 			foreach($ArrayTerms as $key => $term)
 			{
-				$term = $bd->security($connexion, $term);
+				$term = $bd->security($connexion, '%'.$term.'%');
 				if($key != 0)
 					$QueryString .= " OR ";
-				$QueryString .= "titreFR_article like '%%".$term."%%' OR titreEN_article like '%%".$term."%%' OR contenuFR_article like '%%".$term."%%' OR contenuEN_article like '%%".$term."%%'";
+				$QueryString .= "titreFR_article like ".$term." OR titreEN_article like ".$term." OR contenuFR_article like ".$term." OR contenuEN_article like ".$term;
 			}
 			if($QueryString != NULL)
 			{
 				$ResultQuery = $connexion->query($QueryString);
+				/*echo "<br><h3>".$terms."</h3>";
+				echo "<br><h1>".$QueryString."</h1>";*/
 				if($ResultQuery == NULL)
 				{
-				echo "<br><h3>".$terms."</h3>";
-				echo "<br><h1>".$QueryString."</h1>";
 					return NULL;
 				}
 				else
 				{
-					$ResultQuery->fetchAll();
-        
+					
+					$ResultQuery = $ResultQuery->fetchAll();
 					foreach($ResultQuery as $art)
         			{
             			$Article = new Article($art['id_article'],
@@ -168,9 +168,9 @@ function getArticleById ($idArt)
 		$idArt = intval($bd->security($connexion, $idArt));
 		$ResultQuery = $connexion->query( "SELECT * FROM ARTICLE WHERE id_article=$idArt AND statut_article = 1" )->fetch();
         
-		if($ResultQuery != NULL) // Pour eviter une erreur si l'id categorie passŽ est null
+		if($ResultQuery != NULL) // Pour eviter une erreur si l'id categorie passÂŽ est null
         {
-            //Ici on instancie un objet categorie ˆ l'aide des infos recupŽrŽes dans la base
+            //Ici on instancie un objet categorie Âˆ l'aide des infos recupÂŽrÂŽes dans la base
             $Article = new Article($ResultQuery['id_article'],
             					   $ResultQuery['id_rubrique'],
             					   $ResultQuery['auteur_article'],
