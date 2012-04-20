@@ -319,7 +319,7 @@ function getCategorieById( $id )
         $bd->connexion();
         
         $conexion = $bd->getConnexion();
-        $param = intval($bd->security($conexion, $id));
+        $param = intval($bd->security($connexion, $id));
         $result = $connexion->query("SELECT * FROM RUBRIQUE WHERE id_rubrique = $param")->fetch();
         $ret = new Categorie($result['id_rubrique'],
                              $result['id_mere'],
@@ -394,6 +394,35 @@ function getNomTemplateByIdRubrique($idCat)
 	}
 	
 	return $res['template'];
+}
+
+
+function getIdTemplateByIdRubrique($idCat)
+{
+	$bd = new BD();
+	
+	try
+	{
+		$bd->connexion();
+	
+		$connexion = $bd->getConnexion();
+		$param = intval($bd->security($connexion, $idCat));
+		$res = $connexion->query("SELECT id FROM TEMPLATE JOIN RUBRIQUE ON RUBRIQUE.id_template = TEMPLATE.id WHERE RUBRIQUE.id_rubrique = $param");
+		if($res != NULL)
+		{
+			$res = $res->fetch();
+		}
+		else
+		{
+			return NULL;
+		}
+	}
+	catch(PDOException $e)
+	{
+	
+	}
+	
+	return $res['id'];
 }
 
 
