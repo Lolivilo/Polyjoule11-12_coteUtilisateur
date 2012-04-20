@@ -35,8 +35,7 @@
     ?>
    	<div id="corps">
     	<h2 id='titrePartenaire'>
-    		La il faudrait un lien vers une photo
-            <div><?php echo($partenaire->getNom()); ?><span class='sousTitre'>SOUS TITRE</span></div>
+            <div><?php echo($partenaire->getNom()); ?><!--<span class='sousTitre'>SOUS TITRE</span>--></div>
             <img src=<?php echo("'".$partenaire->getLogo()."' alt='Logo de ".$partenaire->getNom()."'") ?>/>
         </h2>
         <p><?php echo($partenaire->getDesc()); ?></p>

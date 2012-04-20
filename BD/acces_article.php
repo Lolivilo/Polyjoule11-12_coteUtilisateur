@@ -236,7 +236,46 @@ function getAllArticles()
     $bd->deconnexion();
     return $return;
 }
+ 
+ 
+function getFiveMostRecentArticles()
+{
+    $bd = new Bd();
+    $return = array();
+    try
+    {
+        $bd->connexion();
+		$connexion = $bd->getConnexion();
+        $result = $connexion->query("SELECT * FROM ARTICLE WHERE statut_article = 1 ORDER BY date_article DESC LIMIT 5")->fetchAll();
+        
+        foreach($result as $row)
+        {
+            $article = new Article($row['id_article'],
+            					   $row['id_rubrique'],
+            					   $row['auteur_article'],
+            					   $row['titreFR_article'],
+            					   $row['titreEN_article'],
+            					   $row['contenuFR_article'],
+            					   $row['contenuEN_article'],
+            					   $row['autorisation_com'],
+            					   $row['statut_article'],
+            					   $row['date_article'],
+            					   $row['url_photo_principale'],
+            					   $row['visible_home']
+            					  );
+            array_push($return, $article);
+        }
+    }
+    catch(PDOException $e)
+    {
+        
+    }
     
+    $bd->deconnexion();
+    return $return;
+}
+
+  
 function getNbArticles()
 {
     $bd = new Bd();
