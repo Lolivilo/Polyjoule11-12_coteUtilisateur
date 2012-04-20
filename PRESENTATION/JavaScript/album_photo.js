@@ -3,7 +3,7 @@ jQuery().ready(function(){
 		function () {
 			id__photo = $(this).next(".idImg").html();
         	id__album = $("#idAlb").html();
-			$.post("http://localhost:8888/PRESENTATION/script_ajax_album_photo.php", {id_photo:id__photo,id_album:id__album},
+			$.post("http://http://polyjoule.org/site/PRESENTATION/getphoto", {id_photo:id__photo,id_album:id__album},
 				function(data) {
 					if(data.success == "yes")
                 	{

@@ -56,27 +56,27 @@ class ArticleBD extends BD
 	{
 		$Articles = array();
 		$ArrayTerms = array();
-		$bd = new Bd();
-		$ArrayTerms = explode(" ",$terms);
-		$QueryString = "SELECT * FROM ARTICLE WHERE ";
-		foreach($ArrayTerms as $key => $term)
-		{
-			if($key != 0)
-				$QueryString .= " OR ";
-			$QueryString .= "titreFR_article like '%".$term."%' OR titreEN_article like '%".$term."%' OR contenuFR_article like '%".$term."%' OR contenuEN_article like '%".$term."%'";
-		}
-		
+		$bd = new Bd();		
 		try
 		{
 			$bd->connexion();
-			
 			$connexion = $bd->getConnexion();
-			$QueryString = $bd->security($connexion, $QueryString);
+			$ArrayTerms = explode(" ",$terms);
+			$QueryString = "SELECT * FROM ARTICLE WHERE ";
+			foreach($ArrayTerms as $key => $term)
+			{
+				$term = $bd->security($connexion, $term);
+				if($key != 0)
+					$QueryString .= " OR ";
+				$QueryString .= "titreFR_article like '%%".$term."%%' OR titreEN_article like '%%".$term."%%' OR contenuFR_article like '%%".$term."%%' OR contenuEN_article like '%%".$term."%%'";
+			}
 			if($QueryString != NULL)
 			{
 				$ResultQuery = $connexion->query($QueryString);
 				if($ResultQuery == NULL)
 				{
+				echo "<br><h3>".$terms."</h3>";
+				echo "<br><h1>".$QueryString."</h1>";
 					return NULL;
 				}
 				else
