@@ -3,8 +3,8 @@
     require_once('../BD/acces_albumPhoto.php');
     require_once('../BD/acces_article.php');
     
-    $tab = getAllArticles();    // Tableau contenant tous les articles
-    
+    //$tab = getAllArticles();    // Tableau contenant tous les articles
+    $artUne = getFiveMostRecentArticles();	// Tableau contenant les 5 derniers articles parus
 ?>
 
 
@@ -27,13 +27,13 @@
 			?>
         <div id="diapoAcceuil">
         	<?php	// S il n y a pas d articles, on affiche une image specifique
-        		if( empty($tab) )
+        		if( empty($artUne) )
         		{
         			echo("<img src='Style/image/pasDePhoto.jpg' alt='Pas d image' />");
         		}
         		else
         		{
-        			echo("<img src='".$tab[0]->getBasePhoto()."' alt='Image principale' />");
+        			echo("<img src='".$artUne[0]->getBasePhoto()."' alt='Image principale' />");
         		}
         	?>
             
@@ -47,6 +47,14 @@
                			}
                			else
                			{
+               				foreach($artUne as $a)	// On affiche tous les articles presents
+               				{
+               					echo("<div class='news'>");
+                        		echo("<h3><span class='date'>".$a->getFormatedDate()."</span> ".$a->getTitre()."</h3>");
+                        		echo("<p>".$a->getApercu()."</p>");
+                        		echo("<a href='".$a->getUrl()."'>Lire la suite</a><div class='border'></div>");
+                        		echo("</div>");	
+               				}
                     		/*for($i = 0 ; 5 ; $i++)
                     		{
                     			if($tab[$i] != NULL)
@@ -58,12 +66,13 @@
                         			echo("</div>");
                         		}
                     		}*/
+                    		/*
                     		echo("<div class='news'>");
                         	echo("<h3><span class='date'>".$tab[1]->getFormatedDate()."</span> ".$tab[1]->getTitre()."</h3>");
                         	echo("<p>".$tab[1]->getApercu()."</p>");
                         	echo("<a href='".$tab[1]->getUrl()."'>Lire la suite</a><div class='border'></div>");
                         	echo("</div>");
-
+							*/
                     	}
                 	?>
                 </div>
