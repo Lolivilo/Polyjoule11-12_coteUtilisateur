@@ -38,20 +38,36 @@ function generatePagination($nbItems, $catCourante)
 	
 	
 	$ret = "<ul id='paginationLivre'>";
-	$ret .= "<li><a href='".$currentTemplate."'><<</a></li>";	// Retour a la page 1
+	$ret .= "<li><a href='".$currentTemplate."'><<</a></li>";		// Retour a la page 1
 	
-	if(($prev = getPreviousPage($_GET['numPage'])) == 1)		// Page precedente
+	if(($prev = getPreviousPage($_GET['numPage'])) == 1)			// Page precedente
 	{
-		$ret .= "<li><a href='".$currentTemplate."'><<</a></li>";	
+		$ret .= "<li><a href='".$currentTemplate."'><</a></li>";	
 	}
 	else
 	{
 		$ret .= "<li><a href='".$currentTemplate."-".$prev."'><</a></li>";
 	}
 	
-	$ret .= "<li>".$_GET['numPage']."</li>";
-	$ret .= "<li><a href='".$_SERVER['PHP_SELF']."?cat=".$catCourante."&numPage=".getNextPage($nbItems, 5, $_GET['numPage'])."'>></a></li>";
-	$ret .= "<li><a href='".$_SERVER['PHP_SELF']."?cat=".$catCourante."&numPage=".getLastPage($nbItems, 5)."'>>></a></li>";
+	$ret .= "<li>".$_GET['numPage']."</li>";						// Page courante
+	
+	if( ($next = getNextPage($nbItems, 5, $_GET['numPage'])) == 1)	// Page suivante
+	{
+		$ret .= "<li><a href='".$currentTemplate."'>></a></li>";
+	}
+	else
+	{
+		$ret .= "<li><a href='".$currentTemplate."-".$next."'>></a></li>";
+	}
+	
+	if( ($last = getLastPage($nbItems, 5)) == 1)					// Derniere page
+	{
+		$ret .= "<li><a href='".$currentTemplate."'>>></a></li>";
+	}
+	else
+	{
+		$ret .= "<li><a href='".$currentTemplate."-".$last."'>>></a></li>";
+	}
 	$ret .= "</ul>";
 	
 	return($ret);
