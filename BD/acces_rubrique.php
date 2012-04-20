@@ -367,7 +367,7 @@ function getNomTemplateById($id)
 	
 	return $res['template'];
 }
-
+/*
 function getNomTemplateByIdRubrique($idCat)
 {
 	$bd = new BD();
@@ -395,7 +395,7 @@ function getNomTemplateByIdRubrique($idCat)
 	
 	return $res['template'];
 }
-
+*/
 
 function getIdTemplateByIdRubrique($idCat)
 {
