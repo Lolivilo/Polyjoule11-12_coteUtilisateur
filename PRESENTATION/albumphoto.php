@@ -78,7 +78,7 @@
                 		<?php
                     		foreach($currentAlbum->getPhotos() as $photo)
                     		{
-                        		echo "<li><img src='".$photo->getThumbnail()."' style=\"width:100px; height:100px;\" /><span class='idImg' style='display:none'>".$photo->getId()."</span></li>";
+                        		echo "<li><img src='".$photo->getThumbnail()."' style=\"width:100px; height:100px;\" /><span class='idImg' style='display:none'>".$photo->getId()."</span><img src='Style/image/loader.gif' class='loaderThumb'/></li>";
                     		}
                 		?>
             		</ul>

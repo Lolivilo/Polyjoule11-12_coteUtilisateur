@@ -20,6 +20,18 @@
 		<input type="hidden" name="lang" value="FR">
 </form>
 <a href="" class="changeLangue active" id="FR">FR</a> | <a href="" class="changeLangue" id="EN">EN</a>
+<script language="javascript">
+	jQuery().ready(function(){
+		$(".changeLangue").click(function () 
+			{
+				$("#Formlangue > input").attr('value', $(this).attr("id"));
+				$("#Formlangue").submit();
+				return false;
+			}
+		);
+
+	});
+</script>
 </span>
 <form method="get" action="recherche.php">
 	<label for="search"><?php echo($parserLangue->getWord("search")->getTraduction()); ?></p></label>

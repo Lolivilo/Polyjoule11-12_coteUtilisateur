@@ -1,3 +1,5 @@
+.jcarousel-item{cursor: pointer;}
+
 .jcarousel-skin-tango .jcarousel-direction-rtl {
 	direction: rtl;
 }
@@ -36,6 +38,7 @@
 .jcarousel-skin-tango .jcarousel-item-horizontal {
 	margin-left: 0;
     margin-right: 10px;
+    position: relative;
 }
 
 .jcarousel-skin-tango .jcarousel-direction-rtl .jcarousel-item-horizontal {
