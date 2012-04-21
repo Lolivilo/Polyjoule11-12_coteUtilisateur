@@ -25,6 +25,7 @@
     <title>Polyjoule</title>  
     <link rel="stylesheet" type="text/css" href="Style/index.css" />
     <link rel="stylesheet" type="text/css" href="Style/skins/tango/skin.css" />
+    <?php include('includeJS.php'); ?>
     <script  type="text/javascript" src="JavaScript/menu.js"></script>
     <script  type="text/javascript" src="JavaScript/dropDown.js"></script>
     <script  type="text/javascript" src="JavaScript/album_photo.js"></script>

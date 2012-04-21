@@ -1,5 +1,5 @@
 <?php
-	require_once('acces_albumPhoto.php');
+	require_once('../BD/acces_albumPhoto.php');
     class Photo
     {  
         private $id;
@@ -59,7 +59,7 @@
         }
 
         
-        public function getLien($nomAlbum)
+        public function getLien()
         {
         	return str_replace ('_', '', $this->getThumbnail());
         }
@@ -67,8 +67,8 @@
         public function getThumbnail()
         {
         	$AlbumPhotoBD = new AlbumPhotoBD();
-        	$album = $AlbumPhotoBD->getAlbumById(); 
-        	$path  = "../administration/ressources/data/Photo/".$album->getNom()."/"
+        	$album = $AlbumPhotoBD->getAlbumById($this->id_album); 
+        	$path  = "../administration/ressources/data/Photo/".$album->getNom()."/";
             return $path.$this->lien ;
         }
 
