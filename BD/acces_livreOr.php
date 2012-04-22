@@ -66,6 +66,40 @@ function getAllAcceptedLivreDOr()
     return $tableauDeLivreDOr;
 }
 
+
+/** function getFiveAcceptedLivreDOr($debut)
+	Retourne 5 signatures a partir de la ($debut)ième signature specifiee
+	@param int $debut : laposition de la premiere signature a renvoyer
+	@return LivreDOr[5] : Tableau des 5 signatures
+**/
+function getFiveAcceptedLivreDOr($debut)
+{
+    $bd = new BD();
+    
+    $tableauDeLivreDOr = array();
+        
+    try
+    {
+        $bd->connexion();											// Connexion a la BD
+        $connexion = $bd->getConnexion();
+        $param = intval($bd->security($connexion, $debut));
+        $resultQuery = $connexion->query("SELECT * FROM LIVRE_OR WHERE accept_post = 1 ORDER BY date_post DESC LIMIT $param, 5")->fetchAll();	// Execution de la requete
+            
+        foreach($resultQuery as $row)
+        {
+            $livre = new LivreDOr($row['id_post'], $row['posteur_post'], $row['mail_post'], $row['date_post'], $row['message_post']);
+            array_push($tableauDeLivreDOr, $livre);
+        }
+    }
+    catch(PDOException $e)
+    {
+            
+    }
+    $bd->deconnexion();	// Deconnexion de la BD
+        
+    return $tableauDeLivreDOr;
+}
+
     
 function getNbAcceptedLivreOr()
 {

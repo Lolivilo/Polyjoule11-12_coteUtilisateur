@@ -7,7 +7,8 @@
     
     verifGet();
     
-	$tabComment = getAllAcceptedLivreDOr();	// Creation de la liste des commentaires a afficher
+	//$tabComment = getAllAcceptedLivreDOr();	// Creation de la liste des commentaires a afficher
+	$signatures = getFiveAcceptedLivreDor(5*(intval($_GET['numPage'])-1));
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -29,7 +30,7 @@
         <h3><?php echo( $parserLangue->getWord('LivreOr')->getTraduction() );?></h3>
         	<?php
             // Affichage des commentaires
-            	if( empty($tabComment) )
+            	if( empty($signatures) && $_GET['numPage'] == 1)
             	{
             		echo("<p>Il n'y a encore aucune signature d'acceptée sur le site !</p>");
             	}
@@ -37,11 +38,20 @@
             	{
             		$debut = getIndexDebutFor($_GET['numPage'], 5);
                		$fin = getIndexFinFor($debut, getNbAcceptedLivreOr(), 5);
+               		/*
                 	for($i = $debut ; $i < $fin ; $i++)
                 	{
                     	echo("<div class='commentaire' id='signature_".$tabComment[$i]->getId()."'>");
                     	echo("<h4>".$tabComment[$i+(10*($_GET['numPage']-1))]->getPosteur()."<span class='date'>".$tabComment[$i+(10*($_GET['numPage']-1))]->getFormatedDate()."</span></h4>");
                     	echo("<p>".$tabComment[$i+(10*($_GET['numPage']-1))]->getMessage()."</p>");
+                    	echo("</div>");
+                	}
+                	*/
+                	foreach($signatures as $s)
+                	{
+                		echo("<div class='commentaire' id='signature_".$a->getId()."'>");
+                    	echo("<h4>".$a->getPosteur()."<span class='date'>".$a->getFormatedDate()."</span></h4>");
+                    	echo("<p>".$a->getMessage()."</p>");
                     	echo("</div>");
                 	}
                 }
