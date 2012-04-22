@@ -207,3 +207,6 @@ a.jScrollArrowDown:hover		{/*background-color: #f60;*/}
 a.jScrollActiveArrowButton,
 a.jScrollActiveArrowButton:hover		{/*background-color: #f00;*/}
 
+/*loader thumbnail album photo */
+img.loaderThumb{left:16px;position:absolute;top:16px;display: none;}
+

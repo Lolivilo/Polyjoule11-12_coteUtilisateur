@@ -14,8 +14,12 @@
 <h1><a href=<?php echo("'index.php'"); ?>><img src="Style/image/logoPolyjoule.png" alt="Polyjoule"/></a></h1>
 <div id="barre">
 <a href=""><?php echo $parserLangue->getWord("contact")->getTraduction(); ?></a>
-
-<script  type="text/javascript" src="JavaScript/jquery-1.4.1.min.js"></script>
+<span class="lang">
+<?php $link = $_SERVER['REQUEST_URI']; ?>
+<form style="display:none;" id="Formlangue" method="post" action="<?php echo $link; ?>">
+		<input type="hidden" name="lang" value="FR">
+</form>
+<a href="" class="changeLangue active" id="FR">FR</a> | <a href="" class="changeLangue" id="EN">EN</a>
 <script language="javascript">
 	jQuery().ready(function(){
 		$(".changeLangue").click(function () 
@@ -28,12 +32,6 @@
 
 	});
 </script>
-<span class="lang">
-<?php $link = $_SERVER['REQUEST_URI']; ?>
-<form style="display:none;" id="Formlangue" method="post" action="<?php echo $link; ?>">
-		<input type="hidden" name="lang" value="FR">
-</form>
-<a href="" class="changeLangue active" id="FR">FR</a> | <a href="" class="changeLangue" id="EN">EN</a>
 </span>
 <form method="get" action="recherche.php">
 	<label for="search"><?php echo($parserLangue->getWord("search")->getTraduction()); ?></p></label>

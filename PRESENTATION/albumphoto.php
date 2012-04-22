@@ -25,6 +25,7 @@
     <title>Polyjoule</title>  
     <link rel="stylesheet" type="text/css" href="Style/index.css" />
     <link rel="stylesheet" type="text/css" href="Style/skins/tango/skin.css" />
+    <?php include('includeJS.php'); ?>
     <script  type="text/javascript" src="JavaScript/menu.js"></script>
     <script  type="text/javascript" src="JavaScript/dropDown.js"></script>
     <script  type="text/javascript" src="JavaScript/album_photo.js"></script>
@@ -77,7 +78,7 @@
                 		<?php
                     		foreach($currentAlbum->getPhotos() as $photo)
                     		{
-                        		echo "<li><img src='".$photo->getThumbnail()."' style=\"width:100px; height:100px;\" /><span class='idImg' style='display:none'>".$photo->getId()."</span></li>";
+                        		echo "<li><img src='".$photo->getThumbnail()."' style=\"width:100px; height:100px;\" /><span class='idImg' style='display:none'>".$photo->getId()."</span><img src='Style/image/loader.gif' class='loaderThumb'/></li>";
                     		}
                 		?>
             		</ul>
