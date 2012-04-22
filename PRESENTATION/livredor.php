@@ -7,7 +7,6 @@
     
     verifGet();
     
-	//$tabComment = getAllAcceptedLivreDOr();	// Creation de la liste des commentaires a afficher
 	$signatures = getFiveAcceptedLivreDor(5*(intval($_GET['numPage'])-1));
 ?>
 
@@ -38,16 +37,8 @@
             	{
             		$debut = getIndexDebutFor($_GET['numPage'], 5);
                		$fin = getIndexFinFor($debut, getNbAcceptedLivreOr(), 5);
-               		/*
-                	for($i = $debut ; $i < $fin ; $i++)
-                	{
-                    	echo("<div class='commentaire' id='signature_".$tabComment[$i]->getId()."'>");
-                    	echo("<h4>".$tabComment[$i+(10*($_GET['numPage']-1))]->getPosteur()."<span class='date'>".$tabComment[$i+(10*($_GET['numPage']-1))]->getFormatedDate()."</span></h4>");
-                    	echo("<p>".$tabComment[$i+(10*($_GET['numPage']-1))]->getMessage()."</p>");
-                    	echo("</div>");
-                	}
-                	*/
-                	foreach($signatures as $s)
+
+                	foreach($signatures as $a)
                 	{
                 		echo("<div class='commentaire' id='signature_".$a->getId()."'>");
                     	echo("<h4>".$a->getPosteur()."<span class='date'>".$a->getFormatedDate()."</span></h4>");
@@ -81,7 +72,7 @@
                     }
                 ?>
 			</div>
-            <form name='signer' id='ajoutSignature' action='../BD/TraitementsFormulaires/AjoutSignature.php' method="post" onsubmit="return check()">
+            <form name='signer' id='ajoutSignature' action='../BD/TraitementsFormulaires/AjoutSignature.php' method="post">
             	<label for='pseudo'>Pseudo</label><input type="text" name='pseudo'/><br/>
                 <label for='mail'>Mail</label><input type="text" name='mail'/><br/>
                 <textarea name='message'></textarea>

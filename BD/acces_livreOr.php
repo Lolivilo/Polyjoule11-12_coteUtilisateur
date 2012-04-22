@@ -82,8 +82,8 @@ function getFiveAcceptedLivreDOr($debut)
     {
         $bd->connexion();											// Connexion a la BD
         $connexion = $bd->getConnexion();
-        $param = intval($bd->security($connexion, $debut));
-        $resultQuery = $connexion->query("SELECT * FROM LIVRE_OR WHERE accept_post = 1 ORDER BY date_post DESC LIMIT $param, 5")->fetchAll();	// Execution de la requete
+        //$param = intval($bd->security($connexion, $debut)); <-- Plante...
+        $resultQuery = $connexion->query("SELECT * FROM LIVRE_OR WHERE accept_post = 1 ORDER BY date_post DESC LIMIT $debut, 5")->fetchAll();	// Execution de la requete
             
         foreach($resultQuery as $row)
         {
