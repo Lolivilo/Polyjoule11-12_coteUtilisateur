@@ -2,10 +2,9 @@
 
 class RequestException extends Exception
 {
-	public function __construct($message)
+	public function __construct()
 	{
-		parent::__construct($message);
-		echo($message);
+		parent::__construct("Erreur lors de l'analyse du resultat d'une requête : ce dernier doit être vide !");
 	}
 }
 
