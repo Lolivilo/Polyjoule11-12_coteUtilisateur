@@ -7,7 +7,14 @@
 	
 	verifGet();
 	
-	$tabFiveAlbums = getFiveMostRecentAlbums(5*(intval($_GET['numPage'])-1));
+	try
+	{
+		$tabFiveAlbums = getFiveMostRecentAlbums(5*(intval($_GET['numPage'])-1));
+	}
+	catch(RequestException $e)
+	{
+		echo( $e->getMessage() );
+	}
 ?>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">  
@@ -30,15 +37,15 @@
 	?>
 	<div id='corps'>
 		<?php
-			$tabAlbums = getAllAlbums();	// Tableau de tous les albums photos existants
+			//$tabAlbums = getAllAlbums();	// Tableau de tous les albums photos existants
 			if(empty($tabFiveAlbums))
 			{
 				echo("<p>Il n'y a aucun album photo actuellement !</p>");
 			}
 			else
 			{
-				$debut = getIndexDebutFor($_GET['numPage'], 5);
-				$fin = getIndexFinFor($debut, getNbAlbums(), 5);
+				//$debut = getIndexDebutFor($_GET['numPage'], 5);
+				//$fin = getIndexFinFor($debut, getNbAlbums(), 5);
 				/*
 				for($i = $debut ; $i < $fin ; $i++)
 				{

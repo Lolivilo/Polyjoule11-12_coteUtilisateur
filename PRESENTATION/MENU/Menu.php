@@ -17,7 +17,14 @@
             {
             	$HasChildren = TRUE;
             	$html .= "<ul>";
-            	$tabAlb = getAllAlbums();
+            	try
+            	{
+            		$tabAlb = getAllAlbums();
+            	}
+            	catch(RequestException $e)
+            	{
+            		echo( $e->getMessage() );
+            	}
             	foreach($tabAlb as $alb)
             	{
             		$html .= "<li><a href='".$alb->getUrl()."'>".$alb->getNom()."</a></li>";

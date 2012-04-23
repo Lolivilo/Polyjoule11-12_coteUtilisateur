@@ -40,7 +40,14 @@ $SousCategories = $category->getSousCategories($SuperParentCategory->getId());
 $html.="<ul id='menuPage'><li><h2>".$SuperParentCategory->getTitre()."</h2></li>";
 if($SuperParentCategory->getIdTemplate() == 2)	// Si c'est la rubrique de liste d'albums, on les affiche
 {
-	$tabAlb = getAllAlbums();
+	try
+	{
+		$tabAlb = getAllAlbums();
+	}
+	catch(RequestException $e)
+	{
+		echo( $e->getMessage() );
+	}
 	foreach($tabAlb as $tab)
 	{
 		$html .= "<li>";

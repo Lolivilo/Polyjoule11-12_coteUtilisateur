@@ -138,12 +138,6 @@ function getNbAlbums()
         	$result = $result->fetch();
         }
     }
-    catch(RequestException $e)
-    {
-    	echo( $e->getMessage() );
-		$bd->deconnexion();
-		return NULL;
-    }
     catch(PDOException $e)
     {
         
@@ -154,7 +148,7 @@ function getNbAlbums()
     return $result['COUNT(*)'];
 }
 
-
+/*
 function getMostRecentAlbum()
 {
     $bd = new BD();
@@ -189,6 +183,7 @@ function getMostRecentAlbum()
     
     return $result['id_album'];
 }
+*/
 
 
 /** function getFiveMostRecentAlbums()
@@ -277,6 +272,9 @@ function getAllAlbums()
 }
 
 
+////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
 function getFirstPhotoById($idAlbum)
 {
 	$bd = new BD();
@@ -323,6 +321,10 @@ function getFirstPhotoById($idAlbum)
 	return $Photo;
 }
 
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
 function getNbPhotosById($idAlbum)
 {
 	$bd = new BD();
@@ -362,7 +364,9 @@ function getNbPhotosById($idAlbum)
 }
 
 
+////////////////////////////////////////////////////////////////////////////////////////////////////
 
+/*
 function albumPhotoExists($idAlb)
 {
 	$bd = new BD();
@@ -403,6 +407,6 @@ function albumPhotoExists($idAlb)
 	
 	return true;
 }
-
+*/
 
 ?>

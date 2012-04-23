@@ -40,12 +40,26 @@ class AlbumPhoto
     
     public function getFirstPhoto()
     {
-    	return getFirstPhotoById($this->id);
+    	try
+    	{
+    		return getFirstPhotoById($this->id);
+    	}
+    	catch(RequestException $e)
+    	{
+    		echo( $e->getMessage() );
+    	}
     }
     
     public function getNbPhotos()
     {
-    	return getNbPhotosById($this->id);
+    	try
+    	{
+    		return getNbPhotosById($this->id);
+    	}
+    	catch(RequestException $e)
+    	{
+    		echo( $e->getMessage() );
+    	}
     }
     
     public function getDesc()
