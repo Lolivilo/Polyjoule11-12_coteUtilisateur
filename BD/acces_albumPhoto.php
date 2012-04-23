@@ -57,12 +57,6 @@ class AlbumPhotoBD extends BD
                                     $resultQuery['descEN_album']);
             $this->addPhotosToAlbum($album);
         }
-        catch(RequestException $e )
-        {
-        	echo( $e->getMessage() );
-			$bd->deconnexion();
-			return NULL;
-        }
         catch ( PDOException $ex )
         {
             $ex = new AccesTableException() ;
@@ -170,6 +164,46 @@ function getMostRecentAlbum()
         $bd->connexion();
         $connexion = $bd->getConnexion();
         $result = $connexion->query("SELECT id_album FROM ALBUM ORDER BY date_album DESC LIMIT 1");
+        
+        if($result == NULL)
+        {
+        	throw new RequestException();
+        }
+        else
+        {
+        	$result = $result->fetch();
+        }
+    }
+    catch(RequestException $e)
+    {
+    	echo( $e->getMessage() );
+		$bd->deconnexion();
+		return NULL;
+    }
+    catch(PDOException $ex)
+    {
+        // A REMPLIR
+    }
+    
+    $bd->deconnexion();
+    
+    return $result['id_album'];
+}
+
+
+/** function getFiveMostRecentAlbums()
+	Va chercher dans la BD les 5 albums les plus recents
+	@return AlbumPhoto[5]
+**/
+function getFiveMostRecentAlbums($debut)
+{
+    $bd = new BD();
+    
+    try
+    {
+        $bd->connexion();
+        $connexion = $bd->getConnexion();
+        $result = $connexion->query("SELECT id_album FROM ALBUM ORDER BY date_album DESC LIMIT $debut, 5");
         
         if($result == NULL)
         {

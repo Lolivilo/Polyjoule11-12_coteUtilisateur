@@ -6,6 +6,8 @@
 	require_once('../METIER/FonctionsMetier/verificationGet.php');
 	
 	verifGet();
+	
+	$tabFiveAlbums = getFiveMostRecentAlbums(5*(intval($_GET['numPage'])-1));
 ?>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">  
@@ -29,7 +31,7 @@
 	<div id='corps'>
 		<?php
 			$tabAlbums = getAllAlbums();	// Tableau de tous les albums photos existants
-			if(empty($tabAlbums))
+			if(empty($tabFiveAlbums))
 			{
 				echo("<p>Il n'y a aucun album photo actuellement !</p>");
 			}
@@ -37,6 +39,7 @@
 			{
 				$debut = getIndexDebutFor($_GET['numPage'], 5);
 				$fin = getIndexFinFor($debut, getNbAlbums(), 5);
+				/*
 				for($i = $debut ; $i < $fin ; $i++)
 				{
 					echo("<div id='album_".$tabAlbums[$i]->getId()."' class='listeArticle'>");
@@ -56,7 +59,26 @@
 					echo("<a href='".$tabAlbums[$i]->getUrl()."'>Visionner cet album</a>");
 					echo("<div class='clear'></div>");
 					echo("</div>");
-
+				}*/
+				foreach($tabFiveAlbums as $a)
+				{
+					echo("<div id='album_".$a->getId()."' class='listeArticle'>");
+					if($a->getFirstPhoto() != NULL)
+					{
+						echo("<img style='width:100px' src='".$a->getFirstPhoto()->getThumbnail()."' />");
+					}
+					else
+					{
+						echo("<img style='width:100px' src='http://3.bp.blogspot.com/-iJYUeULd-W0/TbR5YTwfiRI/AAAAAAAAAJ0/zIDyFheQVyY/s1600/n.a.jpg' />");
+					}
+					echo("<div class='description'><h3>".$a->getNom()."</h3>");
+					echo("<div class='italic'>".$a->getDate()."</div>" );
+					echo("<p>".$a->getDesc()."</p>");
+					echo("<p>".$a->getNbPhotos()." photos dans cet album</p>");
+					echo("</div>");
+					echo("<a href='".$a->getUrl()."'>Visionner cet album</a>");
+					echo("<div class='clear'></div>");
+					echo("</div>");
 				}
 			}
 		?>

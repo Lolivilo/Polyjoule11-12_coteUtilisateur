@@ -3,16 +3,23 @@
     require_once('../METIER/LangueParser.php');
 	require_once('../BD/acces_albumPhoto.php');
     $album = NULL;
-    if(isset($_GET['cat']) && $_GET['cat'] != '')
-    {
-        $AlbumPhotoBD = new AlbumPhotoBD();
-        $currentAlbum = $AlbumPhotoBD->getAlbumById($_GET['cat']);
-    }
-    if($currentAlbum == NULL)
-    {
-        header('Location: index.php');
-    }
     
+    try
+    {
+    	if(isset($_GET['cat']) && $_GET['cat'] != '')
+    	{
+        	$AlbumPhotoBD = new AlbumPhotoBD();
+        	$currentAlbum = $AlbumPhotoBD->getAlbumById($_GET['cat']);
+    	}
+    	if($currentAlbum == NULL)
+    	{
+        	header('Location: index.php');
+    	}
+    }
+    catch(RequestException $e)
+    {
+    	echo( $e->getMessage() );
+    }
     $photoArray = $currentAlbum->getPhotos();   // Tableau de photos de l album courant   
     
 

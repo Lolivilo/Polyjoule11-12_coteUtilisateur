@@ -67,9 +67,16 @@
         public function getThumbnail()
         {
         	$AlbumPhotoBD = new AlbumPhotoBD();
-        	$album = $AlbumPhotoBD->getAlbumById($this->id_album); 
-        	$path  = "../administration/ressources/data/Photo/".$album->getNom()."/";
-            return $path.$this->lien ;
+        	try
+        	{
+        		$album = $AlbumPhotoBD->getAlbumById($this->id_album);
+        		$path  = "../administration/ressources/data/Photo/".$album->getNom()."/";
+            	return $path.$this->lien ;
+        	}
+        	catch(RequestException $e)
+        	{
+        		echo( $e->getMessage() );
+        	}
         }
 
         
