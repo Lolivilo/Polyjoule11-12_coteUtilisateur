@@ -66,7 +66,7 @@ class AlbumPhoto
     
     public function getUrl()
     {
-    	return("albumphoto.php?cat=".$this->id);
+    	return("albumslideshow-".$this->id);
     }
     
     public function addPhoto($photo)

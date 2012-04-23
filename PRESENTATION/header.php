@@ -13,7 +13,7 @@
 <div id="header">
 <h1><a href=<?php echo("'index.php'"); ?>><img src="Style/image/logoPolyjoule.png" alt="Polyjoule"/></a></h1>
 <div id="barre">
-<a href=""><?php echo $parserLangue->getWord("contact")->getTraduction(); ?></a>
+<a href="contact"><?php echo $parserLangue->getWord("contact")->getTraduction(); ?></a>
 <span class="lang">
 <?php $link = $_SERVER['REQUEST_URI']; ?>
 <form style="display:none;" id="Formlangue" method="post" action="<?php echo $link; ?>">

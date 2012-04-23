@@ -103,5 +103,15 @@
         <fr>La recherche ne porte sur aucun terme</fr>
         <en>there is no term in the research</en>
     </word>
+    
+    <word txt="envoyesuccess">
+        <fr>Votre message à été envoyé avec succès</fr>
+        <en>Your message has been successfully sent</en>
+    </word>
+    
+    <word txt="manqueinfo">
+        <fr>Les informations fournies sont incomplètes</fr>
+        <en>The information provided is incomplete</en>
+    </word>
  
 </lang>

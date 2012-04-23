@@ -7,11 +7,11 @@
     	require_once('../BD/send_mail.php');
     	$Mail = new EMail($_POST['email'], $_POST['objet'], $_POST['message']);
     	if($Mail->sendMail())
-    		header('Location: http://localhost:8888/contact-us.php?action=succeded'); // redirection pour afficher le succes
+    		header('Location: sendsucceded'); // redirection pour afficher le succes
     }
     else if( (isset($_POST['email']) && $_POST['email'] == '') || (isset($_POST['email']) && $_POST['objet'] == '') || ( isset($_POST['email']) &&$_POST['message'] == '') )
     {
-    	header('Location: http://localhost:8888/contact-us.php?action=error'); // redirection pour afficher une erreur (champ non remplit)
+    	header('Location: senderror'); // redirection pour afficher une erreur (champ non remplit)
     }
     else // ici on affiche le formulaire d'envoi de mail
     {
@@ -45,22 +45,22 @@
                 </h2> 
                 <div class="article contact">
                 <?php
-                	if($_GET['action'] == 'succeded')
+                	if(isset($_GET['action']) && ($_GET['action'] == 'succeded'))
                 	{
                 ?>
-                	<p>Votre message à été envoyé avec succès</p>
+                	<p><?php $parserLangue->getWord('envoyesuccess')->getTraduction(); ?></p>
                 <?php
                 	}
                 	else
                 	{	
-                		if($_GET['action'] == 'error')
+                		if(isset($_GET['action']) && ($_GET['action'] == 'error'))
                 		{
                 ?>
-                		<p class='error'>Les informations fournies sont incomplètes</p>
+                		<p class='error'><?php $parserLangue->getWord('manqueinfo')->getTraduction(); ?></p>
                 <?php
                 		}
                 ?>
-                	<form method="POST" action="http://localhost:8888/contact-us.php?action=send">
+                	<form method="POST" action="http://polyjoule.org/site/PRESENTATION/send">
                 		<span>Votre Email *</span><input type="text" name="email" /><br/>
                 		<span>Objet *</span><input type="text" name="objet" /><br/>
                 		<span>Message *</span><textarea name="message"></textarea><br/>

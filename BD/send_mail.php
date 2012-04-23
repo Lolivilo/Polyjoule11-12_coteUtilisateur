@@ -19,8 +19,8 @@
             $this->message = NoHtml($mess); 
             $this->boundary= "-----=".md5(rand());
             $passage_ligne = "\n"; 
-            $this->_header="From: \"WeaponsB\"<weaponsb@mail.fr>".$passage_ligne;
-			$this->_header.= "Reply-to: \"WeaponsB\" <weaponsb@mail.fr>".$passage_ligne;
+            $this->_header="From: \"".$sMail."\"<".$sMail.">".$passage_ligne;
+			$this->_header.= "Reply-to: \"".$sMail."\" <".$sMail.">".$passage_ligne;
 			$this->_header.= "MIME-Version: 1.0".$passage_ligne;
 			$this->_header.= "Content-Type: multipart/alternative;".$passage_ligne." boundary=\"".$this->boundary."\"".$passage_ligne;          
         }

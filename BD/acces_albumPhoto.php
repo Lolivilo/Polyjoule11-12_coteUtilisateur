@@ -163,7 +163,20 @@ function getFirstPhotoById($idAlbum)
 		$bd->connexion();
 		$connexion = $bd->getConnexion();
 		$param = intval($bd->security($connexion , $idAlbum));
-		$result = $connexion->query("SELECT lien_photo FROM PHOTO WHERE id_album = $param ORDER BY id_photo LIMIT 1")->fetch();
+		$result = $connexion->query("SELECT * FROM PHOTO WHERE id_album = $param ORDER BY id_photo LIMIT 1");
+		$Photo = NULL;
+		if($result != NULL)
+		{
+			$resultPhoto = $result->fetch();
+			$Photo = new Photo($resultPhoto['id_photo'],
+                               $resultPhoto['id_album'],
+                               $resultPhoto['titreFR_photo'],
+                               $resultPhoto['titreEN_photo'],
+                               $resultPhoto['lien_photo'],
+                               $resultPhoto['date_photo'],
+                               $resultPhoto['descFR_photo'],
+                               $resultPhoto['descEN_photo']);
+		}
 	}
 	catch(PDOException $e)
 	{
@@ -171,7 +184,7 @@ function getFirstPhotoById($idAlbum)
 	}
 	$bd->deconnexion();
 	
-	return $result['lien_photo'];
+	return $Photo;
 }
 
 function getNbPhotosById($idAlbum)

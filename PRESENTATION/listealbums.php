@@ -42,7 +42,7 @@
 					echo("<div id='album_".$tabAlbums[$i]->getId()."' class='listeArticle'>");
 					if($tabAlbums[$i]->getFirstPhoto() != NULL)
 					{
-						echo("<img style='width:100px' src='".$tabAlbums[$i]->getFirstPhoto()."' />");
+						echo("<img style='width:100px' src='".$tabAlbums[$i]->getFirstPhoto()->getThumbnail()."' />");
 					}
 					else
 					{

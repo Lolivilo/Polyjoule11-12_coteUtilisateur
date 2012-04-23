@@ -185,7 +185,8 @@ class Article
     
     public function getBasePhoto()
     {
-    	return $this->photo_principale;
+    	$path  = "../administration/ressources/data/Photo/";
+    	return $path.$this->photo_principale;
     }
     
     public function getVisibleHome()

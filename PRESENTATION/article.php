@@ -29,9 +29,9 @@
     <?php 
         include('header.php');
     ?>
-        <div id="ariane">
+        <?php /*<div id="ariane">
             <a href="index.html">Notre Association</a> > <a href="index.html">Notre aaa</a> > <a href="index.html">Nzevgzg</a>
-        </div>
+        </div>*/ ?>
         <?php
             include('explorer/explorer.php');
         ?>
