@@ -21,8 +21,18 @@ class ArticleBD extends BD
 			$connexion = parent::getConnexion();
 			$CategoryId = intval(parent::security($connexion, $CategoryId));
 			//On rcupre tous les articles de la catgorie passe en paramtre
-			$ResultQuery = $connexion->query( "SELECT * FROM ARTICLE WHERE id_rubrique=$CategoryId AND statut_article = 1" )->fetchAll();
-
+			$ResultQuery = $connexion->query( "SELECT * FROM ARTICLE WHERE id_rubrique=$CategoryId AND statut_article = 1" );
+			
+			if($ResultQuery == NULL)
+			{
+				$bd->deconnexion();
+				throw new RequestException();
+			}
+			else
+			{
+			
+				$ResultQuery = $ResultQuery->fetchAll();
+			}
 			$ArticleTab = array(); // tableau contenant les articles  retourner
 			foreach($ResultQuery as $Art)
 			{// Parcours des articles rcuprs dans la base
@@ -124,8 +134,17 @@ class ArticleBD extends BD
     	{
         	$this->connexion();
 			$connexion = $this->getConnexion();
-        	$result = $connexion->query("SELECT * FROM ARTICLE WHERE visible_home = 1 AND statut_article = 1 LIMIT 3")->fetchAll();
+        	$result = $connexion->query("SELECT * FROM ARTICLE WHERE visible_home = 1 AND statut_article = 1 LIMIT 3");
         
+        
+        	if($result == NULL)
+        	{
+        		$bd->deconnexion();
+        		throw new RequestException();
+        	}
+        	
+        	$result = $result->fetchAll();
+        	
         	foreach($result as $row)
         	{
             	$article = new Article($row['id_article'],
@@ -156,6 +175,9 @@ class ArticleBD extends BD
 }
 
 
+////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
 function getArticleById ($idArt)
 {
 	$bd = new Bd();
@@ -166,9 +188,16 @@ function getArticleById ($idArt)
 		$bd->connexion();
 		$connexion = $bd->getConnexion();
 		$idArt = intval($bd->security($connexion, $idArt));
-		$ResultQuery = $connexion->query( "SELECT * FROM ARTICLE WHERE id_article=$idArt AND statut_article = 1" )->fetch();
+		$ResultQuery = $connexion->query( "SELECT * FROM ARTICLE WHERE id_article=$idArt AND statut_article = 1" );
         
-		if($ResultQuery != NULL) // Pour eviter une erreur si l'id categorie pass est null
+        if($ResultQuery == NULL)
+        {
+        	$bd->deconnexion();
+        	throw new RequestException();
+        }
+        
+        $ResultQuery = $ResultQuery->fetch();
+		//if($ResultQuery != NULL) // Pour eviter une erreur si l'id categorie pass est null
         {
             //Ici on instancie un objet categorie  l'aide des infos recupres dans la base
             $Article = new Article($ResultQuery['id_article'],
@@ -194,12 +223,16 @@ function getArticleById ($idArt)
 	$bd->deconnexion();
 	return $Article;
 }
-    
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+
     
 /** getAllArticles()
   * Renvoie tous les articles, tries par date de parution, dans un tableau d articles
   * @return Article[] : le tableau d'articles
 **/
+/*
 function getAllArticles()
 {
     $bd = new Bd();
@@ -208,7 +241,15 @@ function getAllArticles()
     {
         $bd->connexion();
 		$connexion = $bd->getConnexion();
-        $result = $connexion->query("SELECT * FROM ARTICLE WHERE statut_article = 1 ORDER BY date_article DESC")->fetchAll();
+        $result = $connexion->query("SELECT * FROM ARTICLE WHERE statut_article = 1 ORDER BY date_article DESC");
+        
+        if($result == NULL)
+        {
+        	$bd->deconnexion();
+        	throw new RequestException();
+        }
+        
+        $result = $result->fetchAll();
         
         foreach($result as $row)
         {
@@ -236,8 +277,12 @@ function getAllArticles()
     $bd->deconnexion();
     return $return;
 }
- 
- 
+*/
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
 function getFiveMostRecentArticles()
 {
     $bd = new Bd();
@@ -246,7 +291,15 @@ function getFiveMostRecentArticles()
     {
         $bd->connexion();
 		$connexion = $bd->getConnexion();
-        $result = $connexion->query("SELECT * FROM ARTICLE WHERE statut_article = 1 ORDER BY date_article DESC LIMIT 5")->fetchAll();
+        $result = $connexion->query("SELECT * FROM ARTICLE WHERE statut_article = 1 ORDER BY date_article DESC LIMIT 5");
+        
+        if($result == NULL)
+        {
+        	$bd->deconnexion();
+        	throw new RequestException();
+        }
+        
+        $result = $result->fetchAll();
         
         foreach($result as $row)
         {
@@ -275,7 +328,10 @@ function getFiveMostRecentArticles()
     return $return;
 }
 
-  
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
 function getNbArticles()
 {
     $bd = new Bd();
@@ -284,7 +340,15 @@ function getNbArticles()
     {
         $bd->connexion();
         $connexion = $bd->getConnexion();
-        $result = $connexion->query("SELECT COUNT(*) FROM ARTICLE WHERE statut_article = 1")->fetch();
+        $result = $connexion->query("SELECT COUNT(*) FROM ARTICLE WHERE statut_article = 1");
+        
+        if($result == NULL)
+        {
+        	$bd->deconnexion();
+        	throw new RequestException();
+        }
+        
+        $result = $result->fetch();
     }
     catch(PDOException $e)
     {
@@ -295,6 +359,8 @@ function getNbArticles()
     return $result['COUNT(*)'];
 }
 
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
 function getNbArticlesByCategorie($idCat)
@@ -305,7 +371,15 @@ function getNbArticlesByCategorie($idCat)
     {
         $bd->connexion();
         $connexion = $bd->getConnexion();
-        $result = $connexion->query("SELECT COUNT(*) FROM ARTICLE WHERE statut_article = 1 AND id_rubrique = $idCat")->fetch();
+        $result = $connexion->query("SELECT COUNT(*) FROM ARTICLE WHERE statut_article = 1 AND id_rubrique = $idCat");
+        
+        if($result == NULL)
+        {
+        	$bd->deconnexion();
+        	throw new RequestException();
+        }
+        
+        $result = $result->fetchAll();
     }
     catch(PDOException $e)
     {
@@ -318,7 +392,10 @@ function getNbArticlesByCategorie($idCat)
 }
 
 
+////////////////////////////////////////////////////////////////////////////////////////////////////
 
+
+/*
 function getNbPagesListeArticles()
 {
 	$nbArt = getNbArticles();
@@ -328,8 +405,12 @@ function getNbPagesListeArticles()
 	}
 	return( ($nbArt / 10) + 1);
 }
- 
-    
+*/
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
 function determineNbArticlesIndex()
 {
     $nbArticles = getNbArticles();
@@ -339,6 +420,10 @@ function determineNbArticlesIndex()
     }
     return $nbArticles;
 }
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+
 
 function articleExists($idArticle)
 {
@@ -350,7 +435,15 @@ function articleExists($idArticle)
 		
 		$connexion = $bd->getConnexion();
 		$param = intval($bd->security($connexion, $idArticle));
-		$res = $connexion->query("SELECT * FROM ARTICLE WHERE id_article = $param")->fetch();
+		$res = $connexion->query("SELECT * FROM ARTICLE WHERE id_article = $param");
+		
+		if($res == NULL)
+		{
+			$bd->deconnexion();
+			throw new RequestException();
+		}
+		
+		$res = $res->fetch();
 	}
 	catch(PDOExcpetion $e)
 	{

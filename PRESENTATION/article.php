@@ -3,16 +3,30 @@
 	    
     require_once('../BD/acces_article.php');
     
-    if( (!(isset($_GET['article']))) || (!(intval($_GET['article']))) )		// Si GET n est pas valide
+    try
     {
-    	header('location: erreur.php?code=0');
+    	if( (!(isset($_GET['article']))) || (!(intval($_GET['article']))) )		// Si GET n est pas valide
+    	{
+    		header('location: erreur.php?code=0');
+    	}
+    	else if( !(articleExists($_GET['article'])) )
+    	{
+    		header('location: erreur.php?code=1');
+    	}
     }
-    else if( !(articleExists($_GET['article'])) )
+    catch(RequestException $e)
     {
-    	header('location: erreur.php?code=1');
+    	echo( $e->getMessage() );
     }
     
-    $articleCourant = getArticleById($_GET['article']);	// Article courant de la page
+    try
+    {
+    	$articleCourant = getArticleById($_GET['article']);	// Article courant de la page
+    }
+    catch(RequestException $e)
+    {
+    	echo( $e->getMessage() );
+    }
 ?>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">  

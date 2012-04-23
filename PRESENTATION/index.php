@@ -4,7 +4,14 @@
     require_once('../BD/acces_article.php');
     
     //$tab = getAllArticles();    // Tableau contenant tous les articles
-    $artUne = getFiveMostRecentArticles();	// Tableau contenant les 5 derniers articles parus
+    try
+    {
+    	$artUne = getFiveMostRecentArticles();	// Tableau contenant les 5 derniers articles parus
+    }
+    catch(RequestException $e)
+    {
+    	echo( $e->getMessage() );
+    }
 ?>
 
 
@@ -82,10 +89,17 @@
         <ul id="menuAccueil">
         	<?php
         		$ArticleBD = new ArticleBD();
-        		$homeArticles = $ArticleBD->getHomeArticles();
-        		foreach($homeArticles as $art)
+        		try
         		{
-            		echo("<li><a href='".$art->getUrl()."'><img src='".$art->getBasePhoto()."' alt='".$art->getTitre()."'><span>".$art->getTitre()."</span></a><img src='Style/image/ombreAccueil.png' class='ombreAccueil'/></li>");	
+        			$homeArticles = $ArticleBD->getHomeArticles();
+        			foreach($homeArticles as $art)
+        			{
+            			echo("<li><a href='".$art->getUrl()."'><img src='".$art->getBasePhoto()."' alt='".$art->getTitre()."'><span>".$art->getTitre()."</span></a><img src='Style/image/ombreAccueil.png' class='ombreAccueil'/></li>");	
+            		}
+            	}
+            	catch(RequestException $e)
+            	{
+            		echo( $e->getMessage() );
             	}
             ?>			
         </ul>

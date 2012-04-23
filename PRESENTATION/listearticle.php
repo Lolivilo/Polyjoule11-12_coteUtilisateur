@@ -35,7 +35,14 @@
     
                 $ArticleBD = new ArticleBD();
                 $TabArticles = array();
-                $TabArticles = $ArticleBD->getArticlesWithCategory($categorieCourante->getId());
+                try
+                {
+                	$TabArticles = $ArticleBD->getArticlesWithCategory($categorieCourante->getId());
+                }
+                catch(RequestException $e)
+                {
+                	echo( $e->getMessage() );
+                }
                 
                 if(empty($TabArticles))
                 {
@@ -80,8 +87,15 @@
             ?>
             
             <?php
-            	$nbArticles = getNbArticlesByCategorie($categorieCourante->getId());
-            	echo(generatePagination($nbArticles, $_GET['cat']));
+            	try
+            	{
+            		$nbArticles = getNbArticlesByCategorie($categorieCourante->getId());
+            		echo(generatePagination($nbArticles, $_GET['cat']));
+            	}
+            	catch(RequestException $e)
+            	{
+            		echo( $e->getMessage() );
+            	}
             ?>
 
 			<?php
