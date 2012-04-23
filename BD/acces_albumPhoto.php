@@ -198,7 +198,7 @@ function getFiveMostRecentAlbums($debut)
     {
         $bd->connexion();
         $connexion = $bd->getConnexion();
-        $result = $connexion->query("SELECT id_album FROM ALBUM ORDER BY date_album DESC LIMIT $debut, 5");
+        $result = $connexion->query("SELECT * FROM ALBUM ORDER BY date_album DESC LIMIT $debut, 5");
         
         if($result == NULL)
         {
@@ -206,15 +206,21 @@ function getFiveMostRecentAlbums($debut)
         }
         else
         {
-        	$result = $result->fetch();
+        	$result = $result->fetchAll();
+        }
+        
+        $res = array();
+        foreach($result as $row)
+        {
+        	$album = new albumPhoto($row['id_album'],
+                                    $row['nom_album'], 
+                                    $row['date_album'],
+                                    $row['descFR_album'],
+                                    $row['descEN_album']);
+            array_push($res, $album);
         }
     }
-    catch(RequestException $e)
-    {
-    	echo( $e->getMessage() );
-		$bd->deconnexion();
-		return NULL;
-    }
+
     catch(PDOException $ex)
     {
         // A REMPLIR
@@ -222,7 +228,7 @@ function getFiveMostRecentAlbums($debut)
     
     $bd->deconnexion();
     
-    return $result['id_album'];
+    return $res;
 }
 
 

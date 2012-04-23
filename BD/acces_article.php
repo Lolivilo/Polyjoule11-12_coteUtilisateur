@@ -379,7 +379,7 @@ function getNbArticlesByCategorie($idCat)
         	throw new RequestException();
         }
         
-        $result = $result->fetchAll();
+        $result = $result->fetch();
     }
     catch(PDOException $e)
     {
