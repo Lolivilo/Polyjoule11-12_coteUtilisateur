@@ -18,7 +18,7 @@ jQuery().ready(function(){
                  	{
                     	$("#photo > p").html(data.texte);
                  	}
-                 	$("#photo > p").fadeOut();
+                 	$("#corps > h3").fadeOut();
                  	imgLoader.fadeOut();
                  	return false;
 				}
