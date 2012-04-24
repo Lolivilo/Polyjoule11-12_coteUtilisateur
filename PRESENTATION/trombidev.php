@@ -33,7 +33,7 @@
 				<table>
 					<tr>
 						<th><?php echo($parserLangue->getWord("status")->getTraduction()); ?></th>
-						<td>Responsable de l'équipe Web / Développeur de la partie visible (PHP ++)</td>
+						<td>Responsable de l'équipe Web / Développeur frontOffice (PHP)</td>
 					</tr>
 					<tr>
 						<th><?php echo($parserLangue->getWord("mail")->getTraduction()); ?></th>
@@ -48,7 +48,7 @@
 				<table>
 					<tr>
 						<th><?php echo($parserLangue->getWord("status")->getTraduction()); ?></th>
-						<td>Développeur de la partie visible (PHP / Ajax / JQuery)</td>
+						<td>Développeur frontOffice (PHP / Ajax / JQuery)</td>
 					</tr>
 					<tr>
 						<th><?php echo($parserLangue->getWord("mail")->getTraduction()); ?></th>
@@ -62,7 +62,7 @@
 				<table>
 					<tr>
 						<th><?php echo($parserLangue->getWord("status")->getTraduction()); ?></th>
-						<td>Développeur de la grande majorité du design de la partie visible (CSS)</td>
+						<td>Développeur de la grande majorité du design frontOffice (CSS)</td>
 					</tr>
 					<tr>
 						<th><?php echo($parserLangue->getWord("mail")->getTraduction()); ?></th>
