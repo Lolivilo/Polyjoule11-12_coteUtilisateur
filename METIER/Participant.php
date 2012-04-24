@@ -48,7 +48,8 @@ class Participant
     
     function getPhoto()
     {
-        return $this->photo;
+    	$path  = "../administration/ressources/data/Photo/";
+        return $path.$this->photo;
     }
     
     function getMail()

@@ -29,6 +29,27 @@
     	<h2 id='titreArticle'><img src="Style/image/livreOr.jpg" alt="Image du livre d'or"/></h2>
         <h3><?php echo( $parserLangue->getWord('LivreOr')->getTraduction() );?></h3>
         	<?php
+        		if(isset($_GET['signAttempt']))
+        		{
+        			echo("<div id='ajoutSignature'>");
+        			if($_GET['signAttempt'] == 'i')
+        			{
+        				echo("<p>Au moins un des champs est incomplet ! Ajout annulé</p>");
+        			}
+        			else if($_GET['signAttempt'] == 'm')
+        			{
+        				echo("<p>L'adresse mail n'est pas valide ! Ajout annulé</p>");
+        			}
+        			else if($_GET['signAttempt'] == 'k')
+        			{
+        				echo("<p>Erreur lors de l'ajout (impossible d'accéder à la base de données)</p>");
+        			}
+        			else if($_GET['signAttempt'] == 'o')
+        			{
+        				echo("<p>Signature ajoutée avec succès ! En attente d'approbation</p>");
+        			}
+        			echo("</div>");
+        		}
             // Affichage des commentaires
             	if( empty($signatures) && $_GET['numPage'] == 1)
             	{
@@ -36,9 +57,6 @@
             	}
             	else
             	{
-            		$debut = getIndexDebutFor($_GET['numPage'], 5);
-               		$fin = getIndexFinFor($debut, getNbAcceptedLivreOr(), 5);
-
                 	foreach($signatures as $a)
                 	{
                 		echo("<div class='commentaire' id='signature_".$a->getId()."'>");
@@ -53,26 +71,6 @@
            		echo(generatePagination(getNbAcceptedLivreOr(), $_GET['cat']));
            	?>
        
-            <div id='ajoutSignature'>
-                <?php
-                    if(isset($_GET['emptyInput']) && $_GET['emptyInput'] == 'true')
-                    {
-                        echo("<p>Tous les champs doivent être remplis !</p>");
-                    }
-                    if(isset($_GET['mailSyntax']) && $_GET['mailSyntax'] == 'false')
-                    {
-                        echo("<p>L'adresse mail doit être valide !</p>");
-                    }
-                    if(isset($_GET['signAttempt']) && $_GET['signAttempt'] == 'true')
-                    {
-                        echo("<p>Signature ajoutée avec succès ! En attente d'approbation.</p>");
-                    }
-                    if(isset($_GET['signAttempt']) && $_GET['signAttempt'] == 'false')
-                    {
-                        echo("<p>Echec de l'ajout (problème serveur) !</p>");
-                    }
-                ?>
-			</div>
             <form name='signer' id='ajoutSignature' action='../BD/TraitementsFormulaires/AjoutSignature.php' method="post">
             	<label for='pseudo'>Pseudo</label><input type="text" name='pseudo'/><br/>
                 <label for='mail'>Mail</label><input type="text" name='mail'/><br/>
