@@ -1,0 +1,35 @@
+/* ////////// HEADER  ////////// */
+
+#header
+{
+	border: solid;
+	margin-bottom: 2%;
+	background-color: red;
+}
+
+#topheader
+{
+	text-align: right;
+}
+
+#formsearch
+{
+	display: inline;
+}
+
+#logo
+{
+	border: solid;
+	width: 20%;
+}
+
+/* ////////// FOOTER ////////// */
+
+#footer
+{
+	border: solid;
+	text-align: center;
+	margin-top: 2%;
+	width: 100%;
+	background-color: green;
+}

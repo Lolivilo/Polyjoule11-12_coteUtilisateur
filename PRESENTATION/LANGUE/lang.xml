@@ -1,0 +1,117 @@
+<lang>
+	<word txt="contact">
+		<fr>Nous contacter</fr>
+		<en>Contact us</en>
+	</word>
+	
+	<word txt="search">
+		<fr>Rechercher</fr>
+		<en>Search</en>
+	</word>
+	
+	<word txt="LivreOr">
+		<fr>Livre d'or</fr>
+		<en>Guest book</en>
+    </word>
+    
+    <word txt="sign">
+        <fr>Signer !</fr>
+        <en>Sign !</en>
+    </word>
+    
+    <word txt="AlbPhoto">
+        <fr>Album photo</fr>
+        <en>Photo album</en>
+    </word>
+    
+    <word txt="personnages">
+        <fr>Personnages clés</fr>
+        <en>Figures</en>
+    </word>
+    
+    <word txt="quiEstIl">
+        <fr>Qui est-il ?</fr>
+        <en>Who is he?</en>
+    </word>
+    
+    <word txt="department">
+        <fr>Département</fr>
+        <en>Department</en>
+    </word>
+    
+    <word txt="headlines">
+        <fr>A la une</fr>
+        <en>Headlines</en>
+    </word>
+    
+    <word txt="trombinoscope">
+        <fr>Trombinoscope</fr>
+        <en>Members</en>
+    </word>
+    
+    <word txt="team">
+        <fr>Equipe</fr>
+        <en>Team</en>
+    </word>
+    
+    <word txt="status">
+        <fr>Statut</fr>
+        <en>Status</en>
+    </word>
+    
+    <word txt="mail">
+        <fr>Courriel</fr>
+        <en>eMail</en>
+    </word>
+    
+    <word txt="company">
+        <fr>L'entreprise</fr>
+        <en>The company</en>
+    </word>
+    
+    <word txt="assistant">
+        <fr>Son aide</fr>
+        <en>Its assistant</en>
+    </word>
+    
+    <word txt="trombiDev">
+        <fr>Le trombinoscope des développeurs</fr>
+        <en>Developpers</en>
+    </word>
+    
+    <word txt="aucun_resultat">
+        <fr>Il n'y a aucun resultat</fr>
+        <en>No result</en>
+    </word>
+    
+    <word txt="aucun_article">
+        <fr>Il n'y a pas d'article dans cette catégorie</fr>
+        <en>No article in this category</en>
+    </word>
+    
+    <word txt="404Error">
+        <fr>Cette page n'existe pas</fr>
+        <en>This page does not exist</en>
+    </word>
+    
+    <word txt="invalidURL">
+        <fr>L'URL n'est pas valide</fr>
+        <en>The URL is not valid</en>
+    </word>
+    
+    <word txt="NoTermSearch">
+        <fr>La recherche ne porte sur aucun terme</fr>
+        <en>there is no term in the research</en>
+    </word>
+    
+    <word txt="envoyesuccess">
+        <fr>Votre message à été envoyé avec succès</fr>
+        <en>Your message has been successfully sent</en>
+    </word>
+    
+    <word txt="manqueinfo">
+        <fr>Les informations fournies sont incomplètes</fr>
+        <en>The information provided is incomplete</en>
+    </word>
+ 
+</lang>
