@@ -60,7 +60,7 @@
                 <?php
                 		}
                 ?>
-                	<form method="POST" action="http://polyjoule.org/site/PRESENTATION/send">
+                	<form method="POST" action="http://polyjoule.org/site/PRESENTATION/send" id="contacter">
                 		<span>Votre Email *</span><input type="text" name="email" /><br/>
                 		<span>Objet *</span><input type="text" name="objet" /><br/>
                 		<span>Message *</span><textarea name="message"></textarea><br/>

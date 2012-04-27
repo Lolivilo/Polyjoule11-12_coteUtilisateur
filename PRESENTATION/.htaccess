@@ -28,6 +28,8 @@ RewriteRule ^article-([0-9]+)$  article.php?article=$1 [L]
 #--------------------------------------------------
 RewriteRule ^albums-([0-9]+)$  listealbums.php?cat=11&numPage=$1 [L]
 RewriteRule ^albums$  listealbums.php?cat=11&numPage=1 [L]
+RewriteRule ^albumslideshow-([0-9]+)$  albumphoto.php?cat=$1 [L]
+
 
 
 #--------------------------------------------------
@@ -67,6 +69,14 @@ RewriteRule ^home$  index.php [L]
 #Redirection recherche
 #--------------------------------------------------
 RewriteRule ^recherche=(.*?)$   search.php?w=$1 [L]
+
+
+#--------------------------------------------------
+#Redirection contactez nous
+#--------------------------------------------------
+RewriteRule ^contact$   contact-us.php [L]
+
+
 
 
 

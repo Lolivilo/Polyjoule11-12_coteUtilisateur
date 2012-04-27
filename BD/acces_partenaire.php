@@ -56,7 +56,7 @@ function getPartenaireById($id)
 function getAllPartners()
 {
 	$bd = new Bd();
-	
+	$nbPartMax = 3;
 	try
 	{
 		// Connexion a la base de donnees
@@ -70,6 +70,18 @@ function getAllPartners()
 		{
 			$partenaire = new Partenaire($row['id_partenaire'], $row['id_article'], $row['nom_partenaire'], $row['logo_partenaire'], $row['site_partenaire'], $row['descFR_partenaire'], $row['descEN_partenaire']);
 			array_push($tableauDePartenaires, $partenaire);
+		}
+		$randomPartnersTab = array();
+		$indexDejaPresent = array();
+		for($i=0;$i<$nbPartMax;$i++)
+		{
+			$randomIndex = rand(0,count($tableauDePartenaires)-1);
+			while(in_array($randomIndex, $indexDejaPresent))
+			{
+				$randomIndex = rand(0,count($tableauDePartenaires)-1);
+			}
+			array_push($indexDejaPresent,$randomIndex);
+			array_push($randomPartnersTab,$tableauDePartenaires[$randomIndex]);
 		}		
 	}	
 	catch(PDOException $e)
@@ -80,7 +92,7 @@ function getAllPartners()
 	// DŽconnexion de la base
 	$bd->deconnexion();
 		
-	return $tableauDePartenaires;
+	return $randomPartnersTab;
 }
 
 function partenaireExists($idPart)
