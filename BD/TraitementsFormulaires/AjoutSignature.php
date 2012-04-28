@@ -10,12 +10,12 @@
         if( ($_POST['pseudo'] == "") || ($_POST['mail'] == "") || ($_POST['message'] == "") )   // Verifie les champs remplis
         {
             //header('Location: ../../PRESENTATION/livredor.php?signAttempt=i');   // On redirige vers la page avec un argument false
-			header('location: ../../PRESENTATION/livreor_i');
+			header('location: ../../PRESENTATION/livreor--i');
         }
         elseif ( !(preg_match($regExp, $_POST['mail'])) )  // Verification adresse mail
         {
             //header('Location: ../../PRESENTATION/livredor.php?signAttempt=m');
-            header('location: ../../PRESENTATION/livreor_m');
+            header('location: ../../PRESENTATION/livreor--m');
         }
 		else
         {
@@ -35,12 +35,12 @@
             if( $nbPosts == ($nbAncienPost+1) )
             {
                 //header('Location: ../../PRESENTATION/livredor.php?signAttempt=o');
-                header('location: ../../PRESENTATION/livreor_o');
+                header('location: ../../PRESENTATION/livreor--o');
             }
             else
             {
                 //header('Location: ../../PRESENTATION/livredor.php?signAttempt=k');
-                header('location: ../../PRESENTATION/livreor_k');
+                header('location: ../../PRESENTATION/livreor--k');
             }
         }
     }

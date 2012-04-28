@@ -19,6 +19,16 @@
 <form style="display:none;" id="Formlangue" method="post" action="<?php echo $link; ?>">
 		<input type="hidden" name="lang" value="FR">
 </form>
+<?php
+	if($_POST['lang'] == 'EN')
+	{
+		echo("<a href='' class='changeLangue' id='FR'>FR</a> | <a href='' class='changeLangue active' id='EN'>EN</a>");
+	}
+	else
+	{
+		echo("<a href='' class='changeLangue active' id='FR'>FR</a> | <a href='' class='changeLangue' id='EN'>EN</a>");
+	}
+?>
 <a href="" class="changeLangue active" id="FR">FR</a> | <a href="" class="changeLangue" id="EN">EN</a>
 <script language="javascript">
 	jQuery().ready(function(){
