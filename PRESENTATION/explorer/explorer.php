@@ -65,7 +65,7 @@ if($SuperParentCategory->getIdTemplate() == 6)	// Si c'est la rubrique des parte
 	{
 		echo( $e->getMessage() );
 	}
-	foreach($tabAlb as $tab)
+	foreach($tabPart as $part)
 	{
 		$html .= "<li>";
 		$html .= "<a href='".$part->getUrl()."'>".$part->getNom()."</a>";
