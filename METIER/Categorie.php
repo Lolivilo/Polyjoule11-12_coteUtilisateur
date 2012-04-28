@@ -54,7 +54,7 @@ class Categorie
 		{
 			return Bd::securityHTML($this->descFR);
 		}
-		else if( (isset($_SESSION['langue'])) && ($_SESSION['langue'] == 'FR') )
+		else
 		{
 			return Bd::securityHTML($this->descEN);
 		}

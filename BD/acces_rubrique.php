@@ -318,7 +318,7 @@ function getCategorieById( $id )
     {
         $bd->connexion();
         
-        $conexion = $bd->getConnexion();
+        $connexion = $bd->getConnexion();
         $param = intval($bd->security($connexion, $id));
         $result = $connexion->query("SELECT * FROM RUBRIQUE WHERE id_rubrique = $param")->fetch();
         $ret = new Categorie($result['id_rubrique'],

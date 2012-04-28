@@ -4,6 +4,7 @@
     require_once('../METIER/LangueParser.php');
 	require_once('LANGUE/sessionLangue.php');
     require_once('../BD/acces_albumPhoto.php');
+    require_once('../BD/acces_partenaire.php');
     require_once('../METIER/FonctionsMetier/pagination.php');
     require_once('../METIER/FonctionsMetier/calendrier.php');
     
@@ -20,7 +21,7 @@
 		<input type="hidden" name="lang" value="FR">
 </form>
 <?php
-	if($_POST['lang'] == 'EN')
+	if($_SESSION['langue'] == 'EN')
 	{
 		echo("<a href='' class='changeLangue' id='FR'>FR</a> | <a href='' class='changeLangue active' id='EN'>EN</a>");
 	}
@@ -29,7 +30,7 @@
 		echo("<a href='' class='changeLangue active' id='FR'>FR</a> | <a href='' class='changeLangue' id='EN'>EN</a>");
 	}
 ?>
-<a href="" class="changeLangue active" id="FR">FR</a> | <a href="" class="changeLangue" id="EN">EN</a>
+<!-- <a href="" class="changeLangue active" id="FR">FR</a> | <a href="" class="changeLangue" id="EN">EN</a> -->
 <script language="javascript">
 	jQuery().ready(function(){
 		$(".changeLangue").click(function () 

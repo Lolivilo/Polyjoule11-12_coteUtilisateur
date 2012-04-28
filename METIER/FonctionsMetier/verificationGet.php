@@ -10,11 +10,13 @@ function verifGet()
 	{
 		header("location: erreur.php?code=0");
 	}
-		
+	
+	/*
 	if( strlen($_SERVER['QUERY_STRING']) > 17 )	// On vérifie que d'autres informations ne sont pas envoyées
 	{
 		header("location: erreur.php?code=0");
 	}
+	*/
 		
 	if( !(categorieExists($_GET['cat'])) )		// On vérifie que la catégorie exist
 	{

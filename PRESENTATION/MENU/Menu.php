@@ -31,6 +31,24 @@
             	}
             }
             
+            else if($CatParent->getIdTemplate() == 6)	// Si c'est les partenaires, on les affiche en tant que sous rubriques
+            {
+            	$HasChildren = TRUE;
+            	$html .= "<ul>";
+            	try
+            	{
+            		$tabPart = getTousPartners();
+            	}
+            	catch(RequestException $e)
+            	{
+            		echo( $e->getMessage() );
+            	}
+            	foreach($tabPart as $part)
+            	{
+            		$html .= "<li><a href='".$part->getUrl()."'>".$part->getNom()."</a></li>";
+            	}
+            }
+            
             else if($ChildrenCategories != NULL)// Si la catégorie parente a des enfants
             {
                 $HasChildren = TRUE;

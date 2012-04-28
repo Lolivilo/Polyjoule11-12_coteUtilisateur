@@ -54,6 +54,24 @@ if($SuperParentCategory->getIdTemplate() == 2)	// Si c'est la rubrique de liste 
 		$html .= "<a href='".$tab->getUrl()."'>".$tab->getNom()."</a>";
 	}
 }
+
+if($SuperParentCategory->getIdTemplate() == 6)	// Si c'est la rubrique des partenaires, on les affiche
+{
+	try
+	{
+		$tabPart = getTousPartners();
+	}
+	catch(RequestException $e)
+	{
+		echo( $e->getMessage() );
+	}
+	foreach($tabAlb as $tab)
+	{
+		$html .= "<li>";
+		$html .= "<a href='".$part->getUrl()."'>".$part->getNom()."</a>";
+	}
+}
+
 foreach ($SousCategories as $_Categorie)
 {
 	$html.="<li";

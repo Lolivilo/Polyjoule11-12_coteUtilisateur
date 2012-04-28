@@ -65,6 +65,11 @@ class Partenaire
 	{
 		return $this->descEn;
 	}
+	
+	public function getUrl()
+	{
+		return("partenaire.php?partenaire=".$this->id);
+	}
 
 }
 
