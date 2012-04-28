@@ -38,8 +38,7 @@ class Partenaire
 	
 	public function getLogo()
 	{
-		$path  = "../administration/ressources/data/Photo/";
-		return $path.$this->logo;
+		return $this->logo;
 	}
 	
 	public function getSite()

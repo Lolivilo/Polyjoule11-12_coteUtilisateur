@@ -185,7 +185,7 @@ class Article
     
     public function getBasePhoto()
     {
-    	$path  = "../administration/ressources/data/Photo/";
+    	$path  = "administration/ressources/data/Photo/";
     	return $path.$this->photo_principale;
     }
     

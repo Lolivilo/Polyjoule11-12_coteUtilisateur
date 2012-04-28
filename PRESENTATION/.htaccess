@@ -19,22 +19,25 @@ RewriteRule ^rubrique-([0-9]+)$   listearticle.php?cat=$1&numPage=1 [L]
 #--------------------------------------------------
 #Redirection article
 #--------------------------------------------------
-RewriteRule ^article-([0-9]+)$   article.php?article=$1 [L]
+RewriteRule ^article-([0-9]+)$  article.php?article=$1 [L]
 
 
 
 #--------------------------------------------------
 #Redirection album photos
 #--------------------------------------------------
-RewriteRule ^albums-([0-9]+)$   listealbums.php?cat=11&numPage=$1 [L]
-RewriteRule ^albums$   listealbums.php?cat=11&numPage=1 [L]
+RewriteRule ^albums-([0-9]+)$  listealbums.php?cat=11&numPage=$1 [L]
+RewriteRule ^albums$  listealbums.php?cat=11&numPage=1 [L]
+RewriteRule ^albumslideshow-([0-9]+)$  albumphoto.php?cat=$1 [L]
+
 
 
 #--------------------------------------------------
 #Redirection livre or
 #--------------------------------------------------
 RewriteRule ^livreor-([0-9]+)$   livredor.php?cat=10&numPage=$1 [L]
-RewriteRule ^livreor$   livredor.php?cat=10&numPage=1 [L]
+RewriteRule ^livreor$  livredor.php?cat=10&numPage=1 [L]
+RewriteRule ^livreor--([i-o])$	livredor.php?cat=10&numPage=1&signAttempt=$1 [L]
 
 
 #--------------------------------------------------
@@ -59,13 +62,21 @@ RewriteRule ^erreur-([0-9])$   erreur.php?code=$1 [L]
 #--------------------------------------------------
 #Redirection index
 #--------------------------------------------------
-RewriteRule ^home$   index.php [L]
+RewriteRule ^home$  index.php [L]
 
 
 #--------------------------------------------------
 #Redirection recherche
 #--------------------------------------------------
 RewriteRule ^recherche=(.*?)$   search.php?w=$1 [L]
+
+
+#--------------------------------------------------
+#Redirection contactez nous
+#--------------------------------------------------
+RewriteRule ^contact$   contact-us.php [L]
+
+
 
 
 

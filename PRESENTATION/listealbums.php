@@ -79,7 +79,7 @@
 						echo("<img style='width:100px' src='http://3.bp.blogspot.com/-iJYUeULd-W0/TbR5YTwfiRI/AAAAAAAAAJ0/zIDyFheQVyY/s1600/n.a.jpg' />");
 					}
 					echo("<div class='description'><h3>".$a->getNom()."</h3>");
-					echo("<div class='italic'>".$a->getDate()."</div>" );
+					echo("<div class='italic'>".$a->getFormatedDate()."</div>" );
 					echo("<p>".$a->getDesc()."</p>");
 					echo("<p>".$a->getNbPhotos()." photos dans cet album</p>");
 					echo("</div>");

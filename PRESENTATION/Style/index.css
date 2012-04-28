@@ -182,13 +182,13 @@ border:1px solid #636363;-webkit-border-top-left-radius:8px;-webkit-border-botto
 #corps .commentaire {padding-bottom:40px;}
 #corps #paginationLivre {list-style:none;text-align:center;width:92%;margin:auto;padding:0;padding-bottom:40px;}
 #corps #paginationLivre li {display:inline-block;padding-right:1%;}
-#corps #ajoutSignature {width:88%;margin:auto;padding:10px 2% 10px 2%;margin-bottom:30px;background:#e9e6e6;-webkit-border-radius: 10px;-moz-border-radius: 10px;border-radius: 10px;}
-#corps #ajoutSignature input, #corps #ajoutSignature textarea {display:inline-block;width:50%;margin:10px 2% 10px 2%;border:1px solid white;}
-#corps #ajoutSignature textarea {width:96%;margin-bottom:10px;height:120px;}
-#corps #ajoutSignature input:focus, #corps #ajoutSignature textarea:focus {border:1px solid black}
-#corps #ajoutSignature label {text-transform:uppercase;margin-left:5%;}
-#corps #ajoutSignature input[type=submit] {text-align:right;font-style:italic;font-size:1.2em;width:auto;margin:0 auto 0 75%;max-width:23%;background:#e9e6e6;border:0;cursor:pointer;}
-#corps #ajoutSignature input[type=submit]:hover {text-decoration:underline;}
+#corps #ajoutSignature, #corps #contacter {width:88%;margin:auto;padding:10px 2% 10px 2%;margin-bottom:30px;background:#e9e6e6;-webkit-border-radius: 10px;-moz-border-radius: 10px;border-radius: 10px;}
+#corps #ajoutSignature input, #corps #ajoutSignature textarea, #corps #contacter input,#corps #contacter textarea{display:inline-block;width:50%;margin:10px 2% 10px 2%;border:1px solid white;}
+#corps #ajoutSignature textarea, #corps #contacter textarea {width:96%;margin-bottom:10px;height:120px;}
+#corps #ajoutSignature input:focus, #corps #ajoutSignature textarea:focus, #corps #contacter input:focus, #corps #contacter textarea:focus {border:1px solid black}
+#corps #ajoutSignature label, #corps #contacter label {text-transform:uppercase;margin-left:5%;}
+#corps #ajoutSignature input[type=submit], #corps #contacter input[type=submit]{text-align:right;font-style:italic;font-size:1.2em;width:auto;margin:0 auto 0 75%;max-width:23%;background:#e9e6e6;border:0;cursor:pointer;}
+#corps #ajoutSignature input[type=submit]:hover, #corps #contacter input[type=submit]:hover {text-decoration:underline;}
 
 #logoAdmin {vertical-align:middle;max-width:25px;}
 .ombreAccueil {max-width:400px;margin:-10px auto 20px auto;display:block;}
@@ -209,4 +209,11 @@ a.jScrollActiveArrowButton:hover		{/*background-color: #f00;*/}
 
 /*loader thumbnail album photo */
 img.loaderThumb{left:16px;position:absolute;top:16px;display: none;}
+
+/*Padding des articles*/
+div.article{padding-left:20px; padding-right:20px;}
+
+
+.connect_widget_text{display:none !important;}
+
 
