@@ -36,10 +36,10 @@
    	<div id="corps">
     	<h2 id='titrePartenaire'>
             <div><?php echo($partenaire->getNom()); ?><!--<span class='sousTitre'>SOUS TITRE</span>--></div>
-            <img src=<?php echo("'".$partenaire->getLogo()."' alt='Logo de ".$partenaire->getNom()."'") ?>/>
+            <a href='<?php echo($partenaire->getSite());?>'><img src=<?php echo("'".$partenaire->getLogo()."' alt='Logo de ".$partenaire->getNom()."'") ?>/></a>
         </h2>
         <p><?php echo($partenaire->getDesc()); ?></p>
-        <p><a class="lienImportant" href='<?php echo($partenaire->getSite()); ?>'>Nous soutenir</a></p>
+        <p><a class="lienImportant" href='contact'>Nous soutenir</a></p>
     
         <div id="footerCorps"></div>
 	</div>
