@@ -80,6 +80,12 @@ class Categorie
 		{
 			return("leshelleco.php?cat=2");
 		}
+		
+		if($this->id == 20)
+		{
+			return("leduceco.php?cat=20");
+		}
+		
 		$url = NULL;
 		switch($template)
 		{

@@ -30,7 +30,7 @@
 			include('header.php');
 		?>
 
-        <div id="corps">
+        <div id="corps" class='sansMenu'>
             <?php
             $ArticleBD = new ArticleBD();
             $resultats = array();

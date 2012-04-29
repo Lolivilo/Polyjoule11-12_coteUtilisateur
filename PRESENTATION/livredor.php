@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="Style/index.css" type="text/css">
         <?php include('includeJS.php'); ?>
     <script language="javascript" src="JavaScript/checkLivreOr.js"></script>
+    <script type="text/javascript" src="JavaScript/menu.js"></script>
     <title>Polyjoule</title>
 </head>
 

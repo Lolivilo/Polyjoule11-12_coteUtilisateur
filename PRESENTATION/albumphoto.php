@@ -91,7 +91,7 @@
             		</ul>
             		<?php //<a href="index.html" class="suivant"></a> ?>
         		</div>
-        		<p><?php echo($currentAlbum->getDesc());?></p>
+        		<?php echo($currentAlbum->getDesc());	// Deja englobe dans des <p> dans la base?>
         	</div>
 
         	<div id="footerCorps">

@@ -37,7 +37,7 @@
             include('explorer/explorer.php');
         ?>
         <?php // AFFICHAGE DE L'ARTICLE ?>
-        <div id="corps">
+        <div id="corps" class='sansMenu'>
                 <h2>
                     <?php 
                         echo $parserLangue->getWord("contact")->getTraduction(); 

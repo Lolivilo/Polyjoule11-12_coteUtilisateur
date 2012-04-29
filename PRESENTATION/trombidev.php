@@ -25,7 +25,7 @@
 	<?php
 		include('header.php');
 	?>
-	<div id='corps'>
+	<div id='corps' class='sansMenu'>
 		<h2><?php echo($parserLangue->getWord("trombiDev")->getTraduction()); ?></h2>
 			<div class='personne'>
 				<h3>Olivier MANDIN</h3>
