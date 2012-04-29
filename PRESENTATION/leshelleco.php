@@ -30,7 +30,7 @@
 	<div id='corps'>
 		<h2 id='titreArticle'><img src="Style/image/banniere_shellEco.png" alt="Image du Schell Eco"/></h2>
 		<h3><?php echo( $currentCat->getTitre() );?></h3>
-		<p>
+		<p text-align='center'>
 			<?php
 				echo($currentCat->getDesc());
 			?>

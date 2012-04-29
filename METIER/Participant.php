@@ -2,7 +2,6 @@
 class Participant
 {
     private $id;
-    private $idEquipe;
     private $nom;
     private $prenom;
     private $photo;
@@ -12,10 +11,10 @@ class Participant
     private $bioEn;
     private $isProf;
     
-    public function __construct($id, $idEquipe, $nom, $prenom, $photo, $mail, $role, $bioFr, $bioEn, $isProf)
+    
+    public function __construct($id, $nom, $prenom, $photo, $mail, $role, $bioFr, $bioEn, $isProf)
     {
         $this->id = $id;
-        $this->idEquipe = $idEquipe;
         $this->nom = $nom;
         $this->prenom = $prenom;
         $this->photo = $photo;
@@ -31,11 +30,6 @@ class Participant
         return $this->id;
     }
     
-    function getIdEquipe()
-    {
-        return $this->idEquipe;
-    }
-    
     function getNom()
     {
         return $this->nom;
@@ -48,7 +42,7 @@ class Participant
     
     function getPhoto()
     {
-    	$path  = "../administration/ressources/data/Photo/";
+    	$path  = "administration/ressources/data/Participants/";
         return $path.$this->photo;
     }
     
@@ -59,7 +53,7 @@ class Participant
     
     function getRole()
     {
-        return $this->role;
+    	return $this->role;
     }
     
     function getBioFr()

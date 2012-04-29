@@ -11,17 +11,18 @@ function getAllParticipantsProfs()
     {
         $bd->connexion();                   // Connexion a la BD
         $connexion = $bd->getConnexion();  
-        $result = $connexion->query("SELECT * FROM PARTICIPANT WHERE isProf = 1")->fetchAll();   // Execution de la requete
+        $result = $connexion->query("SELECT * FROM PARTICIPANT
+        									  JOIN PARTICIPATION ON PARTICIPANT.id_participant = PARTICIPATION.id_participant
+        									  WHERE isProf = 1")->fetchAll();   // Execution de la requete
         $ret = array();
         foreach($result as $row)    // Chaque tuple retourne est instancie et stocke dans un tableau
         {
             $participant = new Participant($row['id_participant'],
-                                           $row['id_equipe'],
                                            $row['nom_participant'],
                                            $row['prenom_participant'],
                                            $row['photo_participant'],
                                            $row['mail_participant'],
-                                           $row['role_participant'],
+                                           $row['role_participation'],
                                            $row['bioFR_participant'],
                                            $row['bioEN_participant'],
                                            $row['isProf']
@@ -53,12 +54,11 @@ function getAllParticipantsNonProfsByEquipe($idEquipe)
         foreach($result as $row)    // Chaque tuple retourne est instancie et stocke dans un tableau
         {
             $participant = new Participant($row['id_participant'],
-                                           $row['id_equipe'],
                                            $row['nom_participant'],
                                            $row['prenom_participant'],
                                            $row['photo_participant'],
                                            $row['mail_participant'],
-                                           $row['role_participant'],
+                                           $row['role_participation'],
                                            $row['bioFR_participant'],
                                            $row['bioEN_participant'],
                                            $row['isProf']

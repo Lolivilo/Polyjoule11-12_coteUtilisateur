@@ -43,6 +43,22 @@
         		$debut = getIndexDebutFor($_GET['numPage'], 5);
         		$fin = getIndexFinFor($debut, getNbParticipantsProfs(), 5);
         	
+        		foreach($tabParticipants as $p)
+        		{
+        			echo("<div class='articleHeader' id='participant_".$p->getId()."'>");
+    	            echo("<img src='".$p->getPhoto()."' alt='Photo de ".$p->getNom()."'/>");
+        	        echo("<div class='description'>");
+            	    echo("<h3>".$p->getPrenom()." ".$p->getNom()."</h3>");
+	                echo("<div class='italic'>".$p->getRole()."</div>");
+    	            echo("</div>");
+        	        echo("<div class='presentation'>Manque dans la base !<br/></div>");
+            	    echo("<div class='clear'></div>");
+	                echo("</div>");
+    	            echo("<h4>".$parserLangue->getWord("quiEstIl")->getTraduction()."</h4>");
+        	        echo("<p>".$p->getBioFr()."</p>");
+        		}
+        		
+        		/*
             	for($i = $debut ; $i < $fin ; $i++)
             	{
  	               echo("<div class='articleHeader' id='participant_".$tabParticipants[$i]->getId()."'>");
@@ -57,6 +73,7 @@
     	            echo("<h4>".$parserLangue->getWord("quiEstIl")->getTraduction()."</h4>");
         	        echo("<p>".$tabParticipants[$i]->getBioFr()."</p>");
             	}
+            	*/
             }
         ?>
         <?php
