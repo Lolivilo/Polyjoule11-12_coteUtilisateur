@@ -21,6 +21,23 @@ elseif( isset( $_GET['cat'] ) )
 	$LinkedCategoryID = $_GET['cat'];
 }
 
+if($LinkedCategoryID == 0)
+{
+	if(isset($_GET['partenaire']))		// Creation de l arborescence si on est sur des partenaires
+	{
+		$catPartenaires = getCategorieById(6);		// A REVOIR
+		$html .= "<ul id='menuPage'><li><h2>".$catPartenaires->getTitre()."</h2></li>";
+		$partners = getTousPartners();
+		foreach($partners as $p)
+		{
+			$html .= "<li>";
+			$html .= "<a href='".$p->getUrl()."'>".$p->getNom()."</a>";
+			$html .= "</li>";
+		}
+	}
+}
+else
+{
 $LinkedCategory = $category->getCategorieWithId($LinkedCategoryID);    
 
 $SuperParentCategory = $category->getSuperParentCategoryOfCategory($LinkedCategoryID);
@@ -124,6 +141,7 @@ foreach ($SousCategories as $_Categorie)
 	
 	
 	
+}
 }
 $html.="</ul>";
 

@@ -5,10 +5,11 @@
 <div id='footer'>
 	<div id='partenaires'>
 		<?php 
-			$tabPartenaires = getAllPartners();		// Tableau d'objets Partenaire
+			//$tabPartenaires = getAllPartners();		// Tableau d'objets Partenaire
+			$tabPartenaires = getFooterPartners();
 			foreach($tabPartenaires as $part)
 			{
-				echo("<a href='partenaire.php?partenaire=".$part->getId()."'><img src='".$part->logo."' alt='".$part->nom."'></a>");
+				echo("<a href='partenaire.php?partenaire=".$part->getId()."'><img src='".$part->getLogo()."' width='10%' alt='".$part->getNom()."'></a>");
 			}
 		?>
 	</div>

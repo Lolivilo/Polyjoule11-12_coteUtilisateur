@@ -115,6 +115,22 @@
 					</tr>
 				</table>
 			</div>
+			
+			<div class='personne'>
+				<h3>Sébastien SORS</h3>
+				<img src="" alt="Ma tete"/>
+				<table>
+					<tr>
+						<th><?php echo($parserLangue->getWord("status")->getTraduction()); ?></th>
+						<td>Maquetteur / Designer du site (frontOffice)</td>
+					</tr>
+					<tr>
+						<th><?php echo($parserLangue->getWord("mail")->getTraduction()); ?></th>
+						<td>sebastien.sors@etu.univ-nantes.fr</td>
+					</tr>
+				</table>
+			</div>
+			
 		<div id="footerCorps"></div>
 	</div>
 	

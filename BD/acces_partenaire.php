@@ -159,4 +159,34 @@ function partenaireExists($idPart)
 	return true;
 }
 
+function getFooterPartners()
+{
+	$bd = new Bd();
+
+	try
+	{
+		// Connexion a la base de donnees
+		$bd->connexion();
+		$connexion = $bd->getConnexion();
+		$resultQuery = $connexion->query("SELECT * FROM PARTENAIRE where id_partenaire = 23 OR id_partenaire = 3 OR id_partenaire = 16")->fetchAll();
+			
+		$tableauDePartenaires = array();	// Tableau que l'on va retourner
+		// On parcourt le rŽsultat de la requte et on remplie le tableau ˆ retourner
+		foreach($resultQuery as $row)
+		{
+			$partenaire = new Partenaire($row['id_partenaire'], $row['id_article'], $row['nom_partenaire'], $row['logo_partenaire'], $row['site_partenaire'], $row['descFR_partenaire'], $row['descEN_partenaire']);
+			array_push($tableauDePartenaires, $partenaire);
+		}
+	}	
+	catch(PDOException $e)
+	{
+		$ex = new AccesTableException() ;
+		$ex->Message() ;
+	}
+	// DŽconnexion de la base
+	$bd->deconnexion();
+		
+	return $tableauDePartenaires;
+}
+
 ?>
