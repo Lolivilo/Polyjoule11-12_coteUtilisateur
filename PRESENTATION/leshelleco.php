@@ -6,7 +6,7 @@
 	
 	//verifGet();
 	
-	$currentCat = getCategorieById($_GET['cat']);	// Categorie actuelle => les partenaires
+	$currentCat = getCategorieById($_GET['cat']);	// Categorie actuelle => le shell eco 2012
 ?>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">  
@@ -28,8 +28,8 @@
 		include_once('explorer/explorer.php');
 	?>
 	<div id='corps'>
-		<h2 id='titreArticle'><img src="Style/image/banniere_partenaires.png" alt="Image des partenaires"/></h2>
-		<h3><?php echo( $parserLangue->getWord('partenaires')->getTraduction() );?></h3>
+		<h2 id='titreArticle'><img src="Style/image/banniere_shellEco.png" alt="Image du Schell Eco"/></h2>
+		<h3><?php echo( $currentCat->getTitre() );?></h3>
 		<p>
 			<?php
 				echo($currentCat->getDesc());

@@ -31,7 +31,7 @@
 		<?php
 			//echo("<h2 id='titreArticle'><img src='".$currentCat->getImage()."' alt='Image de la rubrique ".$currentCat->getNom()."'/>");
 		?>
-		<h2 id='titreArticle'><img src="Style/image/livreDor.jpg" alt="Image du livre d'or"/></h2>
+		<h2 id='titreArticle'><img src="Style/image/livreOr.jpg" alt="Image de l'association"/></h2>
 		
 		<h3><?php echo( $parserLangue->getWord('notreAssociation')->getTraduction() );?></h3>
 		<p>

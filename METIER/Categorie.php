@@ -76,6 +76,10 @@ class Categorie
 			return("lassociation.php");
 		}
 		
+		if($this->id == 2)
+		{
+			return("leshelleco.php?cat=2");
+		}
 		$url = NULL;
 		switch($template)
 		{
