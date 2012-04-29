@@ -29,11 +29,21 @@
 		<h2><?php echo($parserLangue->getWord("trombiDev")->getTraduction()); ?></h2>
 			<div class='personne'>
 				<h3>Olivier MANDIN</h3>
-				<img src="" alt="Ma tete"/>
+				<?php
+					$srcPhoto = NULL;
+					if($srcPhoto == NULL)
+					{
+						echo("<img src='Style/image/photo.png' />");
+					}
+					else
+					{
+						echo("<img src='$srcPhoto' alt='Ma tete' />");
+					}
+				?>
 				<table>
 					<tr>
 						<th><?php echo($parserLangue->getWord("status")->getTraduction()); ?></th>
-						<td>Responsable de l'équipe Web / Développeur de la partie visible (PHP ++)</td>
+						<td>Responsable de l'équipe Web / Développeur frontOffice (PHP ++)</td>
 					</tr>
 					<tr>
 						<th><?php echo($parserLangue->getWord("mail")->getTraduction()); ?></th>
@@ -44,11 +54,21 @@
 			
 			<div class='personne'>
 				<h3>Antonin BIRET</h3>
-				<img src="" alt="Ma tete"/>
+				<?php
+					$srcPhoto = NULL;
+					if($srcPhoto == NULL)
+					{
+						echo("<img src='Style/image/photo.png' />");
+					}
+					else
+					{
+						echo("<img src='$srcPhoto' alt='Ma tete' />");
+					}
+				?>
 				<table>
 					<tr>
 						<th><?php echo($parserLangue->getWord("status")->getTraduction()); ?></th>
-						<td>Développeur de la partie visible (PHP / Ajax / JQuery)</td>
+						<td>Développeur frontOffice (PHP / Ajax / JQuery)</td>
 					</tr>
 					<tr>
 						<th><?php echo($parserLangue->getWord("mail")->getTraduction()); ?></th>
@@ -58,11 +78,21 @@
 			</div>
 			<div class='personne'>
 				<h3>Josselin ROUSSEAU</h3>
-				<img src="" alt="Ma tete"/>
+				<?php
+					$srcPhoto = NULL;
+					if($srcPhoto == NULL)
+					{
+						echo("<img src='Style/image/photo.png' />");
+					}
+					else
+					{
+						echo("<img src='$srcPhoto' alt='Ma tete' />");
+					}
+				?>
 				<table>
 					<tr>
 						<th><?php echo($parserLangue->getWord("status")->getTraduction()); ?></th>
-						<td>Développeur de la grande majorité du design de la partie visible (CSS)</td>
+						<td>Développeur de la grande majorité du design du frontOffice (CSS)</td>
 					</tr>
 					<tr>
 						<th><?php echo($parserLangue->getWord("mail")->getTraduction()); ?></th>
@@ -73,7 +103,17 @@
 			
 			<div class='personne'>
 				<h3>Olivier BLIN</h3>
-				<img src="" alt="Ma tete"/>
+				<?php
+					$srcPhoto = NULL;
+					if($srcPhoto == NULL)
+					{
+						echo("<img src='Style/image/photo.png' />");
+					}
+					else
+					{
+						echo("<img src='$srcPhoto' alt='Ma tete' />");
+					}
+				?>
 				<table>
 					<tr>
 						<th><?php echo($parserLangue->getWord("status")->getTraduction()); ?></th>
@@ -88,7 +128,17 @@
 			
 			<div class='personne'>
 				<h3>Alexandre BISIAUX</h3>
-				<img src="" alt="Ma tete"/>
+				<?php
+					$srcPhoto = NULL;
+					if($srcPhoto == NULL)
+					{
+						echo("<img src='Style/image/photo.png' />");
+					}
+					else
+					{
+						echo("<img src='$srcPhoto' alt='Ma tete' />");
+					}
+				?>
 				<table>
 					<tr>
 						<th><?php echo($parserLangue->getWord("status")->getTraduction()); ?></th>
@@ -103,7 +153,17 @@
 			
 			<div class='personne'>
 				<h3>Simon ROUSSEAU</h3>
-				<img src="" alt="Ma tete"/>
+				<?php
+					$srcPhoto = NULL;
+					if($srcPhoto == NULL)
+					{
+						echo("<img src='Style/image/photo.png' />");
+					}
+					else
+					{
+						echo("<img src='$srcPhoto' alt='Ma tete' />");
+					}
+				?>
 				<table>
 					<tr>
 						<th><?php echo($parserLangue->getWord("status")->getTraduction()); ?></th>
@@ -118,7 +178,17 @@
 			
 			<div class='personne'>
 				<h3>Sébastien SORS</h3>
-				<img src="" alt="Ma tete"/>
+				<?php
+					$srcPhoto = NULL;
+					if($srcPhoto == NULL)
+					{
+						echo("<img src='Style/image/photo.png' />");
+					}
+					else
+					{
+						echo("<img src='$srcPhoto' alt='Ma tete' />");
+					}
+				?>
 				<table>
 					<tr>
 						<th><?php echo($parserLangue->getWord("status")->getTraduction()); ?></th>
