@@ -36,6 +36,20 @@ if($LinkedCategoryID == 0)
 		}
 	}
 }
+
+else if(strstr($_SERVER['SCRIPT_NAME'], "albumphoto.php"))	// Si on est sur un album
+{
+	$catAlbum = getCategorieById(11);		// A REVOIR
+	$html .= "<ul id='menuPage'><li><h2>".$catAlbum->getTitre()."</h2></li>";
+	$albums = getAllAlbums();
+	foreach($albums as $a)
+	{
+		$html .= "<li>";
+		$html .= "<a href='".$a->getUrl()."'>".$a->getNom()."</a>";
+		$html .= "</li>";
+	}
+}
+
 else
 {
 $LinkedCategory = $category->getCategorieWithId($LinkedCategoryID);    
