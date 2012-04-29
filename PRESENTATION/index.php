@@ -59,7 +59,7 @@
                					echo("<div class='news'>");
                         		echo("<h3><span class='date'>".$a->getFormatedDate()."</span> ".$a->getTitre()."</h3>");
                         		echo("<p>".$a->getApercu()."</p>");
-                        		echo("<a href='".$a->getUrl()."'>Lire la suite</a><div class='border'></div>");
+                        		echo("<a href='".$a->getUrl()."'>".$parserLangue->getWord("lireLaSuite")->getTraduction()."</a><div class='border'></div>");
                         		echo("</div>");	
                				}
                     		/*for($i = 0 ; 5 ; $i++)

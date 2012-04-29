@@ -51,7 +51,7 @@
             	    echo("<h3>".$p->getPrenom()." ".$p->getNom()."</h3>");
 	                echo("<div class='italic'>".$p->getRole()."</div>");
     	            echo("</div>");
-        	        echo("<div class='presentation'>Manque dans la base !<br/></div>");
+        	        //echo("<div class='presentation'>Manque dans la base !<br/></div>");
             	    echo("<div class='clear'></div>");
 	                echo("</div>");
     	            echo("<h4>".$parserLangue->getWord("quiEstIl")->getTraduction()."</h4>");

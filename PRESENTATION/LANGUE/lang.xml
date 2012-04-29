@@ -44,6 +44,11 @@
         <en>Who is he?</en>
     </word>
     
+    <word txt="lireLaSuite">
+        <fr>Lire la suite</fr>
+        <en>Read more</en>
+    </word>
+    
     <word txt="department">
         <fr>Département</fr>
         <en>Department</en>

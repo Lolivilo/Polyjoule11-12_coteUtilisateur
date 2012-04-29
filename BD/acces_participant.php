@@ -89,12 +89,22 @@ function createTrombinoscopeByEquipe($idEquipe)
 		$bd->connexion();
 		$connexion = $bd->getConnexion();
 		$param = intval($bd->security($connexion, $idEquipe));
-		$result = $connexion->query("SELECT PARTICIPANT.id_participant, nom_participant, prenom_participant, titreFR_formation, titreEN_formation, lien_formation, annee_equipe, photo_participant, mail_participant, role_participant
+		$result = $connexion->query("SELECT PARTICIPANT.id_participant,
+											PARTICIPANT.nom_participant,
+											PARTICIPANT.prenom_participant,
+											PARTICIPANT.photo_participant,
+											PARTICIPANT.mail_participant,
+											FORMATION.titreFR_formation,
+											FORMATION.titreEN_formation,
+											FORMATION.lien_formation,
+											PARTICIPATION.role_participation,
+											EQUIPE.annee_equipe
 									 FROM PARTICIPANT
 									 JOIN APPARTIENT ON PARTICIPANT.id_participant = APPARTIENT.id_participant
+									 JOIN PARTICIPATION ON PARTICIPANT.id_participant = PARTICIPATION.id_participant
 									 JOIN FORMATION ON APPARTIENT.id_formation = FORMATION.id_formation
-									 JOIN EQUIPE ON PARTICIPANT.id_equipe = EQUIPE.id_equipe
-									 WHERE isProf = 0 AND PARTICIPANT.id_equipe = $param")->fetchAll();
+									 JOIN EQUIPE ON PARTICIPATION.id_equipe = EQUIPE.id_equipe
+									 WHERE isProf = 0 AND PARTICIPATION.id_equipe = $param")->fetchAll();
 		$ret = array();						 
 		foreach($result as $t)	// On va instancier chaque tuple récupéré par un objet ParticipantTrombinoscope
 		{
@@ -107,7 +117,7 @@ function createTrombinoscopeByEquipe($idEquipe)
 											  $t['annee_equipe'],
 											  $t['photo_participant'],
 											  $t['mail_participant'],
-											  $t['role_participant']
+											  $t['role_participation']
 											 );
 			array_push($ret, $p);
 		}

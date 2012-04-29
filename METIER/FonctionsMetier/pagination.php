@@ -60,7 +60,7 @@ function generatePagination($nbItems, $catCourante)
 		$ret .= "<li><a href='".$currentTemplate.$tiretCat."-".$prev."'><</a></li>";
 	}
 	
-	$ret .= "<li>".$_GET['numPage']."</li>";						// Page courante
+	$ret .= "<li>".$_GET['numPage']." ... ".getLastPage($nbItems, 5)."</li>";						// Page courante
 	
 	if( ($next = getNextPage($nbItems, 5, $_GET['numPage'])) == 1)	// Page suivante
 	{

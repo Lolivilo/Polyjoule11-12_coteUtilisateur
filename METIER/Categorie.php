@@ -52,11 +52,13 @@ class Categorie
 	{
 		if($_SESSION['langue'] == 'EN')
 		{
-			return Bd::securityHTML($this->descEN);
+			//return Bd::securityHTML($this->descEN);
+			return $this->descEN;
 		}
 		else
 		{
-			return Bd::securityHTML($this->descFR);
+			//return Bd::securityHTML($this->descFR);
+			return $this->descFR;
 		}
 	}
     

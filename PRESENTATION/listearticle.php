@@ -28,6 +28,10 @@
     include('explorer/explorer.php');
 ?>
     <div id="corps">
+            <?php
+            	if($_GET['cat'] > 11)
+                	echo("<h2>".$categorieCourante->getTitre()."</h2>" );
+            ?>
     	<?php
     		if(!($_GET['cat'] > 11))		// Si on est dans une sous catégorie, on n affiche pas polyjoule times
     		{

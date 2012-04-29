@@ -21,7 +21,7 @@ class ArticleBD extends BD
 			$connexion = parent::getConnexion();
 			$CategoryId = intval(parent::security($connexion, $CategoryId));
 			//On rcupre tous les articles de la catgorie passe en paramtre
-			$ResultQuery = $connexion->query( "SELECT * FROM ARTICLE WHERE id_rubrique=$CategoryId AND statut_article = 1" );
+			$ResultQuery = $connexion->query( "SELECT * FROM ARTICLE WHERE id_rubrique=$CategoryId AND statut_article = 1 ORDER BY date_article DESC" );
 			
 			if($ResultQuery == NULL)
 			{
