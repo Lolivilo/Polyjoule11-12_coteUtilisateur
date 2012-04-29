@@ -49,9 +49,10 @@
 	<input type="text" id="search" name="w">
 	<input type="submit" value="ok">
 </form>
-<iframe src="https://www.facebook.com/plugins/like.php?href=https://www.facebook.com/pages/Polyjoule/121213844627305"
+<!--<iframe src="https://www.facebook.com/plugins/like.php?href=https://www.facebook.com/pages/Polyjoule/121213844627305"
         scrolling="no" frameborder="0"
-        style="border:none; width:450px; height:80px"></iframe>
+        style="border:none; width:450px; height:80px"></iframe>-->
+		<a href="http://www.facebook.com/pages/Polyjoule/121213844627305?ref=ts" id="logoFacebook"><img src="Style/image/menuFacebook.png" /></a>
 </div>		
 <div class="clear"></div>
 </div>

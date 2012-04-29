@@ -26,7 +26,7 @@
         include_once('explorer/explorer.php');
     ?>
     <div id='corps'>
-    	<h2 id='titreArticle'><img src="Style/image/livreOr.jpg" alt="Image du livre d'or"/></h2>
+    	<h2 id='titreArticle'><img src="Style/image/livreDor.jpg" alt="Image du livre d'or"/></h2>
         <h3><?php echo( $parserLangue->getWord('LivreOr')->getTraduction() );?></h3>
         	<?php
         		if(isset($_GET['signAttempt']))
