@@ -28,8 +28,12 @@
 		include_once('explorer/explorer.php');
 	?>
 	<div id='corps'>
+		<?php
+			//echo("<h2 id='titreArticle'><img src='".$currentCat->getImage()."' alt='Image de la rubrique ".$currentCat->getNom()."'/>");
+		?>
 		<h2 id='titreArticle'><img src="Style/image/livreDor.jpg" alt="Image du livre d'or"/></h2>
-		<h3><?php echo( $parserLangue->getWord('partenaires')->getTraduction() );?></h3>
+		
+		<h3><?php echo( $currentCat->getTitre() );?></h3>
 		<p>
 			<?php
 				echo($currentCat->getDesc());

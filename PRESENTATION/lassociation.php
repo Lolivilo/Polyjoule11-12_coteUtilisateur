@@ -6,7 +6,7 @@
 	
 	//verifGet();
 	
-	$currentCat = getCategorieById($_GET['cat']);	// Categorie actuelle => les partenaires
+	$currentCat = getCategorieById(1);	// Categorie actuelle => les partenaires
 ?>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">  
@@ -28,8 +28,12 @@
 		include_once('explorer/explorer.php');
 	?>
 	<div id='corps'>
+		<?php
+			//echo("<h2 id='titreArticle'><img src='".$currentCat->getImage()."' alt='Image de la rubrique ".$currentCat->getNom()."'/>");
+		?>
 		<h2 id='titreArticle'><img src="Style/image/livreDor.jpg" alt="Image du livre d'or"/></h2>
-		<h3><?php echo( $parserLangue->getWord('partenaires')->getTraduction() );?></h3>
+		
+		<h3><?php echo( $parserLangue->getWord('notreAssociation')->getTraduction() );?></h3>
 		<p>
 			<?php
 				echo($currentCat->getDesc());

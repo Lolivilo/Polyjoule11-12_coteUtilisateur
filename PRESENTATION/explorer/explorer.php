@@ -20,6 +20,10 @@ elseif( isset( $_GET['cat'] ) )
 {
 	$LinkedCategoryID = $_GET['cat'];
 }
+else if(strstr($_SERVER['SCRIPT_NAME'], "lassociation.php"))
+{
+	$LinkedCategoryID = 1;
+}
 
 if($LinkedCategoryID == 0)
 {
@@ -49,6 +53,7 @@ else if(strstr($_SERVER['SCRIPT_NAME'], "albumphoto.php"))	// Si on est sur un a
 		$html .= "</li>";
 	}
 }
+
 
 else
 {

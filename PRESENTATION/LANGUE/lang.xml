@@ -14,6 +14,11 @@
 		<en>Guest book</en>
     </word>
     
+    <word txt="notreAssociation">
+		<fr>Notre association</fr>
+		<en>Our association</en>
+    </word>
+    
     <word txt="sign">
         <fr>Signer !</fr>
         <en>Sign !</en>
@@ -27,6 +32,11 @@
     <word txt="personnages">
         <fr>Personnages clés</fr>
         <en>Figures</en>
+    </word>
+    
+    <word txt="partenaires">
+        <fr>Partenaires</fr>
+        <en>Partners</en>
     </word>
     
     <word txt="quiEstIl">

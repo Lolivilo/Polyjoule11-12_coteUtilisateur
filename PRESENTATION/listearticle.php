@@ -28,7 +28,13 @@
     include('explorer/explorer.php');
 ?>
     <div id="corps">
-    	<h2 id="titreNews"><img src="Style/image/time.png" alt="The Polyjoule Times"/></h2>
+    	<?php
+    		if(!($_GET['cat'] > 11))		// Si on est dans une sous catégorie, on n affiche pas polyjoule times
+    		{
+    			echo("<h2 id='titreNews'><img src='Style/image/time.png' alt='The Polyjoule Times'/></h2>");
+    		}
+    	?>
+    	
     <?php
                 // FAUT IL CHERCHER LES ARTICLES DE LA CAT ENFANT ? EN + DES ARTICLES DE LA CAT EN COUR OU LES 2?
                 // AFFICHAGE DES ARTICLES

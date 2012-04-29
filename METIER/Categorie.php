@@ -20,7 +20,7 @@ class Categorie
 		$this->idParent = $idCatParent ;
 		$this->titreFR = $titreFRCat ;
 		$this->titreEN = $titreENCat ;
-		$this->descFR = $descEN;
+		$this->descFR = $descFR;
 		$this->descEN = $descEN;
         $this->idTemplate = $idTemplate;
 	}
@@ -50,13 +50,13 @@ class Categorie
 	
 	public function getDesc()
 	{
-		if( (isset($_SESSION['langue'])) && ($_SESSION['langue'] == 'FR') )
+		if($_SESSION['langue'] == 'EN')
 		{
-			return Bd::securityHTML($this->descFR);
+			return Bd::securityHTML($this->descEN);
 		}
 		else
 		{
-			return Bd::securityHTML($this->descEN);
+			return Bd::securityHTML($this->descFR);
 		}
 	}
     
@@ -69,11 +69,21 @@ class Categorie
 
         //$ret = getNomTemplateById($this->idTemplate)."?cat=".$idCat;
 		$template = getNomTemplateById($this->idTemplate);
+		
+		////// TEMPORAIRE : POUR LA MISE EN LIGNE /////////
+		if($this->id == 1)
+		{
+			return("lassociation.php");
+		}
+		
 		$url = NULL;
 		switch($template)
 		{
 			case "rubrique": 
 				$url = "rubrique-".$idCat;
+				break;
+			case "rubriquearticles.php":
+				$url = $template."?cat=".$this->id;
 				break;
 			default: 
 				$url = $template;
