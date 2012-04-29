@@ -81,6 +81,11 @@ class Categorie
 			return("leshelleco.php?cat=2");
 		}
 		
+		if($this->id == 8)
+		{
+			return("lurbanconcept.php?cat=8");
+		}
+		
 		if($this->id == 20)
 		{
 			return("leduceco.php?cat=20");
